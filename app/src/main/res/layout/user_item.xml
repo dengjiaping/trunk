@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:layout_gravity="center_vertical"
+    android:background="@color/white"
+    android:orientation="horizontal">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_icon_layout"
+        android:layout_width="@dimen/dp50"
+        android:layout_height="@dimen/dp50"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="10dp">
+
+        <com.histudent.jwsoft.histudent.commen.view.CircleImageView
+            android:id="@+id/iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/avatar_def"/>
+
+        <ImageView
+            android:id="@+id/iv_teacher_identity"
+            android:layout_width="@dimen/dp15"
+            android:layout_height="@dimen/dp15"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/hot_person_teacher"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_alignTop="@id/rl_icon_layout"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@id/rl_icon_layout"
+        android:text="学生姓名"
+        android:textColor="@color/text_blue"
+        android:textSize="@dimen/text_size_15"/>
+
+    <TextView
+        android:id="@+id/masker_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/rl_icon_layout"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="@dimen/dp3"
+        android:layout_toRightOf="@id/tv_name"
+        android:background="@drawable/green_button_bg_circle"
+        android:gravity="center"
+        android:paddingLeft="@dimen/dp5"
+        android:paddingRight="@dimen/dp5"
+        android:text="班主任"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_10"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_tell"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@id/rl_icon_layout"
+        android:layout_below="@id/tv_name"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@id/rl_icon_layout"
+        android:text="成员情况"
+        android:textColor="@color/text_gray_h1"
+        android:textSize="13sp"/>
+
+    <View
+        style="@style/split_line_style_withLeftMargin"
+        android:layout_alignParentBottom="true"></View>
+</RelativeLayout>

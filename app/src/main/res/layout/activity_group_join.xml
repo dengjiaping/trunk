@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new" />
+
+    <View style="@style/split_line_style_10dp" />
+
+    <EditText
+        android:id="@+id/join_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="top"
+        android:hint="给我一个你申请加入的理由..."
+        android:minHeight="100dp"
+        android:padding="@dimen/itemMargin"
+        android:textColor="@color/text_gray_h2"
+        android:textColorHint="@color/text_gray_h1"
+        android:textSize="@dimen/textSize" />
+
+    <TextView
+        android:id="@+id/join_button"
+        style="@style/text_white_v2"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="@dimen/itemMargin"
+        android:layout_marginRight="@dimen/itemMargin"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/green_button_bg_"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="确 定"
+        android:textSize="@dimen/large_textSize" />
+
+</LinearLayout>

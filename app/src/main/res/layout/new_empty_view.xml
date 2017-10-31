@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                     android:layout_width="match_parent"
+                                     android:layout_height="match_parent"
+                                     android:background="@color/white"
+                                     android:gravity="center"
+                                     android:orientation="vertical"
+                                     android:paddingBottom="@dimen/dp30">
+
+    <ImageView
+        android:id="@+id/empty_view_iv"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="centerInside"/>
+
+    <TextView
+        android:id="@+id/empty_view_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textColor="@color/text_black_h1"
+        android:textSize="@dimen/textSize"/>
+
+    <TextView
+        android:id="@+id/empty_view_btn"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/isapplying"
+        android:gravity="center"
+        android:textColor="@color/green_color"
+        android:textSize="@dimen/text_size_13"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
+</com.zhy.autolayout.AutoLinearLayout>

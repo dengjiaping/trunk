@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_update"
+            android:layout_width="250dp"
+            android:layout_height="191dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/update" />
+
+        <TextView
+            android:id="@+id/contnet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:lineSpacingMultiplier="1.3"
+            android:minHeight="100dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/text_black_h1"
+            android:textSize="@dimen/small_textSize" />
+
+        <TextView style="@style/split_line_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/updata_btn_left"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/iv_cancel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="暂不升级"
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/textSize" />
+
+            <TextView
+                android:id="@+id/line"
+                android:layout_width="@dimen/dp0.5"
+                android:layout_height="match_parent"
+                android:background="@color/line_color" />
+
+            <TextView
+                android:id="@+id/upldate_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="马上升级"
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/textSize" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

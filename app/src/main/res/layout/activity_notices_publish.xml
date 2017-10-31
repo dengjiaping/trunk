@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg_color"
+              android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new"/>
+
+    <LinearLayout
+        android:id="@+id/ll_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!--编辑的内容-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/notice_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="top"
+                android:hint="通知内容"
+                android:minHeight="120dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="4dp"
+                android:textColor="@color/text_black_h2"
+                android:textColorHint="@color/text_gray_h1"
+                android:textSize="@dimen/textSize"/>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/notice_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:background="@color/white"
+                android:paddingBottom="10dp"/>
+
+            <include
+                layout="@layout/include_voice_play"/>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="定时发送"
+                android:textColor="@color/text_black_h1"
+                android:textSize="15sp"/>
+
+            <CheckBox
+                android:id="@+id/notices_send"
+                style="@style/custom_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginLeft="8dp"/>
+
+
+        </LinearLayout>
+
+        <View style="@style/split_line_style_withLeftMargin"></View>
+
+
+        <LinearLayout
+            android:id="@+id/ll_notice_time"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="发送时间"
+                android:textColor="@color/text_black_h1"
+
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/notice_time"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|right"
+                android:textColor="@color/text_gray_h1"
+                android:textSize="15sp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:src="@mipmap/more"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/icon_starhalf"
+                android:textColor="@color/_bbbbbb"
+                android:textSize="12dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="通知发送后未安装嗨同学用户将收到通知短信提醒"
+                android:textColor="@color/_bbbbbb"
+                android:textSize="12dp"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="bottom"
+        android:background="@color/white">
+
+        <!--操作项-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/notice_takePhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:text="@string/icon_img"
+                android:textColor="@color/icon_color"
+                android:textSize="20sp"/>
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/notice_startRecord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:clickable="true"
+                android:text="@string/icon_microphone"
+                android:textColor="@color/icon_color"
+                android:textSize="20sp"/>
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/tv_emotion"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="@string/icon_face"
+                android:textColor="@color/icon_color"
+                android:textSize="@dimen/text_size_20"/>
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <!--表情键盘-->
+    <FrameLayout
+        android:id="@+id/fl_emotionview_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"/>
+
+</LinearLayout>

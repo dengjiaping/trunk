@@ -1,0 +1,38 @@
+<resources>
+
+    <!--top样式-->
+    <style name="topView_style">
+        <item name="android:layout_height">70dp</item>
+        <item name="android:paddingTop">20dp</item>
+    </style>
+
+    <!--top样式-->
+    <style name="topView_frist_style">
+        <item name="android:layout_height">70dp</item>
+        <item name="android:paddingTop">20dp</item>
+    </style>
+
+    <!--top样式-->
+    <style name="topView_frist_style_size">
+        <item name="android:layout_height">260dp</item>
+        <item name="android:layout_width">260dp</item>
+    </style>
+
+    <style name="topView_style_">
+        <item name="android:layout_height">384dp</item>
+    </style>
+
+    <style name="topView_style_00">
+        <item name="android:layout_height">334dp</item>
+    </style>
+
+    <style name="topView_style_01">
+        <item name="android:layout_marginTop">80dp</item>
+    </style>
+
+    <!--封面点赞-->
+    <style name="add_like_margin">
+        <item name="android:layout_marginTop">90dp</item>
+    </style>
+
+</resources>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/comment_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants">
+
+    <RelativeLayout
+        android:id="@+id/name_layout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="@dimen/itemMargin">
+
+        <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+            android:id="@+id/iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:src="@mipmap/avatar_def" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv"
+            android:text="姓名"
+            android:textColor="@color/text_black_h3"
+            android:textSize="@dimen/small_textSize" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/tv_name"
+            android:layout_marginEnd="11dp"
+            android:layout_marginRight="@dimen/itemMargin"
+            android:text="时间"
+            android:textColor="@color/text_gray_h1"
+            android:textSize="@dimen/tiny_textSize"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_to_name"
+        style="@style/IntroductionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name_layout"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginRight="@dimen/itemMargin"
+        android:background="@color/bg_color"
+        android:gravity="center_vertical"
+        android:paddingBottom="5dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="5dp"
+        android:text="111"
+        android:textColor="@color/text_gray_h2"
+        android:textSize="@dimen/small_textSize" />
+
+    <TextView
+        android:id="@+id/tv_comment"
+        style="@style/IntroductionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_to_name"
+        android:layout_marginLeft="52dp"
+        android:layout_marginRight="@dimen/itemMargin"
+        android:gravity="center_vertical"
+        android:text="222"
+        android:textColor="@color/text_black_h1"
+        android:textSize="@dimen/small_textSize" />
+
+    <View
+        style="@style/split_line_style_withMargin"
+        android:layout_below="@id/tv_comment"
+        android:layout_marginTop="10dp" />
+
+</RelativeLayout>

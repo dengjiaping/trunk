@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+
+    <RelativeLayout
+        android:id="@+id/moveGroup_list_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/moveGroup_list_item_text"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="好友圈（2）"
+            android:textColor="@color/text_black_h1"
+            android:textSize="17sp" />
+
+        <CheckBox
+            android:id="@+id/moveGroup_list_item_selected"
+            android:layout_width="20dp"
+            android:layout_height="20sp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/imge_delete_check_selector"
+            android:button="@null"
+            android:clickable="false" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

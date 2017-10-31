@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/itemMargin"
+        android:paddingStart="@dimen/itemMargin">
+
+
+        <!--排名-->
+        <RelativeLayout
+            android:id="@+id/index_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:minWidth="40dp">
+
+            <ImageView
+                android:id="@+id/index"
+                android:layout_width="18dp"
+                android:layout_height="30dp"
+                android:gravity="start"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/index_num"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="999"
+                android:textColor="@color/green_color"
+                android:textSize="20sp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_icon_layout"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@id/index_layout"
+            android:layout_toRightOf="@id/index_layout">
+
+            <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+                android:id="@+id/headImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="onClick"/>
+
+            <ImageView
+                android:id="@+id/iv_teacher_identity"
+                android:layout_width="@dimen/dp15"
+                android:layout_height="@dimen/dp15"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/hot_person_teacher"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_toEndOf="@id/rl_icon_layout"
+            android:layout_toRightOf="@id/rl_icon_layout"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxEms="10"
+                android:text="哈哈哈哈"
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/textSize"/>
+
+            <TextView
+                android:id="@+id/lev_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginStart="@dimen/dp10"
+                android:background="@drawable/green_button_bg_circle"
+                android:gravity="center"
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp"
+                android:text="LV.0"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:textStyle="italic"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/log_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_below="@+id/layout"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@id/rl_icon_layout"
+            android:layout_toRightOf="@id/rl_icon_layout"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/icon_news"
+                android:textColor="@color/icon_color"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/actionNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:textColor="@color/icon_color"
+                android:textSize="@dimen/small_textSize"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

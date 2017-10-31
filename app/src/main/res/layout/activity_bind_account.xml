@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_bg_color_v2"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new_login" />
+
+    <TextView
+        style="@style/title_style_v2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/topMargin_login"
+        android:text="账号绑定" />
+
+    <!--手机号码-->
+    <EditText
+        android:id="@+id/bind_account_edit"
+        style="@style/regist_edit_style_v2"
+        android:layout_marginTop="30dp"
+        android:hint="手机号或邮箱"
+        android:inputType="text" />
+
+    <View
+        style="@style/split_line_style_login"
+        android:layout_marginLeft="@dimen/itemMargin_v2"
+        android:layout_marginRight="@dimen/itemMargin_v2" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+        <EditText
+            android:id="@+id/bind_account_pwd_edit"
+            style="@style/regist_edit_style_v2"
+            android:hint="密码"
+            android:digits="@string/edit_limit"
+            android:inputType="textPassword" />
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/login_password_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="@dimen/itemMargin_v2"
+            android:layout_marginEnd="@dimen/itemMargin_v2"
+            android:clickable="true"
+            android:gravity="bottom|end"
+            android:onClick="onClick"
+            android:text="@string/icon_eye2"
+            android:textColor="@color/text_white"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <View
+        style="@style/split_line_style_login"
+        android:layout_marginLeft="@dimen/itemMargin_v2"
+        android:layout_marginRight="@dimen/itemMargin_v2" />
+
+
+    <TextView
+        android:id="@+id/bind_button"
+        style="@style/long_gray_button_circle"
+        android:layout_marginTop="50dp"
+        android:text="完 成" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3" />
+
+</LinearLayout>

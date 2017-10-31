@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/dialog_base"
+        android:elevation="5dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dialog_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/dialog_base"
+            android:gravity="center_horizontal|bottom"
+            android:text="标题"
+            android:textColor="@color/text_black_h1"
+            android:textSize="@dimen/large_textSize"/>
+
+        <TextView
+            android:id="@+id/dialog_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dialog_base"
+            android:gravity="center"
+            android:minHeight="@dimen/itemHight"
+            android:padding="15dp"
+            android:text="内容"
+            android:textColor="@color/text_black_h1"
+            android:textSize="@dimen/textSize"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line_color"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/dialog_base"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/dialog_left"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:text="确定"
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/textSize"/>
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="@color/line_color"/>
+
+            <Button
+                android:id="@+id/dialog_right"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:text="取消"
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/textSize"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

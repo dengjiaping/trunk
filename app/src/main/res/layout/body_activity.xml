@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/body_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/transparent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/icon_color"/>
+
+        <include
+            android:id="@+id/thebodyfootview"
+            layout="@layout/thebodyfootview"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/body_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom"/>
+
+
+    <View
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/bottom_null_bg"/>
+
+    <LinearLayout
+        android:id="@+id/ll_publish"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/text_white"
+        android:orientation="vertical"
+        android:paddingBottom="5dp"
+        android:visibility="visible">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="7"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:gravity="center_horizontal"
+            android:text="发布"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="10sp"/>
+
+    </LinearLayout>
+
+
+    <!--<FrameLayout-->
+    <!--android:id="@+id/frame_"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="#eeffffff"-->
+    <!--android:visibility="gone"/>-->
+
+    <!--<FrameLayout-->
+    <!--android:id="@+id/frame"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"/>-->
+
+    <com.histudent.jwsoft.histudent.commen.view.IconView
+        android:id="@+id/publish_action"
+        android:layout_width="@dimen/dp53"
+        android:layout_height="@dimen/dp53"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp10"
+        android:gravity="center"
+        android:text="@string/icon_add2"
+        android:textColor="@color/green_color"
+        android:textSize="@dimen/sp30"/>
+
+</RelativeLayout>

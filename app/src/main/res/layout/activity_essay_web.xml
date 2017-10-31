@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activityRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical"
+    android:scrollbars="none">
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/layout_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <include layout="@layout/thetopview_new" />
+
+            <View style="@style/title_split_line" />
+
+            <com.histudent.jwsoft.histudent.commen.view.FixedEditText
+                android:id="@+id/et_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="start"
+                android:hint="这一刻你想说点什么..."
+                android:maxLength="140"
+                android:minHeight="100dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="@dimen/dp15"
+                android:textColor="@color/text_black_h2"
+                android:textColorHint="@color/text_gray_h2"
+                android:textSize="@dimen/textSize" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/grid_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingBottom="10dp" />
+
+                <RelativeLayout
+                    android:id="@+id/publish_movie_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/publish_movie_cover"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop" />
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/publish_movie_play"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/play_bg"
+                        android:gravity="center"
+                        android:text="@string/icon_chooseclass"
+                        android:textColor="@color/white"
+                        android:textSize="23sp" />
+
+                    <TextView
+                        android:id="@+id/movie_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="5dp"
+                        android:text="12:20"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/tiny_textSize" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+            <!--<View style="@style/split_line_style"/>-->
+
+            <!--地址-->
+            <LinearLayout
+                android:id="@+id/relative_address"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/dp15">
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/rb_address_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/icon_localtion"
+                    android:textColor="@color/text_black_h3"
+                    android:textSize="@dimen/text_size_15" />
+
+                <TextView
+                    android:id="@+id/rb_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp10"
+                    android:text="地址"
+                    android:textColor="@color/text_black_h3"
+                    android:textSize="@dimen/text_size_13" />
+            </LinearLayout>
+
+            <View
+                style="@style/MyViewHorz"
+                android:layout_height="8dp"
+                android:background="@color/bg_color" />
+
+            <!--权限-->
+            <RelativeLayout
+                android:id="@+id/relative_photo_quality"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:onClick="onClick">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp15">
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/rb_authority_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="@string/icon_clock"
+                        android:textColor="@color/icon_color"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <TextView
+                        android:id="@+id/rb_authority"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/dp10"
+                        android:text="隐私设置"
+                        android:textColor="@color/text_black_h1"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_authority"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/ImageNextSize"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="@dimen/ImageNextPandingSizeVert"
+                    android:paddingLeft="@dimen/dp5"
+                    android:paddingRight="@dimen/ImageNextPandingSize"
+                    android:paddingTop="@dimen/ImageNextPandingSizeVert"
+                    android:src="@mipmap/mine_more_right" />
+
+                <TextView
+                    android:id="@+id/tv_authority"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@id/iv_authority"
+                    android:gravity="center_vertical"
+                    android:text="公开"
+                    android:textColor="@color/text_black_h2"
+                    android:textSize="@dimen/textSize_" />
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withLeftMargin" />
+
+            <!--同步班级-->
+            <RelativeLayout
+                android:id="@+id/user_sycn_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include layout="@layout/user_sycn_class_layout" />
+
+            </RelativeLayout>
+
+            <!--分享-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="@dimen/itemMargin"
+                    android:button="@null"
+                    android:drawableLeft="@mipmap/share_essay_gray"
+                    android:drawablePadding="15dp"
+                    android:gravity="center_vertical"
+                    android:text="分享到"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="@dimen/textSize_" />
+
+
+                <CheckBox
+                    android:id="@+id/iv_share_QQzone"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/image_pressed_seletor"
+                    android:button="@null" />
+
+                <CheckBox
+                    android:id="@+id/iv_share_friend_quan"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:layout_toLeftOf="@id/iv_share_QQzone"
+                    android:background="@drawable/friend_quan_selector"
+                    android:button="@null" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!--新增键盘栏-->
+    <RelativeLayout
+        android:id="@+id/essay_topic"
+        android:layout_width="match_parent"
+        android:layout_height="40.5dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/tv_emtion"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp5"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="@string/icon_face"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/text_size_20" />
+
+        <TextView
+            android:id="@+id/essay_keyWord_close"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/itemMargin"
+            android:text="0/140"
+            android:textColor="@color/text_gray_h2" />
+
+    </RelativeLayout>
+
+    <!--表情键盘-->
+    <FrameLayout
+        android:id="@+id/fl_emotionview_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="1dp" />
+
+</LinearLayout>

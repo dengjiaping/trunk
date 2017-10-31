@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp75"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_subject_manage_select"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingRight="@dimen/dp15">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/iv_subject_manage_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp12"
+                android:text="@string/icon_check2"
+                android:textColor="@color/_cccccc"
+                android:textSize="@dimen/sp18"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_subject_manage_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="会飞的鱼"
+            android:textColor="@color/_333333"
+            android:textSize="@dimen/sp15"/>
+
+
+        <LinearLayout
+            android:id="@+id/ll_subject_manage_delete"
+            android:layout_width="@dimen/dp60"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal"
+            android:paddingRight="@dimen/dp15">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/iv_subject_manage_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp12"
+                android:text="@string/icon_close4"
+                android:textColor="@color/_bbbbbb"
+                android:textSize="@dimen/sp15"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_add_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/_EEEEEE"/>
+
+    <include layout="@layout/item_homework_add_action"/>
+
+
+</LinearLayout>

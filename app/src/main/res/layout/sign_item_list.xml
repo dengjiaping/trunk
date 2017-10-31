@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="59.5dp">
+        <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+            android:id="@+id/community_sign_head"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/default_person" />
+        <TextView
+            android:id="@+id/community_sign_name"
+            android:textColor="@color/text_black_h1"
+            android:textSize="@dimen/sp15"
+            android:layout_marginLeft="15dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/community_sign_time"
+            android:textColor="@color/text_black_h1"
+            android:textSize="@dimen/sp12"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View style="@style/split_line_style_list_withMargin"/>
+</LinearLayout>

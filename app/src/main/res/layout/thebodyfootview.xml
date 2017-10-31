@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/footview"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/text_white"
+        android:orientation="horizontal">
+
+        <!-- 消息 -->
+        <LinearLayout
+            android:id="@+id/foot_message"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:orientation="vertical"
+            android:paddingTop="6dp">
+
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/foot_message_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/icon_home2"
+                android:textColor="@color/green_color"
+                android:textSize="20sp" />
+
+
+            <TextView
+                android:id="@+id/foot_message_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center_horizontal"
+                android:text="首页"
+                android:textColor="@color/green_color"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- Hi圈 -->
+        <LinearLayout
+            android:id="@+id/foot_hiword"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:orientation="vertical"
+            android:paddingTop="6dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/foot_hiworld_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="@string/icon_classnone"
+                    android:textColor="@color/text_gray_h2"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/im_number"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginLeft="-4dp"
+                    android:layout_toRightOf="@id/foot_hiworld_image"
+                    android:background="@drawable/dot_red"
+                    android:gravity="center"
+                    android:textColor="@color/text_white"
+
+                    android:textSize="8sp"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/foot_hiwrold_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center_horizontal"
+                android:text="班级"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!--圆-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" />
+
+        <!-- 发现 -->
+        <LinearLayout
+            android:id="@+id/foot_find"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:orientation="vertical"
+            android:paddingTop="6dp">
+
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/foot_find_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/icon_findnone"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="20sp" />
+
+
+            <TextView
+                android:id="@+id/foot_find_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center_horizontal"
+                android:text="@string/foot_find"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+        <!-- 我的 -->
+        <LinearLayout
+            android:id="@+id/foot_my"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:orientation="vertical"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/foot_my_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="@string/icon_minenone"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/text_gray_h2"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/message_num"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginLeft="-6dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_toRightOf="@id/foot_my_image"
+                    android:background="@drawable/dot_red"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/text_white"
+                    android:textSize="8sp"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/foot_my_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:gravity="center_horizontal"
+                android:text="@string/foot_my"
+                android:textColor="@color/text_gray_h2"
+                android:layout_marginTop="2dp"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

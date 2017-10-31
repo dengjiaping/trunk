@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_com_share_acitivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/icon_entersuccess"
+                android:textColor="@color/green_color"
+                android:textSize="@dimen/text_size_55"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp20"
+                android:text="发布成功"
+                android:textColor="@color/green_color"
+                android:textSize="@dimen/text_size_18"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@color/line_color"></View>
+
+        <TextView
+            android:layout_width="wrap_content"
+
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingRight="@dimen/dp15"
+            android:text="分享到"
+            android:textColor="@color/text_gray_h1"
+            android:textSize="@dimen/text_size_15"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@color/line_color"></View>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1.5"
+            android:gravity="center_horizontal|top"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp20"
+            android:paddingRight="@dimen/dp20">
+
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/weixin"
+
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/dp20"
+                android:layout_marginRight="@dimen/dp30"
+                android:layout_marginEnd="@dimen/dp30"
+                android:layout_marginTop="@dimen/dp20"
+                android:background="@drawable/green_circle_bg"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:padding="@dimen/dp10"
+                android:text="@string/icon_weixin"
+                android:textColor="@color/green_color"
+                android:textSize="22sp"/>
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/weixin_circle"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/dp20"
+                android:layout_marginLeft="@dimen/dp30"
+                android:layout_marginRight="@dimen/dp30"
+                android:layout_marginTop="@dimen/dp20"
+                android:background="@drawable/green_circle_bg"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:padding="@dimen/dp10"
+                android:text="@string/icon_friendcircle"
+                android:textColor="@color/green_color"
+                android:textSize="22sp"/>
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/qq_cricle"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+
+                android:layout_marginBottom="@dimen/dp20"
+                android:layout_marginLeft="@dimen/dp30"
+                android:layout_marginStart="@dimen/dp30"
+                android:layout_marginTop="@dimen/dp20"
+                android:background="@drawable/green_circle_bg"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:padding="@dimen/dp10"
+                android:text="@string/icon_qzone"
+                android:textColor="@color/green_color"
+                android:textSize="22sp"/>
+
+        </LinearLayout>
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="@string/icon_close4"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/text_size_30"/>
+    </LinearLayout>
+
+
+</LinearLayout>

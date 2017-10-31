@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@color/textBar_color"/>
+
+    <include layout="@layout/thetopview_new"/>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_color"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <!--人物-->
+                <RelativeLayout
+                    android:id="@+id/persion_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:paddingLeft="@dimen/itemMargin">
+
+                    <!--头像-->
+                    <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+                        android:id="@+id/themy_fragment_portrait"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/avatar_def"/>
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView style="@style/icon_arrowright_style"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_toRightOf="@id/themy_fragment_portrait"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/my_name"
+                            style="@style/textInMyFragmentLeft"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="bottom"
+                            android:textColor="@color/text_black_h3"/>
+
+                        <TextView
+                            style="@style/textInMyFragmentLeft"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="top"
+                            android:text="个人主页"
+                            android:textColor="@color/text_gray_h1"
+                            android:textSize="@dimen/small_textSize"/>
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <View style="@style/split_line_style_10dp"/>
+
+                <!--成长记录-->
+                <RelativeLayout
+                    android:id="@+id/grow_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/itemHight"
+                    android:background="@color/white"
+                    android:onClick="onClick"
+                    android:paddingLeft="@dimen/itemMargin">
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/grow_info_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/icon_grass"
+                        android:textColor="@color/green_color"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:id="@+id/grow_name"
+                        style="@style/textInMyFragmentLeft"
+                        android:layout_marginLeft="@dimen/itemMargin"
+                        android:layout_toRightOf="@id/grow_info_img"
+                        android:text="成长记录"/>
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView style="@style/icon_arrowright_style"/>
+
+                </RelativeLayout>
+
+                <View style="@style/split_line_style_withMargin"/>
+
+                <!--我的消息-->
+                <RelativeLayout
+                    android:id="@+id/meg_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/itemHight"
+                    android:background="@color/white"
+                    android:onClick="onClick"
+                    android:paddingLeft="@dimen/itemMargin">
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/meg_info_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/icon_information"
+                        android:textColor="#ffb967"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:id="@+id/meg_name"
+                        style="@style/textInMyFragmentLeft"
+                        android:layout_marginLeft="@dimen/itemMargin"
+                        android:layout_toRightOf="@id/meg_info_img"
+                        android:text="我的消息"/>
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/meg_right"
+                        style="@style/icon_arrowright_style"/>
+
+                    <TextView
+                        android:id="@+id/message_redpoint"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@id/meg_right"
+                        android:background="@drawable/red_button_bg_circle"
+                        android:gravity="center"
+                        android:text="159"
+                        android:textColor="@color/text_white"
+                        android:textSize="9sp"
+                        android:visibility="gone"/>
+
+                </RelativeLayout>
+
+                <View style="@style/split_line_style_10dp"/>
+
+                <!--用户等级-->
+                <RelativeLayout
+                    android:id="@+id/user_lev"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/itemHight"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:onClick="onClick"
+                    android:paddingLeft="@dimen/itemMargin">
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/user_lev_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/icon_king"
+                        android:textColor="#fac507"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        style="@style/textInMyFragmentLeft"
+                        android:layout_marginLeft="@dimen/itemMargin"
+                        android:layout_toRightOf="@id/user_lev_img"
+                        android:text="用户等级"/>
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/themy_fragment_lev"
+                        style="@style/icon_arrowright_style"/>
+
+                    <TextView
+                        android:id="@+id/themy_fragment_lev_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/dp10"
+                        android:layout_toLeftOf="@id/themy_fragment_lev"
+                        android:background="@drawable/green_button_bg_circle"
+                        android:gravity="center"
+                        android:paddingBottom="2dp"
+                        android:paddingLeft="7dp"
+                        android:paddingRight="7dp"
+                        android:paddingTop="2dp"
+                        android:text="LV.0"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        android:textStyle="italic"/>
+
+                </RelativeLayout>
+
+                <View style="@style/split_line_style_withMargin"/>
+
+                <!--积分商城-->
+                <RelativeLayout
+                    android:id="@+id/shopping"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/itemHight"
+                    android:background="@color/white"
+                    android:onClick="onClick"
+                    android:paddingLeft="@dimen/itemMargin"
+                    android:visibility="gone">
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/shopping_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/icon_bing"
+                        android:textColor="#e87860"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:id="@+id/themy_fragment_user_activiy_left"
+                        style="@style/textInMyFragmentLeft"
+                        android:layout_marginLeft="@dimen/itemMargin"
+                        android:layout_toRightOf="@id/shopping_img"
+                        android:text="积分商城"/>
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView style="@style/icon_arrowright_style"/>
+
+                </RelativeLayout>
+
+                <View style="@style/split_line_style_withMargin"/>
+
+                <!--邀请有礼-->
+                <RelativeLayout
+                    android:id="@+id/user_record"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/white"
+                    android:onClick="onClick"
+                    android:paddingLeft="@dimen/itemMargin">
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/user_record_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/icon_gift"
+                        android:textColor="#57a9e3"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        style="@style/textInMyFragmentLeft"
+                        android:layout_marginLeft="@dimen/itemMargin"
+                        android:layout_toRightOf="@id/user_record_img"
+                        android:text="邀请有礼"/>
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView style="@style/icon_arrowright_style"/>
+
+
+                </RelativeLayout>
+
+                <View style="@style/split_line_style_10dp"/>
+
+                <!--设置-->
+                <RelativeLayout
+                    android:id="@+id/user_accountSet"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/itemHight"
+                    android:background="@color/white"
+                    android:paddingLeft="@dimen/itemMargin">
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/user_accountSet_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/icon_setting"
+                        android:textColor="#1ec89b"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        style="@style/textInMyFragmentLeft"
+                        android:layout_marginLeft="@dimen/itemMargin"
+                        android:layout_toRightOf="@id/user_accountSet_img"
+                        android:text="设置"/>
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView style="@style/icon_arrowright_style"/>
+
+
+                </RelativeLayout>
+
+                <View style="@style/split_line_style_withMargin"/>
+
+                <!--常见问题-->
+                <RelativeLayout
+                    android:id="@+id/user_problem"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/itemHight"
+                    android:background="@color/white"
+                    android:onClick="onClick"
+                    android:paddingLeft="@dimen/itemMargin">
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/user_problem_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/icon_why"
+                        android:textColor="#6eb5e7"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        style="@style/textInMyFragmentLeft"
+                        android:layout_marginLeft="@dimen/itemMargin"
+                        android:layout_toRightOf="@id/user_problem_img"
+                        android:text="常见问题"/>
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView style="@style/icon_arrowright_style"/>
+
+                </RelativeLayout>
+
+                <View style="@style/split_line_style_withMargin"/>
+
+                <!--关于-->
+                <RelativeLayout
+                    android:id="@+id/user_about"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/itemHight"
+                    android:background="@color/white"
+                    android:paddingLeft="@dimen/itemMargin">
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/user_about_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/icon_remind"
+                        android:textColor="#fac507"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        style="@style/textInMyFragmentLeft"
+                        android:layout_marginLeft="@dimen/itemMargin"
+                        android:layout_toRightOf="@id/user_about_img"
+                        android:text="关于"/>
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView style="@style/icon_arrowright_style"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <View style="@style/split_line_style"/>
+
+</LinearLayout>

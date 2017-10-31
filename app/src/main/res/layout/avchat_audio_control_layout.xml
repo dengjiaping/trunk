@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_weight="2" />
+
+        <RelativeLayout
+            android:id="@+id/avchat_audio_exchange"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:descendantFocusability="beforeDescendants"
+            android:visibility="visible">
+
+
+            <Button
+                android:id="@+id/avchat_audio_exchange_"
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp50"
+                android:layout_centerInParent="true"
+                android:background="@mipmap/avchat_voide_camare_"
+                android:clickable="false"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/avchat_audio_exchange_"
+                android:layout_marginTop="@dimen/dp30"
+                android:gravity="center"
+                android:text="切换到视频"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <!--静音-->
+        <RelativeLayout
+            android:id="@+id/avchat_audio_mute"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:descendantFocusability="beforeDescendants">
+
+
+            <Button
+                android:id="@+id/avchat_audio_mute_"
+                android:layout_width="@dimen/dp60"
+                android:layout_height="@dimen/dp60"
+                android:layout_centerInParent="true"
+                android:background="@drawable/avchat_button_bg_left"
+                android:clickable="false"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/avchat_audio_mute_"
+                android:layout_marginTop="@dimen/dp30"
+                android:gravity="center"
+                android:text="静音"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+
+        <!--挂断-->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/avchat_audio_hangup"
+                android:layout_width="@dimen/dp60"
+                android:layout_height="@dimen/dp60"
+                android:layout_centerInParent="true"
+                android:background="@mipmap/avchat_voide_close"
+                android:textColor="@color/white"
+                android:visibility="visible" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/avchat_audio_hangup"
+                android:layout_marginTop="@dimen/dp30"
+                android:gravity="center"
+                android:text="挂断"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <!--扩音-->
+        <RelativeLayout
+            android:id="@+id/avchat_audio_speaker"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:descendantFocusability="beforeDescendants">
+
+
+            <Button
+                android:id="@+id/avchat_audio_speaker_"
+                android:layout_width="@dimen/dp60"
+                android:layout_height="@dimen/dp60"
+                android:layout_centerInParent="true"
+                android:background="@drawable/avchat_button_bg_right"
+                android:clickable="false"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/avchat_audio_speaker_"
+                android:layout_marginTop="@dimen/dp30"
+                android:gravity="center"
+                android:text="扩音"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

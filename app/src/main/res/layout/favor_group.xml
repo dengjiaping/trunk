@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:background="@color/text_blue"
+    android:layout_height="60dp">
+    <ImageView
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/goback"
+        android:id="@+id/favor_group_iv"
+        android:layout_width="15dp"
+        android:layout_height="15dp" />
+    <TextView
+        android:id="@+id/favor_group_tv_sort"
+        style="@style/TextViewProperty"
+        android:layout_centerInParent="true"
+        android:text="兴趣社群"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:layout_marginTop="5dp"
+        android:layout_centerVertical="true"
+        android:id="@+id/favor_group_iv_sort"
+        android:layout_marginLeft="8dp"
+        android:src="@drawable/more"
+        android:layout_toRightOf="@id/favor_group_tv_sort"
+        android:layout_width="12dp"
+        android:layout_height="12dp" />
+    <TextView
+        android:layout_marginRight="10dp"
+        android:id="@+id/favor_group_tv_create_group"
+        style="@style/TextViewProperty"
+        android:layout_centerVertical="true"
+      android:layout_alignParentRight="true"
+        android:text="创建社群"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/favor_group_pull_to_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
+</LinearLayout>

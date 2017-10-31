@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new" />
+
+    <View style="@style/split_line_style_10dp" />
+
+    <!--缓存管理-->
+    <View style="@style/split_line_style_withMargin" />
+
+    <!--图片质量-->
+    <RelativeLayout
+        android:id="@+id/commonset_01_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/itemHight"
+        android:layout_marginLeft="@dimen/itemMargin"
+        android:layout_marginRight="@dimen/itemMargin"
+        android:background="@color/white"
+        android:onClick="onClick">
+
+        <TextView
+            style="@style/textInMyFragmentLeft"
+            android:text="缓存管理" />
+
+        <ImageView
+            android:id="@+id/commonset_00"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:src="@mipmap/mine_more_right" />
+
+        <TextView
+            android:id="@+id/commonset_01_text"
+            style="@style/textInMyFragmentRight"
+            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_toLeftOf="@id/commonset_00"
+            android:layout_toStartOf="@id/commonset_00"
+            />
+
+    </RelativeLayout>
+
+    <View style="@style/split_line_style_withMargin" />
+
+    <RelativeLayout
+        android:id="@+id/commonset_02_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/itemHight"
+        android:layout_marginLeft="@dimen/itemMargin"
+        android:layout_marginRight="@dimen/itemMargin"
+        android:background="@color/white"
+        android:onClick="onClick">
+
+        <TextView
+            style="@style/textInMyFragmentLeft"
+            android:text="非WIFI下图片质量" />
+
+        <ImageView
+            android:id="@+id/commonset_02"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:src="@mipmap/mine_more_right" />
+
+        <TextView
+            android:id="@+id/commonset_02_text"
+            style="@style/textInMyFragmentRight"
+            android:layout_marginRight="@dimen/dp5"
+            android:layout_marginEnd="@dimen/dp5"
+            android:layout_toLeftOf="@id/commonset_02"
+            android:layout_toStartOf="@id/commonset_02"
+            android:text="普通" />
+    </RelativeLayout>
+
+    <View style="@style/split_line_style_withMargin" />
+
+    <!--字体大小-->
+    <RelativeLayout
+        android:id="@+id/commonset_03_layout"
+        style="@style/long_line_style"
+        android:onClick="onClick"
+        android:visibility="gone">
+
+        <TextView
+            style="@style/textInMyFragmentLeft"
+            android:text="字体大小" />
+
+        <ImageView
+            android:id="@+id/commonset_03"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:src="@mipmap/mine_more_right" />
+
+        <TextView
+            android:id="@+id/commonset_03_text"
+            style="@style/textInMyFragmentRight"
+            android:layout_marginRight="@dimen/dp5"
+            android:layout_marginEnd="@dimen/dp5"
+            android:layout_toLeftOf="@id/commonset_03"
+            android:layout_toStartOf="@id/commonset_03"
+            android:text="标准" />
+    </RelativeLayout>
+
+    <!--<View style="@style/split_line_style" />-->
+
+    <!--消息推送-->
+    <RelativeLayout
+        android:id="@+id/commonset_04_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/itemHight"
+        android:layout_marginLeft="@dimen/itemMargin"
+        android:layout_marginRight="@dimen/itemMargin"
+        android:background="@color/white">
+
+        <TextView
+            style="@style/textInMyFragmentLeft"
+            android:text="消息推送" />
+
+        <CheckBox
+            android:id="@+id/commonset_04_checkbox"
+            style="@style/custom_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/commonset_04"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/mine_more_right" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_color" />
+
+</LinearLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color">
+
+    <include layout="@layout/thetopview" />
+
+    <com.histudent.jwsoft.histudent.commen.view.CircleImageView
+        android:id="@+id/create_group1_iv_camera"
+        android:layout_width="120dp"
+        android:layout_height="130dp"
+        android:layout_below="@id/thetopview"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="50dp"
+        android:src="@mipmap/camera" />
+
+    <TextView
+        android:id="@+id/create_group1_tv_des"
+        style="@style/TextViewProperty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/create_group1_iv_camera"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="谁不喜欢牛逼的头像呢？"
+        android:textColor="@color/text_gray_h2"
+        android:textSize="@dimen/textSize" />
+
+    <TextView
+
+        style="@style/TextViewProperty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/create_group1_tv_des"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="作为一个领导，用你的追求和精神，影响更多的人。"
+        android:textColor="@color/text_black_h1"
+        android:textSize="@dimen/large_textSize" />
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+</RelativeLayout>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activityRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:scrollbars="none">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:minHeight="500dp">
+
+        <LinearLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <include layout="@layout/thetopview_new" />
+
+            <View
+                android:id="@+id/layout"
+                style="@style/split_line_style" />
+
+
+            <EditText
+                android:id="@+id/log_content_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="发表你想说的..."
+                android:minHeight="@dimen/dp50"
+                android:paddingLeft="@dimen/dp12"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="@dimen/textSize" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/grid_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numColumns="4"
+                android:paddingLeft="@dimen/dp12">
+
+            </android.support.v7.widget.RecyclerView>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!--地址-->
+    <LinearLayout
+        android:id="@+id/relative_address"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:onClick="onClick"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp12"
+        android:paddingRight="@dimen/itemMargin">
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/icon_localtion"
+            android:textColor="@color/text_gray_h1"
+            android:textSize="@dimen/text_size_15" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="地址"
+            android:textColor="@color/text_gray_h1"
+            android:textSize="@dimen/small_textSize_login" />
+
+    </LinearLayout>
+
+    <!--底层-->
+    <RelativeLayout
+        android:id="@+id/log_bottom_"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <!--选择图片-->
+        <LinearLayout
+            android:id="@+id/log_picture_select"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/bg_color"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/itemMargin"
+            android:paddingRight="@dimen/itemMargin">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/iv_pic"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="@string/icon_img"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="@dimen/text_size_20" />
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/tv_topic"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="@string/icon_topic3"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="@dimen/text_size_20" />
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/tv_emtion"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="@string/icon_face"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="@dimen/text_size_20" />
+
+            <com.histudent.jwsoft.histudent.commen.view.swipemenulistview.AutoScrollTextView
+                android:id="@+id/hot_topic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="@dimen/dp10"
+                android:onClick="onClick" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!--表情键盘-->
+    <FrameLayout
+        android:id="@+id/fl_emotionview_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+         />
+
+</LinearLayout>

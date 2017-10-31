@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/dp5">
+
+    <ImageView
+        android:id="@+id/log_edit_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp5"
+        android:layout_marginTop="@dimen/dp5"
+        android:background="@color/color_b3b3b3"
+        android:src="@drawable/default_placeholder_style_1"/>
+
+    <com.histudent.jwsoft.histudent.commen.view.IconView
+        android:id="@+id/log_edit_delet"
+        android:layout_width="@dimen/dp50"
+        android:layout_height="@dimen/dp50"
+        android:layout_alignParentRight="true"
+        android:gravity="top|right"
+        android:text="@string/icon_close3"
+        android:textColor="@color/text_gray_h2"
+        android:textSize="@dimen/text_size_18"/>
+
+
+</RelativeLayout>

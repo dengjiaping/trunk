@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <!--基本信息-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/margin_long"
+        android:paddingRight="@dimen/margin_long">
+
+        <TextView
+            style="@style/textInMyFragmentLeft"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:text="基本信息"
+            android:textColor="@color/text_black_h1" />
+
+        <ImageView
+            android:id="@+id/show_info"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:onClick="onClick"
+            android:padding="10dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/go_up" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/basic_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View style="@style/split_line_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp10">
+
+            <!--真实姓名-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentRight"
+                    android:text="真实姓名"
+                    android:textColor="@color/text_black_h1" />
+
+                <TextView
+                    android:id="@+id/persiondata_name"
+                    style="@style/textInMyFragmentLeft"
+                    android:paddingLeft="90dp"
+                    android:textColor="@color/text_gray_h2" />
+
+            </RelativeLayout>
+
+            <TextView style="@style/split_line_style" />
+
+            <!--性别-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentRight"
+                    android:text="性别"
+                    android:textColor="@color/text_black_h1" />
+
+
+                <TextView
+                    android:id="@+id/persiondata_sex"
+                    style="@style/textInMyFragmentLeft"
+                    android:paddingLeft="90dp"
+                    android:textColor="@color/text_gray_h2" />
+
+            </RelativeLayout>
+
+            <TextView style="@style/split_line_style" />
+
+            <!--年龄-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentRight"
+                    android:text="年龄"
+                    android:textColor="@color/text_black_h1" />
+
+                <TextView
+                    android:id="@+id/persiondata_age"
+                    style="@style/textInMyFragmentLeft"
+                    android:paddingLeft="90dp"
+                    android:textColor="@color/text_gray_h2" />
+
+            </RelativeLayout>
+
+            <TextView style="@style/split_line_style" />
+
+            <!--生日-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentRight"
+                    android:text="生日"
+                    android:textColor="@color/text_black_h1" />
+
+                <TextView
+                    android:id="@+id/persiondata_birth"
+                    style="@style/textInMyFragmentLeft"
+                    android:paddingLeft="90dp"
+                    android:textColor="@color/text_gray_h2" />
+
+            </RelativeLayout>
+
+            <TextView style="@style/split_line_style" />
+
+            <!--血型-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentRight"
+                    android:text="血型"
+                    android:textColor="@color/text_black_h1" />
+
+                <TextView
+                    android:id="@+id/persiondata_bloodtype"
+                    style="@style/textInMyFragmentLeft"
+                    android:paddingLeft="90dp"
+                    android:textColor="@color/text_gray_h2" />
+
+            </RelativeLayout>
+
+            <TextView style="@style/split_line_style" />
+
+            <!--星座-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentRight"
+                    android:text="星座"
+                    android:textColor="@color/text_black_h1" />
+
+                <TextView
+                    android:id="@+id/persiondata_constellation"
+                    style="@style/textInMyFragmentLeft"
+                    android:paddingLeft="90dp"
+                    android:textColor="@color/text_gray_h2" />
+
+            </RelativeLayout>
+
+            <TextView style="@style/split_line_style" />
+
+            <!--出生地-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentRight"
+                    android:layout_height="@dimen/itemHight"
+                    android:layout_centerVertical="true"
+                    android:text="出生地"
+                    android:textColor="@color/text_black_h1" />
+
+                <TextView
+                    android:id="@+id/persiondata_birthaddress"
+                    style="@style/textInMyFragmentLeft"
+                    android:paddingBottom="@dimen/dp5"
+                    android:paddingLeft="90dp"
+                    android:paddingTop="@dimen/dp5"
+                    android:textColor="@color/text_gray_h2" />
+
+            </RelativeLayout>
+
+            <TextView style="@style/split_line_style" />
+
+            <!--居住地-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentRight"
+                    android:layout_height="@dimen/itemHight"
+                    android:layout_centerVertical="true"
+                    android:text="居住地"
+                    android:textColor="@color/text_black_h1" />
+
+                <TextView
+                    android:id="@+id/persiondata_lifeddress"
+                    style="@style/textInMyFragmentLeft"
+                    android:paddingBottom="@dimen/dp5"
+                    android:paddingLeft="90dp"
+                    android:paddingTop="@dimen/dp5"
+                    android:textColor="@color/text_gray_h2" />
+
+            </RelativeLayout>
+
+            <TextView style="@style/split_line_style" />
+
+            <!--通讯地址-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentRight"
+                    android:layout_height="@dimen/itemHight"
+                    android:layout_centerVertical="true"
+                    android:text="通讯地址"
+                    android:textColor="@color/text_black_h1" />
+
+                <TextView
+                    android:id="@+id/persiondata_relationaddress"
+                    style="@style/textInMyFragmentLeft"
+                    android:paddingLeft="90dp"
+                    android:textColor="@color/text_gray_h2" />
+
+            </RelativeLayout>
+
+            <TextView style="@style/split_line_style" />
+
+            <!--自我介绍-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentRight"
+                    android:layout_height="wrap_content"
+                    android:text="自我介绍"
+                    android:textColor="@color/text_black_h1" />
+
+                <TextView
+                    android:id="@+id/introduce"
+                    style="@style/textInMyFragmentLeft"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:paddingLeft="90dp"
+                    android:textColor="@color/text_gray_h2" />
+
+            </RelativeLayout>
+
+            <TextView style="@style/split_line_style" />
+
+            <!--学校-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentRight"
+                    android:layout_height="wrap_content"
+                    android:text="学校"
+                    android:textColor="@color/text_black_h1" />
+
+                <TextView
+                    android:id="@+id/school"
+                    style="@style/textInMyFragmentLeft"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="90dp"
+                    android:textColor="@color/text_gray_h2" />
+
+            </RelativeLayout>
+
+            <TextView style="@style/split_line_style" />
+
+            <!--班级-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentRight"
+                    android:layout_height="wrap_content"
+                    android:text="班级"
+                    android:textColor="@color/text_black_h1" />
+
+                <ListView
+                    android:id="@+id/class_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@color/bg_color"
+                    android:dividerHeight="0.5dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="90dp"
+                    android:scrollbars="none"
+                    android:textColor="@color/text_gray_h2" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--所获奖项-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/margin_long"
+        android:paddingRight="@dimen/margin_long">
+
+        <TextView
+            style="@style/textInMyFragmentLeft"
+            android:text="所获奖项"
+            android:textColor="@color/text_black_h1" />
+
+        <ImageView
+            android:id="@+id/show_award"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:onClick="onClick"
+            android:padding="10dp"
+            android:paddingLeft="@dimen/margin_long"
+            android:paddingRight="@dimen/margin_long"
+            android:scaleType="fitXY"
+            android:src="@mipmap/go_up" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/award_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View style="@style/split_line_style" />
+
+        <com.histudent.jwsoft.histudent.commen.view.MyListView2
+            android:id="@+id/persiondata_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/bg_color"
+            android:dividerHeight="0.5dp"
+            android:listSelector="#00000000"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp10"
+            android:scrollbars="none" />
+
+    </LinearLayout>
+
+    <!--兴趣爱好-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/margin_long"
+        android:paddingRight="@dimen/margin_long">
+
+        <TextView
+            style="@style/textInMyFragmentLeft"
+            android:text="兴趣爱好"
+            android:textColor="@color/text_black_h1" />
+
+        <ImageView
+            android:id="@+id/show_likes"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:onClick="onClick"
+            android:padding="10dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/go_up" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/likes_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView style="@style/split_line_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp10">
+
+            <!--音乐-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentRight"
+                    android:layout_height="@dimen/itemHight"
+                    android:layout_centerVertical="true"
+                    android:text="音乐"
+                    android:textColor="@color/text_black_h1" />
+
+                <TextView
+                    android:id="@+id/persiondata_music"
+                    style="@style/textInMyFragmentLeft"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/dp5"
+                    android:paddingLeft="90dp"
+                    android:paddingTop="@dimen/dp5"
+                    android:textColor="@color/text_gray_h2" />
+
+            </RelativeLayout>
+
+            <TextView style="@style/split_line_style" />
+
+            <!--书籍-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentRight"
+                    android:layout_height="@dimen/itemHight"
+                    android:layout_centerVertical="true"
+                    android:text="书籍"
+                    android:textColor="@color/text_black_h1" />
+
+                <TextView
+                    android:id="@+id/persiondata_book"
+                    style="@style/textInMyFragmentLeft"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/dp5"
+                    android:paddingLeft="90dp"
+                    android:paddingTop="@dimen/dp5"
+                    android:textColor="@color/text_gray_h2" />
+
+            </RelativeLayout>
+
+            <TextView style="@style/split_line_style" />
+
+            <!--电影-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentRight"
+                    android:layout_height="@dimen/itemHight"
+                    android:layout_centerVertical="true"
+                    android:text="电影"
+                    android:textColor="@color/text_black_h1" />
+
+                <TextView
+                    android:id="@+id/persiondata_movie"
+                    style="@style/textInMyFragmentLeft"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/dp5"
+                    android:paddingLeft="90dp"
+                    android:paddingTop="@dimen/dp5"
+                    android:textColor="@color/text_gray_h2" />
+
+            </RelativeLayout>
+
+            <TextView style="@style/split_line_style" />
+
+            <!--运动-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long"
+                android:textColor="@color/text_black_h1">
+
+                <TextView
+                    style="@style/textInMyFragmentRight"
+                    android:layout_height="@dimen/itemHight"
+                    android:layout_centerVertical="true"
+                    android:text="运动"
+                    android:textColor="@color/text_black_h1" />
+
+                <TextView
+                    android:id="@+id/persiondata_exercise"
+                    style="@style/textInMyFragmentLeft"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/dp5"
+                    android:paddingLeft="90dp"
+                    android:paddingTop="@dimen/dp5"
+                    android:textColor="@color/text_gray_h2" />
+
+            </RelativeLayout>
+
+            <TextView style="@style/split_line_style" />
+
+            <!--游戏-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long"
+                android:textColor="@color/text_black_h1">
+
+                <TextView
+                    style="@style/textInMyFragmentRight"
+                    android:layout_height="@dimen/itemHight"
+                    android:layout_centerVertical="true"
+                    android:text="游戏"
+                    android:textColor="@color/text_black_h1" />
+
+                <TextView
+                    android:id="@+id/persiondata_game"
+                    style="@style/textInMyFragmentLeft"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/dp5"
+                    android:paddingLeft="90dp"
+                    android:paddingTop="@dimen/dp5"
+                    android:textColor="@color/text_gray_h2" />
+
+            </RelativeLayout>
+
+            <TextView style="@style/split_line_style" />
+
+            <!--动漫-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentRight"
+                    android:layout_height="@dimen/itemHight"
+                    android:layout_centerVertical="true"
+                    android:text="动漫"
+                    android:textColor="@color/text_black_h1" />
+
+                <TextView
+                    android:id="@+id/persiondata_cartoon"
+                    style="@style/textInMyFragmentLeft"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/dp5"
+                    android:paddingLeft="90dp"
+                    android:paddingTop="@dimen/dp5"
+                    android:textColor="@color/text_gray_h2" />
+
+            </RelativeLayout>
+
+            <TextView style="@style/split_line_style" />
+
+            <!--美食-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentRight"
+                    android:layout_height="@dimen/itemHight"
+                    android:layout_centerVertical="true"
+                    android:text="美食"
+                    android:textColor="@color/text_black_h1" />
+
+                <TextView
+                    android:id="@+id/persiondata_cate"
+                    style="@style/textInMyFragmentLeft"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/dp5"
+                    android:paddingLeft="90dp"
+                    android:paddingTop="@dimen/dp5"
+                    android:textColor="@color/text_gray_h2" />
+
+            </RelativeLayout>
+
+            <TextView style="@style/split_line_style" />
+
+            <!--名人-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentRight"
+                    android:layout_height="@dimen/itemHight"
+                    android:layout_centerVertical="true"
+                    android:text="名人"
+                    android:textColor="@color/text_black_h1" />
+
+                <TextView
+                    android:id="@+id/persiondata_celebrity"
+                    style="@style/textInMyFragmentLeft"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/dp5"
+                    android:paddingLeft="90dp"
+                    android:paddingTop="@dimen/dp5"
+                    android:textColor="@color/text_gray_h2" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--加入的社群-->
+    <RelativeLayout
+        android:id="@+id/layout_add_association"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/margin_long"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/textInMyFragmentRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="加入社群"
+                android:textColor="@color/text_black_h1" />
+
+            <TextView
+                style="@style/textInMyFragmentLeft"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="3" />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/list_add_association"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/transparent"
+            android:dividerHeight="0.5dp"
+            android:paddingLeft="90dp"
+            android:scrollbars="none" />
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/white"
+        android:visibility="gone" />
+
+    <!--参加的活动-->
+    <RelativeLayout
+        android:id="@+id/layout_add_action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/margin_long"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/textInMyFragmentRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="参加活动"
+                android:textColor="@color/text_black_h1" />
+
+            <TextView
+                style="@style/textInMyFragmentLeft"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="2" />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/list_add_action"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/transparent"
+            android:dividerHeight="0.5dp"
+            android:paddingLeft="90dp"
+            android:scrollbars="none" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/white"
+        android:visibility="gone" />
+
+</LinearLayout>

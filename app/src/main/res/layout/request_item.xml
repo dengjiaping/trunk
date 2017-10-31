@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:descendantFocusability="beforeDescendants"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <com.histudent.jwsoft.histudent.commen.view.CircleImageView
+            android:id="@+id/iv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/avatar_def"/>
+
+        <TextView
+            android:id="@+id/tv_person_name"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_toRightOf="@id/iv"
+            android:gravity="center_vertical"
+            android:text="名字"
+            android:textColor="@color/text_black_h2"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:text="2017/05/21"
+            android:textColor="@color/text_gray_h1"
+            android:textSize="@dimen/text_size_13"/>
+
+        <TextView
+            android:id="@+id/tv_"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_below="@id/tv_person_name"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/iv"
+            android:text="请求加入"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/text_size_13"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/dp5"
+            android:id="@+id/tv_group_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_time"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/tv_"
+            android:text="社群名称"
+            android:textColor="@color/text_black_h1"/>
+
+
+        <TextView
+            android:id="@+id/tv_join_reason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/iv"
+            android:text="申请加入原因"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/text_size_13"/>
+    </RelativeLayout>
+
+    <View style="@style/split_line_style_withLeftMargin"></View>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical|end"
+        android:layout_marginTop="@dimen/dp5"
+        android:gravity="end|center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp5"
+        android:paddingRight="@dimen/dp12"
+    >
+
+        <TextView
+
+            android:id="@+id/btn_agree"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp30"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/green_button_bg"
+            android:enabled="true"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/dp25"
+            android:paddingRight="@dimen/dp25"
+            android:text="同意"
+            android:textSize="@dimen/text_size_13"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/btn_refuse"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp30"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/yellow_btn_bg"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp25"
+            android:paddingRight="@dimen/dp25"
+            android:maxLines="1"
+            android:text="拒绝"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_13"/>
+    </LinearLayout>
+    <View style="@style/split_line_style_10dp"></View>
+
+</LinearLayout>

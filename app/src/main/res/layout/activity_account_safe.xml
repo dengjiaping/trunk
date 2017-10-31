@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/text_white"
+        android:orientation="vertical">
+
+        <!--手机号码-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/text_white"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                style="@style/textInMyFragmentLeft"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="手机号" />
+
+            <TextView
+                android:id="@+id/user_phone"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="3"
+                android:gravity="center_vertical"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="@dimen/textSize" />
+
+            <!--更换手机-->
+            <TextView
+                android:id="@+id/user_phone_reset"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:background="@drawable/green_button_bg_stroke"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="更换手机"
+                android:textColor="@color/green_color"
+                android:textSize="@dimen/textSize" />
+
+
+        </LinearLayout>
+
+        <View style="@style/split_line_style_withLeftMargin" />
+
+        <!--邮箱-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/text_white"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@+id/textView5"
+                style="@style/textInMyFragmentLeft"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="邮箱" />
+
+            <TextView
+                android:id="@+id/user_email"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="3"
+                android:gravity="center_vertical"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="@dimen/textSize" />
+
+            <!--更换邮箱-->
+            <TextView
+                android:id="@+id/user_email_reset"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:background="@drawable/green_button_bg_stroke"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="更换邮箱"
+                android:textColor="@color/green_color"
+                android:textSize="@dimen/textSize" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--修改密码-->
+    <TextView
+        android:id="@+id/exchange_psw"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="@dimen/itemMargin"
+        android:layout_marginRight="@dimen/itemMargin"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/green_button_bg_stroke"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="修改密码"
+        android:textColor="@color/green_color"
+        android:textSize="@dimen/textSize" />
+
+    <!--&lt;!&ndash;密码设置&ndash;&gt;-->
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/accountSafe_pswSet"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/itemHight"-->
+    <!--android:background="@color/white"-->
+    <!--android:onClick="onClick"-->
+    <!--android:paddingLeft="@dimen/itemMargin">-->
+
+    <!--<TextView-->
+    <!--style="@style/textInMyFragmentLeft"-->
+    <!--android:text="密码设置"-->
+    <!--android:textSize="@dimen/textSize" />-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:paddingRight="@dimen/itemMargin"-->
+    <!--android:src="@mipmap/mine_more_right" />-->
+    <!--</RelativeLayout>-->
+
+    <!--<View style="@style/split_line_style_5dp" />-->
+
+    <!--&lt;!&ndash;密保手机&ndash;&gt;-->
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/accountSafe_phoneSet"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/itemHight"-->
+    <!--android:background="@color/white"-->
+    <!--android:onClick="onClick"-->
+    <!--android:paddingLeft="@dimen/itemMargin">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/accountSafe_phoneSet_left"-->
+    <!--style="@style/textInMyFragmentLeft"-->
+    <!--android:text="密保手机"-->
+    <!--android:textSize="@dimen/textSize" />-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/accountSafe_phoneSet_right"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:paddingRight="@dimen/itemMargin"-->
+    <!--android:src="@mipmap/mine_more_right" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/accountSafe_phoneSet_sum"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_marginLeft="@dimen/dp5"-->
+    <!--android:layout_marginRight="@dimen/dp5"-->
+    <!--android:layout_toLeftOf="@id/accountSafe_phoneSet_right"-->
+    <!--android:layout_toRightOf="@id/accountSafe_phoneSet_left"-->
+    <!--android:gravity="center_vertical|right" />-->
+    <!--</RelativeLayout>-->
+
+    <!--<View style="@style/split_line_style_withMargin" />-->
+
+    <!--&lt;!&ndash;密保邮箱&ndash;&gt;-->
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/accountSafe_emailSet"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/itemHight"-->
+    <!--android:background="@color/white"-->
+    <!--android:onClick="onClick"-->
+    <!--android:paddingLeft="@dimen/itemMargin">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/accountSafe_emailSet_left"-->
+    <!--style="@style/textInMyFragmentLeft"-->
+    <!--android:text="密保邮箱"-->
+    <!--android:textSize="@dimen/textSize" />-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/accountSafe_emailSet_right"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:paddingRight="@dimen/itemMargin"-->
+    <!--android:src="@mipmap/mine_more_right" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/accountSafe_emailSet_sum"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_marginLeft="@dimen/dp5"-->
+    <!--android:layout_marginRight="@dimen/dp5"-->
+    <!--android:layout_toLeftOf="@id/accountSafe_emailSet_right"-->
+    <!--android:layout_toRightOf="@id/accountSafe_emailSet_left"-->
+    <!--android:gravity="center_vertical|right" />-->
+
+    <!--</RelativeLayout>-->
+
+    <!--&lt;!&ndash;人工申诉&ndash;&gt;-->
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/accountSafe_appeal"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/itemHight"-->
+    <!--android:background="@color/white"-->
+    <!--android:paddingLeft="@dimen/itemMargin"-->
+    <!--android:visibility="gone">-->
+
+    <!--<TextView-->
+    <!--style="@style/textInMyFragmentLeft"-->
+    <!--android:text="人工申诉"-->
+    <!--android:textSize="@dimen/textSize" />-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:paddingRight="@dimen/itemMargin"-->
+    <!--android:src="@mipmap/mine_more_right" />-->
+    <!--</RelativeLayout>-->
+
+
+</LinearLayout>

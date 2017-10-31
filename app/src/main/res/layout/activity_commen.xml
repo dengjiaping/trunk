@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_commen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+>
+    <include layout="@layout/thetopview"/>
+
+    <EditText
+        android:layout_below="@id/thetopview"
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp10"
+        android:background="@null"
+        android:drawableBottom="@drawable/line"
+        android:minHeight="@dimen/dp60"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"/>
+
+    <TextView
+        android:gravity="center_vertical"
+        android:paddingRight="@dimen/dp20"
+        android:paddingEnd="@dimen/dp20"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/et_content"
+        android:id="@+id/tv_limit"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/itemHight"/>
+</RelativeLayout>

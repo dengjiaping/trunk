@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <include layout="@layout/thetopview" />
+
+    <ScrollView
+        android:id="@+id/activity_details_srcoll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/thetopview"
+        android:scrollbars="none">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/activity_details_iv_activity"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/default_placeholder_style_1" />
+
+                <TextView
+                    android:id="@+id/activity_details_tv_title"
+                    style="@style/TextViewProperty"
+                    android:textSize="@dimen/sp15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_toRightOf="@id/activity_details_iv_activity"
+                    android:layout_toEndOf="@id/activity_details_iv_activity"
+                    android:text="活动的名称"
+                    android:textColor="@color/text_black_h1" />
+
+                <RadioButton
+
+                    android:id="@+id/activity_details_btn_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/activity_details_tv_title"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/activity_details_iv_activity"
+                    android:layout_toEndOf="@id/activity_details_iv_activity"
+                    android:button="@null"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="航模"
+                    android:textColor="@color/text_white"
+                    android:textSize="13sp" />
+
+                <com.histudent.jwsoft.histudent.commen.view.CircleImageView
+                    android:id="@+id/activity_details_iv_host_tag"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/activity_details_btn_type"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@id/activity_details_iv_activity"
+                    android:layout_toEndOf="@id/activity_details_iv_activity"
+                    android:src="@mipmap/my_blue" />
+
+
+                <TextView
+
+                    android:id="@+id/activity_details_tv_host_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/activity_details_btn_type"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:layout_marginStart="@dimen/dp10"
+                    android:layout_marginTop="28dp"
+                    android:layout_toRightOf="@id/activity_details_iv_host_tag"
+                    android:layout_toEndOf="@id/activity_details_iv_host_tag"
+                    android:text="发起者姓名"
+                    android:textColor="@color/text_blue" />
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withMargin"></View>
+
+            <RelativeLayout
+                android:id="@+id/relative_person_detail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ItemHeight"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:gravity="center_vertical">
+
+                <RadioButton
+                    android:textColor="@color/text_black_h1"
+                    android:id="@+id/activity_details_rb_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:checked="false"
+                    android:drawableLeft="@mipmap/person_num"
+                    android:drawableStart="@mipmap/person_num"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/text_size_14" />
+
+                <ImageView
+                    android:id="@+id/activity_details_iv_num"
+                    android:layout_width="@dimen/ImageNextSize"
+                    android:layout_height="@dimen/ImageNextSize"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:padding="18dp"
+                    android:src="@mipmap/mine_more_right" />
+            </RelativeLayout>
+
+            <!--<View-->
+            <!--style="@style/MyViewHorz"-->
+            <!--android:background="@color/line_color_gray"></View>-->
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ItemHeight"
+                android:gravity="center_vertical">
+
+
+                <RadioButton
+                    android:textColor="@color/text_black_h1"
+                    android:id="@+id/activity_details_rb_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
+                    android:button="@null"
+                    android:drawableLeft="@mipmap/time"
+                    android:drawableStart="@mipmap/time"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="活动举办时间"
+                    android:textSize="@dimen/text_size_14" />
+
+                <View style="@style/split_line_style_withMargin"></View>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative_address"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ItemHeight"
+                android:gravity="center_vertical">
+
+                <RadioButton
+                    android:textColor="@color/text_black_h1"
+                    android:id="@+id/activity_details_rb_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
+                    android:button="@null"
+                    android:drawableLeft="@mipmap/address_black"
+                    android:drawableStart="@mipmap/address_black"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="地点"
+                    android:textSize="@dimen/text_size_14"
+                    android:layout_alignParentLeft="true"/>
+
+                <ImageView
+                    android:id="@+id/activity_details_iv_address"
+                    android:layout_width="@dimen/ImageNextSize"
+                    android:layout_height="@dimen/ImageNextSize"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:padding="18dp"
+                    android:src="@mipmap/mine_more_right" />
+
+                <View style="@style/split_line_style_withMargin"></View>
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withMargin"></View>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:button="@null"
+                android:drawableLeft="@mipmap/activity"
+                android:drawableStart="@mipmap/activity"
+                android:drawablePadding="10dp"
+                android:text="活动详情"
+                android:textColor="@color/text_blue" />
+
+            <TextView
+                android:id="@+id/tv_instr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@null"
+                android:hint="活动的介绍"
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/text_size_15" />
+        </LinearLayout>
+    </ScrollView>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+
+        <RadioButton
+            android:id="@+id/activity_details_rb_join"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/join_bg_blue"
+            android:button="@null"
+            android:drawablePadding="10dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:visibility="gone">
+
+        </RadioButton>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_gray_alpha40"
+        android:visibility="gone">
+
+    </RelativeLayout>
+</RelativeLayout>

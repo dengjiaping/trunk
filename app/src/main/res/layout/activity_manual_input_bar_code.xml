@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/_EEEEEE"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new"/>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp8"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp12"
+        android:paddingRight="@dimen/dp12">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp13"
+            android:text="@string/bar_code_13_digit"
+            android:textColor="@color/_333333"
+            android:textStyle="bold"
+            android:textSize="@dimen/sp15"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp45"
+            android:layout_marginBottom="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp15">
+
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:id="@+id/ll_manual_input_bar_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/manual_input_bar_code_bg"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_code_1"
+                    style="@style/manual_input_bar_code"/>
+
+                <View
+                    style="@style/manual_input_bar_code_divider"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_code_2"
+                    style="@style/manual_input_bar_code"/>
+
+                <View
+                    style="@style/manual_input_bar_code_divider"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_code_3"
+                    style="@style/manual_input_bar_code"/>
+
+                <View
+                    style="@style/manual_input_bar_code_divider"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_code_4"
+                    style="@style/manual_input_bar_code"/>
+
+                <View
+                    style="@style/manual_input_bar_code_divider"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_code_5"
+                    style="@style/manual_input_bar_code"/>
+
+                <View
+                    style="@style/manual_input_bar_code_divider"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_code_6"
+                    style="@style/manual_input_bar_code"/>
+
+                <View
+                    style="@style/manual_input_bar_code_divider"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_code_7"
+                    style="@style/manual_input_bar_code"/>
+
+                <View
+                    style="@style/manual_input_bar_code_divider"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_code_8"
+                    style="@style/manual_input_bar_code"/>
+
+                <View
+                    style="@style/manual_input_bar_code_divider"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_code_9"
+                    style="@style/manual_input_bar_code"/>
+
+                <View
+                    style="@style/manual_input_bar_code_divider"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_code_10"
+                    style="@style/manual_input_bar_code"/>
+
+                <View
+                    style="@style/manual_input_bar_code_divider"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_code_11"
+                    style="@style/manual_input_bar_code"/>
+
+                <View
+                    style="@style/manual_input_bar_code_divider"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_code_12"
+                    style="@style/manual_input_bar_code"/>
+
+                <View
+                    style="@style/manual_input_bar_code_divider"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_code_13"
+                    style="@style/manual_input_bar_code"/>
+
+                <View
+                    style="@style/manual_input_bar_code_divider"/>
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_input_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:cursorVisible="false"
+                android:inputType="number"
+                android:maxLength="13"
+                android:textColor="@android:color/transparent"/>
+
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:id="@+id/ll_manual_input_bar_code_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp45"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginRight="@dimen/dp12"
+        android:layout_marginTop="@dimen/dp15"
+        android:background="@drawable/scan_confirm_shape"
+        android:gravity="center">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm"
+            android:textColor="@color/_FEFEFE"
+            android:textSize="@dimen/sp15"/>
+
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginRight="@dimen/dp12"
+        android:layout_marginTop="@dimen/dp15"
+        android:text="@string/bar_code_how_find"
+        android:textColor="@color/_666666"
+        android:textSize="@dimen/sp12"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginRight="@dimen/dp12"
+        android:layout_marginTop="@dimen/dp15"
+        android:lineSpacingExtra="@dimen/dp10"
+        android:text="@string/bar_code_detail_introduction"
+        android:textColor="@color/_999999"
+        android:textSize="@dimen/sp12"/>
+
+
+</android.support.v7.widget.LinearLayoutCompat>

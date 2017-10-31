@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/itemMargin"
+        android:paddingStart="@dimen/itemMargin"
+
+        >
+
+        <!--排名-->
+        <RelativeLayout
+            android:id="@+id/index_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:minWidth="40dp">
+
+            <ImageView
+                android:id="@+id/index"
+                android:layout_width="18dp"
+                android:layout_height="30dp"
+                android:gravity="start"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/index_num"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="999"
+                android:textColor="@color/green_color"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+        <!--头像-->
+        <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+            android:id="@+id/headImage"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_toRightOf="@id/index_layout"
+            android:layout_toEndOf="@id/index_layout"
+            android:onClick="onClick" />
+
+        <!--名字-->
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/headImage"
+            android:layout_toEndOf="@id/headImage"
+            android:gravity="center"
+            android:textColor="@color/text_black_h1"
+            android:textSize="@dimen/textSize" />
+
+        <!--日志数-->
+        <LinearLayout
+            android:id="@+id/log_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_below="@+id/name"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@id/headImage"
+            android:layout_toEndOf="@id/headImage"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/icon_member"
+                android:textColor="@color/icon_color"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/logNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:textColor="@color/text_gray_h1"
+                android:textSize="@dimen/small_textSize" />
+
+        </LinearLayout>
+
+        <!--照片数-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_below="@+id/name"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@id/log_layout"
+            android:layout_toEndOf="@id/log_layout"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/icon_news"
+                android:textColor="@color/icon_color"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/pictureNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:textColor="@color/text_gray_h1"
+                android:textSize="@dimen/small_textSize" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new" />
+
+    <View style="@style/split_line_style_10dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_color"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <!--社群logo-->
+            <RelativeLayout
+                android:id="@+id/class_logo_layout"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/itemMargin">
+
+
+                <TextView
+                    style="@style/text_back_v2_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="社群logo" />
+
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/class_more"
+                    style="@style/icon_arrowright_style" />
+
+                <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+                    android:id="@+id/class_logo"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/class_more"
+                    android:background="@drawable/gray_button_bg_stroke"
+                    android:padding="8dp"
+                    android:src="@drawable/default_person" />
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_10dp" />
+
+            <!--社群名称-->
+            <RelativeLayout
+                android:id="@+id/school_name_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemHight"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/itemMargin">
+
+                <TextView
+                    android:id="@+id/school_name_00"
+                    style="@style/text_back_v2_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="社群名称" />
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/school_name_01"
+                    style="@style/icon_arrowright_style" />
+
+                <TextView
+                    android:id="@+id/school_name"
+                    style="@style/text_gray_v2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/school_name_01"
+                    android:layout_toRightOf="@+id/school_name_00"
+                    android:gravity="end" />
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_10dp" />
+
+            <!--社群标签-->
+            <RelativeLayout
+                android:id="@+id/phase_name_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemHight"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/itemMargin">
+
+                <TextView
+                    android:id="@+id/phase_name_00"
+                    style="@style/text_back_v2_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="社群标签" />
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/phase_name_01"
+                    style="@style/icon_arrowright_style" />
+
+                <TextView
+                    android:id="@+id/phase_name"
+                    style="@style/text_gray_v2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/phase_name_00"
+                    android:layout_alignBottom="@+id/phase_name_00"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toStartOf="@+id/phase_name_01"
+                    android:gravity="end"
+                    android:layout_toLeftOf="@+id/phase_name_01"/>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withMargin" />
+
+            <!--访问权限-->
+            <RelativeLayout
+                android:id="@+id/grade_name_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemHight"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/itemMargin">
+
+                <TextView
+                    android:id="@+id/grade_name_00"
+                    style="@style/text_back_v2_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="访问权限" />
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/grade_name_01"
+                    style="@style/icon_arrowright_style" />
+
+                <TextView
+                    android:id="@+id/grade_name"
+                    style="@style/text_gray_v2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/grade_name_01"
+                    android:layout_toRightOf="@+id/grade_name_00"
+                    android:gravity="end" />
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_10dp" />
+
+            <!--社群介绍-->
+            <RelativeLayout
+                android:id="@+id/class_name_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemHight"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/itemMargin">
+
+                <TextView
+                    android:id="@+id/class_name_00"
+                    style="@style/text_back_v2_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="社群介绍" />
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/class_name_01"
+                    style="@style/icon_arrowright_style" />
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withMargin" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/class_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="@dimen/itemMargin"
+                    android:textSize="@dimen/textSize" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

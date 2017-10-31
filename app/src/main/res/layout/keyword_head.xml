@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--插入话题-->
+    <LinearLayout
+        android:id="@+id/essay_topic"
+        android:layout_width="match_parent"
+        android:layout_height="40.5dp"
+        android:layout_above="@id/fl_emotionview_main"
+        android:background="@color/bg_color"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp15"
+        android:visibility="visible">
+
+        <!--<View style="@style/split_line_style"/>-->
+
+        <TextView
+            android:id="@+id/tv_at"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dp5"
+            android:background="@color/white"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="\@"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/text_size_15" />
+
+        <TextView
+            android:id="@+id/tv_topic"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dp5"
+            android:layout_marginLeft="@dimen/dp5"
+            android:background="@color/white"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="#"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/text_size_17" />
+
+        <TextView
+            android:id="@+id/tv_emtion"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dp5"
+            android:layout_marginLeft="@dimen/dp5"
+            android:background="@color/white"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="表情"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/text_size_13" />
+
+    </LinearLayout>
+
+</LinearLayout>

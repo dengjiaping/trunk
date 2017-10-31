@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new" />
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/bg_color"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/work_subject_layout"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingLeft="@dimen/itemMargin"
+                android:paddingRight="@dimen/itemMargin"
+                android:gravity="center_vertical"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="科目"
+                    android:textColor="@color/text_black_h2"
+                    android:textSize="15sp"
+                    />
+
+                <TextView
+                    android:id="@+id/work_subject"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="8dp"
+                    android:text=""
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:hint="请选择科目"
+                    android:gravity="right|center_vertical"
+                    android:textColor="@color/text_gray_h1"
+                    android:textSize="15sp"
+
+                    />
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/icon_arrowright"
+                    android:textColor="@color/icon_color"
+                    android:textSize="12sp"
+                    />
+
+
+            </LinearLayout>
+
+
+            <View
+                style="@style/split_line_style_withLeftMargin"
+                />
+
+
+            <LinearLayout
+                android:id="@+id/work_receiver_layout"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingLeft="@dimen/itemMargin"
+                android:paddingRight="@dimen/itemMargin"
+                android:gravity="center_vertical"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="接收人"
+                    android:textColor="@color/text_black_h2"
+                    android:textSize="15sp"
+                    />
+
+                <TextView
+                    android:id="@+id/work_receiver"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="8dp"
+                    android:text=""
+                    android:maxLines="1"
+                    android:hint="请选择接收人"
+                    android:ellipsize="end"
+                    android:gravity="right|center_vertical"
+                    android:textColor="@color/text_gray_h1"
+                    android:textSize="15sp"
+
+                    />
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/icon_arrowright"
+                    android:textColor="@color/icon_color"
+                    android:textSize="12sp"
+                    />
+
+
+            </LinearLayout>
+
+
+            <View
+                style="@style/split_line_style_withLeftMargin"
+                />
+
+            <EditText
+                android:id="@+id/work_content"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="@color/white"
+                android:padding="12dp"
+                android:hint="输入你要布置的作业内容"
+                android:gravity="top|left"
+                android:textColorHint="@color/text_gray_h1"
+                android:textSize="15sp"
+                />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/itemMargin"
+                android:paddingRight="@dimen/itemMargin"
+                android:background="@color/white"
+                >
+
+            </android.support.v7.widget.RecyclerView>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/itemMargin"
+                android:paddingRight="@dimen/itemMargin"
+                android:background="@color/white">
+
+
+            </android.support.v7.widget.RecyclerView>
+
+
+
+            <include
+                layout="@layout/include_voice_play"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:background="@color/white"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="需学生在线提交"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="15sp"/>
+
+                <CheckBox
+                    android:id="@+id/work_online"
+                    style="@style/custom_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginLeft="8dp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/icon_starhalf"
+                    android:textColor="@color/_bbbbbb"
+                    android:textSize="12dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="开启在线提交后，学生需要提交语言、图片或文字等反馈."
+                    android:textColor="@color/_bbbbbb"
+                    android:textSize="12dp"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="bottom"
+        android:background="@color/white">
+
+        <!--操作项-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/control_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:text="@string/icon_img"
+                android:textColor="@color/icon_color"
+                android:textSize="20sp" />
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/control_record"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:clickable="true"
+                android:text="@string/icon_microphone"
+                android:textColor="@color/icon_color"
+                android:textSize="20sp" />
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/control_emotion"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="@string/icon_face"
+                android:textColor="@color/icon_color"
+                android:textSize="@dimen/text_size_20" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <!--表情键盘-->
+    <FrameLayout
+        android:id="@+id/fl_emotionview_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp" />
+
+
+</LinearLayout>

@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".body.find.activity.CreateCommunityActivity">
+
+    <include layout="@layout/thetopview_new" />
+
+    <LinearLayout
+        android:id="@+id/type_topic"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp24"
+        android:background="@color/bg_color"
+        android:gravity="center_vertical">
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:text="@string/icon_tip2"
+            android:textColor="@color/color_group_icon"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="主体类型"
+            android:textColor="@color/color_group_text" />
+    </LinearLayout>
+
+    <info.hoang8f.android.segmented.SegmentedGroup
+        android:id="@+id/community_radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp47"
+        android:paddingRight="@dimen/dp47"
+        segmentedgroup:sc_border_width="0.5dp"
+        segmentedgroup:sc_corner_radius="5dp"
+        segmentedgroup:sc_tint_color="@color/green_color">
+
+        <RadioButton
+            android:id="@+id/community_rdaiobutton_left"
+            style="@style/group_radioButton"
+            android:background="@drawable/left_selector"
+            android:checked="true"
+            android:text="学校"
+            android:textColor="@color/white" />
+
+        <RadioButton
+            android:id="@+id/community_rdaiobutton_middle"
+            style="@style/group_radioButton"
+            android:background="@drawable/left_selector"
+            android:text="培训机构"
+            android:textColor="@color/green_color" />
+
+        <RadioButton
+            android:id="@+id/community_rdaiobutton_right"
+            style="@style/group_radioButton"
+            android:background="@drawable/left_selector"
+            android:text="个人"
+            android:textColor="@color/green_color" />
+    </info.hoang8f.android.segmented.SegmentedGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp24"
+        android:background="@color/bg_color"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:text="主体信息登记"
+        android:textColor="@color/color_group_text" />
+
+    <View style="@style/split_line_style" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/community_tv_one"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:paddingLeft="15dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@+id/community_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="所属学校"
+                android:textColor="@color/color_group_text_common"
+                android:textSize="@dimen/sp15" />
+
+            <TextView
+                android:id="@+id/input_tv_school_name"
+                android:layout_width="220dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/icon_view"
+                android:gravity="center|right"
+                android:maxLines="1"
+                android:textColor="@color/text_black_h2"
+                android:textSize="@dimen/sp15" />
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/icon_view"
+                style="@style/icon_arrowright_style" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/community_tv_company_one"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:paddingLeft="15dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/community_tv_company_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="机构名称"
+                android:textColor="@color/color_group_text_common"
+                android:textSize="@dimen/sp15" />
+
+            <EditText
+                android:id="@+id/input_tv_company_name"
+                android:layout_width="220dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:gravity="center|right"
+                android:paddingRight="15dp"
+                android:textColor="@color/text_black_h2"
+                android:textSize="@dimen/sp15" />
+
+            <View
+                style="@style/split_line_style_1dp"
+                android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/community_tv_two"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="营业执照注册号"
+                android:textColor="@color/color_group_text_common" />
+
+            <EditText
+                android:id="@+id/community_et_two"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center|right"
+                android:paddingRight="15dp"
+                android:maxLines="1" />
+        </LinearLayout>
+
+        <View style="@style/split_line_style_withMargin" />
+
+        <LinearLayout
+            android:id="@+id/community_tv_three"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp">
+
+            <TextView
+                android:id="@+id/community_tv_person"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="负责人姓名"
+                android:textColor="@color/color_group_text_common"
+                android:textSize="@dimen/sp15" />
+
+            <EditText
+                android:id="@+id/community_et_three"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center|right"
+                android:paddingRight="15dp"
+                android:textColor="@color/text_black_h2"
+                android:textSize="@dimen/sp15" />
+        </LinearLayout>
+
+        <View style="@style/split_line_style_withMargin" />
+
+        <LinearLayout
+            android:id="@+id/community_tv_four"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="手机号码"
+                android:textColor="@color/color_group_text_common"
+                android:textSize="@dimen/sp15" />
+
+            <EditText
+                android:id="@+id/community_et_four"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center|right"
+                android:paddingRight="15dp"
+                android:textColor="@color/text_black_h2"
+                android:textSize="@dimen/sp15" />
+        </LinearLayout>
+
+        <View style="@style/split_line_style_withMargin" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="验证码"
+                android:textColor="@color/color_group_text_common"
+                android:textSize="@dimen/sp15" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/community_btn_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/green_button_bg"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="获取验证码"
+                    android:textColor="@color/white" />
+
+                <EditText
+                    android:id="@+id/community_et_five"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_toLeftOf="@id/community_btn_code"
+                    android:background="@null"
+                    android:gravity="center_vertical|right"
+                    android:paddingLeft="@dimen/dp10"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="@dimen/sp15"
+                    android:layout_alignParentLeft="true"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <View style="@style/split_line_style_withMargin" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/community_voice_code"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp44"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/community_tv_clik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/linearLayout3"
+            android:clickable="false"
+            android:text="收不到短信？"
+            android:textColor="@color/color_group_text"
+            android:textSize="@dimen/textSize"
+            android:layout_toLeftOf="@+id/linearLayout3"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:clickable="false"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/community_tv_withLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="获取语音验证码"
+                android:textColor="@color/color_group_text"
+                android:textSize="@dimen/textSize" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/text_gray_h1" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/bg_color" />
+</com.zhy.autolayout.AutoLinearLayout>
+
+
+    <!--<RadioGroup--><!--android:id="@+id/community_radioGroup"--><!--android:paddingLeft="@dimen/dp47"--><!--android:paddingRight="@dimen/dp47"--><!--android:layout_width="match_parent"--><!--android:layout_height="56dp"--><!--android:background="@color/white"--><!--android:gravity="center"--><!--android:orientation="horizontal">-->
+
+    <!--<RadioButton--><!--android:id="@+id/community_rdaiobutton_left"--><!--android:text="学校"--><!--android:checked="true"--><!--android:textColor="@color/white"--><!--android:background="@drawable/left_selector"--><!--style="@style/group_radioButton" />-->
+
+    <!--<RadioButton--><!--android:id="@+id/community_rdaiobutton_middle"--><!--android:background="@drawable/middle_selector"--><!--android:text="培训机构"--><!--android:textColor="@color/green_color"--><!--style="@style/group_radioButton" />-->
+
+    <!--<RadioButton--><!--android:id="@+id/community_rdaiobutton_right"--><!--android:text="个人"--><!--android:textColor="@color/green_color"--><!--android:background="@drawable/right_selector"--><!--style="@style/group_radioButton"  />--><!--</RadioGroup>-->

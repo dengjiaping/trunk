@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:paddingLeft="@dimen/dp5"
+        android:paddingRight="@dimen/dp5">
+
+        <TextView
+            android:id="@+id/growInfo_item_event"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="bottom"
+            android:text="上传个人照片"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/textSize" />
+
+        <TextView
+            android:id="@+id/growInfo_item_time"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:gravity="bottom"
+            android:text="2016/11/29 14:35"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/textSize" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/growInfo_item_info"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="@dimen/dp2"
+        android:paddingLeft="@dimen/dp5"
+        android:text="经验值+1"
+        android:textColor="@color/green_color"
+        android:textSize="@dimen/textSize" />
+
+</LinearLayout>

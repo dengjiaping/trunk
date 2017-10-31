@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@mipmap/invitation"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/text_"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="邀请你身边的老师加入并成功激活班级"
+        android:textColor="@color/text_black_h1"
+        android:textSize="@dimen/textSize" />
+
+    <TextView
+        android:id="@+id/gz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="奖励规则>>"
+        android:textColor="@color/yellow_color"
+        android:textSize="@dimen/small_textSize" />
+
+    <View style="@style/split_line_style_withMargin" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="通过以下方式邀请好友"
+        android:textColor="@color/text_gray_h2"
+        android:textSize="@dimen/small_textSize" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp">
+
+        <LinearLayout
+            android:id="@+id/wx"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/wx_i"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:onClick="onClick"
+                android:src="@mipmap/wx_i" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="微信好友"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="@dimen/small_textSize" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/msg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/msg_i"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:onClick="onClick"
+                android:src="@mipmap/msg_i" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="短信"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="@dimen/small_textSize" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/qq"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/qq_i"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:onClick="onClick"
+                android:src="@mipmap/qq_i" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="QQ好友"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="@dimen/small_textSize" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/yq"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="已成功邀请0人，累计获得奖励0元>>"
+        android:textColor="@color/yellow_color"
+        android:textSize="@dimen/small_textSize" />
+
+</LinearLayout>

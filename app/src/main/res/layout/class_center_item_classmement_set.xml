@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+
+    <!--头像-->
+    <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+        android:id="@+id/class_set_item_image"
+        android:layout_width="@dimen/dp50"
+        android:layout_height="@dimen/dp50"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:src="@mipmap/per_def"
+        app:border_color="#0000"
+        app:border_width="1dp" />
+
+    <LinearLayout
+        android:id="@+id/class_set_item_right"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_alignParentRight="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/class_set_item_psw"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="15dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/reset_psw"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/class_set_item_admin"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="15dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/member" />
+
+        <ImageView
+            android:id="@+id/class_set_item_delet"
+            android:layout_width="19dp"
+            android:layout_height="21dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="10dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/delet" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/class_set_item_right"
+        android:layout_toRightOf="@+id/class_set_item_image"
+        android:orientation="vertical"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:id="@+id/class_set_item_userName"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            android:gravity="center_vertical"
+            android:text="孙小可"
+            android:textColor="@color/text_black_h2"
+            android:textSize="@dimen/large_textSize" />
+
+        <TextView
+            android:id="@+id/class_set_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:text="班级"
+            android:textSize="@dimen/small_textSize" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

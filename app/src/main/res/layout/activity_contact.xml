@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new"></include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/personalhomepage_bg" />
+
+        <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+            android:id="@+id/iv"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp30"
+            android:src="@mipmap/avatar_def" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/iv"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/cover_bg"
+            android:orientation="vertical"
+            android:padding="@dimen/dp10">
+
+
+            <TextView
+                android:id="@+id/tv_tell"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|bottom"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_21"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_18" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp20">
+
+        <LinearLayout
+            android:id="@+id/send_msg"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:onClick="onClick"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dp10">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/yellow_dot"
+                android:gravity="center"
+                android:padding="@dimen/dp10"
+                android:text="@string/icon_topic7"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_25" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="@dimen/dp5"
+                android:text="发私信"
+                android:textColor="@color/text_black_h2"
+                android:textSize="@dimen/text_size_14" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/call_phone"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:onClick="onClick"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dp10">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/green_dot"
+                android:gravity="center"
+                android:padding="@dimen/dp10"
+                android:text="@string/icon_phone"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_25" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="@dimen/dp5"
+                android:text="拨打电话"
+                android:textColor="@color/text_black_h2"
+                android:textSize="@dimen/text_size_14" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/go_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:onClick="onClick"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dp10">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/blue_dot"
+                android:gravity="center"
+
+                android:padding="@dimen/dp10"
+                android:text="@string/icon_home"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_25" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="@dimen/dp5"
+                android:text="个人主页"
+                android:textColor="@color/text_black_h2"
+                android:textSize="@dimen/text_size_14" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

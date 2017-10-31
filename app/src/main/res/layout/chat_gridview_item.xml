@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_head_layout"
+        android:layout_width="@dimen/dp55"
+        android:layout_height="@dimen/dp55"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp">
+
+        <com.netease.nim.uikit.common.ui.imageview.HeadImageView
+            android:id="@+id/chat_grid_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+        <ImageView
+            android:id="@+id/iv_teacher_identity"
+            android:layout_width="@dimen/dp15"
+            android:layout_height="@dimen/dp15"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/hot_person_teacher"
+            android:visibility="gone"/>
+
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/chat_grid_reduce"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="40dp"
+        android:src="@mipmap/member_delet"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/chat_grad_name"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/rl_head_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="2"
+        android:textColor="@color/text_black_h1"
+        android:textSize="@dimen/tiny_textSize"/>
+
+</RelativeLayout>

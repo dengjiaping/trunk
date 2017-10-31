@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+                android:background="@color/white"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <com.histudent.jwsoft.histudent.commen.view.CircleImageView
+        android:id="@+id/iv"
+       android:layout_margin="10dp"
+        android:src="@mipmap/avatar_def"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+    <TextView
+        android:id="@+id/tv_realname"
+        android:layout_margin="10dp"
+        android:layout_toRightOf="@id/iv"
+        android:gravity="center_vertical"
+        android:text="名字"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"/>
+
+    <TextView
+        android:id="@+id/tv_delete"
+        android:textColor="@color/text_blue"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:text="删除"
+        android:layout_margin="10dp"
+        android:layout_width="80dp"
+        android:layout_height="50dp"/>
+</RelativeLayout>

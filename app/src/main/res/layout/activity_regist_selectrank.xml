@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_bg_color_v2"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new_login" />
+
+
+    <TextView
+        style="@style/title_style_v2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/itemMargin_v2"
+        android:layout_marginTop="@dimen/topMargin_login"
+        android:text="选择用户身份" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/student_radioButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/green_button_bg_circle"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:orientation="vertical">
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/icon_student"
+                    android:textColor="@color/text_white"
+                    android:textSize="32sp" />
+
+                <TextView
+                    style="@style/text_white_v2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="学生"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/teacher_radioButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/gray_button_bg_circle"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:orientation="vertical">
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/icon_teacher2"
+                    android:textColor="@color/text_white"
+                    android:textSize="32sp" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    style="@style/text_white_v2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="老师"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+        </RadioGroup>
+
+    </RelativeLayout>
+
+    <!--手机号码-->
+    <EditText
+        android:id="@+id/regist_name"
+        style="@style/regist_edit_style_v2"
+        android:layout_marginTop="50dp"
+        android:hint="真实姓名"
+        android:inputType="text"
+        android:maxLength="11" />
+
+    <View
+        style="@style/split_line_style_login"
+        android:layout_marginLeft="@dimen/itemMargin_v2"
+        android:layout_marginRight="@dimen/itemMargin_v2" />
+
+    <!--密码-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/login_password_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="@dimen/itemMargin_v2"
+            android:clickable="true"
+            android:gravity="bottom|end"
+            android:onClick="onClick"
+            android:text="@string/icon_eye2"
+            android:textColor="@color/text_white"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/regist_pwd"
+            style="@style/regist_edit_style_v2"
+            android:layout_toLeftOf="@id/login_password_image"
+            android:hint="至少六位密码"
+            android:digits="@string/edit_limit"
+            android:inputType="textPassword" />
+
+    </RelativeLayout>
+
+    <View
+        style="@style/split_line_style_login"
+        android:layout_marginLeft="@dimen/itemMargin_v2"
+        android:layout_marginRight="@dimen/itemMargin_v2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_marginLeft="@dimen/itemMargin_v2"
+        android:gravity="center"
+        android:paddingLeft="5dp"
+        android:text="用户身份确定后，只能通过申诉更改"
+        android:textColor="@color/text_gray_h2"
+        android:textSize="@dimen/tiny_textSize" />
+
+    <!--下一步-->
+    <TextView
+        android:id="@+id/regist_nextbutton"
+        style="@style/long_green_button_circle"
+        android:text="完 成" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <include
+            layout="@layout/link_layout_v2_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="25dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+    <!--===============================================TOP===============================================-->
+
+    <!--照片评论-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/item_photo_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_placeholder_style_1"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <!--动态评论-->
+    <RelativeLayout
+        android:id="@+id/item_goodFriend_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="@dimen/dp10"
+        android:visibility="gone">
+
+        <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+            android:id="@+id/item_goodFriend_image"
+            android:layout_width="@dimen/headImageSize"
+            android:layout_height="@dimen/headImageSize"
+            android:layout_centerVertical="true"
+            android:src="@drawable/default_person" />
+
+        <TextView
+            android:id="@+id/item_goodFriend_name"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@id/item_goodFriend_image"
+            android:gravity="center_vertical"
+            android:text="郑明馨"
+            android:textColor="@color/text_black_h2"
+            android:textSize="@dimen/large_textSize" />
+
+        <TextView
+            android:id="@+id/item_goodFriend_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@id/item_goodFriend_name"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/item_goodFriend_image"
+            android:gravity="bottom"
+            android:text="公开发表日志-刚刚"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/action_small_textSize" />
+
+        <ImageView
+            android:id="@+id/item_goodFriend_more"
+            android:layout_width="@dimen/ImageMoreSize"
+            android:layout_height="@dimen/ImageMoreSize"
+            android:layout_alignParentRight="true"
+            android:padding="18dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/hiworld_gomore" />
+    </RelativeLayout>
+
+    <!--日志评论-->
+    <RelativeLayout
+        android:id="@+id/item_blog_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp10"
+        android:visibility="gone">
+
+        <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+            android:id="@+id/item_blog_image"
+            android:layout_width="@dimen/headImageSize"
+            android:layout_height="@dimen/headImageSize"
+            android:layout_centerVertical="true"
+            android:src="@drawable/default_person" />
+
+        <TextView
+            android:id="@+id/item_blog_name"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@id/item_blog_image"
+            android:gravity="center_vertical"
+            android:text="郑明馨"
+            android:textColor="@color/text_black_h2"
+            android:textSize="@dimen/large_textSize" />
+
+        <TextView
+            android:id="@+id/item_blog_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@id/item_blog_name"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_toRightOf="@id/item_blog_image"
+            android:gravity="bottom"
+            android:text="2016年3月8日 16：23-分类:默认分类"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/small_textSize" />
+
+        <ImageView
+            android:id="@+id/item_blog_delet"
+            android:layout_width="18dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="5dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/delet" />
+
+    </RelativeLayout>
+
+    <!--随记评论-->
+    <LinearLayout
+        android:id="@+id/item_essay_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp10"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:layout_marginRight="@dimen/itemMargin">
+
+            <TextView
+                android:id="@+id/item_essay_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/class_center_log_image"
+                android:text="公开-03月5日 11:06"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="@dimen/small_textSize" />
+
+            <ImageView
+                android:id="@+id/item_essay_delet"
+                android:layout_width="18dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:onClick="onClick"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/delet" />
+
+        </RelativeLayout>
+
+        <View style="@style/split_line_style" />
+
+    </LinearLayout>
+
+    <!--===============================================BODY================================================-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp10"
+        android:paddingLeft="@dimen/dp10"
+        android:paddingRight="@dimen/dp10">
+
+        <!--时间-->
+        <LinearLayout
+            android:id="@+id/item_persionTimes_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingRight="@dimen/dp5"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/item_persionTimes_days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:text="20"
+                android:textColor="@color/text_black_h1"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/item_persionTimes_months"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="bottom"
+                android:text="3月"
+                android:textSize="@dimen/textSize" />
+
+        </LinearLayout>
+
+        <!--内容-->
+        <RelativeLayout
+            android:id="@+id/item_commen_content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dp10">
+
+            <!--标题-->
+            <LinearLayout
+                android:id="@+id/item_commen_title_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/item_commen_title_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="@dimen/textSize"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/item_commen_title_right"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/item_commen_title_left"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="@dimen/dp10"
+                    android:textColor="@color/button_top_blue"
+                    android:textSize="@dimen/textSize"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <!--内容-->
+            <RelativeLayout
+                android:id="@+id/layout_commen_content_body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/item_commen_title_layout"
+                android:paddingTop="10dp">
+
+                <!--封面-->
+                <RelativeLayout
+                    android:id="@+id/item_persionTimes_cover_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:id="@+id/item_persionTimes_cover"
+                        android:layout_width="129dp"
+                        android:layout_height="100dp"
+                        android:layout_centerVertical="true"
+                        android:paddingRight="@dimen/dp10"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/default_placeholder_style_1"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/item_persionTimes_play"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/play"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <!--内容-->
+                <RelativeLayout
+                    android:id="@+id/item_commen_content_layout_"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/item_persionTimes_cover_layout">
+
+                    <TextView
+                        android:id="@+id/item_blog_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="@dimen/dp10"
+                        android:textColor="@color/button_top_blue"
+                        android:textSize="@dimen/textSize"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/item_commen_content"
+                        style="@style/action_text_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/item_blog_title"
+                        android:ellipsize="end"
+                        android:textColor="@color/text_black_h1"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <!--图片-->
+                <GridView
+                    android:id="@+id/item_commen_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/item_commen_content_layout_"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:layout_toRightOf="@id/item_persionTimes_cover_layout"
+                    android:horizontalSpacing="2dp"
+                    android:numColumns="3"
+                    android:scrollbars="none"
+                    android:verticalSpacing="2dp"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <!--位置-->
+            <LinearLayout
+                android:id="@+id/item_commen_location_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_commen_content_body"
+                android:layout_marginTop="@dimen/dp5"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/item_commen_location_image"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/location" />
+
+                <TextView
+                    android:id="@+id/item_commen_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp1"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/text_gray_h2"
+                    android:textSize="@dimen/small_textSize" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <!--===============================================FOOT================================================-->
+
+    <!--底部栏-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:orientation="vertical">
+
+        <TextView style="@style/split_line_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:id="@+id/item_commen_likeNum"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/item_commen_likeNum_image"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/like_false" />
+
+                <TextView
+                    android:id="@+id/item_commen_likeNum_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_gray_h2"
+                    android:textSize="@dimen/textSize" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/dp2"
+                android:layout_marginTop="@dimen/dp2"
+                android:background="@color/line_color" />
+
+            <LinearLayout
+                android:id="@+id/item_commen_commentNum"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/item_commen_commentNum_image"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/discuss_false" />
+
+                <TextView
+                    android:id="@+id/item_commen_commentNum_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_gray_h2"
+                    android:textSize="@dimen/textSize" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/dp2"
+                android:layout_marginTop="@dimen/dp2"
+                android:background="@color/line_color" />
+
+            <LinearLayout
+                android:id="@+id/item_commen_shareNum"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/share_false" />
+
+                <TextView
+                    android:id="@+id/item_commen_shareNum_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_gray_h2"
+                    android:textSize="@dimen/textSize" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/item_foot_line"
+        style="@style/split_line_style"
+        android:visibility="gone" />
+
+    <!--===============================================FOOT_================================================-->
+
+    <LinearLayout
+        android:id="@+id/item_commen_foot_down_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/item_commen_line"
+            style="@style/split_line_style" />
+
+        <GridView
+            android:id="@+id/item_commen_likes"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:numColumns="8"
+            android:paddingBottom="@dimen/dp10"
+            android:paddingLeft="@dimen/itemMargin"
+            android:paddingRight="@dimen/itemMargin"
+            android:paddingTop="@dimen/dp10"
+            android:scrollbars="none" />
+
+        <com.histudent.jwsoft.histudent.commen.view.MyListView2
+            android:id="@+id/item_mine_list"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:divider="@color/transparent"
+            android:dividerHeight="0.5dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/item_top_null"
+        style="@style/split_line_style_10dp" />
+
+</LinearLayout>

@@ -1,0 +1,716 @@
+<resources>
+
+    <!--  注册  -->
+    <string name="edit_limit">0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM~!@#$%^*()_+|`,.:?/\[]{}</string>
+    <string name="edit_limit_joinClass">0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM</string>
+    <string name="regist_inputRealName">请先输入真实姓名！</string>
+    <string name="regist_inputPhoneNumber">请先输入手机号码！</string>
+    <string name="regist_inputPhoneCode">请先输入5位数验证码！</string>
+    <string name="regist_inputPassWord">请输入6-16位数的登录密码！</string>
+    <string name="regist_registFaile">注册失败，请重新操作！</string>
+    <string name="regist_title">用户注册</string>
+
+    <!--验证码-->
+    <string name="verification_getCode">获取验证码</string>
+    <string name="verification_getCode_voice">获取语音验证码</string>
+    <string name="verification_num">s后重发</string>
+
+    <!--找回密码-->
+    <string name="passWord_verfiyCodeIdTure">请输入5位数的验证码</string>
+    <string name="passWord_passWord">请设置6-20位的新密码</string>
+    <string name="passWord_inputPhoneNumber">请先输入手机号码！</string>
+
+    <!-- 登录 -->
+    <string name="login_userName">请先输入账号</string>
+    <string name="login_pwd">请先输入登录密码</string>
+    <string name="getVersionInfo_fail">获取版本信息失败</string>
+
+    <string name="agreement_hi">《HI同学用户服务协议》</string>
+
+    <!-- 我的 -->
+    <string name="app_name">嗨同学</string>
+    <string name="foot_message">消息</string>
+    <string name="foot_hiworld">Hi圈</string>
+    <string name="foot_find">发现</string>
+    <string name="foot_my">我的</string>
+    <string name="login">登 录</string>
+    <string name="foegetPassword">忘记密码？</string>
+    <string name="registUser">新用户？立即注册</string>
+    <string name="account">账号手机</string>
+    <string name="password">密码</string>
+    <string name="next">下一步</string>
+    <string name="regist">注册</string>
+    <string name="findpassword">找回密码</string>
+    <string name="personaldata">个人资料</string>
+    <string name="warn_text">家长账号的密码的找回,请通过学生账号重置密码。</string>
+    <string name="warn_text_readbook">
+        要求：挑选一本自己最喜欢的书并撰写读后感，小学生不少于500字，中学生不小于800字，教师及家长不小于1000字，题材不限，题目自拟，读书心得的标题必须注明所读图书的书名。请认真查阅首页的活动步骤及要求，如有不符合活动要求的作品，将被删除。
+    </string>
+    <string name="friendAction">好友动态</string>
+    <string name="classAction">班级动态</string>
+    <string name="myAction">与我相关</string>
+    <string name="msminfo">我们已发送验证码到你的手机</string>
+    <string name="findHiBa" translatable="false">Hi吧</string>
+    <string name="seck">会话</string>
+    <string name="joinPop">如约参加活动也是一种美德，请尽量保证准时参加!</string>
+    <string name="comment">回复</string>
+
+    <!--关于-->
+    <string name="offical_url">http://www.hitongx.com</string>
+    <string name="offical_phone">0571-89712287</string>
+
+    <!--新手引导-->
+    <string name="skip">跳过</string>
+    <string name="newPerson_01">新手指导(1/3)</string>
+    <string name="newPerson_02">新手指导(2/3)</string>
+    <string name="newPerson_03">新手指导(3/3)</string>
+
+    <!--创建班级-->
+    <string name="createClass">创建班级</string>
+    <string name="createClass_02">创建班级(2/3)</string>
+    <string name="createClass_03">创建班级(3/3)</string>
+
+
+    <!--加入班级-->
+    <string name="join_class">加入班级</string>
+
+    <!--账号安全-->
+    <string name="accountSafe">账号安全</string>
+    <string name="pwdSet">密码设置</string>
+    <string name="phoneSet">原手机号</string>
+    <string name="emailSafe">密保邮箱</string>
+    <string name="checkOldPwd">修改密码</string>
+    <string name="oldPwd">原密码</string>
+    <string name="accountSafeHint_00">请输入修改前的密码</string>
+    <string name="accountSafeTip_00">为了保证你当前的数据安全，进行修改密码操作前系统需先验证原密码！</string>
+    <string name="check">验证</string>
+    <string name="cancel">取消</string>
+    <string name="completed">完成</string>
+    <string name="setPwd">设置密码</string>
+    <string name="inputOldPwd">请输入原密码</string>
+    <string name="inputNewPwd">请输入新密码</string>
+    <string name="inputNewPwdAgain">请再次输入新密码</string>
+    <string name="inputPhoneCode">请输入手机号码</string>
+    <string name="inputCheckCode">请输入验证码</string>
+    <string name="PwdNoCommon">两次密码不一致</string>
+    <string name="setPwdSucceed">设置密码成功</string>
+    <string name="exchangePhoneSucceed">修改密保手成功</string>
+    <string name="exchangeEmailSucceed">修改密保邮箱成功</string>
+    <string name="setPhoneSucceed">设置密保手成功</string>
+    <string name="setEmailSucceed">设置密保邮箱成功</string>
+    <string name="accountSafeHint_01">请输入设置的新密码</string>
+    <string name="accountSafeHint_02">请再次输入新密码</string>
+    <string name="accountSafeTip_01">设置密码完成后可以用绑定的安全手机和邮箱登录，通过验证的手机号和邮箱都可作为登录的用户名。</string>
+    <string name="safeCheck">验证原手机号</string>
+    <string name="checkCode">验证码</string>
+    <string name="accountSafeHint_03">请输入短信验证码</string>
+    <string name="sendCheckCode">发送验证码</string>
+    <string name="accountSafeTip_02">为了保证你当前的数据安全，修改密保手机前，系统需要先验证原密保手机。</string>
+    <string name="phoneCode">密保手机</string>
+    <string name="emailCode">密保邮箱</string>
+    <string name="setPhoneCode">设置密保手机</string>
+    <string name="newPhoneCode">新密保手机</string>
+    <string name="newEmailCode">新密保邮箱</string>
+    <string name="setEmailCode">设置密保邮箱</string>
+    <string name="exchangePhoneCode">更换手机</string>
+    <string name="exchangeEmailCode">更换新邮箱</string>
+    <string name="accountSafeHint_04">请输入新邮箱</string>
+    <string name="accountSafeHint_05">请输入邮箱验证码</string>
+    <string name="accountSafeTip_03">为了保证你当前的数据安全，修改密保邮箱前，系统需要先验证原密保手机。</string>
+
+    <!--空白默认页面提示-->
+    <string name="have_no_classNotice">暂无公告，如有公告，请及时添加！</string>
+    <string name="have_no_classActions">该班级还没来得及发布任何动态！</string>
+    <string name="have_no_classLogs">该班级还没来得及发布任何日志！</string>
+    <string name="have_no_classPictures">还没有上传过任何照片！</string>
+    <string name="have_no_persionActions">这位同学太忙了\n\r还没来得及发布任何动态！</string>
+    <string name="have_no_persionLogs">这位同学太忙了\n\r还没来得及发布任何日志！</string>
+    <string name="have_no_persionEssay">这位同学太忙了\n\r还没来得及发布任何随记！</string>
+    <string name="have_no_action">还没有动态！</string>
+    <string name="have_no_offical">暂无数据哦！</string>
+    <string name="have_no_issue">暂无评论，抢占沙发</string>
+
+    <!-- location -->
+    <string name="location_init_map_error">初始化地图服务失败</string>
+    <string name="location_navigate">导航</string>
+    <string name="self_location">我在这个位置</string>
+    <string name="location_unable_to_get_you">暂时无法获取您的位置</string>
+    <string name="location_loading">正在定位</string>
+    <string name="location_map">地图定位</string>
+    <string name="my_location">我的位置</string>
+    <string name="location_address_unkown">该位置信息暂无</string>
+    <string name="format_mylocation">我的位置：%s</string>
+    <string name="location_address_fail">获取位置信息失败</string>
+    <string name="tools_selected">选择工具</string>
+    <string name="friends_map_navigation_web">在网页中打开</string>
+    <string name="location_open_map_error">打开地图出错</string>
+    <string name="viewpager_indicator">%1$d/%2$d</string>
+
+
+    <string name="agree">同意</string>
+    <string name="reject">拒绝</string>
+    <string name="input_account">请输入帐号，限20位字母或者数字</string>
+    <string name="input_nickname">请输入昵称，限10位汉字、字母或者数字</string>
+    <string name="logout">注销</string>
+    <string name="upload_text">上传</string>
+    <string name="download_text">下载</string>
+
+    <!-- session -->
+    <string name="input_panel_guess">猜 拳</string>
+    <string name="input_panel_notice">发通知</string>
+    <string name="input_panel_work">发作业</string>
+    <string name="input_panel_activity">发起活动</string>
+    <string name="input_panel_audio_call">语音通话</string>
+    <string name="input_panel_video_call">视频通话</string>
+    <string name="input_panel_file">发送文件</string>
+    <string name="input_panel_RTS">白 板</string>
+    <string name="input_panel_snapchat">阅后即焚</string>
+    <string name="input_panel_tip">Tip</string>
+    <string name="message_history_query">云消息记录</string>
+    <string name="message_search_title">搜索本地消息记录</string>
+    <string name="message_clear">清空本地消息记录</string>
+    <string name="message_info">聊天信息</string>
+
+    <!--&lt;!&ndash; 通讯录 &ndash;&gt;-->
+    <string name="add_friend">加为好友</string>
+    <string name="remove_friend">删除好友</string>
+    <string name="begin_chat">聊天</string>
+
+    <!--&lt;!&ndash; 群 &ndash;&gt;-->
+
+    <string name="create_normal_team">创建讨论组</string>
+    <string name="team_search_hint">请输入群号进行搜索</string>
+    <string name="team_number_not_exist">群号不存在</string>
+    <string name="team_join">加入群组</string>
+    <string name="team_join_success">成功加入群: %1$s</string>
+    <string name="team_apply_to_join_send_success">申请已发出</string>
+    <string name="has_exist_in_team">已经在群里</string>
+
+    <!--&lt;!&ndash; 云信SDK所需文案 &ndash;&gt;-->
+    <string name="nim_status_bar_multi_messages_incoming">%1$d位联系人有新消息</string>
+    <string name="nim_status_bar_ticker_text">%1$s有新消息</string>
+    <string name="nim_status_bar_image_message">%1$s发来一条图片消息</string>
+    <string name="nim_status_bar_audio_message">%1$s发来一条语音消息</string>
+    <string name="nim_status_bar_video_message">%1$s发来一条视频消息</string>
+    <string name="nim_status_bar_file_message">%1$s发来一条文件消息</string>
+    <string name="nim_status_bar_location_message">%1$s分享了一个地理位置</string>
+    <string name="nim_status_bar_notification_message">%1$s: 通知消息</string>
+    <string name="nim_status_bar_custom_message">%1$s: 自定义消息</string>
+    <string name="nim_status_bar_unsupported_message">%1$s: 无法显示该内容</string>
+    <string name="nim_status_bar_hidden_msg_content">你收到一条新消息</string>
+
+    <string name="nrtc_setting_vie_crop_ratio_key">nrtc_setting_vie_crop_ratio_key</string>
+    <string name="nrtc_setting_vie_crop_ratio">画面裁剪比例</string>
+    <string name="nrtc_setting_voe_high_quality_key">nrtc_setting_voe_high_quality_key</string>
+    <string name="nrtc_setting_voe_dtx_key">nrtc_setting_voe_dtx_key</string>
+
+    <!--&lt;!&ndash;RTS白板&ndash;&gt;-->
+    <string name="start_session">正在邀请对方，请稍后</string>
+    <string name="callee_reject">对方拒绝了本次请求</string>
+    <string name="callee_ack_timeout">对方未接受请求</string>
+    <string name="receive_session">对方发起白板演示</string>
+    <string name="start_session_record">我发起了白板演示</string>
+    <string name="session_end_record">白板演示已结束</string>
+    <string name="end_session_tip_head">退出白板演示</string>
+    <string name="end_session_tip_content">退出后，你将不再接收白板演示的消息内容</string>
+    <string name="target_has_end_session">对方结束白板演示</string>
+    <string name="accept_session">接受</string>
+    <string name="reject_session">拒绝</string>
+    <string name="doodle_back">上一步</string>
+    <string name="doodle_clear">清屏</string>
+
+    <!--发现-->
+    <string name="community_type">社群分类</string>
+    <string name="community_next">下一步</string>
+    <string name="community_create">创建社群</string>
+    <string name="community_company">机构名称</string>
+    <string name="community_name">真实姓名</string>
+    <string name="community_school">所属学校</string>
+    <string name="community_person">负责人姓名</string>
+    <string name="community_sign">人今天签到</string>
+    <string name="community_permission">公开</string>
+    <string name="community_tag">二级分类</string>
+    <!--&lt;!&ndash; setting &ndash;&gt;-->
+    <string name="msg_notice">消息提醒</string>
+    <string name="no_disturb_tips">在设定的时间段内云信消息将不再提醒</string>
+    <string name="time_from">从</string>
+    <string name="time_to">至</string>
+    <string name="time_from_default">22:00</string>
+    <string name="time_to_default">08:00</string>
+
+    <!--&lt;!&ndash; 多端登录 &ndash;&gt;-->
+    <string name="multiport_logout">下线</string>
+    <string name="computer_version">云信电脑版</string>
+    <string name="birthday">生 日</string>
+    <string name="head">头 像</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="other">其他</string>
+    <string name="user_info_update_failed">设置失败，请重试</string>
+
+    <!--&lt;!&ndash; NRTC &ndash;&gt;-->
+    <string name="nrtc_settings">网络通话设置</string>
+    <string name="nrtc_setting_net">网络</string>
+    <string name="nrtc_setting_voe">语音通话</string>
+    <string name="nrtc_setting_vie">视频通话</string>
+    <string name="nrtc_setting_other">其它</string>
+    <string name="nrtc_setting_vie_crop_key">nrtc_setting_vie_crop_key</string>
+    <string name="nrtc_setting_vie_crop">画面裁剪</string>
+    <string name="nrtc_setting_vie_quality_key">nrtc_setting_vie_quality_key</string>
+    <string name="nrtc_setting_vie_quality">视频清晰度</string>
+    <string-array name="nrtc_setting_vie_quality_entries"> 
+        <item>Default</item> 
+        <item>Low</item> 
+        <item>Medium</item> 
+        <item>High</item> 
+        <item>480P</item> 
+        <item>720P</item>
+    </string-array>
+    <string-array name="nrtc_setting_vie_quality_values"> 
+        <item>0</item> 
+        <item>1</item> 
+        <item>2</item> 
+        <item>3</item> 
+        <item>4</item> 
+        <item>5</item> 
+    </string-array>
+    <string-array name="nrtc_setting_vie_hw_encoder_entries"> 
+        <item>自动</item> 
+        <item>禁用</item> 
+        <item>强制</item> 
+    </string-array>
+    <string-array name="nrtc_setting_vie_hw_encoder_values"> 
+        <item>0</item> 
+        <item>1</item> 
+        <item>2</item> 
+    </string-array>
+    <string-array name="nrtc_setting_other_device_rotation_entries"> 
+        <item>0</item> 
+        <item>90</item> 
+        <item>180</item> 
+        <item>270</item> 
+    </string-array>
+    <string-array name="nrtc_setting_other_device_rotation_values"> 
+        <item>0</item> 
+        <item>1</item> 
+        <item>2</item> 
+        <item>3</item> 
+    </string-array>
+    <string-array name="nrtc_setting_vie_hw_decoder_entries"> 
+        <item>自动</item> 
+        <item>禁用</item> 
+        <item>强制</item> 
+    </string-array>
+    <string-array name="nrtc_setting_vie_hw_decoder_values"> 
+        <item>0</item> 
+        <item>1</item> 
+        <item>2</item> 
+    </string-array>
+    <string-array name="nrtc_setting_voe_audio_effect_entries"> 
+        <item>Disable</item> 
+        <item>SDK Built-In</item> 
+        <item>Platform Built-In</item> 
+    </string-array>
+    <string-array name="nrtc_setting_voe_audio_effect_values"> 
+        <item>0</item> 
+        <item>1</item> 
+        <item>2</item> 
+    </string-array>
+    <string name="nrtc_setting_other_device_default_rotation_key">
+        nrtc_setting_other_device_default_rotation_key
+    </string>
+    <string name="nrtc_setting_other_device_default_rotation">设备默认旋转角度(特殊设备使用)</string>
+    <string name="nrtc_setting_other_device_rotation_fixed_offset_key">
+        nrtc_setting_other_device_rotation_fixed_offset_key
+    </string>
+    <string name="nrtc_setting_other_device_rotation_fixed_offset">设备旋转角度修正偏移量(特殊设备使用)</string>
+    <string name="nrtc_setting_vie_rotation_key">nrtc_setting_vie_rotation_key</string>
+    <string name="nrtc_setting_vie_rotation">画面旋转</string>
+    <string name="nrtc_setting_vie_default_front_camera_key">
+        nrtc_setting_vie_default_front_camera_key
+    </string>
+    <string name="nrtc_setting_vie_default_front_camera">默认前置摄像头</string>
+    <string name="nrtc_setting_vie_hw_encoder_key">nrtc_setting_vie_hw_encoder_key</string>
+    <string name="nrtc_setting_vie_hw_encoder">硬件编码(仅部分设备支持)</string>
+    <string name="nrtc_setting_vie_hw_decoder_key">nrtc_setting_vie_hw_decoder_key</string>
+    <string name="nrtc_setting_vie_hw_decoder">硬件解码(仅部分设备支持)</string>
+    <string name="nrtc_setting_other_server_record_audio_key">
+        nrtc_setting_other_server_record_audio_key
+    </string>
+    <string name="nrtc_setting_other_server_record_audio">音频服务器录制</string>
+    <string name="nrtc_setting_other_server_record_video_key">
+        nrtc_setting_other_server_record_video_key
+    </string>
+    <string name="nrtc_setting_other_server_record_video">视频服务器录制</string>
+    <string name="nrtc_setting_voe_call_proximity_key">nrtc_setting_voe_call_proximity_key</string>
+    <string name="nrtc_setting_voe_call_proximity">通话期间关闭屏幕</string>
+    <string name="nrtc_setting_voe_muted_key">nrtc_setting_voe_muted_key</string>
+    <string name="nrtc_setting_voe_muted">语音流静音处理</string>
+    <string name="nrtc_setting_vie_muted_key">nrtc_setting_vie_muted_key</string>
+    <string name="nrtc_setting_vie_muted">视频流静音处理</string>
+    <string name="nrtc_setting_vie_fps_reported_key">nrtc_setting_vie_fps_reported_key</string>
+    <string name="nrtc_setting_vie_fps_reported">帧率汇报</string>
+    <string name="nrtc_setting_vie_max_bitrate_key">nrtc_setting_vie_max_bitrate_key</string>
+    <string name="nrtc_setting_vie_max_bitrate">码率(Kbps)</string>
+    <string name="nrtc_setting_voe_audio_aec_key">nrtc_setting_voe_audio_aec_key</string>
+    <string name="nrtc_setting_voe_audio_aec">Acoustic Echo Canceler</string>
+    <string name="nrtc_setting_voe_audio_agc_key">nrtc_setting_voe_audio_agc_key</string>
+    <string name="nrtc_setting_voe_audio_agc">Automatic Gain Control</string>
+    <string name="nrtc_setting_voe_audio_ns_key">nrtc_setting_voe_audio_ns_key</string>
+    <string name="nrtc_setting_voe_audio_ns">Noise Suppressor</string>
+
+
+    <!--&lt;!&ndash;请求提示&ndash;&gt;-->
+    <string name="no_more_data">没有更多信息</string>
+    <string name="get_data_faild">获取数据失败</string>
+    <string name="login_faild">登录失败</string>
+
+    <!--权限设置相关-->
+    <string name="no_permissions">应用需要必要的运行权限</string>
+    <string name="settings">设置</string>
+    <string name="help">帮助</string>
+    <string name="string_help_text">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开所需权限。\n\n最后点击两次后退按钮，即可返回。
+    </string>
+    <string name="quit">退出</string>
+
+    <!--&lt;!&ndash;资料&ndash;&gt;-->
+    <string name="no_set">未设置</string>
+    <string name="def_no_notice">暂无公告，如有公告，请及时添加！</string>
+    <string name="group_dis_emptyview">暂无讨论话题\n\r等该社员发起讨论</string>
+    <string name="huodong_emptyview">没活动！茶都凉了~</string>
+    <string name="group_emptyview">没发现你要的社群，还不如去创建一个，你说呢？</string>
+    <string name="nearby_person_emptyview">咦~你的附近没有小伙伴！</string>
+    <string name="haveno_class_emptyview">还没有加入任何班级哟！</string>
+    <string name="haveno_sycnclass_emptyview">还没有加入任何默认同步班级哟！</string>
+    <string name="hiba_nopost_emptyview">还没有发表的帖子！</string>
+    <string name="hiba_nonew_emptyview">还没有跟帖！</string>
+    <string name="hiba_notiezi_emptyview">还没有任何帖子！</string>
+
+    <string name="webview_error">不好意思，你要的页面飞走了~重新加载</string>
+
+    <string name="qrcode_error">该二维码非嗨同学提供！</string>
+    <string name="qrcode_error_local">二维码识别失败，请选择嗨同学提供的二维码图片！</string>
+
+    <!--&lt;!&ndash;资料&ndash;&gt;-->
+    <string name="HuodongErrorStartTimeInvalid">活动开始无效时间,请重新选择!</string>
+    <string name="HuodongErrorEndTimeInvalid">活动结束时间,请重新选择!</string>
+    <string name="HuodongErrorLineTimeInvalid">活动截止无效时间,请重新选择!</string>
+    <string name="HuodongErrorTimeInvalid">无效时间,请重新选择!</string>
+    <string name="HuodongErrorTimeEnd_TimeSmallThanStartTime">活动结束时间要大于活动开始时间!</string>
+    <string name="HuodongErrorTimeLineTimeSmallThanEndTime">活动截至报名时间要小于活动结束时间!</string>
+    <string name="HuodongErrorTimeLineTimeSmallThanStartTime">活动截至报名时间要大于活动开始时间!</string>
+    <string name="HuodongErrorTimeBeyondTheCurrentYear">时间已经跨年了哦!</string>
+    <string name="NoFavorPost">隔壁有好东西，赶紧去收藏吧！</string>
+    <string name="ClassAddFriendInstr">
+        说明：\n1.成员添加成功后，自动加入该班级。\n2.学生成员添加成功，系统将自动创建家长账号并以短息的形式告知家长账号。
+    </string>
+    <string name="GroupAddFriendInstr">
+        说明：\n1、成员被邀请后，收到邀请信息，需同意后才能加入。\n2、被邀请成员可对邀请进行拒绝操作。"
+    </string>
+
+    <string name="default_no_searched_city">抱歉,暂时没有找到任何城市！</string>
+    <string name="default_more_application">更多应用</string>
+    <string name="default_no_application">还没有任何应用！</string>
+    <string name="sync_instr">根据内容所关联的范围来确定需要同步的班级，同步后内容对班级成员可见.</string>
+
+    <string name="tip_dissolve_group_00">1、解散社群操作，系统将现有的社群组织体系清除，已创建的社群数据被删除，删除操作不可逆，需慎重操作。</string>
+    <string name="tip_dissolve_group_01">2、解散社群不对已加入社群的成员账号产生删除操作，系统将继续保留已加入成员的账号和数据。</string>
+    <string name="tip_dissolve_group_02">输入“我要解散社群”字样，以表示你经过慎重考虑</string>
+
+    <string name="tip_dissolve_class_00">1、解散班级操作，系统将现有的班级组织体系清除，已创建的班级数据将被删除，删除操作不可逆，需慎重操作。
+    </string>
+    <string name="tip_dissolve_class_01">2、解散班级不对已加入班级的成员的账号产生删除操作，系统将继续保留已加入成员的账号和数据。</string>
+    <string name="tip_dissolve_class_02">输入“我要解散班级”字样，以表示你经过慎重考虑</string>
+
+    <string name="share_class_tip">将班级信息分享到微信或者QQ中，邀请班级其它的老师和学生家长通过此信息找到并加入该班级</string>
+    <string name="share_group_tip">将社群信息分享到微信或者QQ中，让更多的人加入进来。</string>
+    <string name="share_class_type">分享班级信息</string>
+    <string name="share_group_type">分享社群信息</string>
+    <string name="share_class_code">班级代码</string>
+    <string name="share_group_code">社群代码</string>
+
+    <string name="empty_load_data_fail">暂无数据</string>
+    <string name="empty_reload_data">重新加载</string>
+    <string name="empty_no_sign">暂无签到记录</string>
+    <string name="empty_no_state">暂无动态</string>
+    <string name="empty_no_state_">还没有任何屏蔽的动态</string>
+    <string name="empty_no_comment">暂无评论</string>
+    <string name="empty_no_me">暂无@我的</string>
+    <string name="empty_no_thumb_up">暂无点赞</string>
+    <string name="empty_no_class_info">暂无同学信息</string>
+    <string name="empty_no_hot_note">暂无热门帖子</string>
+    <string name="empty_no_find_group">暂无可发现的社群</string>
+    <string name="empty_no_join_request">暂无任何加入请求</string>
+    <string name="empty_no_photo_video">最近没有上传照片</string>
+    <string name="empty_create_group">我要创建</string>
+    <string name="empty_my_report">我来发表</string>
+    <string name="empty_no_report">你还没有参加或发起过任何活动</string>
+    <string name="empty_no_huodong">还没有任何活动!</string>
+    <string name="empty_take_group">发起活动</string>
+    <string name="empty_no_message">暂无消息</string>
+    <string name="empty_no_group">暂无活动</string>
+    <string name="empty_no_order">暂无订阅</string>
+    <string name="empty_no_person_group">还未创建/加入任何社群</string>
+    <!--<string name="empty_load_data_fail">数据加载失败</string>-->
+
+
+    <!--字体图标-->
+    <string name="icon_balloon">\ue990</string>
+    <string name="icon_rocket">\ue991</string>
+    <string name="icon_face2">\ue992</string>
+    <string name="icon_template">\ue993</string>
+    <string name="icon_grass2">\ue994</string>
+    <string name="icon_forbidden">\ue995</string>
+    <string name="icon_male">\ue996</string>
+    <string name="icon_female">\ue997</string>
+    <string name="icon_participated">\ue988</string>
+    <string name="icon_arrowbottom">\ue900</string>
+    <string name="icon_close">\ue901</string>
+    <string name="icon_more">\ue902</string>
+    <string name="icon_time">\ue903</string>
+    <string name="icon_localtion">\ue904</string>
+    <string name="icon_rmb">\ue905</string>
+    <string name="icon_arrowleft">\ue906</string>
+    <string name="icon_arrowright">\ue907</string>
+    <string name="icon_topic">\ue908</string>
+    <string name="icon_jing">\ue9a8</string>
+    <string name="icon_search">\ue909</string>
+    <string name="icon_add">\ue90a</string>
+    <string name="icon_why">\ue90b</string>
+    <string name="icon_stopwatch">\ue9b1</string>
+    <string name="icon_topic2">\ue90c</string>
+    <string name="icon_eye">\ue90d</string>
+    <string name="icon_eye2">\ue90e</string>
+    <string name="icon_icon_at">\ue910</string>
+    <string name="icon_face">\ue911</string>
+    <string name="icon_topic3">\ue912</string>
+    <string name="icon_img">\ue913</string>
+    <string name="icon_microphone">\ue914</string>
+    <string name="icon_clock">\ue915</string>
+    <string name="icon_people">\ue916</string>
+    <string name="icon_upload">\ue917</string>
+    <string name="icon_hd">\ue918</string>
+    <string name="icon_school">\ue919</string>
+    <string name="icon_interest">\ue91a</string>
+    <string name="icon_bag">\ue91b</string>
+    <string name="icon_posts">\ue91c</string>
+    <string name="icon_addmember">\ue91d</string>
+    <string name="icon_grass">\ue91e</string>
+    <string name="icon_information">\ue91f</string>
+    <string name="icon_king">\ue920</string>
+    <string name="icon_bing">\ue921</string>
+    <string name="icon_tool">\ue922</string>
+    <string name="icon_gift">\ue923</string>
+    <string name="icon_remind">\ue924</string>
+    <string name="icon_zannone">\ue925</string>
+    <string name="icon_topic4">\ue926</string>
+    <string name="icon_comment">\ue9c8</string>
+    <string name="icon_share">\ue927</string>
+    <string name="icon_zan">\ue928</string>
+    <string name="icon_ranking">\ue929</string>
+    <string name="icon_forward">\ue92a</string>
+    <string name="icon_pen">\ue92b</string>
+    <string name="icon_upload2">\ue92c</string>
+    <string name="icon_check">\ue92d</string>
+    <string name="icon_check2">\ue92e</string>
+    <string name="icon_radio">\ue92f</string>
+    <string name="icon_close3">\ue930</string>
+    <string name="icon_notice">\ue931</string>
+    <string name="icon_member">\ue933</string>
+    <string name="icon_news">\ue934</string>
+    <string name="icon_topic5">\ue935</string>
+    <string name="icon_diamond">\ue936</string>
+    <string name="icon_people2">\ue937</string>
+    <string name="icon_del">\ue938</string>
+    <string name="icon_doublearrow">\ue939</string>
+    <string name="icon_doublearrow2">\ue9a9</string>
+    <string name="icon_starall">\ue93a</string>
+    <string name="icon_starhalf">\ue93b</string>
+    <string name="icon_starnone">\ue93c</string>
+    <string name="icon_del2">\ue93d</string>
+    <string name="icon_more2">\ue93e</string>
+    <string name="icon_more3">\ue9a5</string>
+    <string name="icon_returncamera">\ue93f</string>
+    <string name="icon_one">\ue940</string>
+    <string name="icon_two">\ue94a</string>
+    <string name="icon_three">\ue954</string>
+    <string name="icon_close4">\ue95f</string>
+    <string name="icon_upload3">\ue960</string>
+    <string name="icon_people3">\ue961</string>
+    <string name="icon_doc">\ue962</string>
+    <string name="icon_edit">\ue963</string>
+    <string name="icon_persion_arrows">\ue964</string>
+    <string name="icon_doctor">\ue965</string>
+    <string name="icon_album">\ue966</string>
+    <string name="icon_add2">\ue967</string>
+    <string name="icon_img2">\ue968</string>
+    <string name="icon_topic6">\ue969</string>
+    <string name="icon_content">\ue96a</string>
+    <string name="icon_id">\ue96b</string>
+    <string name="icon_play">\ue96c</string>
+    <string name="icon_activity">\ue96d</string>
+    <string name="icon_album2">\ue96e</string>
+    <string name="icon_file">\ue96f</string>
+    <string name="icon_introduction">\ue970</string>
+    <string name="icon_live">\ue971</string>
+    <string name="icon_child">\ue972</string>
+    <string name="icon_elective">\ue973</string>
+    <string name="icon_homeschoolpass">\ue974</string>
+    <string name="icon_blackboard">\ue975</string>
+    <string name="icon_activity2">\ue976</string>
+    <string name="icon_honor">\ue977</string>
+    <string name="icon_contacts">\ue978</string>
+    <string name="icon_classfee">\ue979</string>
+    <string name="icon_newspaper">\ue97a</string>
+    <string name="icon_home">\ue97b</string>
+    <string name="icon_topic7">\ue97c</string>
+    <string name="icon_phone">\ue97d</string>
+    <string name="icon_weixin">\ue97e</string>
+    <string name="icon_friendcircle">\ue97f</string>
+    <string name="icon_qzone">\ue980</string>
+    <string name="icon_qq">\ue981</string>
+    <string name="icon_telphone">\ue982</string>
+    <string name="icon_member2">\ue9a6</string>
+    <string name="icon_addnews">\ue983</string>
+    <string name="icon_notice2">\ue984</string>
+    <string name="icon_return">\ue985</string>
+    <string name="icon_enter">\ue986</string>
+    <string name="icon_entersuccess">\ue987</string>
+    <string name="icon_takepictures">\ue989</string>
+    <string name="icon_teacher2">\ue98b</string>
+    <string name="icon_student">\ue98c</string>
+    <string name="icon_add3">\ue98d</string>
+    <string name="icon_user">\ue98e</string>
+    <string name="icon_camera">\ue98f</string>
+    <string name="icon_topic01">\ue90c</string>
+    <string name="icon_teacher">\ue932</string>
+    <string name="icon_class">\ue99b</string>
+    <string name="icon_classnone">\ue99c</string>
+    <string name="icon_find">\ue99d</string>
+    <string name="icon_findnone">\ue99e</string>
+    <string name="icon_home2">\ue99f</string>
+    <string name="icon_homenone2">\ue9a0</string>
+    <string name="icon_mine">\ue9a1</string>
+    <string name="icon_minenone">\ue9a2</string>
+    <string name="icon_app">\ue999</string>
+    <string name="icon_friendcircle2">\ue998</string>
+    <string name="icon_tip">\ue93b</string>
+    <string name="icon_shield">\ue99a</string>
+    <string name="icon_chooseclass">\ue9a3</string>
+    <string name="icon_tip2">\ue9a4</string>
+    <string name="icon_arrowup">\ue9a8</string>
+    <string name="icon_close5">\ue9b2</string>
+    <string name="icon_download">\ue9b7</string>
+    <string name="icon_voice">\ue9d6</string>
+    <string name="icon_eye3">\ue9d5</string>
+    <string name="icon_clock3">\ue9d4</string>
+    <string name="icon_submit">\ue9d3</string>
+    <string name="icon_notice3">\ue9d2</string>
+
+    <string name="icon_at2">\ue9ad</string>
+    <string name="icon_zan2">\ue9aa</string>
+    <string name="icon_comment2">\ue9ab</string>
+    <string name="icon_message">\ue9ac</string>
+    <string name="icon_setting">\ue80a</string>
+    <string name="icon_badge">\ue9d7</string>
+    <string name="icon_zanting">\ue9b0</string>
+    <string name="icon_bofang">\ue98d</string>
+    <string name="icon_scan">\ue63b</string>
+    <string name="icon_video">\ue64b</string>
+    <string name="icon_homework">\ue65b</string>
+    <string name="icon_up">\ue67b</string>
+    <string name="icon_down">\ue66b</string>
+
+    <string name="provider_sit">com.histudent.jwsoft.histudent.fileprovider.sit</string>
+    <string name="provider_uat">com.histudent.jwsoft.histudent.fileprovider.uat</string>
+
+    <string name="title_activity_all_classes_in_school">AllClassesInSchool</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <!--访问提示-->
+    <string name="http_request_erro">访问失败，请重试！</string>
+    <string name="http_service_erro">服务器错误</string>
+    <string name="http_download_erro">下载错误，请重试！</string>
+    <string name="log_title">日志标题</string>
+    <string name="draft">草稿箱</string>
+    <string name="do_next">下一步</string>
+    <string name="write_log">写日志</string>
+    <string name="content">内容</string>
+    <string name="network_unused">无法连接网络，请检查网络设置是否正常</string>
+    <string name="force_exit">由于你的账号长时间未操作，为了你的信息安全系统将强制退出本次操作。</string>
+    <string name="set_image_icon">头像设置</string>
+    <string name="class_teacher_join_none">老师你还没有加入任何班级</string>
+    <string name="class_student_join_none">你还没有加入任何班级</string>
+    <string name="class_student_join_none_desc">(火速向你的班主任获取班级代码或手机号)</string>
+    <string name="now_join">立即加入</string>
+    <string name="now_create">立即创建</string>
+    <string name="loading">正在加载中...</string>
+    <string name="bottom_line_no_data">我是有底线的</string>
+    <string name="text_color">文字颜色</string>
+    <string name="confirm">确定</string>
+    <string name="no_more_information">没有更多数据</string>
+    <string name="read_clock_issue">发布</string>
+    <string name="read_clock_in">阅读打卡</string>
+    <string name="read_book">阅读书籍</string>
+    <string name="read_book_name">《鲁滨逊漂流记》</string>
+    <string name="read_page">阅读页码</string>
+    <string name="read_start_page">起始页</string>
+    <string name="read_end_page">结束页</string>
+    <string name="read_book_total_time">阅读时长</string>
+    <string name="read_book_time_min">分钟</string>
+    <string name="record_read_book_feel">记录你此刻的读书心得...</string>
+    <string name="location">杭州市祥园路......</string>
+    <string name="normal_text">正常</string>
+    <string name="photo_or_video">照片或视频</string>
+    <string name="from_album_get">从相册中获取</string>
+    <string name="shoot">拍摄</string>
+    <string name="active_user">活跃用户</string>
+    <string name="hot_topic">热门话题</string>
+    <string name="more_application_text">更多应用#更多应用</string>
+    <string name="read_task">阅读任务</string>
+    <string name="show_start_page_empty">开始页不可以为空</string>
+    <string name="show_end_page_empty">结束页不可以为空</string>
+    <string name="show_judge_page_index">结束页应大于开始页</string>
+    <string name="show_read_time_empty">阅读时长不可以空</string>
+    <string name="show_read_feel_empty">读书心得不可以为空</string>
+    <string name="scan_book_author">作者:</string>
+    <string name="scan_book_publish_house">出版社:</string>
+    <string name="scan_book_publish_time">出版时间:</string>
+    <string name="scan_book_page_title">书籍</string>
+    <string name="show_scan_book">请扫描书码</string>
+    <string name="scan_image_shape_code">扫描图形码</string>
+    <string name="scan_how_do">无法扫描条码?</string>
+    <string name="manual_add_isbn">手工添加</string>
+    <string name="publish_essay">发随记</string>
+    <string name="upload_photo">传照片</string>
+    <string name="dynamic_all">全部动态</string>
+    <string name="dynamic_essay">随记动态</string>
+    <string name="dynamic_log">日志动态</string>
+    <string name="dynamic_photo">照片动态</string>
+    <string name="dynamic_activity">活动动态</string>
+    <string name="share">分享</string>
+    <string name="shield">屏蔽的动态</string>
+    <string name="inform">举报</string>
+    <string name="class_circle">班级圈</string>
+    <string name="class_main_page">班级主页</string>
+    <string name="bar_code_detail_introduction">1、书籍封面中,条形码上方或者下方的13位数字即为编码。\n 2、书籍内页 (一般在图书前两页或者后两页) 书籍信息中会\n 标注ISBN编码。</string>
+    <string name="bar_code_how_find">如何找到ISBN编码?</string>
+    <string name="bar_code_13_digit">13位条形码 (ISBN)</string>
+    <string name="manual_input_bar_code_title">手动输入条形码</string>
+    <string name="input_bar_code_is_empty">书码不可以为空</string>
+    <string name="isbn_not_incorrect">ISBN位数不对</string>
+    <string name="discern_auto_jump">识别自动跳转</string>
+    <string name="sight_book_isbn_discern">对准图书条形码自动识别</string>
+    <string name="scan_not_isbn_bar_code">无法扫描条形码?</string>
+    <string name="book_name">书名</string>
+    <string name="please_input_book_name">请输入书名</string>
+    <string name="manual_add">手工添加</string>
+    <string name="complete">完成</string>
+    <string name="book_name_is_empty">书名不可以为空</string>
+    <string name="not_query_book_name">未查询到此书籍,请手工添加</string>
+    <string name="go_add">去添加</string>
+    <string name="not_modify_name">真实姓名不可自行修改，如需修改请联系客服电话：0571-89712287</string>
+    <string name="tip_message">提醒消息</string>
+    <string name="homework">作业</string>
+</resources>

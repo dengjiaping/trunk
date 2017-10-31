@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="70dp"
+    android:layout_height="70dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_log"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:layout_gravity="center_horizontal"
+        android:padding="@dimen/dp5"
+        android:src="@drawable/default_placeholder_style_1" />
+
+    <TextView
+        android:id="@+id/tv_log"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="11111"
+        android:textColor="@color/text_gray_h1"
+        android:textSize="@dimen/text_size_12" />
+
+</LinearLayout>

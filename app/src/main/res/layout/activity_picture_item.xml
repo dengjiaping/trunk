@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/action_item_head" />
+
+    <ImageView
+        android:id="@+id/picture_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop" />
+
+    <include layout="@layout/action_item_foot" />
+
+    <View style="@style/split_line_style_10dp" />
+
+</LinearLayout>

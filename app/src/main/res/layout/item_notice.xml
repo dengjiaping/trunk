@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="72dp"
+    android:orientation="horizontal">
+
+
+    <!--头像-->
+    <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+        android:id="@+id/item_notice_head"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="16dp"
+        android:src="@drawable/default_person" />
+
+    <TextView
+        android:id="@+id/item_notice_name"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:gravity="center_vertical"
+        android:text="妞妞"
+        android:textColor="@color/text_black_h3"
+        android:textSize="@dimen/textSize" />
+
+    <com.histudent.jwsoft.histudent.commen.view.IconView
+        android:id="@+id/item_notice_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textColor="@color/notice"
+        android:gravity="center_vertical"
+        android:text="@string/icon_notice3"
+        android:layout_marginRight="16dp"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/item_notice_time"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginRight="16dp"
+        android:gravity="center_vertical"
+        android:text=""
+        android:textColor="@color/text_gray_h2"
+        android:textSize="@dimen/tiny_textSize" />
+
+
+</LinearLayout>

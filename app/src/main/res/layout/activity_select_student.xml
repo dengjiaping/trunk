@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <include layout="@layout/thetopview"/>
+
+    <TextView
+        android:id="@+id/tv_des"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/thetopview"
+        android:background="@color/bg_color"
+        android:gravity="center"
+        android:text="权限描述"/>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/refresh_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/tv_des"
+        android:layout_marginBottom="20dp"
+        android:divider="@color/line_split1"
+        android:dividerHeight="0.5dp"/>
+
+    <RelativeLayout
+        android:id="@+id/relative_instr"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="150dp"
+        android:visibility="gone">
+
+        <include layout="@layout/add_friend_empty"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/btn_add"
+        style="@style/long_blue_button"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:text="添加好友"/>
+</RelativeLayout>

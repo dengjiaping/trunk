@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg_color"
+              android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_color"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="horizontal">
+
+                <com.histudent.jwsoft.histudent.commen.view.EditText_clear
+                    android:id="@+id/filter_edit"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/search_bar_edit_selector"
+                    android:drawablePadding="10dp"
+                    android:hint="       搜索"
+                    android:maxLength="20"
+                    android:maxLines="1"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/text_gray_h2"
+                    android:textColorHint="@color/text_gray_h1"
+                    android:textSize="@dimen/textSize"/>
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/search_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginStart="22dp"
+                    android:text="@string/icon_search"
+                    android:textColor="@color/text_gray_h1"
+                    android:textSize="16sp"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/request_layout"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/weixin_add"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/green_button_bg_stroke_circle"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:onClick="onClick"
+                        android:text="@string/icon_weixin"
+                        android:textColor="@color/green_color"
+                        android:textSize="23sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp5"
+                        android:text="微信邀请"
+                        android:textColor="@color/green_color"
+                        android:textSize="@dimen/tiny_textSize"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/QQ_add"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/blue_button_bg_stroke_circle"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:onClick="onClick"
+                        android:text="@string/icon_qq"
+                        android:textColor="@color/blue_color"
+                        android:textSize="23sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp5"
+                        android:text="QQ邀请"
+                        android:textColor="@color/blue_color"
+                        android:textSize="@dimen/tiny_textSize"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/teacher_num"
+                style="@style/text_gray_v2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_color"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:textSize="@dimen/tiny_textSize"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/itemMargin"
+                android:paddingStart="@dimen/itemMargin"
+                >
+
+                <com.histudent.jwsoft.histudent.commen.view.MyListView2
+                    android:id="@+id/teacher_list"
+                    style="@style/list_split_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/student_num"
+                style="@style/text_gray_v2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_color"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:textSize="@dimen/tiny_textSize"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/itemMargin"
+                android:paddingStart="@dimen/itemMargin"
+                >
+
+                <com.histudent.jwsoft.histudent.commen.view.MyListView2
+                    android:id="@+id/student_list"
+                    style="@style/list_split_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

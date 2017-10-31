@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="48dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/fashion_layout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/itemMargin"
+        android:paddingRight="@dimen/itemMargin"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        
+        <View
+            android:id="@+id/red_point"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/dot_red"/>
+
+        <!--图标-->
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/notice_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="@string/icon_voice"
+            android:background="@color/_28ca7e"
+            android:gravity="center"
+            android:textColor="@color/text_white"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:textSize="33sp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="16dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/notice_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:text=""
+                android:textColor="@color/text_black_h2"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                >
+
+                <!--图标-->
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/icon_clock3"
+                    android:gravity="center"
+                    android:textColor="@color/text_gray_h1"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="12sp" />
+
+
+                <TextView
+                    android:id="@+id/notice_time"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:gravity="center_vertical"
+                    android:text="将于9-2 12:58 发布"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@color/text_gray_h1"
+                    android:textSize="@dimen/tiny_textSize" />
+
+                <!--图标-->
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/notice_read_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/icon_eye3"
+                    android:gravity="center"
+                    android:textColor="@color/text_gray_h1"
+                    android:layout_gravity="center_vertical|right"
+
+                    android:textSize="12sp" />
+
+
+                <TextView
+                    android:id="@+id/notice_read_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="0/36"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@color/text_gray_h1"
+                    android:textSize="@dimen/tiny_textSize" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View style="@style/split_line_style" />
+
+</LinearLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/fashion_layout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/white"
+        android:paddingRight="@dimen/itemMargin">
+
+        <!--头像-->
+        <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+            android:id="@+id/like_headImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/default_person" />
+
+        <TextView
+            android:id="@+id/like_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/like_headImage"
+            android:gravity="center"
+            android:text="妞妞"
+            android:textColor="@color/text_black_h3"
+            android:textSize="@dimen/textSize" />
+
+        <TextView
+            android:id="@+id/like_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:gravity="center"
+            android:text="妞妞"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/tiny_textSize" />
+
+    </RelativeLayout>
+
+</LinearLayout>

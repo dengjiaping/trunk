@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new" />
+
+    <View style="@style/split_line_style_10dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            style="@style/text_back_v2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/itemMargin"
+            android:text="选择身份" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/student_radioButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginEnd="50dp"
+                android:background="@drawable/green_button_bg_circle"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:orientation="vertical">
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/icon_student"
+                    android:textColor="@color/text_white"
+                    android:textSize="25sp" />
+
+                <TextView
+                    style="@style/text_white_v2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="学生" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/teacher_radioButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/gray_button_bg_circle"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:orientation="vertical">
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/icon_teacher"
+                    android:textColor="@color/text_white"
+                    android:textSize="25sp" />
+
+                <TextView
+                    style="@style/text_white_v2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="老师" />
+
+            </LinearLayout>
+
+        </RadioGroup>
+
+    </RelativeLayout>
+
+    <View style="@style/split_line_style_10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/itemMargin"
+        android:paddingRight="@dimen/itemMargin">
+
+        <TextView
+            style="@style/text_back_v2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="真实姓名" />
+
+        <EditText
+            android:id="@+id/name"
+            style="@style/text_gray_v2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginStart="@dimen/dp20"
+            android:background="@null"
+            android:hint="孩子的真实姓名"
+            android:textColor="@color/text_black_h2"
+            android:textColorHint="@color/text_gray_h1" />
+
+    </LinearLayout>
+
+    <View style="@style/split_line_style" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/itemMargin"
+        android:paddingRight="@dimen/itemMargin">
+
+        <TextView
+            style="@style/text_back_v2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="手机号码" />
+
+        <EditText
+            android:id="@+id/phone"
+            style="@style/text_gray_v2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginStart="@dimen/dp20"
+            android:background="@null"
+            android:hint="家长的手机号码"
+            android:textColor="@color/text_black_h2"
+            android:textColorHint="@color/text_gray_h1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_color"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:layout_marginRight="@dimen/itemMargin"
+            android:layout_marginTop="@dimen/itemMargin"
+            android:text="说明："
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/tiny_textSize" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:layout_marginRight="@dimen/itemMargin"
+            android:layout_marginTop="@dimen/dp10"
+            android:text="1、成员添加成功后，该成员自动加入班级。"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/tiny_textSize" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:layout_marginRight="@dimen/itemMargin"
+            android:layout_marginTop="@dimen/dp10"
+            android:text="2、成员添加成功后，系统自动发送通知短信到成员手机。"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/tiny_textSize" />
+
+    </LinearLayout>
+
+</LinearLayout>

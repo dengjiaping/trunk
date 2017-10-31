@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View style="@style/split_line_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/weixin"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/green_button_bg_stroke_circle"
+                    android:gravity="center"
+                    android:text="@string/icon_weixin"
+                    android:textColor="@color/green_color"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="微信"
+                    android:textSize="12sp"
+                    android:textColor="@color/photo_view_pager_bg" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/weixin_"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/shape_friend_circle"
+                    android:gravity="center"
+                    android:text="@string/icon_friendcircle"
+                    android:textColor="@color/shard_friends"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="朋友圈"
+                    android:textSize="12sp"
+                    android:textColor="@color/photo_view_pager_bg" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/qq"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/shape_qq_circle"
+                    android:gravity="center"
+                    android:text="@string/icon_qq"
+                    android:textColor="@color/shard_qq"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="QQ"
+                    android:textSize="12sp"
+                    android:textColor="@color/photo_view_pager_bg" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/qq_"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/shape_qq_zone_circle"
+                    android:gravity="center"
+                    android:text="@string/icon_qzone"
+                    android:textColor="@color/shard_qq_zone"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="QQ空间"
+                    android:textColor="@color/photo_view_pager_bg"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View style="@style/split_line_style" />
+
+        <TextView
+            android:id="@+id/btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/text_black_h2"
+            android:textSize="@dimen/textSize" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+
+    <ImageView
+        android:id="@+id/class_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@mipmap/gro_def" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/class_image">
+
+        <TextView
+            android:id="@+id/class_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="bottom"
+            android:paddingBottom="2dp"
+            android:text="周林"
+            android:textColor="@color/text_black_h1"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/class_introduce"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/class_name"
+            android:paddingTop="2dp"
+            android:maxLines="1"
+            android:text="丹霞路小学2013级1班"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

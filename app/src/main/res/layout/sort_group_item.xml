@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="51dp"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50.5dp">
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp20"/>
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:text="好友分类"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/text_size_13"/>
+
+    </LinearLayout>
+    <View
+        style="@style/split_line_style_withLeftMargin"></View>
+</LinearLayout>

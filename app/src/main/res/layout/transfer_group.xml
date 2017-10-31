@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="300dp"
+              android:layout_height="wrap_content"
+              android:background="@drawable/dialog_base"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:text="转让社群"
+        android:textColor="@color/text_black_h1"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/et_tell"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/comment_bg"
+        android:gravity="center"
+        android:hint="请输入新群主的手机号"
+        android:textSize="@dimen/text_size_16"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/et_tell"
+        android:background="@color/line_split1"></View>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/dialog_left"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:text="确定"
+            android:textSize="@dimen/textSize"/>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/text_gray_h2"/>
+
+        <Button
+            android:id="@+id/dialog_right"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:text="取消"
+            android:textSize="@dimen/textSize"/>
+
+    </LinearLayout>
+</LinearLayout>

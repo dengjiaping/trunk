@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:id="@+id/page_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        >
+
+    </LinearLayout>
+
+
+    <com.histudent.jwsoft.histudent.commen.view.IconView
+        android:id="@+id/search"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/tran_button_bg_circle"
+        android:clickable="true"
+        android:gravity="center"
+        android:layout_gravity="right|top"
+        android:text="@string/icon_search"
+        android:textColor="@color/text_white"
+        android:textSize="16sp"/>
+
+</FrameLayout>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+>
+
+    <RelativeLayout
+        android:id="@+id/create_group1_relative"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/text_blue"
+        android:paddingTop="20dp"
+    >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/ImageBackSize"
+            android:layout_height="@dimen/ImageBackSize"
+            android:padding="@dimen/ImageBackPandingSize"
+            android:src="@mipmap/back"/>
+
+        <RelativeLayout
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="5"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="精选"
+                    android:textColor="@color/text_white"
+                    android:textSize="18sp"
+                />
+
+
+                <RadioButton
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="专栏"
+                    android:textColor="@color/text_gray_h1"
+                    android:textSize="18sp"
+                />
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/radio_line"
+                android:layout_width="130dp"
+                android:layout_height="2dp"
+                android:layout_below="@id/radio_group"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_marginRight="@dimen/dp5"
+                    android:id="@+id/line1"
+                    android:layout_width="25dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/text_white"
+                />
+
+                <View
+                    android:id="@+id/line3"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/text_blue"
+                />
+
+
+                <View
+                    android:paddingLeft="@dimen/dp30"
+                    android:id="@+id/line2"
+                    android:layout_width="25dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/text_blue"
+                />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+
+        <ImageView
+            android:id="@+id/iv_my"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:padding="15dp"
+            android:src="@mipmap/mine_list"/>
+
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/create_group1_relative"
+        android:background="@color/bg_color">
+
+    </FrameLayout>
+</RelativeLayout>

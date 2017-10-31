@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp30"
+        android:background="@color/gray_bg">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp20"
+            android:textColor="@color/text_black_h1"
+        />
+
+        <LinearLayout
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp20"
+            android:paddingRight="@dimen/dp25">
+            <View android:layout_width="0dp"
+                  android:layout_height="0.5dp"
+                  android:layout_gravity="center_vertical"
+                  android:layout_weight="1"
+                  android:background="@color/text_gray_h2">
+            </View>
+
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp10"
+                android:textColor="@color/text_black_h1"
+            />
+            <ImageView
+                android:id="@+id/iv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/dp5"
+                android:paddingLeft="@dimen/dp10"
+                android:src="@mipmap/down"
+            />
+            <View android:layout_width="0dp"
+                  android:layout_height="0.5dp"
+                  android:layout_gravity="center_vertical"
+                  android:layout_marginLeft="@dimen/dp10"
+                  android:layout_weight="1"
+                  android:background="@color/text_gray_h2">
+            </View>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

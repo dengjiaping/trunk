@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/_EEEEEE"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new"/>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp12"
+        android:paddingRight="@dimen/dp12">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/book_name"
+            android:textColor="@color/_333333"
+            android:textSize="@dimen/sp15"/>
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/et_input_book_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:maxLength="30"
+            android:hint="@string/please_input_book_name"
+            android:gravity="right"
+            android:textColorHint="@color/_bbbbbb"
+            android:textSize="@dimen/sp15"/>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+</android.support.v7.widget.LinearLayoutCompat>

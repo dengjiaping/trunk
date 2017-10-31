@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/find_grid_view_iv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/dp10"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_placeholder_style_1"/>
+
+        <ImageView
+            android:id="@+id/iv_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp3"
+            android:paddingBottom="@dimen/dp20"
+            android:paddingLeft="@dimen/dp33"
+            android:src="@mipmap/delete_red"/>
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/find_gird_view_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp10"
+        android:gravity="center"
+        android:text="@string/more_application_text"
+        android:textColor="@color/text_black_h1"
+        android:textSize="11sp"/>
+
+
+</LinearLayout>

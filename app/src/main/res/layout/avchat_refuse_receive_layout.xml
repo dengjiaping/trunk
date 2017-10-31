@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/refuse"
+            android:layout_width="@dimen/dp70"
+            android:layout_height="@dimen/dp70"
+            android:background="@mipmap/avchat_voide_close" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp10"
+            android:gravity="center"
+            android:text="挂断"
+            android:textColor="@color/white"
+            android:textSize="@dimen/small_textSize" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:onClick="onClick"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/receive"
+            android:layout_width="@dimen/dp70"
+            android:layout_height="@dimen/dp70"
+            android:background="@mipmap/avchat_voide_open" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp10"
+            android:gravity="center"
+            android:text="接听"
+            android:textColor="@color/white"
+            android:textSize="@dimen/small_textSize" />
+    </LinearLayout>
+
+</RelativeLayout>

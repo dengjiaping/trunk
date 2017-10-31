@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android_custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <!--退出-->
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/exit"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="@string/icon_close"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
+
+        <SurfaceView
+            android:id="@+id/videoView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+
+
+    <!--切换摄像头-->
+    <com.histudent.jwsoft.histudent.commen.view.IconView
+        android:id="@+id/switch_cameras"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:text="@string/icon_returncamera"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+    <!--录制时间-->
+    <LinearLayout
+        android:id="@+id/time_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="20dip"
+        android:background="@color/transparent"
+        android:orientation="horizontal"
+        android:paddingBottom="5dip"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:paddingTop="5dip">
+
+        <ImageView
+            android:id="@+id/recording_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/nim_record_start"
+            android:contentDescription="@string/empty" />
+
+        <TextView
+            android:id="@+id/record_times"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:maxLines="1"
+            android:text="00:30"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="30dp">
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/cancel"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/white_button_bg_circle"
+            android:gravity="center"
+            android:text="@string/icon_return"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:visibility="gone" />
+
+        <!--拍摄按钮-->
+        <RelativeLayout
+            android:id="@+id/record_btn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerHorizontal="true">
+
+            <com.histudent.jwsoft.histudent.body.hiworld.widget.RoundProgressBar
+                android:id="@+id/roundProgressBar"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android_custom:roundColor="@color/_D1D1D1"
+                android_custom:roundProgressColor="@color/_28ca7e"
+                android_custom:roundWidth="10dip"
+                android_custom:textIsDisplayable="false"
+                android_custom:textSize="18sp" />
+        </RelativeLayout>
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/complete"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/white_button_bg_circle"
+            android:gravity="center"
+            android:text="@string/icon_enter"
+            android:textColor="@color/green_color"
+            android:textSize="28sp"
+            android:visibility="gone" />
+
+
+    </RelativeLayout>
+
+    <!--提示-->
+    <TextView
+        android:id="@+id/text_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:text="轻触拍照，按住摄像"
+        android:textColor="@color/white" />
+
+</LinearLayout>

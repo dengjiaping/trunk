@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_bg_color_v2"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new_login" />
+
+    <TextView
+        style="@style/title_style_v2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/topMargin_login"
+        android:text="绑定手机" />
+
+    <!--手机号码-->
+    <EditText
+        android:id="@+id/bind_phone_edit"
+        style="@style/regist_edit_style_v2"
+        android:layout_marginTop="30dp"
+        android:hint="手机号"
+        android:inputType="phone"
+        android:maxLength="11" />
+
+    <View
+        style="@style/split_line_style_login"
+        android:layout_marginLeft="@dimen/itemMargin_v2"
+        android:layout_marginRight="@dimen/itemMargin_v2" />
+
+    <!--验证码-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+        <Button
+            android:id="@+id/bind_phone_code_button"
+            style="@style/regist_getCode_style_v2"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="@dimen/itemMargin_v2"
+            android:layout_marginEnd="@dimen/itemMargin_v2"
+            android:background="@drawable/green_button_bg_circle"
+            android:text="获取验证码"
+            android:textColor="@color/text_white"
+            android:textSize="@dimen/tiny_textSize" />
+
+        <EditText
+            android:id="@+id/bind_phone_code_edit"
+            style="@style/regist_edit_style_v2"
+            android:layout_toLeftOf="@id/bind_phone_code_button"
+            android:layout_toStartOf="@id/bind_phone_code_button"
+            android:hint="五位验证码"
+            android:inputType="number" />
+
+    </RelativeLayout>
+
+    <View
+        style="@style/split_line_style_login"
+        android:layout_marginLeft="@dimen/itemMargin_v2"
+        android:layout_marginRight="@dimen/itemMargin_v2" />
+
+    <!--完成-->
+    <TextView
+        android:id="@+id/bind_nextbutton"
+        style="@style/long_gray_button_circle"
+        android:layout_marginTop="50dp"
+        android:text="完 成" />
+
+    <!--已有账号绑定-->
+    <TextView
+        android:id="@+id/bind_account_have"
+        style="@style/long_green_button_circle"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/login_head_circle_bg"
+        android:text="已有账号绑定" />
+
+    <!--语音验证码-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+
+        <include
+            layout="@layout/link_layout_v2_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/itemMargin_v2"
+            android:layout_marginStart="@dimen/itemMargin_v2"
+            android:layout_marginTop="10dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

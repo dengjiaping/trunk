@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical"
+    tools:context="com.histudent.jwsoft.histudent.body.find.activity.AddClassmatesIntoGroupActivity">
+    <include layout="@layout/thetopview_new"/>
+
+    <View style="@style/split_line_style_10dp"></View>
+
+    <ListView android:id="@+id/listview"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:divider="@color/transparent"
+              android:dividerHeight="0dp">
+    </ListView>
+</LinearLayout>

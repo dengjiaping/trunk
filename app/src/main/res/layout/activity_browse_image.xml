@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.histudent.jwsoft.histudent.widget.scrollview.PhotoViewViewPager
+            android:id="@+id/view_pager_pic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_color"/>
+
+        <com.sunfusheng.glideimageview.progress.CircleProgressView
+            android:id="@+id/iv_progress_loading"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:progress="0"
+            app:cpv_innerPadding="2dp"
+            app:cpv_outerColor="@color/transparent90_white"
+            app:cpv_outerSize="1dp"
+            app:cpv_progressNormalColor="@color/transparent"
+            app:cpv_progressReachColor="@color/transparent90_white"
+            app:cpv_progressStyle="Normal"
+            app:cpv_progressTextColor="@color/transparent90_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <!--app:cpv_progressStyle="FillInner"-->
+        <!--app:cpv_progressStyle="FillInnerArc"-->
+
+
+    </RelativeLayout>
+
+
+    <include layout="@layout/thetopview_new"/>
+
+    <!--点赞与评论-->
+    <RelativeLayout
+        android:id="@+id/linearLayout_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone">
+        <!--点赞-->
+        <LinearLayout
+            android:id="@+id/cb_favor_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_below="@id/tv_instr"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:gravity="center_vertical"
+            android:onClick="onClick"
+            android:orientation="horizontal">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/cb_favor_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/icon_zannone"
+                android:textColor="@color/text_black_h2"
+                android:textSize="@dimen/text_size_15"/>
+
+            <TextView
+                android:id="@+id/cb_favor_text"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="@dimen/dp5"
+                android:layout_marginStart="@dimen/dp5"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/text_black_h2"
+                android:textSize="@dimen/small_textSize"/>
+
+        </LinearLayout>
+
+        <!--评论-->
+        <LinearLayout
+            android:id="@+id/rb_comment_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_below="@id/tv_instr"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@id/cb_favor_layout"
+            android:layout_toRightOf="@id/cb_favor_layout"
+            android:gravity="center_vertical"
+            android:onClick="onClick"
+            android:orientation="horizontal">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/rb_comment_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/icon_topic4"
+                android:textColor="@color/text_black_h2"
+                android:textSize="@dimen/text_size_15"/>
+
+            <TextView
+                android:id="@+id/rb_comment_text"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="@dimen/dp5"
+                android:layout_marginStart="@dimen/dp5"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/text_black_h2"
+                android:textSize="@dimen/small_textSize"/>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!--关联-->
+    <LinearLayout
+        android:id="@+id/rb_comment_relation"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_instr1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp5"
+            android:paddingRight="@dimen/dp5"
+            android:text="关联人"
+            android:textColor="@color/text_black_h1"
+            android:textSize="@dimen/text_size_13"
+            android:visibility="gone"/>
+
+
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <include layout="@layout/scroll_layout"/>
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/iv_add"
+                    android:layout_width="@dimen/dp40"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_gravity="center_vertical"
+                    android:clickable="true"
+                    android:gravity="center_vertical|left"
+                    android:onClick="onClick"
+                    android:text="@string/icon_add2"
+                    android:textColor="@color/icon_color"
+                    android:textSize="@dimen/text_size_30"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+
+        <TextView
+            android:id="@+id/tv_sure"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_margin="@dimen/dp10"
+            android:layout_marginEnd="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp10"
+            android:background="@drawable/green_button_bg"
+            android:gravity="center_vertical|right"
+            android:onClick="onClick"
+            android:padding="@dimen/dp5"
+            android:text="完成(0)"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

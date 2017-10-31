@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:background="@color/white"
+                android:descendantFocusability="afterDescendants"
+>
+
+    <ImageView
+        android:id="@+id/same_city_list_item_iv"
+        android:layout_width="140dp"
+        android:layout_height="130dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_placeholder_style_1"/>
+
+    <TextView
+        android:id="@+id/same_city_list_item_btn_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@drawable/same_city_now"
+        android:gravity="center"
+        android:paddingLeft="@dimen/dp10"
+        android:paddingRight="@dimen/dp10"
+        android:text="活动情况"
+        android:textColor="@color/text_white"
+        android:textSize="@dimen/text_size_10"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginRight="@dimen/dp10"
+        android:layout_toRightOf="@id/same_city_list_item_iv"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dp10"
+        android:paddingLeft="@dimen/dp10"
+        android:paddingTop="@dimen/dp10">
+
+        <TextView
+            android:id="@+id/same_city_list_item_tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingBottom="@dimen/dp5"
+            android:text="活动名称"
+            android:textColor="@color/text_black_h2"
+            android:textSize="@dimen/text_size_15"></TextView>
+        <TextView
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_marginBottom="@dimen/dp5"
+            android:id="@+id/greate_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/green_bg"
+            android:text="我发起的"
+            android:textColor="@color/green_color"
+            android:textSize="@dimen/text_size_11"></TextView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp10"
+                android:text="@string/icon_time"
+                android:textColor="@color/icon_color"
+                android:textSize="@dimen/text_size_13"
+            />
+
+            <TextView
+                android:id="@+id/same_city_list_item_rb_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_gray_h1"
+                android:textSize="@dimen/text_size_13"
+            />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:paddingBottom="@dimen/dp10"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp10"
+                android:text="@string/icon_user"
+                android:textColor="@color/icon_color"
+                android:textSize="@dimen/text_size_13"
+            />
+
+            <TextView android:id="@+id/same_city_list_item_rb_num"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:textColor="@color/text_gray_h1"
+                      android:textSize="@dimen/text_size_13"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <View
+        style="@style/split_line_style_10dp"
+        android:layout_alignParentBottom="true"></View>
+</RelativeLayout>

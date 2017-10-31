@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/group_item"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/white"
+        android:paddingRight="20dp">
+
+        <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+            android:id="@+id/group_log"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/default_person" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/group_log"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:id="@+id/group_name"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_centerVertical="true"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:text="社群名称"
+                android:textColor="@color/text_black_h3"
+                android:textSize="@dimen/textSize" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/icon_member"
+                    android:textColor="@color/icon_color"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/group_persion_num"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="15人"
+                    android:textColor="@color/text_gray_h1"
+                    android:textSize="@dimen/small_textSize" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</LinearLayout>

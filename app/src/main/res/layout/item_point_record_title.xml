@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:minHeight="24dp"
+              android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/color_gray_d9d9d9"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/bg_color"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/title_month"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="本月"
+            android:textColor="@color/text_gray_h1"
+            android:textSize="13sp"
+            />
+
+        <TextView
+            android:id="@+id/title_point_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="赚取"
+            android:textColor="@color/text_gray_h1"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/title_point"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center_vertical"
+            android:text="20"
+            android:textColor="@color/text_black_h2"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/title_consume_point_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="使用"
+            android:textColor="@color/text_gray_h1"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/title_consume_point"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center_vertical"
+            android:text="100"
+            android:textColor="@color/text_black_h2"
+            android:textSize="13sp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/color_gray_d9d9d9"/>
+</LinearLayout>

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/commen_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/bg"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/personalhomepage_bg" />
+
+        <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+            android:id="@+id/officialentre_activity_image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="190dp"
+            android:src="@mipmap/per_def" />
+
+        <TextView
+            android:id="@+id/name_per"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="200dp"
+            android:layout_toRightOf="@id/officialentre_activity_image"
+            android:textColor="@color/text_white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/officialentre_activity_isflag"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="200dp"
+            android:layout_toRightOf="@id/name_per"
+            android:background="@mipmap/add_see"
+            android:button="@null" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bg"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="90dp"
+            android:layout_marginTop="10dp"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@id/text"
+            android:background="@color/bg_color" />
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@id/text2"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+
+            <!--公告-->
+            <LinearLayout
+                android:id="@+id/notice"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:orientation="vertical"
+                android:paddingRight="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/essay_image"
+                        android:layout_width="25dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="bottom"
+                        android:src="@mipmap/essay_pain" />
+
+                    <TextView
+                        android:id="@+id/commen_top_essay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="bottom"
+                        android:textColor="#ff8868"
+                        android:textSize="20sp" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/essay_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_horizontal"
+                    android:text="随记"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <!--日志-->
+            <LinearLayout
+                android:id="@+id/log"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="bottom"
+                        android:src="@mipmap/my_log" />
+
+                    <TextView
+                        android:id="@+id/commen_top_blog"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="bottom"
+                        android:textColor="#4a7ea5"
+                        android:textSize="20sp" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_horizontal"
+                    android:text="日志"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <!--相册-->
+            <LinearLayout
+                android:id="@+id/picture"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:orientation="vertical"
+                android:paddingLeft="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="bottom"
+                        android:src="@mipmap/my_album" />
+
+                    <TextView
+                        android:id="@+id/commen_top_photo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="bottom"
+                        android:textColor="#feb52b"
+                        android:textSize="20sp" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_horizontal"
+                    android:text="相册"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text3"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_below="@id/layout"
+            android:layout_marginTop="5dp"
+            android:background="@color/bg_color" />
+    </RelativeLayout>
+    <include layout="@layout/activity_topview_shadow" />
+
+    <FrameLayout
+        android:background="@color/transparent"
+        android:layout_alignParentBottom="true"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        >
+
+        <Button
+            android:layout_gravity="center_vertical"
+            android:id="@+id/btn_join"
+            android:background="@drawable/join_bg_blue"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="申请加入"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/joinButtonHeight"/>
+    </FrameLayout>
+
+</RelativeLayout>

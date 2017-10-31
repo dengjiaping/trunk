@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+    <View android:layout_width="match_parent"
+          android:background="@color/comment_bg"
+          android:layout_height="2dp"/>
+    <RelativeLayout
+        android:gravity="center_vertical"
+        android:background="@color/gray_bg1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:minHeight="50dp">
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/iv_key1"
+            android:layout_width="50dp"
+            android:padding="10dp"
+            android:src="@drawable/nim_message_input_keyboard"
+            android:layout_height="50dp" />
+        <ImageView
+            android:layout_toRightOf="@id/iv_key"
+            android:layout_gravity="center"
+            android:id="@+id/iv_img"
+            android:layout_width="50dp"
+            android:padding="10dp"
+            android:src="@drawable/face"
+            android:layout_height="50dp" />
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="center"
+                    android:id="@+id/iv_down"
+                    android:layout_width="50dp"
+                    android:padding="10dp"
+                    android:src="@mipmap/down"
+                    android:layout_height="50dp" />
+    </RelativeLayout>
+    <View android:layout_width="match_parent"
+          android:background="#cccccc"
+          android:layout_height="1dp"/>
+
+    <android.support.v4.view.ViewPager
+        android:layout_margin="5dp"
+        android:id="@+id/view_pager01"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+    </android.support.v4.view.ViewPager>
+</LinearLayout>

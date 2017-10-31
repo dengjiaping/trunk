@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal">
+        <!--时间-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/days"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="bottom"
+                android:text="20"
+                android:textColor="@color/text_black_h1"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/months"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="bottom"
+                android:text="3月"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <!--内容-->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/show_log"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="center|bottom"
+                android:text="发表日志"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/log_name"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="3dp"
+                android:layout_toRightOf="@id/show_log"
+                android:gravity="bottom"
+                android:text="最美是生活"
+                android:textSize="17sp" />
+
+            <GridView
+                android:id="@+id/image_content"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@id/log_name"
+                android:layout_marginTop="10dp"
+                android:horizontalSpacing="8dp"
+                android:numColumns="3"
+                android:verticalSpacing="8dp" />
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/image_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@mipmap/location"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="杭州市西湖区华彩国际" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <!--底部栏-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_color_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <CheckBox
+                android:id="@+id/like"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableLeft="@mipmap/like_false"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="40dp"
+                android:text="96" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/line_color_gray" />
+
+            <Button
+                android:id="@+id/comment"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableLeft="@mipmap/comment"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="40dp"
+                android:text="96" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/line_color_gray" />
+
+            <Button
+                android:id="@+id/share"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableLeft="@mipmap/share"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="40dp"
+                android:text="96" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_color_gray" />
+
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/grid_view_like"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:horizontalSpacing="10dp"
+        android:numColumns="8"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp">
+
+    </GridView>
+
+</LinearLayout>

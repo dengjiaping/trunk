@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/pull_to_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:descendantFocusability="blocksDescendants"
+        android:divider="@color/transparent"
+        android:dividerHeight="0.5dp" />
+
+    <FrameLayout
+        android:id="@+id/fl_emotionview_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+</LinearLayout>

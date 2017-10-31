@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@mipmap/menue_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/pop_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_exchange_face"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:background="@mipmap/pupbutton_bg"
+            android:text="更换封面"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/text_white" />
+
+        <Button
+            android:id="@+id/btn_exchange_class"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:background="@mipmap/pupbutton_bg"
+            android:text="转让班级"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white" />
+
+
+        <Button
+            android:id="@+id/btn_exist_class"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:background="@mipmap/pupbutton_bg"
+            android:text="退出班级"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="#00000000" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:background="@mipmap/pupbutton_bg"
+            android:text="取消"
+            android:textColor="@color/text_blue"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</RelativeLayout>

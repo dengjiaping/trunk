@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--操作栏-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="@dimen/itemMargin"
+        android:paddingRight="@dimen/itemMargin">
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/action_like"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@string/icon_zannone"
+            android:textColor="@color/text_black_h3"
+            android:textSize="15sp" />
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/action_discuss"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_toRightOf="@id/action_like"
+            android:layout_toEndOf="@id/action_like"
+            android:gravity="center"
+            android:text="@string/icon_topic4"
+            android:textColor="@color/text_black_h3"
+            android:textSize="15sp" />
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/action_share"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_toRightOf="@id/action_discuss"
+            android:layout_toEndOf="@id/action_discuss"
+            android:gravity="center"
+            android:text="@string/icon_share"
+            android:textColor="@color/text_black_h3"
+            android:textSize="15sp" />
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/action_menue"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@string/icon_more"
+            android:textColor="@color/text_black_h3"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+    <!--点赞与评论-->
+    <LinearLayout
+        android:id="@+id/like_comment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View style="@style/split_line_style_withMargin" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/itemMargin">
+
+            <!--点赞-->
+            <LinearLayout
+                android:id="@+id/like_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp">
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/show_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/icon_zan"
+                    android:textColor="@color/text_black_h3"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/show_like_num"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginStart="6dp"
+                    android:gravity="bottom"
+                    android:textColor="@color/text_black_h3"
+                    android:textSize="@dimen/tiny_textSize" />
+
+            </LinearLayout>
+
+            <!--评论-->
+            <LinearLayout
+                android:id="@+id/comment_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:id="@+id/comment_layout_items"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+                <TextView
+                    android:id="@+id/show_comment_num"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:gravity="bottom"
+                    android:textColor="@color/text_gray_h2"
+                    android:textSize="@dimen/small_textSize_login" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

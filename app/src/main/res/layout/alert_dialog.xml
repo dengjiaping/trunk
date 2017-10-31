@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/pop_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="@drawable/dialog_base"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_01"
+            style="@style/long_line_style"
+            android:layout_height="@dimen/itemHight"
+            android:background="@null"
+            android:text="button_1"
+            android:textColor="@color/text_black_h2"
+            android:textSize="@dimen/textSize"
+            android:visibility="gone"/>
+
+        <View
+            android:id="@+id/line_01"
+            style="@style/split_line_style"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btn_02"
+            style="@style/long_line_style"
+            android:layout_height="@dimen/itemHight"
+            android:background="@null"
+            android:text="button_2"
+            android:textColor="@color/text_black_h2"
+            android:textSize="@dimen/textSize"
+            android:visibility="gone"/>
+
+        <View
+            android:id="@+id/line_02"
+            style="@style/split_line_style"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btn_03"
+            style="@style/long_line_style"
+            android:layout_height="@dimen/itemHight"
+            android:background="@null"
+            android:text="button_3"
+            android:textColor="@color/text_black_h2"
+            android:textSize="@dimen/textSize"
+            android:visibility="gone"/>
+
+        <View
+            android:id="@+id/line_03"
+            style="@style/split_line_style"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btn_04"
+            style="@style/long_line_style"
+            android:layout_height="@dimen/itemHight"
+            android:background="@null"
+            android:text="button_4"
+            android:textColor="@color/text_black_h2"
+            android:textSize="@dimen/textSize"
+            android:visibility="gone"/>
+
+        <View
+            android:id="@+id/line_04"
+            style="@style/split_line_style"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btn_05"
+            style="@style/long_line_style"
+            android:layout_height="@dimen/itemHight"
+            android:background="@null"
+            android:text="button_5"
+            android:textColor="@color/text_black_h2"
+            android:textSize="@dimen/textSize"
+            android:visibility="gone"/>
+
+        <View
+            android:id="@+id/line_05"
+            style="@style/split_line_style"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btn_06"
+            style="@style/long_line_style"
+            android:layout_height="@dimen/itemHight"
+            android:background="@null"
+            android:text="button_6"
+            android:textColor="@color/text_black_h2"
+            android:textSize="@dimen/textSize"
+            android:visibility="gone"/>
+
+        <View
+            android:id="@+id/line_06"
+            style="@style/split_line_style"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btn_07"
+            style="@style/long_line_style"
+            android:layout_height="@dimen/itemHight"
+            android:background="@null"
+            android:text="button_7"
+            android:textColor="@color/text_black_h2"
+            android:textSize="@dimen/textSize"
+            android:visibility="gone"/>
+
+        <View
+            android:id="@+id/line_07"
+            style="@style/split_line_style"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btn_cancel"
+            style="@style/long_line_style"
+            android:layout_height="@dimen/itemHight"
+            android:background="@null"
+            android:text="取 消"
+            android:textColor="@color/text_black_h2"
+            android:textSize="@dimen/textSize"/>
+
+    </LinearLayout>
+
+</LinearLayout>

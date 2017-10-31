@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="6dp">
+
+    <LinearLayout
+        android:id="@+id/layout_right"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/blue_notice_button_bg"
+            android:gravity="center"
+            android:text="@string/icon_notice"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="3dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title_right"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="标题"
+                android:textColor="@color/text_black_h2"
+                android:textSize="@dimen/textSize" />
+
+            <TextView
+                android:id="@+id/content_right"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:lineSpacingExtra="3dp"
+                android:maxLines="3"
+                android:text="内容"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_left"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title_left"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="标题"
+                android:textColor="@color/text_black_h2"
+                android:textSize="@dimen/textSize" />
+
+            <TextView
+                android:id="@+id/content_left"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:lineSpacingExtra="3dp"
+                android:maxLines="3"
+                android:text="内容"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/blue_notice_button_bg"
+            android:gravity="center"
+            android:text="@string/icon_notice"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

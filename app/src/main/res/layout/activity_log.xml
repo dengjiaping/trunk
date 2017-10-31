@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/activityRoot"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:focusable="true"
+              android:focusableInTouchMode="true"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <include layout="@layout/thetopview_new"/>
+
+        <EditText
+            android:id="@+id/log_title_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:layout_marginRight="@dimen/itemMargin"
+            android:background="@null"
+            android:hint="日志标题"
+            android:maxLength="60"
+            android:minHeight="@dimen/itemHight"
+            android:textColor="@color/text_black_h2"
+            android:textColorHint="@color/text_gray_h2"
+            android:textSize="@dimen/text_size_18"
+            android:textStyle="bold"/>
+
+        <View style="@style/split_line_style_withLeftMargin"/>
+
+        <!--编辑区域-->
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/log_content_body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/itemMargin">
+
+                <EditText
+                    android:id="@+id/log_content_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="left"
+                    android:hint="内容"
+                    android:minLines="10"
+                    android:textColor="@color/text_black_h2"
+                    android:textColorHint="@color/text_gray_h1"
+                    android:textSize="@dimen/textSize"/>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <!--底层-->
+    <RelativeLayout
+        android:id="@+id/log_bottom_"
+        android:layout_width="match_parent"
+        android:layout_height="40.5dp"
+        >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/bg_color"/>
+
+        <!--键盘操作栏-->
+        <LinearLayout
+            android:id="@+id/log_picture_select"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/itemHight"
+            android:background="@color/bg_color"
+            android:onClick="onClick"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/itemMargin"
+            android:paddingRight="@dimen/itemMargin">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/iv_pic"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="@string/icon_img"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="@dimen/text_size_20"/>
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/tv_at"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="@string/icon_icon_at"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="@dimen/text_size_20"/>
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/tv_emtion"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="@string/icon_face"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="@dimen/text_size_20"/>
+
+            <TextView
+                android:id="@+id/draft"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="@dimen/dp10"
+                android:gravity="end|center_vertical"
+                android:onClick="onClick"
+                android:text="草稿箱"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!--表情键盘-->
+    <FrameLayout
+        android:id="@+id/fl_emotionview_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"/>
+
+</LinearLayout>

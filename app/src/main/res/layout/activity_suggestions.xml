@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_suggestions"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp28"
+                android:background="@color/bg_color"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp12"
+                android:text="请选择要反馈的问题类型"
+                android:textColor="@color/text_gray_h1"
+                android:textSize="@dimen/text_size_12" />
+
+            <RelativeLayout
+                android:id="@+id/receive_01"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingRight="@dimen/dp12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp12"
+                    android:layout_weight="1.7"
+                    android:gravity="center_vertical"
+                    android:text="吐槽存在的Bug"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="@dimen/text_size_14" />
+
+                <com.histudent.jwsoft.histudent.commen.view.swipemenulistview.CheckBoxView
+                    android:id="@+id/iv_01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center_vertical"
+                    android:text="@string/icon_radio"
+                    android:textSize="@dimen/text_size_15" />
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withLeftMargin"></View>
+
+            <RelativeLayout
+                android:id="@+id/receive_02"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingRight="@dimen/dp12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp12"
+                    android:layout_weight="1.7"
+                    android:gravity="center_vertical"
+                    android:text="新功能的建议"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="@dimen/text_size_14" />
+
+                <com.histudent.jwsoft.histudent.commen.view.swipemenulistview.CheckBoxView
+                    android:id="@+id/iv_02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center_vertical"
+                    android:text="@string/icon_radio"
+                    android:textSize="@dimen/text_size_15" />
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withLeftMargin"></View>
+
+            <RelativeLayout
+                android:id="@+id/receive_03"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingRight="@dimen/dp12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp12"
+                    android:layout_weight="1.7"
+                    android:gravity="center_vertical"
+                    android:text="账号相关问题"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="@dimen/text_size_14" />
+
+
+                <com.histudent.jwsoft.histudent.commen.view.swipemenulistview.CheckBoxView
+                    android:id="@+id/iv_03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center_vertical"
+                    android:text="@string/icon_radio"
+                    android:textSize="@dimen/text_size_15" />
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withLeftMargin"></View>
+
+            <RelativeLayout
+                android:id="@+id/receive_04"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingRight="@dimen/dp12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp12"
+                    android:layout_weight="1.7"
+                    android:gravity="center_vertical"
+                    android:text="使用体验问题"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="@dimen/text_size_14" />
+
+                <com.histudent.jwsoft.histudent.commen.view.swipemenulistview.CheckBoxView
+                    android:id="@+id/iv_04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center_vertical"
+                    android:text="@string/icon_radio"
+                    android:textSize="@dimen/text_size_15" />
+            </RelativeLayout>
+
+            <View
+                style="@style/split_line_style"
+                android:layout_height="@dimen/dp10"
+                android:background="@color/bg_color" />
+
+            <EditText
+
+                android:id="@+id/et_content"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:background="@color/white"
+                android:gravity="start"
+                android:hint="请告诉我们你的想法"
+                android:maxLength="200"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp20"
+                android:paddingTop="@dimen/dp5"
+                android:textColorHint="@color/text_gray_h1"
+                android:textSize="@dimen/text_size_13" />
+
+            <!--<TextView-->
+
+            <!--android:id="@+id/tv_count"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/dp20"-->
+            <!--android:background="@color/white"-->
+            <!--android:gravity="center_vertical|end"-->
+            <!--android:paddingRight="@dimen/dp20"-->
+            <!--android:text="0/200"-->
+            <!--android:textColor="@color/text_gray_h1"/>-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp28"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp12"
+                android:text="添加图片（选填，最多选择四张）"
+                android:textColor="@color/text_gray_h1"
+                android:textSize="@dimen/text_size_12" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/grid_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/dp10">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <View style="@style/split_line_style_10dp"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="@dimen/dp15"
+                    android:paddingLeft="@dimen/dp12"
+                    android:paddingRight="@dimen/dp10"
+                    android:paddingTop="@dimen/dp15"
+                    android:text="联系方式"
+                    android:textColor="@color/text_black_h1" />
+
+                <EditText
+                    android:id="@+id/et_tell"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:digits="1234567890"
+                    android:gravity="center_vertical"
+                    android:hint="请留下QQ或手机号方便我们及时联系"
+                    android:textColorHint="@color/text_gray_h1"
+                    android:textSize="@dimen/sp14" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:layout_marginBottom="@dimen/dp20"
+                android:layout_marginLeft="@dimen/dp20"
+                android:layout_marginRight="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp30"
+                android:background="@drawable/gray_button_3dp_bg"
+                android:enabled="false"
+                android:gravity="center"
+                android:text="提交"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

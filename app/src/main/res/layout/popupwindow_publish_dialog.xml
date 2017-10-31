@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_content_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/publish_content_blur_bg"
+    android:fitsSystemWindows="true">
+
+    <com.histudent.jwsoft.histudent.commen.view.IconView
+        android:id="@+id/close"
+        android:layout_width="@dimen/dp53"
+        android:layout_height="@dimen/dp53"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp10"
+        android:gravity="center"
+        android:text="@string/icon_add2"
+        android:textColor="@color/green_color"
+        android:textSize="@dimen/sp30"/>
+
+    <LinearLayout
+        android:id="@+id/ll_essay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="110dp"
+        android:layout_marginLeft="@dimen/dp48"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:layout_width="@dimen/dp51"
+            android:layout_height="@dimen/dp51"
+            android:background="@drawable/green_button_bg_circle"
+            android:gravity="center"
+            android:text="@string/icon_topic7"
+            android:textColor="@color/text_white"
+            android:textSize="25sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp13"
+            android:text="@string/publish_essay"
+            android:textColor="@color/_333333"
+            android:textSize="@dimen/sp14"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_upload_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="110dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:layout_width="@dimen/dp51"
+            android:layout_height="@dimen/dp51"
+            android:background="@drawable/yellow_button_bg_circle"
+            android:gravity="center"
+            android:text="@string/icon_img2"
+            android:textColor="@color/text_white"
+            android:textSize="25sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp13"
+            android:text="@string/upload_photo"
+            android:textColor="@color/_333333"
+            android:textSize="@dimen/sp14"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_write_log"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="110dp"
+        android:layout_marginRight="@dimen/dp48"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:layout_width="@dimen/dp51"
+            android:layout_height="@dimen/dp51"
+            android:background="@drawable/red_button_bg_circle"
+            android:gravity="center"
+            android:text="@string/icon_topic7"
+            android:textColor="@color/text_white"
+            android:textSize="25sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp13"
+            android:text="@string/write_log"
+            android:textColor="@color/_333333"
+            android:textSize="@dimen/sp14"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/activity_details_pop_window_btn_share"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/popupwindow_bg"
+        android:text="分享到微信" />
+
+    <Button
+        android:id="@+id/activity_details_pop_window_btn_report"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/popupwindow_bg"
+        android:text="举报" />
+
+    <View
+        style="@style/MyViewHorz"
+        android:layout_height="6dp"
+        android:background="@color/transparent"></View>
+
+    <Button
+        android:id="@+id/activity_details_pop_window_btn_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:background="@drawable/popupwindow_bg"
+        android:text="取消" />
+</LinearLayout>

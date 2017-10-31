@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp45"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp5"
+        android:paddingRight="@dimen/dp5">
+
+        <TextView
+            android:id="@+id/tv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="@string/cancel"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/text_color"
+            android:textSize="@dimen/sp18"/>
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="@string/confirm"/>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp60"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            style="@style/rich_edit_text_color_layout">
+
+            <CheckBox
+                android:id="@+id/cb_black"
+                style="@style/rich_edit_checkBox"
+                android:background="@drawable/editor_color_shape_black"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/rich_edit_text_color_layout">
+
+            <CheckBox
+                android:id="@+id/cb_red"
+                style="@style/rich_edit_checkBox"
+                android:background="@drawable/editor_color_shape_red"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/rich_edit_text_color_layout">
+
+            <CheckBox
+                android:id="@+id/cb_orange"
+                style="@style/rich_edit_checkBox"
+                android:background="@drawable/editor_color_shape_orange"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/rich_edit_text_color_layout">
+
+            <CheckBox
+                android:id="@+id/cb_yellow"
+                style="@style/rich_edit_checkBox"
+                android:background="@drawable/editor_color_shape_yellow"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/rich_edit_text_color_layout">
+
+            <CheckBox
+                android:id="@+id/cb_green"
+                style="@style/rich_edit_checkBox"
+                android:background="@drawable/editor_color_shape_green"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/rich_edit_text_color_layout">
+
+            <CheckBox
+                android:id="@+id/cb_blue"
+                style="@style/rich_edit_checkBox"
+                android:background="@drawable/editor_color_shape_blue"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/rich_edit_text_color_layout">
+
+            <CheckBox
+                android:id="@+id/cb_pink"
+                style="@style/rich_edit_checkBox"
+                android:background="@drawable/editor_color_shape_pink"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/rich_edit_text_color_layout">
+
+            <CheckBox
+                android:id="@+id/cb_purple"
+                style="@style/rich_edit_checkBox"
+                android:background="@drawable/editor_color_shape_purple"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp60"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            style="@style/rich_edit_text_color_layout">
+
+            <CheckBox
+                android:id="@+id/cb_blue2"
+                style="@style/rich_edit_checkBox"
+                android:background="@drawable/editor_color_shape_blue2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/rich_edit_text_color_layout">
+
+            <CheckBox
+                android:id="@+id/cb_lilac2"
+                style="@style/rich_edit_checkBox"
+                android:background="@drawable/editor_color_shape_lilac2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/rich_edit_text_color_layout">
+
+            <CheckBox
+                android:id="@+id/cb_lilac"
+                style="@style/rich_edit_checkBox"
+                android:background="@drawable/editor_color_shape_lilac"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/rich_edit_text_color_layout">
+
+            <CheckBox
+                android:id="@+id/cb_black2"
+                style="@style/rich_edit_checkBox"
+                android:background="@drawable/editor_color_shape_black2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/rich_edit_text_color_layout">
+
+            <CheckBox
+                android:id="@+id/cb_gray1"
+                style="@style/rich_edit_checkBox"
+                android:background="@drawable/editor_color_shape_gray1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/rich_edit_text_color_layout">
+
+            <CheckBox
+                android:id="@+id/cb_gray2"
+                style="@style/rich_edit_checkBox"
+                android:background="@drawable/editor_color_shape_gray2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/rich_edit_text_color_layout">
+
+            <CheckBox
+                android:id="@+id/cb_gray3"
+                style="@style/rich_edit_checkBox"
+                android:background="@drawable/editor_color_shape_gray3"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/rich_edit_text_color_layout">
+
+            <CheckBox
+                android:id="@+id/cb_gray4"
+                style="@style/rich_edit_checkBox"
+                android:background="@drawable/editor_color_shape_gray4"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

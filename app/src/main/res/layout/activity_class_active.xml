@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new"/>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/transparent"
+            android:dividerHeight="0dp"/>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+    <LinearLayout
+        android:id="@+id/create"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp44"
+        android:background="@color/green_color"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:orientation="horizontal">
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/icon_pen"
+            android:textColor="@color/white"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp5"
+            android:paddingStart="@dimen/dp5"
+            android:text="发起活动"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_15"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

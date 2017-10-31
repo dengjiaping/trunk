@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new" />
+
+    <include layout="@layout/include_work_correnct_header"/>
+
+    <TextView
+        android:id="@+id/work_detail_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:background="@color/white"/>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/work_detail_recycler_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/itemMargin"
+        android:paddingRight="@dimen/itemMargin">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/work_detail_recycler_video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/itemMargin"
+        android:paddingRight="@dimen/itemMargin">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <include layout="@layout/include_voice_play" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="12dp"
+        android:text="作业评语"
+        android:textSize="17sp"
+        android:textColor="@color/text_black_h2"
+        />
+    <View
+        style="@style/split_line_style_1dp"
+        />
+
+
+    <com.histudent.jwsoft.histudent.widget.FlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.histudent.jwsoft.histudent.widget.FlowLayout>
+
+
+    <include layout="@layout/include_voice_play" />
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/_f8f8f8">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="4"
+            android:textSize="15sp"
+            android:textColorHint="@color/text_gray_h1"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/control_record"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:clickable="true"
+                android:text="@string/icon_microphone"
+                android:textColor="@color/icon_color"
+                android:textSize="20sp" />
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/control_emotion"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="@string/icon_face"
+                android:textColor="@color/icon_color"
+                android:textSize="@dimen/text_size_20" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="right|center_vertical"
+                android:text="0/150"
+                android:textColor="@color/text_gray_h1"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

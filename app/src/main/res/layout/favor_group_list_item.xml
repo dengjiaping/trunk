@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:descendantFocusability="blocksDescendants"
+                android:orientation="vertical">
+
+    <com.histudent.jwsoft.histudent.commen.view.CircleImageView
+        android:id="@+id/favor_group_list_iv"
+        android:layout_width="@dimen/iv_group_default"
+        android:layout_height="@dimen/iv_group_default"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:src="@mipmap/default_group"/>
+
+    <LinearLayout
+        android:id="@+id/favor_group_linear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/favor_group_list_iv"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:textSize="@dimen/sp16"
+            android:id="@+id/favor_group_list_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="222"
+            android:textColor="@color/text_black_h2"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/favor_group_list_tv_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:background="@drawable/same_city_now"
+                android:button="@null"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="钢琴"
+                android:textColor="@color/white"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:textColor="@color/text_gray_h2"
+                android:id="@+id/favor_group_list_tv_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/favor_group_list_tv_tag"
+                android:text="成员: 15"
+                android:textSize="@dimen/text_size_13"/>
+        </LinearLayout>
+
+
+        <TextView
+            android:textColor="@color/text_gray_h2"
+            android:id="@+id/favor_group_list_tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:text="浙江-杭州-西湖区"
+            android:textSize="@dimen/text_size_13"/>
+    </LinearLayout>
+
+    <RadioButton
+        style="@style/attention_style"
+        android:id="@+id/favor_group_list_btn_join"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/join_btn_seletcot"
+        android:button="@null"
+        android:gravity="center"
+        android:textColor="@color/text_blue"/>
+
+    <View
+        android:layout_alignParentBottom="true"
+          style="@style/split_line_style_withMargin" ></View>
+</RelativeLayout>

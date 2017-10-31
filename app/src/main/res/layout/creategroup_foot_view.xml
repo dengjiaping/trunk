@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/addTember_button"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@null"
+        android:drawableLeft="@mipmap/add_blue"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:onClick="onClick"
+        android:paddingLeft="15dp"
+        android:text="添加成员"
+        android:textColor="@color/text_blue"
+        android:textSize="@dimen/textSize" />
+
+</LinearLayout>

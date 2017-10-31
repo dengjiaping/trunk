@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    >
+
+    <include layout="@layout/thetopview"/>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/thetopview"
+        android:background="@color/bg_color"></View>
+
+    <LinearLayout
+        android:background="@color/white"
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <RadioGroup
+
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="50dp"
+                android:background="@null"
+                android:button="@null"
+                android:gravity="center"
+                android:text="发表的主题"
+                android:textColor="@color/text_blue"
+                android:textSize="16sp"
+                />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="50dp"
+                android:background="@null"
+                android:button="@null"
+                android:gravity="center"
+                android:text="跟帖的主题"
+                android:textColor="@color/text_black_h1"
+                android:textSize="16sp"
+                />
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/radio_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/line1"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@color/bg_color"
+                />
+
+            <View
+                android:id="@+id/line3"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                />
+
+            <View
+                android:id="@+id/line2"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@color/bg_color"
+                />
+
+        </LinearLayout>
+
+        <View android:layout_width="match_parent"
+              android:background="@color/bg_color"
+              android:layout_height="5dp">
+        </View>
+
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/linear"
+        ></FrameLayout>
+</RelativeLayout>

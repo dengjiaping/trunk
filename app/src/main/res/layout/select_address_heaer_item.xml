@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/bg_color"
+              android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp10"
+        android:text="你所在的地区"/>
+    <TextView
+
+        android:id="@+id/tv_currentcity"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp40"
+        android:layout_margin="@dimen/dp10"
+        android:background="@drawable/address_unseleted"
+        android:gravity="center"
+        android:paddingLeft="@dimen/dp15"
+        android:paddingRight="@dimen/dp15"
+        android:textColor="@color/text_black_h1"/>
+
+    <ExpandableListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ExpandableListView>
+    <TextView
+        android:id="@+id/tv_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp10"
+        android:text="全部热门的地区"/>
+
+    <com.histudent.jwsoft.histudent.commen.view.MyGridView
+        android:id="@+id/grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp5"
+        android:numColumns="3">
+    </com.histudent.jwsoft.histudent.commen.view.MyGridView>
+</LinearLayout>

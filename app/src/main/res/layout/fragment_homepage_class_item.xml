@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/classList_layout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/selector_press_style_frame"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp">
+
+        <!--班级logo-->
+        <ImageView
+            android:id="@+id/class_logo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/default_person" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/class_school"
+                style="@style/text_back_v2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:textSize="@dimen/tiny_textSize" />
+
+            <TextView
+                android:id="@+id/class_grade"
+                style="@style/text_back_v2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:textSize="@dimen/tiny_textSize" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

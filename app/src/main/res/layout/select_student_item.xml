@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/parent_view"
+                android:background="@color/bg_color"
+                android:orientation="horizontal">
+
+    <CheckBox
+
+        android:id="@+id/checkbox"
+        android:layout_width="@dimen/dp15"
+        android:layout_height="@dimen/dp15"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/select_student_selector"
+        android:button="@null"
+    />
+
+    <com.histudent.jwsoft.histudent.commen.view.CircleImageView
+        android:id="@+id/iv"
+        android:layout_width="@dimen/dp50"
+        android:layout_height="@dimen/dp50"
+        android:layout_margin="@dimen/dp10"
+        android:layout_toRightOf="@id/checkbox"
+        android:gravity="center_vertical"
+        android:src="@mipmap/avatar_def"/>
+
+    <TextView
+        android:textSize="@dimen/sp15"
+        android:textColor="@color/text_black_h1"
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/iv"
+        android:gravity="center_vertical"
+        android:text="姓名"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/line_split1"></View>
+</RelativeLayout>

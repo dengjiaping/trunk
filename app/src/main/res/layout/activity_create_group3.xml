@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="选择一个地方，让同城的人能够看到群"
+        android:textColor="@color/text_black_h1"
+        android:textSize="@dimen/textSize" />
+
+    <RelativeLayout
+        android:id="@+id/relative_address"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/create_group3_rb_address"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:drawablePadding="15dp"
+            android:paddingRight="20dp"
+            android:src="@mipmap/more" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/create_group3_rb_address"
+            android:gravity="center_vertical"
+            android:paddingRight="5dp"
+            android:text="群位置"
+            android:textSize="@dimen/textSize" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="选择一个标签，方便志同道合的伙伴找到你的群"
+        android:textColor="@color/text_black_h1"
+        android:textSize="@dimen/textSize" />
+
+    <RelativeLayout
+        android:id="@+id/relative_type"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/create_group3_rb_type"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:drawablePadding="15dp"
+            android:paddingRight="20dp"
+            android:src="@mipmap/more"
+            android:text="点击选择" />
+
+        <TextView
+            android:id="@+id/create_group3_tv_type"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/create_group3_rb_type"
+            android:gravity="center_vertical"
+            android:paddingRight="5dp"
+            android:text="点击选择群标签"
+            android:textSize="@dimen/textSize" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="选择一个权限，控制非社群成员的访问权限"
+        android:textColor="@color/text_black_h1"
+        android:textSize="@dimen/textSize" />
+
+    <RelativeLayout
+        android:id="@+id/relative_authority"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/rb_authority"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:button="@null"
+            android:drawablePadding="10dp"
+            android:paddingRight="20dp"
+            android:src="@mipmap/more" />
+
+        <TextView
+            android:id="@+id/tv_authority"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/rb_authority"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="5dp"
+            android:text="公开"
+            android:textSize="@dimen/textSize" />
+    </RelativeLayout>
+
+</LinearLayout>

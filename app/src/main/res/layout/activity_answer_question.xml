@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/persion_activity_top"
+        layout="@layout/persion_commen_top" />
+
+    <include layout="@layout/activity_topview_shadow" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/persion_activity_top"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/itemHight"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/itemMargin"
+            android:paddingRight="@dimen/itemMargin"
+            android:text="主人设置了权限，回答问题后可访问。"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/textSize" />
+
+        <!--问题-->
+        <TextView
+            android:id="@+id/question_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/itemHight"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/itemMargin"
+            android:paddingStart="@dimen/itemMargin"
+            android:text="问题："
+            android:textColor="@color/text_black_h1"
+            android:textSize="@dimen/textSize" />
+
+        <View style="@style/split_line_style_withMargin" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/itemHight"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/itemMargin"
+            android:paddingRight="@dimen/itemMargin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/itemHight"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:text="答案："
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/textSize" />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemHight"
+                android:background="@color/white"
+                android:hint="请输入你的答案"
+                android:textColorHint="@color/text_gray_h2" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/submit"
+            style="@style/long_blue_button"
+            android:layout_marginTop="@dimen/dp40"
+            android:onClick="onClick"
+            android:text="提 交" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/setlike_top"
+        layout="@layout/thetopview" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setlike_top"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <ListView
+                android:id="@+id/list_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.histudent.jwsoft.histudent.commen.view.MyGridView2
+                android:id="@+id/grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:horizontalSpacing="5dp"
+                android:numColumns="8"
+                android:verticalSpacing="5dp"
+                android:visibility="gone" />
+
+            <ListView
+                android:id="@+id/list_discuss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!--聊天输入框-->
+    <LinearLayout
+        android:id="@+id/chat_input"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/foot_view_height"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/margin_long"
+        android:paddingRight="@dimen/margin_long">
+
+        <EditText
+            android:id="@+id/chat_edit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="5.5"
+            android:background="@drawable/chat_gb"
+            android:hint="评论..."
+            android:paddingLeft="8dp" />
+
+        <ImageView
+            android:id="@+id/chat_face"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:onClick="onClick"
+            android:padding="6dp"
+            android:src="@drawable/face" />
+
+        <Button
+            android:id="@+id/chat_send"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/chat_text_blue"
+            android:onClick="onClick"
+            android:text="评论"
+            android:textColor="@color/text_white"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+    </FrameLayout>
+
+</RelativeLayout>

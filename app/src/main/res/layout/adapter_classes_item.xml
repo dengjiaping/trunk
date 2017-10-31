@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/class_item"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/white"
+        >
+
+        <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+            android:id="@+id/class_log"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/default_person" />
+
+        <ImageView
+            android:id="@+id/class_goto"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/mine_more_right" />
+
+        <TextView
+            android:id="@+id/class_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_toLeftOf="@id/class_goto"
+            android:layout_toRightOf="@id/class_log"
+            android:gravity="center_vertical"
+            android:text="2016级计科二班"
+            android:textColor="@color/text_black_h1"
+            android:textSize="@dimen/textSize" />
+
+    </RelativeLayout>
+</LinearLayout>

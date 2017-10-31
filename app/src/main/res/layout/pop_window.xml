@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/pop_layout"
+        android:layout_width="match_parent"
+        android:layout_height="168dp"
+        android:layout_centerVertical="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/relative_care"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/iv_care"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/action_no_especially_attention" />
+
+            <TextView
+                android:id="@+id/particularly_see"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/iv_care"
+                android:gravity="center_vertical"
+                android:text="特别关注"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <View style="@style/split_line_style" />
+
+        <RelativeLayout
+            android:id="@+id/relative_cancel_attention"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/iv_cancel_care"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/action_cancel_attention" />
+
+            <TextView
+                android:id="@+id/see"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/iv_cancel_care"
+                android:gravity="center_vertical"
+                android:text="取消关注"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <View style="@style/split_line_style" />
+
+        <RelativeLayout
+            android:id="@+id/relative_shield"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/iv_shield"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/action_no_shield" />
+
+            <TextView
+                android:id="@+id/action"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/iv_shield"
+                android:gravity="center_vertical"
+                android:text="屏蔽动态"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <View style="@style/split_line_style" />
+
+        <RelativeLayout
+            android:id="@+id/relative_report"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_report"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/action_report" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/iv_report"
+                android:gravity="center_vertical"
+                android:text="举报"
+                android:textSize="15sp" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

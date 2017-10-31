@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new" />
+
+    <View style="@style/split_line_style_10dp"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="@dimen/dp15">
+
+        <TextView
+            android:id="@+id/tv_file_name"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:text="相册名称"
+            android:textColor="@color/text_black_h1"
+            android:textSize="@dimen/textSize" />
+
+
+        <EditText
+            android:id="@+id/et_file_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="请输入相册名称"
+            android:maxLength="20"
+            android:minHeight="@dimen/dp50"
+            android:textColorHint="@color/text_gray_h1"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/file_name_num"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp50"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp10"
+            android:text="0/20"
+            android:textColor="@color/text_gray_h1"
+            android:textSize="@dimen/textSize" />
+
+
+    </LinearLayout>
+
+    <View style="@style/split_line_style_withLeftMargin"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/et_des"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:text="相册描述"
+            android:textColor="@color/text_black_h1"
+            android:textSize="@dimen/textSize" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp20">
+
+            <EditText
+
+                android:id="@+id/et_file_des"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/dp15"
+                android:background="@null"
+                android:gravity="start|top"
+                android:hint="请输入相册描述"
+                android:maxLength="50"
+                android:minHeight="@dimen/dp60"
+                android:textColorHint="@color/text_gray_h1"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/et_file_des"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/dp15"
+                android:paddingBottom="@dimen/dp5"
+                android:text="0/50"
+                android:textColor="@color/text_gray_h1" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View style="@style/split_line_style_10dp"></View>
+
+    <RelativeLayout
+        android:id="@+id/relative_photo_quality"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:onClick="onClick">
+
+
+        <LinearLayout
+            android:id="@+id/relative_quality"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:background="@color/white"
+            android:onClick="onClick"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp15">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/icon_clock"
+                android:textColor="@color/icon_color"
+                android:textSize="@dimen/text_size_15" />
+
+            <TextView
+                android:id="@+id/rb_authority"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp10"
+                android:text="隐私设置"
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/textSize" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_authority"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/ImageNextSize"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingBottom="@dimen/ImageNextPandingSizeVert"
+            android:paddingLeft="@dimen/dp5"
+            android:paddingRight="@dimen/ImageNextPandingSize"
+            android:paddingTop="@dimen/ImageNextPandingSizeVert"
+            android:src="@mipmap/mine_more_right" />
+
+        <TextView
+            android:id="@+id/tv_authority"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/iv_authority"
+            android:gravity="center_vertical"
+            android:text="公开"
+            android:textColor="@color/text_black_h2"
+            android:textSize="@dimen/textSize_" />
+    </RelativeLayout>
+
+    <View style="@style/split_line_style_withLeftMargin"></View>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_color">
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@color/textBar_color"/>
+
+    <include layout="@layout/thetopview_new"/>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!--学校-->
+                <LinearLayout
+                    android:id="@+id/school_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:id="@+id/school"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/itemHight"
+                        android:background="@color/white"
+                        android:onClick="onClick"
+                        android:paddingLeft="@dimen/itemMargin">
+
+                        <com.histudent.jwsoft.histudent.commen.view.IconView
+                            android:id="@+id/school_log"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="@string/icon_school"
+                            android:textColor="@color/color_blue_3a9efb"
+                            android:textSize="18sp"/>
+
+                        <TextView
+                            android:id="@+id/school_"
+                            style="@style/textInMyFragmentLeft"
+                            android:layout_marginLeft="@dimen/itemMargin"
+                            android:layout_toRightOf="@id/school_log"
+                            android:text="学校"
+                            android:textColor="@color/text_black_h2"/>
+
+                        <TextView
+
+                            android:id="@+id/school_name"
+                            style="@style/textInMyFragmentLeft"
+                            android:layout_toRightOf="@id/school_"
+                            android:paddingLeft="@dimen/dp10"
+                            android:text="乐清市丹霞路小学"
+                            android:textColor="@color/text_gray_h2"
+                            android:textSize="@dimen/text_size_13"/>
+
+                        <com.histudent.jwsoft.histudent.commen.view.IconView
+                            style="@style/icon_arrowright_style"
+                            android:layout_alignParentRight="true"/>
+
+                    </RelativeLayout>
+
+                    <HorizontalScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:scrollbars="none">
+
+                        <LinearLayout
+                            android:id="@+id/ll_hot_class"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dp10"
+                            android:background="@color/white"
+                            android:orientation="horizontal"
+                            android:paddingRight="@dimen/dp10">
+
+                        </LinearLayout>
+
+                    </HorizontalScrollView>
+
+                    <View style="@style/split_line_style_10dp"></View>
+                </LinearLayout>
+
+
+                <!--兴趣社群-->
+                <RelativeLayout
+                    android:id="@+id/favor"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/itemHight"
+                    android:background="@color/white"
+                    android:paddingLeft="@dimen/itemMargin">
+
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/grow_info_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/icon_interest"
+                        android:layout_marginBottom="8dp"
+                        android:textColor="@color/yellow_bg"
+                        android:textSize="18sp"/>
+                    <TextView
+                        android:id="@+id/grow_name"
+                        style="@style/textInMyFragmentLeft"
+                        android:layout_marginLeft="@dimen/itemMargin"
+                        android:layout_toRightOf="@id/grow_info_img"
+                        android:text="兴趣社群"
+                        android:textColor="@color/text_black_h2"/>
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        style="@style/icon_arrowright_style"/>
+
+                </RelativeLayout>
+
+                <com.histudent.jwsoft.histudent.commen.view.MyGridView
+                    android:id="@+id/grid_view_favor_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp20"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginRight="@dimen/dp10"
+                    android:horizontalSpacing="@dimen/dp10"
+                    android:numColumns="4"
+                    android:paddingTop="@dimen/dp10"
+                    android:verticalSpacing="@dimen/dp20">
+
+                </com.histudent.jwsoft.histudent.commen.view.MyGridView>
+
+                <View style="@style/split_line_style_10dp"></View>
+                <!--应用中心-->
+                <LinearLayout
+                    android:id="@+id/app_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/itemHight"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/itemMargin">
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/icon_bag"
+                        android:textColor="@color/green_color"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        style="@style/textInMyFragmentLeft"
+                        android:layout_marginLeft="@dimen/itemMargin"
+                        android:layout_toRightOf="@id/grow_info_img"
+                        android:text="应用中心"
+                        android:textColor="@color/text_black_h2"/>
+
+                </LinearLayout>
+
+                <com.histudent.jwsoft.histudent.commen.view.MyGridView
+                    android:id="@+id/grid_view_app"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp20"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:gravity="center"
+                    android:listSelector="@color/transparent"
+                    android:numColumns="4"
+                    android:paddingTop="@dimen/dp5"
+                    android:verticalSpacing="@dimen/dp20">
+
+                </com.histudent.jwsoft.histudent.commen.view.MyGridView>
+
+            </LinearLayout>
+
+        </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+</LinearLayout>

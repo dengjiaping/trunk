@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="90dp">
+
+    <com.histudent.jwsoft.histudent.commen.view.CircleImageView
+        android:id="@+id/group_details_list_item_iv_person"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:src="@mipmap/per_def"/>
+
+    <TextView
+        android:id="@+id/group_details_list_item_tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="12dp"
+        android:layout_toRightOf="@id/group_details_list_item_iv_person"
+        android:text="张三"/>
+
+    <ImageView
+        android:id="@+id/iv_admin"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/group_details_list_item_tv_name"
+        android:padding="20dp"
+        android:src="@mipmap/super_manager"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/iv_manager"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/group_details_list_item_tv_name"
+        android:padding="20dp"
+        android:src="@mipmap/comon_manager"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/iv_commen"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/group_details_list_item_tv_name"
+        android:padding="20dp"
+        android:src="@mipmap/member"
+        android:visibility="gone"/>
+
+
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/group_details_list_item_iv_person"
+       android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@id/group_details_list_item_tv_name"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/iv_essay_pic_default"
+            android:layout_height="@dimen/iv_essay_pic_default"
+            android:src="@mipmap/essay"/>
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:id="@+id/tv_essay_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12"/>
+
+
+        <RelativeLayout
+            android:layout_width="10dp"
+            android:layout_height="match_parent"></RelativeLayout>
+        <ImageView
+            android:layout_width="@dimen/iv_essay_pic_default"
+            android:layout_height="@dimen/iv_essay_pic_default"
+            android:src="@mipmap/person_img"/>
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:id="@+id/tv_img_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/group_details_list_item_iv_phone"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/group_details_list_item_iv_sex"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:padding="12dp"
+        android:src="@mipmap/phone"></ImageView>
+</RelativeLayout>

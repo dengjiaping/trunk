@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_gray_alpha40"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/thetopview_yd"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        style="@style/topView_style_"
+        android:layout_width="match_parent">
+
+        <ImageView
+            android:id="@+id/tip_image_yd"
+            style="@style/topView_frist_style_size"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/essay_share_yd" />
+
+        <ImageView
+            android:id="@+id/tip_image_know"
+            android:layout_width="62dp"
+            android:layout_height="25dp"
+            android:layout_below="@id/tip_image_yd"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/know_yd" />
+
+        <ImageView
+            android:id="@+id/the_top_yd"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="end"
+            android:layout_marginBottom="2dp"
+            android:layout_marginRight="75dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/right_bottom_yd" />
+
+    </RelativeLayout>
+
+    <!--分享-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:visibility="visible">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:button="@null"
+            android:drawableLeft="@mipmap/share_gray"
+            android:drawablePadding="20dp"
+            android:gravity="center_vertical"
+            android:text="分享到"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/textSize" />
+
+
+        <ImageView
+            android:id="@+id/share_QQzone"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@mipmap/qqzone_false"
+            android:button="@null" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:layout_toLeftOf="@id/share_QQzone"
+            android:background="@mipmap/friend_circle_true"
+            android:button="@null" />
+    </RelativeLayout>
+
+</LinearLayout>

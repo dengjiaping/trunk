@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new"></include>
+
+    <View
+        android:id="@+id/line"
+        style="@style/title_split_line"
+        android:layout_below="@id/thetopview"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/line"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/btn_join"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginBottom="@dimen/dp10"
+            android:layout_marginLeft="@dimen/dp12"
+            android:layout_marginRight="@dimen/dp12"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@drawable/upload_image_bg"
+            android:onClick="onClick">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal">
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/icon_add"
+                    android:textColor="@color/green_color"
+                    android:textSize="@dimen/text_size_15" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp10"
+                    android:text="新建相册"
+                    android:textColor="@color/green_color"
+                    android:textSize="@dimen/text_size_15" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/line0"
+            style="@style/split_line_style"></View>
+
+        <FrameLayout
+            android:id="@+id/fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/thetopview"
+        android:background="@color/color_gray_alpha40"
+        android:visibility="gone" />
+
+</RelativeLayout>

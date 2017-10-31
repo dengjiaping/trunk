@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical"
+>
+
+    <include layout="@layout/thetopview_new"/>
+    <View style="@style/split_line_style_10dp"></View>
+
+
+    <LinearLayout
+        android:id="@+id/ll_reason"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_reason"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="选择举报原因"
+            android:textColor="@color/text_black_h1"
+            android:layout_marginLeft="@dimen/dp12"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_15"/>
+
+
+        <ImageView
+            android:id="@+id/iv_next"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="@dimen/dp12"
+            android:gravity="center_vertical"
+            android:src="@mipmap/more"/>
+
+    </LinearLayout>
+
+
+    <View style="@style/split_line_style_10dp"></View>
+
+
+
+
+    <View style="@style/split_line_style"></View>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp12">
+
+        <EditText
+            android:id="@+id/et_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp12"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:gravity="start"
+            android:hint="请填写举报原因"
+            android:textColorHint="@color/text_gray_h1"
+            android:textSize="@dimen/text_size_14"/>
+    </LinearLayout>
+
+    <TextView
+
+        android:id="@+id/btn_report"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:layout_marginLeft="@dimen/dp20"
+        android:layout_marginRight="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp40"
+        android:background="@drawable/green_button_bg_"
+        android:gravity="center"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="18sp"/>
+</LinearLayout>

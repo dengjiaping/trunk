@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/itemMargin"
+        android:paddingRight="@dimen/itemMargin">
+
+        <ListView
+            android:id="@+id/growInfo_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/bg_color"
+            android:dividerHeight="0.5dp"
+            android:scrollbars="none" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/_EFF0F2"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_subject_manage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

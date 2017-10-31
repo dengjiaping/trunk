@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/dp8">
+
+    <RelativeLayout
+        android:id="@+id/rl_hot_user_bg"
+        android:layout_width="@dimen/dp60"
+        android:layout_height="@dimen/dp60">
+
+        <com.histudent.jwsoft.histudent.widget.AutoImageView
+            android:id="@+id/fashion_head"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/itemMargin"
+            android:src="@drawable/avatar_def"/>
+
+        <ImageView
+            android:id="@+id/iv_teacher_identity"
+            android:layout_width="@dimen/dp15"
+            android:layout_height="@dimen/dp15"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/hot_person_teacher"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/fashion_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center"
+        android:textColor="@color/text_black_h3"
+        android:textSize="@dimen/tiny_textSize"/>
+
+</LinearLayout>

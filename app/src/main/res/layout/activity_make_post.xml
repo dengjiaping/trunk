@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <include layout="@layout/thetopview"/>
+
+    <LinearLayout
+        android:id="@+id/linear_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/thetopview">
+
+        <EditText
+
+            android:id="@+id/et_title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:hint="输入标题"
+            android:inputType="none"
+            android:paddingLeft="20dp"
+            android:maxLines="1"/>
+    </LinearLayout>
+
+
+    <View
+        style="@style/split_line_style_withMargin"
+        android:id="@+id/line"
+        android:layout_below="@+id/linear_title"
+     ></View>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line">
+
+        <EditText
+            android:id="@+id/et_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="start"
+            android:hint="输入正文"
+            android:inputType="none"
+            android:minHeight="200dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            />
+    </LinearLayout>
+
+
+    <CheckBox
+        android:id="@+id/cb_isAnonymous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearLayout2"
+        android:text="匿名发布"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <FrameLayout
+            android:id="@+id/fl_emotionview_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+</RelativeLayout>

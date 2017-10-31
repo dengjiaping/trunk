@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_commom_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/class_commen_top"
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+        <!--背景-->
+        <ImageView
+            android:id="@+id/class_commen_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/person_center_cover" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/cover_bg" />
+
+        <!--班级logo-->
+        <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+            android:id="@+id/class_commen_headImage"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:src="@mipmap/classpicture_def" />
+
+        <!--班级二维码-->
+        <ImageView
+            android:id="@+id/class_commen_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="15dp"
+            android:onClick="onClick"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/qr_code" />
+
+        <!--班主任-->
+        <TextView
+            android:id="@+id/class_commen_teacher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/class_commen_code"
+            android:layout_toRightOf="@id/class_commen_headImage"
+            android:text="班主任：洪达仙"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize" />
+
+        <!--班级-->
+        <TextView
+            android:id="@+id/class_commen_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/class_commen_teacher"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="55dp"
+            android:layout_toRightOf="@id/class_commen_headImage"
+            android:text="杭州长天小学2012级三班反反复复"
+            android:textColor="@color/text_white"
+            android:textSize="@dimen/large_textSize" />
+
+        <!--班级成员-->
+        <LinearLayout
+            android:id="@+id/class_commen_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/persion_commen_info_bg"
+            android:gravity="center_vertical"
+            android:onClick="onClick"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/group_member" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp5"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="@dimen/dp5"
+                android:gravity="center_vertical"
+                android:text="班级成员"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/itemHight"
+        android:background="@color/white">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/bg_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/itemHight"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/class_home_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="49.5dp"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:text="主页"
+                    android:textColor="@color/button_top_blue"
+                    android:textSize="@dimen/textSize" />
+
+                <View
+                    android:id="@+id/class_home_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/button_top_blue" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/class_notice_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="49.5dp"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:text="公告"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="@dimen/textSize" />
+
+                <View
+                    android:id="@+id/class_notice_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/transparent" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/class_log_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="49.5dp"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:text="日志"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="@dimen/textSize" />
+
+                <View
+                    android:id="@+id/class_log_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/transparent" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/class_album_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="49.5dp"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:text="相册"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="@dimen/textSize" />
+
+                <View
+                    android:id="@+id/class_album_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/transparent" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/bg_color" />
+
+</LinearLayout>

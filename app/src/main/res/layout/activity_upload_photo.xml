@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activityRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/thetopview_new"/>
+
+            <View style="@style/title_split_line"/>
+
+            <EditText
+                android:id="@+id/et_body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="start"
+                android:hint="添加照片描述"
+                android:maxLength="200"
+                android:minHeight="80dp"
+                android:padding="@dimen/dp10"
+                android:textColorHint="@color/text_gray_h1"
+                android:textSize="@dimen/sp15"/>
+
+            <View
+                style="@style/MyViewHorz"
+                android:layout_height="8dp"
+                android:background="@color/bg_color"/>
+
+            <RelativeLayout
+                android:id="@+id/relative_file_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/dp15">
+
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/icon_0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/icon_upload"
+                    android:textColor="@color/page_bg_color_v2"
+                    android:textSize="@dimen/text_size_15"/>
+
+                <TextView
+                    android:id="@+id/rb_des"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@id/icon_0"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp10"
+                    android:text="上传到"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="@dimen/textSize"/>
+
+                <ImageView
+                    android:id="@+id/iv_file_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/ImageNextSize"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:paddingBottom="@dimen/ImageNextPandingSizeVert"
+                    android:paddingLeft="@dimen/ImageNextLeftPandingSize"
+                    android:paddingRight="@dimen/ImageNextPandingSize"
+                    android:paddingTop="@dimen/ImageNextPandingSizeVert"
+                    android:src="@mipmap/mine_more_right"/>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@id/iv_file_name"
+                    android:layout_toRightOf="@id/rb_des"
+                    android:gravity="center_vertical|end"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/sycn_class_bg"
+                        android:paddingBottom="@dimen/dp1"
+                        android:paddingLeft="@dimen/dp7"
+                        android:paddingRight="@dimen/dp7"
+                        android:paddingTop="@dimen/dp1"
+                        android:textColor="@color/green_color"
+                        android:textSize="@dimen/text_size_10"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/tv_file_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/dp5"
+                        android:textColor="@color/text_black_h2"
+                        android:textSize="@dimen/textSize"/>
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withLeftMargin"></View>
+
+            <RelativeLayout
+                android:id="@+id/relative_photo_quality"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/dp15">
+
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/icon_01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/icon_hd"
+                    android:textColor="@color/page_bg_color_v2"
+                    android:textSize="@dimen/text_size_16"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@id/icon_01"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp10"
+                    android:text="画质"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="@dimen/textSize"/>
+
+                <ImageView
+                    android:id="@+id/iv_photo_quality"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/ImageNextSize"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="@dimen/ImageNextPandingSizeVert"
+                    android:paddingLeft="@dimen/ImageNextLeftPandingSize"
+                    android:paddingRight="@dimen/ImageNextPandingSize"
+                    android:paddingTop="@dimen/ImageNextPandingSizeVert"
+                    android:src="@mipmap/mine_more_right"/>
+
+                <TextView
+                    android:id="@+id/tv_quality"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:layout_toLeftOf="@id/iv_photo_quality"
+                    android:layout_toStartOf="@id/iv_photo_quality"
+                    android:gravity="center_vertical"
+                    android:text="正常"
+                    android:textColor="@color/text_black_h2"
+                    android:textSize="@dimen/textSize"/>
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withLeftMargin"></View>
+
+            <include layout="@layout/user_sycn_class_layout"></include>
+
+            <View
+                style="@style/MyViewHorz"
+                android:layout_height="8dp"
+                android:background="@color/bg_color"/>
+
+            <RelativeLayout
+                android:id="@+id/frame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/grid_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp40"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp">
+
+                </android.support.v7.widget.RecyclerView>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!--插入话题-->
+    <RelativeLayout
+        android:id="@+id/essay_topic"
+        android:layout_width="match_parent"
+        android:layout_height="40.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/bg_color"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp5"
+        android:visibility="visible">
+
+        <!--<View style="@style/split_line_style"/>-->
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/tv_at"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="@string/icon_icon_at"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/text_size_20"/>
+
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/tv_emtion"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/tv_at"
+            android:layout_toRightOf="@+id/tv_at"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="@string/icon_face"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/text_size_20"/>
+
+        <RelativeLayout
+            android:id="@+id/keyWord_close"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/tv_emtion">
+
+            <TextView
+                android:id="@+id/limit_num"
+                android:layout_width="@dimen/dp60"
+                android:layout_height="@dimen/dp50"
+                android:layout_alignParentRight="true"
+                android:layout_margin="@dimen/dp5"
+                android:layout_marginLeft="@dimen/dp5"
+                android:background="@color/bg_color"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="0/200"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="@dimen/text_size_13"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <!--表情键盘-->
+    <FrameLayout
+        android:id="@+id/fl_emotionview_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+
+</LinearLayout>

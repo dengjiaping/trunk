@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginStart="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp20"
+        android:background="@drawable/imge_delete_check_selector"
+        android:button="@null"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/activity_album_item_time"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_toRightOf="@id/checkbox"
+        android:layout_toEndOf="@id/checkbox"
+        android:gravity="center_vertical"
+        android:text="2016年8月19日"
+        android:textColor="@color/text_black_h1" />
+
+    <GridView
+        android:id="@+id/activity_album_item_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_album_item_time"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp10"
+        android:horizontalSpacing="3dp"
+        android:numColumns="3"
+        android:verticalSpacing="3dp" />
+
+</RelativeLayout>

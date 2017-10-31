@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/text_back_v2_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="你当前的班级荣誉星级"
+            android:textSize="@dimen/text_size_14" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/yellow_button_bg_circle_stroke"
+            android:orientation="vertical"
+            android:paddingBottom="7dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="7dp">
+
+
+            <com.histudent.jwsoft.histudent.commen.view.StarBar
+                android:id="@+id/starBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                app:starCount="5"
+                app:starDistance="10dp"
+                app:starEmpty="@mipmap/star_empty"
+                app:starFill="@mipmap/star_full"
+                app:starSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_gray_v2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="班级成长值"
+                android:textSize="@dimen/text_size_13" />
+
+            <TextView
+                android:id="@+id/class_group_num"
+                style="@style/text_back_v2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp3"
+                android:paddingStart="@dimen/dp3"
+                android:text=""
+                android:textSize="@dimen/large_textSize"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="@dimen/dp25"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/school_grade"
+                    style="@style/text_back_v2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/text_size_18"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/text_gray_v2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/dp3"
+                    android:text="学校排名"
+                    android:textSize="@dimen/text_size_14" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/terrace_grade"
+                    style="@style/text_back_v2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/text_size_18"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/text_gray_v2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/dp3"
+                    android:text="平台排名"
+                    android:textSize="@dimen/text_size_14" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

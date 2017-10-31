@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/add_classmate"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@drawable/upload_image_bg"
+        android:onClick="onClick">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/icon_add"
+                android:textColor="@color/green_color"
+                android:textSize="@dimen/text_size_16"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp10"
+                android:text="添加被邀请人"
+                android:textColor="@color/green_color"
+                android:textSize="@dimen/text_size_15"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        style="@style/split_line_style_10dp"
+        android:layout_marginTop="@dimen/dp10"></View>
+
+
+    <TextView
+        style="@style/IntroductionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp12"
+        android:text="说明：\n1.成员被邀请后，收到邀请消息，需同意后才能加入。\n2.被邀请成员可对邀请消息进行拒绝操作"
+        android:textColor="@color/icon_color"/>
+
+</LinearLayout>

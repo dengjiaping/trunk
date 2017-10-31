@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <include layout="@layout/action_item_head" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/action_log_cover_layout"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_height="200dp">
+
+            <!--图片-->
+            <ImageView
+                android:id="@+id/action_log_cover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/action_log_images"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:background="#50000000"
+                android:gravity="center"
+                android:text="5张"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/small_textSize"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+
+        <!--标题-->
+        <TextView
+            android:id="@+id/action_log_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:layout_marginRight="@dimen/itemMargin"
+            android:gravity="center_vertical"
+            android:text="日志标题"
+            android:textColor="@color/text_black_h3"
+            android:textSize="@dimen/textSize" />
+
+        <!--内容-->
+        <TextView
+            android:id="@+id/action_log_content"
+            style="@style/IntroductionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:layout_marginRight="@dimen/itemMargin"
+            android:layout_marginTop="10dp"
+            android:text="动态日志的标题"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/textSize" />
+
+    </LinearLayout>
+
+    <include layout="@layout/action_item_foot" />
+
+    <View style="@style/split_line_style_10dp" />
+
+</LinearLayout>

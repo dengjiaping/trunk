@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new" />
+
+
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/fashion_layout"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/notice_image"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_centerVertical="true"
+                    android:text="@string/icon_voice"
+                    android:background="@color/_28ca7e"
+                    android:gravity="center"
+                    android:textColor="@color/text_white"
+                    android:textSize="33sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/notice_image"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:id="@+id/notice_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="通知"
+                        android:textColor="@color/text_black_h2"
+                        android:textSize="@dimen/large_textSize" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/notice_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="bottom"
+                            android:text="李思"
+                            android:textColor="@color/text_gray_h2"
+                            android:textSize="@dimen/small_textSize" />
+
+                        <TextView
+                            android:id="@+id/notice_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/itemMargin"
+                            android:gravity="bottom"
+                            android:text="1111"
+                            android:textColor="@color/text_gray_h2"
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/notice_content"
+                    style="@style/IntroductionTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:textColor="@color/text_black_h2"
+                    android:textSize="@dimen/textSize" />
+
+                <com.histudent.jwsoft.histudent.commen.view.MyGridView
+                    android:id="@+id/notice_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:horizontalSpacing="1dp"
+                    android:visibility="gone" />
+
+                <FrameLayout
+                    android:id="@+id/notices_voice"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:visibility="visible"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/bg_voice_play"
+                        android:orientation="horizontal">
+
+                        <com.histudent.jwsoft.histudent.commen.view.IconView
+                            android:id="@+id/notices_voice_control"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/icon_bofang"
+                            android:textColor="@color/_cccccc"
+                            android:layout_marginLeft="10dp"
+                            android:layout_gravity="center_vertical"/>
+
+                        <TextView
+                            android:id="@+id/notices_voice_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="8dp"
+                            android:text="00:00"
+                            android:textStyle="bold"
+                            android:textColor="@color/grey"
+                            android:textSize="10sp" />
+
+                        <SeekBar
+                            android:id="@+id/notices_voice_progress"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:maxHeight="4dp"
+                            android:minHeight="4dp"
+                            android:progressDrawable="@drawable/bg_seekbar"
+                            android:thumb="@drawable/seekbar_thumb"
+                            />
+
+                        <TextView
+                            android:id="@+id/notices_voice_time_total"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="05:00"
+                            android:textStyle="bold"
+                            android:textColor="@color/grey"
+                            android:layout_marginRight="10dp"
+                            android:textSize="10sp" />
+
+                    </LinearLayout>
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <View style="@style/split_line_style_10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/notice_no_read"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:onClick="onClick"
+                        android:textColor="@color/text_gray_h1"
+                        android:textSize="@dimen/textSize" />
+
+                    <View
+                        android:id="@+id/notice_no_read_line"
+                        android:layout_width="80dp"
+                        android:layout_height="3dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@color/green_color" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/notice_already_read"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:onClick="onClick"
+                        android:textColor="@color/text_black_h2"
+                        android:textSize="@dimen/textSize" />
+
+                    <View
+                        android:id="@+id/notice_already_read_line"
+                        android:layout_width="80dp"
+                        android:layout_height="3dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@color/green_color" />
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <View style="@style/split_line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.histudent.jwsoft.histudent.commen.view.MyListView2
+                    android:id="@+id/notice_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@color/line_color"
+                    android:listSelector="@android:color/transparent"
+                    android:dividerHeight="0.5dp" />
+
+                <ImageView
+                    android:id="@+id/img_empty"
+                    android:layout_width="100dp"
+                    android:visibility="gone"
+                    android:layout_height="100dp" />
+
+                <TextView
+                    android:id="@+id/tv_empty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp30"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

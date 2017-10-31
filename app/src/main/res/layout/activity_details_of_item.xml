@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout_top"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/top"
+            layout="@layout/thetopview_new" />
+
+        <View style="@style/title_split_line" />
+
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/srl_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+                android:id="@+id/deails_comment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:id="@+id/layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ListView
+                        android:id="@+id/list_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <include layout="@layout/comment_head_view" />
+
+                    <LinearLayout
+                        android:id="@+id/empty_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingBottom="50dp"
+                        android:paddingTop="50dp"
+                        android:visibility="gone" />
+
+                    <com.histudent.jwsoft.histudent.commen.view.MyListView2
+                        android:id="@+id/list_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:divider="@color/transparent"
+                        android:dividerHeight="0dp" />
+
+                </LinearLayout>
+
+            </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_emotionview_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible" />
+
+</LinearLayout>

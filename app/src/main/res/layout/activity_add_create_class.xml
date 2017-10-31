@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_class_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp45"
+        android:gravity="center"
+        android:text="班级"
+        android:textColor="@color/text_black_h2"
+        android:textSize="@dimen/text_size_16"/>
+
+    <View
+        android:id="@+id/view_class_line"
+        style="@style/split_line_style"/>
+
+
+    <!--当老师没有加入或者创建任何班级时使用-->
+    <LinearLayout
+        android:id="@+id/teacher_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/class_teacher_join_create"/>
+
+        <TextView
+            android:id="@+id/tv_teacher_add_any_none_class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/class_teacher_join_none"
+            android:textColor="@color/gray7"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp20"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/teacher_add_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/class_join_or_create_shape"
+                android:paddingBottom="@dimen/dp5"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp12"
+                android:paddingTop="@dimen/dp5"
+                android:text="@string/now_join"
+                android:textColor="@color/_28ca7e"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp15"
+                android:layout_marginRight="@dimen/dp15"
+                android:text="or"
+                android:textColor="@color/gray7"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/teacher_create_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/class_join_or_create_shape"
+                android:paddingBottom="@dimen/dp5"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp12"
+                android:paddingTop="@dimen/dp5"
+                android:text="@string/now_create"
+                android:textColor="@color/_28ca7e"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <!--当老师已有加入或者已经创建的班级时使用-->
+    <LinearLayout
+        android:id="@+id/ll_teacher_layout_normal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/text_black_h3"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/text_white_v2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我是班主任"
+                android:textSize="@dimen/large_textSize"/>
+
+            <TextView
+                style="@style/text_white_v2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="我要创建自己所带的班级"/>
+
+            <TextView
+                android:id="@+id/tv_teacher_create_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/green_button_bg_circle"
+                android:onClick="onClick"
+                android:paddingBottom="5dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:paddingTop="5dp"
+                android:text="创建班级"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/textSize"/>
+
+        </LinearLayout>
+
+        <View style="@style/split_line_style_5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/text_white_v2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我是任课老师"
+                android:textSize="@dimen/large_textSize"/>
+
+            <TextView
+                style="@style/text_white_v2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="我要加入自己所带的班级"/>
+
+            <TextView
+                android:id="@+id/tv_teacher_add_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/green_button_bg_circle"
+                android:onClick="onClick"
+                android:paddingBottom="5dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:paddingTop="5dp"
+                android:text="加入班级"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/textSize"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/student_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/class_student_join"/>
+
+        <TextView
+            android:id="@+id/tv_student_add_any_none_class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/class_student_join_none"
+            android:textColor="@color/gray7"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:text="@string/class_student_join_none_desc"
+            android:textColor="@color/gray7"/>
+
+        <TextView
+            android:id="@+id/student_add_class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp15"
+            android:background="@drawable/class_join_or_create_shape"
+            android:paddingBottom="@dimen/dp5"
+            android:paddingLeft="@dimen/dp12"
+            android:paddingRight="@dimen/dp12"
+            android:paddingTop="@dimen/dp5"
+            android:text="@string/now_join"
+            android:textColor="@color/_28ca7e"
+            android:textSize="15sp"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

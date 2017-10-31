@@ -1,0 +1,34 @@
+<resources>
+
+    <!--top样式-->
+    <style name="topView_frist_style">
+        <item name="android:layout_height">50dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <!--top样式-->
+    <style name="topView_frist_style_size">
+        <item name="android:layout_height">230dp</item>
+        <item name="android:layout_width">230dp</item>
+    </style>
+
+    <style name="topView_style_">
+        <item name="android:layout_height">360dp</item>
+    </style>
+
+    <style name="topView_style_00">
+        <item name="android:layout_height">310dp</item>
+    </style>
+
+    <style name="topView_style_01">
+        <item name="android:layout_marginTop">75dp</item>
+    </style>
+
+    <style name="IntroductionTextView">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
+        <item name="android:textColor">@color/text_gray_h1</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+</resources>

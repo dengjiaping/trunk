@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="5dp">
+
+
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_marginLeft="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.histudent.jwsoft.histudent.commen.view.CircleImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/iv_person"
+            android:src="@mipmap/avatar_def"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:textColor="@color/text_blue"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/tv_person_name"
+            android:layout_toRightOf="@id/iv_person"
+            android:textSize="@dimen/title_left_text_size"
+            android:layout_width="wrap_content"
+            android:text="郑明馨"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/iv_person"
+            android:layout_below="@id/tv_person_name"
+            android:textSize="@dimen/title_left_text_size"
+            android:layout_width="wrap_content"
+            android:text="公开发表日志-刚刚"
+            android:layout_alignBaseline="@id/iv_person"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/iv_more"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/down"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/iv_person"
+            android:id="@+id/tv_content_descirbe"
+            android:layout_width="wrap_content"
+            android:text="上传照片到："
+            android:layout_height="wrap_content" />
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@id/tv_content_descirbe"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/tv_title"
+            android:layout_below="@id/iv_person"
+            android:textSize="@dimen/textSize_hi_title"
+            android:textColor="@color/text_purple"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:text="图书馆的奇妙夜"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content"
+            />
+    </RelativeLayout>
+
+
+    <com.histudent.jwsoft.histudent.commen.view.MyGridView
+        android:columnWidth="90dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:id="@+id/girdview_pic"
+        android:numColumns="3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.histudent.jwsoft.histudent.commen.view.MyGridView>
+    <RadioButton
+        android:id="@+id/rb_address"
+        android:padding="10dp"
+        android:button="@null"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@mipmap/canvas"
+        android:text="西湖文化广场"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </RadioButton>
+    <View
+    android:background="@color/line_color_gray"
+    android:layout_width="wrap_content"
+    android:layout_height="1dp"/>
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:layout_marginLeft="40dp"
+            android:id="@+id/rb_favor"
+            android:drawablePadding="5dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:layout_width="0dp"
+            android:text="96"
+            android:drawableLeft="@drawable/faovr_selector"
+            style="@style/HiBaproperty" />
+        <View
+            android:background="@color/line_color_gray"
+            android:layout_marginTop="5dp"
+            android:layout_width="1dp"
+            android:layout_marginBottom="5dp"
+            android:layout_height="match_parent"></View>
+        <RadioButton
+            style="@style/HiBaproperty"
+            android:layout_marginLeft="30dp"
+            android:id="@+id/rb_review"
+            android:layout_weight="1"
+            android:button="@null"
+            android:layout_width="0dp"
+            android:text="96"
+            android:drawableLeft="@mipmap/comment"
+            />
+        <View
+            android:background="@color/line_color_gray"
+            android:layout_marginTop="5dp"
+            android:layout_width="1dp"
+            android:layout_marginBottom="5dp"
+            android:layout_height="match_parent"></View>
+        <RadioButton
+            android:layout_marginLeft="30dp"
+            android:id="@+id/rb_share"
+            android:layout_weight="1"
+            android:button="@null"
+            android:layout_width="0dp"
+            android:text="96"
+            android:drawableLeft="@mipmap/share"
+            style="@style/HiBaproperty" />
+    </LinearLayout>
+    <View
+        android:background="@color/line_color_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"/>
+    <GridView
+        android:id="@+id/grid_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </GridView>
+
+</LinearLayout>

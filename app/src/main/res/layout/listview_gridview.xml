@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <com.histudent.jwsoft.histudent.commen.view.MyGridView
+        android:visibility="gone"
+        android:layout_below="@id/tv"
+        android:id="@+id/grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_color"
+        android:gravity="center"
+        android:horizontalSpacing="1dp"
+        android:numColumns="4">
+    </com.histudent.jwsoft.histudent.commen.view.MyGridView>
+
+    <View style="@style/split_line_style_10dp"
+          android:id="@+id/line"></View>
+
+
+    <com.histudent.jwsoft.histudent.commen.view.MyListView2
+        android:visibility="gone"
+        android:id="@+id/list_view"
+        android:dividerHeight="0.5dp"
+        android:scrollbars="none"
+        android:divider="@color/bg_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.histudent.jwsoft.histudent.commen.view.MyListView2>
+</LinearLayout>

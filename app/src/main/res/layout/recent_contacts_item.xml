@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.histudent.jwsoft.histudent.commen.view.DragView
+        android:id="@+id/drag_view"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <!-- 下层布局 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_del"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_red_light"
+                android:text="删除" />
+        </LinearLayout>
+        <!-- 上层布局 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:orientation="horizontal"><!-- 这里设个背景颜色将下层布局遮掩 -->
+
+            <ImageView
+                android:id="@+id/recent_contacts_headImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:gravity="center" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/recent_contacts_title"
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/recent_contacts_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/recent_contacts_title"
+                    android:gravity="center_vertical" />
+
+                <TextView
+                    android:id="@+id/recent_contacts_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </com.histudent.jwsoft.histudent.commen.view.DragView>
+</LinearLayout>

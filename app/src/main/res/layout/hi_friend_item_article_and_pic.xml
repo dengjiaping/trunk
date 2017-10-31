@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+             >
+
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp">
+
+        <com.histudent.jwsoft.histudent.commen.view.CircleImageView
+            android:id="@+id/iv_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/avatar_def" />
+
+        <TextView
+            android:id="@+id/tv_person_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_person"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/iv_person"
+            android:text="郑明馨"
+            android:textColor="@color/line_color_gray"
+            android:textSize="@dimen/title_left_text_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/iv_person"
+            android:layout_alignBottom="@id/iv_person"
+            android:layout_below="@id/tv_person_name"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/iv_person"
+            android:text="公开发表日志-刚刚"
+            android:textSize="@dimen/title_left_text_size" />
+        <ImageView
+            android:padding="@dimen/ImageMorePandingSize"
+            android:id="@+id/iv_more"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/down"
+            android:layout_width="@dimen/ImageMoreSize"
+            android:layout_height="@dimen/ImageMoreSize" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="图书馆的奇妙夜"
+        android:textColor="@color/text_purple"
+        android:textSize="@dimen/textSize_hi_title" />
+
+    <TextView
+        android:id="@+id/tv_hi_friend_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="今天，我和妈妈去参加一个活动，奇妙夜人物海选，是为了庆祝新图书馆开业。波阿明的人很多，扮演的角色也很多，我选的是关羽，我爱妈妈选的是。。"
+        android:textColor="@color/text_gray_h2" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/girdview_photo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:horizontalSpacing="3dp"
+        android:verticalSpacing="3dp"
+     >
+
+    </android.support.v7.widget.RecyclerView>
+
+    <RadioButton
+        android:id="@+id/rb_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:button="@null"
+        android:drawableLeft="@null"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:text="西湖文化广场"></RadioButton>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/line_color_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:drawablePadding="10dp"
+            android:id="@+id/rb_favor"
+            style="@style/HiBaproperty"
+            android:layout_width="0dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="40dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableLeft="@drawable/faovr_selector"
+            android:text="96" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/line_color_gray"></View>
+
+        <RadioButton
+            android:drawablePadding="10dp"
+            android:id="@+id/rb_review"
+            style="@style/HiBaproperty"
+            android:layout_width="0dp"
+            android:layout_marginLeft="40dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableLeft="@mipmap/discuss"
+            android:text="96" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/line_color_gray"></View>
+
+        <RadioButton
+            android:drawablePadding="10dp"
+            android:id="@+id/rb_share"
+            style="@style/HiBaproperty"
+            android:layout_width="0dp"
+            android:layout_marginLeft="40dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableLeft="@mipmap/share_gray"
+            android:text="96" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/line_color_gray" />
+    <LinearLayout
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/linear"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView
+            android:scrollbars="none"
+            android:numColumns="8"
+            android:verticalSpacing="3dp"
+            android:layout_margin="5dp"
+            android:id="@+id/grid_view_like"
+            android:layout_width="match_parent"
+            android:minHeight="@dimen/favorHeight"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+        <com.histudent.jwsoft.histudent.commen.view.CircleImageView
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="3dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/favor_more"
+            android:id="@+id/iv_default"
+            android:layout_width="@dimen/favor_image_size"
+            android:layout_height="@dimen/favor_image_size" />
+    </LinearLayout>
+
+    <com.histudent.jwsoft.histudent.commen.view.MyListView2
+        android:id="@+id/list_comment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.histudent.jwsoft.histudent.commen.view.MyListView2>
+</LinearLayout>

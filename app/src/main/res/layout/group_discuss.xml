@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+
+    <LinearLayout android:id="@+id/linear"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:paddingBottom="10dp"
+                  android:paddingLeft="80dp"
+                  android:paddingRight="80dp"
+                  android:paddingTop="10dp">
+
+        <RadioGroup
+            android:id="@+id/group_details_rg"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@id/view"
+            android:background="@drawable/pictures_radiogroup_bg"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp1">
+
+            <RadioButton
+                android:id="@+id/rb_sugestion"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/pictures_rdiobutton_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="推荐"
+                android:textColor="@color/text_black_h1"
+                android:textSize="16sp"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/line_color"/>
+
+            <RadioButton
+                android:id="@+id/rb_all"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/pictures_rdiobutton_bg"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="全部"
+                android:textColor="@color/text_black_h1"
+                android:textSize="16sp"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/line_color"/>
+            <RadioButton
+                android:id="@+id/rb_recommand"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/pictures_rdiobutton_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="精华"
+                android:textColor="@color/text_black_h1"
+                android:textSize="16sp"/>
+        </RadioGroup>
+
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@id/linear"
+        android:background="@color/line_split1"></View>
+    <RelativeLayout
+
+        android:id="@+id/fragment_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/view1"
+        android:layout_marginBottom="@dimen/dp60">
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/btn"
+        style="@style/long_blue_button"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:text="发表讨论帖"/>
+</RelativeLayout>

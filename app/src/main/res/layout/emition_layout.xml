@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/comment_bg" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray_bg1"
+        android:gravity="center_vertical"
+        android:minHeight="50dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_key"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/nim_message_input_emotion" />
+
+        <EditText
+            android:id="@+id/et_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="5"
+            android:background="@drawable/comment_bg2"
+            android:cursorVisible="true"
+            android:gravity="center_vertical"
+            android:maxLines="4"
+            android:minHeight="30dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textColor="@color/black_gray" />
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/send_btn_bg_selector"
+            android:enabled="true"
+            android:text="发送"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#cccccc" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager01"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:gravity="center" />
+</LinearLayout>

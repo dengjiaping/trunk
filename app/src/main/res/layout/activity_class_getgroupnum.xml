@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/text_gray_v2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|bottom"
+            android:text="当前成长值"/>
+
+        <TextView
+            android:id="@+id/growth_value"
+            style="@style/text_back_v2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="1050"/>
+
+    </LinearLayout>
+
+    <View style="@style/split_line_style"/>
+
+    <LinearLayout
+        android:id="@+id/group_num"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/green_button_bg_stroke"
+        android:orientation="horizontal"
+        android:padding="0.5dp">
+
+        <TextView
+            android:id="@+id/group_left"
+            style="@style/text_white_v2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/grade_green_button_left"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="日常任务"/>
+
+        <TextView
+            android:id="@+id/group_right"
+            style="@style/text_white_v2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="新手任务"
+            android:textColor="@color/green_color"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/framelayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </FrameLayout>
+
+
+</LinearLayout>

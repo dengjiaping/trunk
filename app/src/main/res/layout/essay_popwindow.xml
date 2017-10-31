@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/pop_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginRight="@dimen/dp12"
+        android:background="@drawable/dialog_base"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_01"
+            style="@style/long_line_style"
+            android:layout_height="@dimen/dp25"
+            android:background="@null"
+            android:gravity="center_horizontal|bottom"
+            android:text="@string/shoot"
+            android:textColor="@color/text_black_h2"
+            android:textSize="@dimen/textSize"/>
+
+        <TextView
+            android:id="@+id/tv"
+            style="@style/long_line_style"
+            android:layout_height="@dimen/dp25"
+            android:gravity="center"
+            android:text="@string/photo_or_video"
+            android:textColor="@color/text_gray_h2"/>
+
+        <View
+            android:id="@+id/line_title"
+            style="@style/split_line_style"/>
+
+
+        <Button
+            android:id="@+id/btn_02"
+            style="@style/long_line_style"
+            android:layout_height="@dimen/itemHight"
+            android:background="@null"
+            android:gravity="center"
+            android:text="@string/from_album_get"
+            android:textSize="@dimen/textSize"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

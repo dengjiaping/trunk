@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_gray_alpha40">
+
+    <include layout="@layout/thetopview_yd" />
+
+    <!--分享到班级-->
+    <RelativeLayout
+        android:id="@+id/log_class_select_"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:onClick="onClick"
+        android:paddingLeft="@dimen/itemMargin"
+        android:paddingRight="@dimen/itemMargin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="分享到班级"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/textSize" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/mine_more_right" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/the_top_yd"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_above="@id/log_class_select_"
+        android:layout_gravity="end"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="40dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/left_bottom_yd" />
+
+    <ImageView
+        android:id="@+id/tip_image_know"
+        android:layout_width="90dp"
+        android:layout_height="36dp"
+        android:layout_above="@id/the_top_yd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/know_yd" />
+
+    <ImageView
+        android:id="@+id/tip_image_yd"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_above="@id/tip_image_know"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
+        android:src="@mipmap/create_group_yd" />
+
+</RelativeLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new"/>
+
+    <View style="@style/split_line_style_10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginStart="@dimen/dp12"
+        android:background="@color/white"
+        android:gravity="center_vertical">
+
+        <View
+            android:layout_width="@dimen/dp5"
+            android:layout_height="@dimen/dp20"
+            android:background="@color/green_color"></View>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp5"
+            android:paddingStart="@dimen/dp5"
+            android:textColor="@color/text_black_h1"
+            android:textSize="@dimen/text_size_14"
+            />
+
+    </LinearLayout>
+
+    <GridView
+
+        android:id="@+id/activity_type_grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/dp20"
+        android:columnWidth="5dp"
+        android:horizontalSpacing="@dimen/dp20"
+        android:numColumns="4"
+        android:verticalSpacing="@dimen/dp20"></GridView>
+</LinearLayout>

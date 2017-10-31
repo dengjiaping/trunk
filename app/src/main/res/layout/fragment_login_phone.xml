@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/text_black_h3"
+    android:orientation="vertical">
+
+    <!--手机号码-->
+    <EditText
+        android:id="@+id/login_phone_edit"
+        style="@style/regist_edit_style_v2"
+        android:hint="手机号"
+        android:inputType="phone"
+        android:maxLength="11"
+        android:textSize="17sp" />
+
+    <View style="@style/split_line_style_login" />
+
+    <!--密码-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginRight="@dimen/itemMargin_v2">
+
+        <Button
+            android:id="@+id/login_phone_code_button"
+            style="@style/regist_getCode_style_v2"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/green_button_bg_circle"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="获取验证码"
+            android:textColor="@color/text_white"
+            android:textSize="@dimen/tiny_textSize" />
+
+        <EditText
+            android:id="@+id/login_phone_code_edit"
+            style="@style/regist_edit_style_v2"
+            android:layout_toLeftOf="@id/login_phone_code_button"
+            android:hint="短信验证码"
+            android:inputType="number"
+            android:textSize="17sp" />
+
+    </RelativeLayout>
+
+    <View style="@style/split_line_style_login" />
+
+</LinearLayout>

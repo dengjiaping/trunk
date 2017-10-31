@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/topic_log"
+        android:layout_width="@dimen/dp50"
+        android:layout_height="@dimen/dp50"
+        android:layout_margin="@dimen/dp10"
+        android:gravity="center"
+        android:scaleType="centerCrop"
+    />
+
+    <TextView android:id="@+id/tv_topic"
+              android:layout_width="@dimen/dp50"
+              android:layout_height="@dimen/dp50"
+              android:layout_margin="@dimen/dp10"
+              android:gravity="center"
+              android:textColor="@color/white"
+              android:textSize="@dimen/text_size_15"
+              android:textStyle="bold"
+              android:visibility="gone"/>
+    <com.histudent.jwsoft.histudent.commen.view.IconView
+        android:id="@+id/topic_log1"
+        android:layout_width="@dimen/dp50"
+        android:layout_height="@dimen/dp50"
+        android:layout_margin="@dimen/dp10"
+        android:background="@color/yellow_bg"
+        android:gravity="center"
+        android:text="@string/icon_topic"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_15"
+        android:visibility="gone"
+    />
+
+    <LinearLayout
+        android:id="@+id/topic_layout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_toRightOf="@id/topic_log"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dp10"
+        android:paddingRight="@dimen/dp10"
+        android:paddingTop="@dimen/dp10"
+        android:visibility="gone"
+    >
+
+        <TextView android:id="@+id/topic_title"
+                  android:layout_width="wrap_content"
+                  android:layout_height="0dp"
+                  android:layout_weight="1"
+                  android:ellipsize="end"
+                  android:gravity="center_vertical"
+                  android:maxEms="12"
+                  android:maxLines="1"
+                  android:text="2222"
+                  android:textColor="@color/text_black_h2"
+                  android:textSize="@dimen/text_size_14"/>
+        <TextView android:id="@+id/topic_content"
+                  android:layout_width="wrap_content"
+                  android:layout_height="0dp"
+                  android:layout_weight="1"
+                  android:ellipsize="end"
+                  android:gravity="center_vertical"
+                  android:maxEms="14"
+                  android:maxLines="1"
+                  android:textColor="@color/text_black_h1"
+                  android:textSize="@dimen/text_size_13"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_new_topic"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_toRightOf="@id/topic_log1"
+        android:gravity="center_vertical"
+        android:text="#新话题#"
+        android:textColor="@color/text_black_h2"
+        android:textSize="@dimen/text_size_14"
+        android:visibility="gone"
+    />
+    <TextView
+        android:id="@+id/topic_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:paddingRight="@dimen/dp10"
+        android:paddingTop="@dimen/dp12"
+        android:textColor="@color/text_gray_h1"
+        android:textSize="@dimen/text_size_13"
+        android:visibility="gone"
+    />
+
+    <View style="@style/split_line_style_withLeftMargin"
+          android:layout_alignParentBottom="true"></View>
+</RelativeLayout>

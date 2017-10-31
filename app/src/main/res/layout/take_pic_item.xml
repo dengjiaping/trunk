@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:id="@+id/pop_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_pic"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/popupwindow_bg"
+            android:text="举报"
+            android:textColor="@color/text_black_h2"
+            android:textSize="@dimen/textSize"
+        />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#00000000"/>
+
+        <Button
+            android:id="@+id/btn_camera"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/popupwindow_bg"
+            android:text="清空内容"
+            android:textColor="@color/text_black_h2"
+            android:textSize="@dimen/textSize"
+        />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp5"
+          />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/popupwindow_bg"
+            android:text="取消"
+            android:textColor="@color/text_black_h2"
+            android:textSize="@dimen/textSize"
+        />
+    </LinearLayout>
+</RelativeLayout>

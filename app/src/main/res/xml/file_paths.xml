@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--下载apk-->
+<external-path
+    name="sdcard_files"
+    path=""/>
+<!--相机相册裁剪-->
+<external-files-path
+    name="camera_has_sdcard"
+    path=""/>
+<files-path
+    name="camera_no_sdcard"
+    path=""/>
+</resources>

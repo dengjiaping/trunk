@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_bg_color_v2"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new_login" />
+
+    <TextView
+        style="@style/title_style_v2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/topMargin_login"
+        android:text="注册账号" />
+
+    <Button
+        android:id="@+id/regist_phone_v2"
+        style="@style/long_green_button_circle"
+        android:layout_marginTop="30dp"
+        android:text="手机注册" />
+
+    <Button
+        android:id="@+id/regist_weixin_v2"
+        style="@style/long_gray_button_circle"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/login_head_circle_bg"
+        android:text="微信注册" />
+
+    <Button
+        android:id="@+id/regist_qq_v2"
+        style="@style/long_gray_button_circle"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/login_head_circle_bg"
+        android:text="QQ注册" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5">
+
+        <include
+            layout="@layout/link_layout_v2_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="25dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

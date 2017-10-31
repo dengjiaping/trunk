@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <!--头像-->
+            <RelativeLayout
+                android:id="@+id/headImage"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long">
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/persiondata_portrait_goright"
+                    style="@style/icon_arrowright_style"/>
+
+                <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+                    android:id="@+id/persiondata_portrait"
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toLeftOf="@id/persiondata_portrait_goright"
+                    android:src="@mipmap/per_def"
+                    app:border_color="#0000"
+                    app:border_width="1dp"/>
+
+                <TextView
+                    style="@style/textInMyFragmentLeft"
+                    android:layout_height="match_parent"
+                    android:text="头像"/>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_10dp"/>
+
+            <!--姓名-->
+            <RelativeLayout
+                android:id="@+id/realName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentLeft"
+                    android:text="姓名"/>
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/persiondata_name_goright"
+                    android:visibility="invisible"
+                    style="@style/icon_arrowright_style"/>
+
+                <TextView
+                    android:id="@+id/persiondata_name"
+                    style="@style/textInMyFragmentRight"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/persiondata_name_goright"/>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withMargin"/>
+
+            <!--性别-->
+            <RelativeLayout
+                android:id="@+id/sex"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentLeft"
+                    android:text="性别"/>
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/persiondata_sex_goright"
+                    style="@style/icon_arrowright_style"/>
+
+                <TextView
+                    android:id="@+id/persiondata_sex"
+                    style="@style/textInMyFragmentRight"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/persiondata_sex_goright"/>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withMargin"/>
+
+            <!--年龄-->
+            <RelativeLayout
+                android:id="@+id/age"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/textInMyFragmentLeft"
+                    android:text="年龄"/>
+
+                <ImageView
+                    android:id="@+id/persiondata_age_goright"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="@dimen/margin_long"
+                    android:src="@mipmap/chatpersion_goright"/>
+
+                <TextView
+                    android:id="@+id/persiondata_age"
+                    style="@style/textInMyFragmentRight"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/persiondata_age_goright"
+                    android:text="21"/>
+
+            </RelativeLayout>
+
+            <!--<View style="@style/split_line_style_withMargin" />-->
+
+            <!--生日-->
+            <RelativeLayout
+                android:id="@+id/birthDay"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentLeft"
+                    android:text="生日"/>
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/persiondata_birth_goright"
+                    style="@style/icon_arrowright_style"/>
+
+                <TextView
+                    android:id="@+id/persiondata_birth"
+                    style="@style/textInMyFragmentRight"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/persiondata_birth_goright"/>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withMargin"/>
+
+            <!--血型-->
+            <RelativeLayout
+                android:id="@+id/blood"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentLeft"
+                    android:text="血型"/>
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/persiondata_bloodtype_goright"
+                    style="@style/icon_arrowright_style"/>
+
+                <TextView
+                    android:id="@+id/persiondata_bloodtype"
+                    style="@style/textInMyFragmentRight"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/persiondata_bloodtype_goright"/>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withMargin"/>
+
+            <!--星座-->
+            <RelativeLayout
+                android:id="@+id/constellation"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentLeft"
+                    android:text="星座"/>
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/persiondata_constellation_goright"
+                    style="@style/icon_arrowright_style"/>
+
+                <TextView
+                    android:id="@+id/persiondata_constellation"
+                    style="@style/textInMyFragmentRight"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/persiondata_constellation_goright"/>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_10dp"/>
+
+            <!--出生地-->
+            <RelativeLayout
+                android:id="@+id/birthAddress"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/persiondata_birthaddress_left"
+                    style="@style/textInMyFragmentLeft"
+                    android:text="出生地"/>
+
+                <ImageView
+                    android:id="@+id/persiondata_birthaddress_goright"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="@dimen/margin_long"
+                    android:src="@mipmap/chatpersion_goright"/>
+
+                <TextView
+                    android:id="@+id/persiondata_birthaddress"
+                    style="@style/textInMyFragmentRight"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/persiondata_birthaddress_goright"
+                    android:layout_toRightOf="@id/persiondata_birthaddress_left"
+                    android:gravity="end|center_vertical"/>
+
+            </RelativeLayout>
+
+            <!--地区-->
+            <RelativeLayout
+                android:id="@+id/lifeAddress"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentLeft"
+                    android:text="地区"/>
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/persiondata_lifeddress_goright"
+                    style="@style/icon_arrowright_style"/>
+
+                <TextView
+                    android:id="@+id/persiondata_lifeddress"
+                    style="@style/textInMyFragmentRight"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/persiondata_lifeddress_goright"/>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withMargin"/>
+
+            <!--详细地址-->
+            <RelativeLayout
+                android:id="@+id/contractAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long">
+
+                <TextView
+                    android:id="@+id/persiondata_relationaddress_left"
+                    style="@style/textInMyFragmentLeft"
+                    android:text="详细地址"/>
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/persiondata_relationaddress_goright"
+                    style="@style/icon_arrowright_style"/>
+
+                <TextView
+                    android:id="@+id/persiondata_relationaddress"
+                    style="@style/textInMyFragmentRight"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/persiondata_relationaddress_goright"
+                    android:layout_toRightOf="@id/persiondata_relationaddress_left"
+                    android:gravity="end|center_vertical"
+                    android:maxLines="50"/>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_10dp"/>
+
+            <!--自我介绍-->
+            <RelativeLayout
+                android:id="@+id/introduce_myself"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/introduce_myself_left"
+                    style="@style/textInMyFragmentLeft"
+                    android:text="自我介绍"/>
+
+                <ImageView
+                    android:id="@+id/introduce_myself_goright"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="@dimen/margin_long"
+                    android:src="@mipmap/chatpersion_goright"/>
+
+                <TextView
+                    android:id="@+id/introduce_myself_text"
+                    style="@style/textInMyFragmentRight"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/introduce_myself_goright"
+                    android:layout_toRightOf="@id/introduce_myself_left"
+                    android:gravity="end|center_vertical"
+                    android:maxLines="200"/>
+
+            </RelativeLayout>
+
+            <!--手机号-->
+            <RelativeLayout
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/textInMyFragmentLeft"
+                    android:text="手机号"/>
+
+                <ImageView
+                    android:id="@+id/persiondata_phonenum_goright"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="@dimen/margin_long"
+                    android:src="@mipmap/chatpersion_goright"/>
+
+                <TextView
+                    android:id="@+id/persiondata_phonenum"
+                    style="@style/textInMyFragmentRight"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/persiondata_phonenum_goright"/>
+
+            </RelativeLayout>
+
+            <!--邮箱-->
+            <RelativeLayout
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/textInMyFragmentLeft"
+                    android:text="邮箱"/>
+
+                <ImageView
+                    android:id="@+id/persiondata_email_goright"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="@dimen/margin_long"
+                    android:src="@mipmap/chatpersion_goright"/>
+
+                <TextView
+                    android:id="@+id/persiondata_email"
+                    style="@style/textInMyFragmentRight"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/persiondata_email_goright"/>
+
+            </RelativeLayout>
+
+            <!--所获奖项-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentLeft"
+                    android:text="所获奖项"
+                    android:textStyle="bold"/>
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/persiondata_getpalm_goright"
+                    style="@style/icon_arrowright_style"
+                    android:clickable="true"
+                    android:onClick="onClick"
+                    android:text="@string/icon_add2"
+                    android:textSize="16sp"/>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withMargin"/>
+
+            <!--具体奖状-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/dp20"
+                android:paddingRight="@dimen/dp20">
+
+                <ListView
+                    android:id="@+id/persiondata_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@color/bg_color"
+                    android:dividerHeight="0.5dp"
+                    android:listSelector="#00000000"/>
+
+            </LinearLayout>
+
+            <View style="@style/split_line_style_10dp"/>
+
+            <!--兴趣爱好-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/margin_long"
+                android:paddingRight="@dimen/margin_long">
+
+                <TextView
+                    style="@style/textInMyFragmentLeft"
+                    android:text="兴趣爱好"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withMargin"/>
+
+            <!--音乐-->
+            <RelativeLayout
+                android:id="@+id/music"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long">
+
+                <TextView
+                    android:id="@+id/persiondata_music_left"
+                    style="@style/textInMyFragmentLeft"
+                    android:text="音乐"/>
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/persiondata_music_goright"
+                    style="@style/icon_arrowright_style"/>
+
+                <TextView
+                    android:id="@+id/persiondata_music"
+                    style="@style/textInMyFragmentRight"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/persiondata_music_goright"
+                    android:layout_toRightOf="@id/persiondata_music_left"
+                    android:gravity="end|center_vertical"
+                    android:maxLines="100"/>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withMargin"/>
+
+            <!--书籍-->
+            <RelativeLayout
+                android:id="@+id/book"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long">
+
+                <TextView
+                    android:id="@+id/persiondata_book_goleft"
+                    style="@style/textInMyFragmentLeft"
+                    android:text="书籍"/>
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/persiondata_book_goright"
+                    style="@style/icon_arrowright_style"/>
+
+                <TextView
+                    android:id="@+id/persiondata_book"
+                    style="@style/textInMyFragmentRight"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/persiondata_book_goright"
+                    android:layout_toRightOf="@id/persiondata_book_goleft"
+                    android:gravity="end|center_vertical"
+                    android:maxLines="100"/>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withMargin"/>
+
+            <!--电影-->
+            <RelativeLayout
+                android:id="@+id/movie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long">
+
+                <TextView
+                    android:id="@+id/persiondata_movie_goleft"
+                    style="@style/textInMyFragmentLeft"
+                    android:text="电影"/>
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/persiondata_movie_goright"
+                    style="@style/icon_arrowright_style"/>
+
+                <TextView
+                    android:id="@+id/persiondata_movie"
+                    style="@style/textInMyFragmentRight"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/persiondata_movie_goright"
+                    android:layout_toRightOf="@id/persiondata_movie_goleft"
+                    android:gravity="end|center_vertical"
+                    android:maxLines="100"/>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withMargin"/>
+
+            <!--运动-->
+            <RelativeLayout
+                android:id="@+id/sport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long">
+
+                <TextView
+                    android:id="@+id/persiondata_exercise_goleft"
+                    style="@style/textInMyFragmentLeft"
+                    android:text="运动"/>
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/persiondata_exercise_goright"
+                    style="@style/icon_arrowright_style"/>
+
+                <TextView
+                    android:id="@+id/persiondata_exercise"
+                    style="@style/textInMyFragmentRight"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/persiondata_exercise_goright"
+                    android:layout_toRightOf="@id/persiondata_exercise_goleft"
+                    android:gravity="end|center_vertical"
+                    android:maxLines="100"/>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withMargin"/>
+
+            <!--游戏-->
+            <RelativeLayout
+                android:id="@+id/game"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long">
+
+                <TextView
+                    android:id="@+id/persiondata_game_goleft"
+                    style="@style/textInMyFragmentLeft"
+                    android:text="游戏"/>
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/persiondata_game_goright"
+                    style="@style/icon_arrowright_style"/>
+
+                <TextView
+                    android:id="@+id/persiondata_game"
+                    style="@style/textInMyFragmentRight"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/persiondata_game_goright"
+                    android:layout_toRightOf="@id/persiondata_game_goleft"
+                    android:gravity="end|center_vertical"
+                    android:maxLines="100"/>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withMargin"/>
+
+            <!--动漫-->
+            <RelativeLayout
+                android:id="@+id/cartoon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long">
+
+                <TextView
+                    android:id="@+id/persiondata_cartoon_goleft"
+                    style="@style/textInMyFragmentLeft"
+                    android:text="动漫"/>
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/persiondata_cartoon_goright"
+                    style="@style/icon_arrowright_style"/>
+
+                <TextView
+                    android:id="@+id/persiondata_cartoon"
+                    style="@style/textInMyFragmentRight"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/persiondata_cartoon_goright"
+                    android:layout_toRightOf="@id/persiondata_cartoon_goleft"
+                    android:gravity="end|center_vertical"
+                    android:maxLines="100"/>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withMargin"/>
+
+            <!--美食-->
+            <RelativeLayout
+                android:id="@+id/food"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long">
+
+                <TextView
+                    android:id="@+id/persiondata_cate_goleft"
+                    style="@style/textInMyFragmentLeft"
+                    android:text="美食"/>
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/persiondata_cate_goright"
+                    style="@style/icon_arrowright_style"/>
+
+                <TextView
+                    android:id="@+id/persiondata_cate"
+                    style="@style/textInMyFragmentRight"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/persiondata_cate_goright"
+                    android:layout_toRightOf="@id/persiondata_cate_goleft"
+                    android:gravity="end|center_vertical"
+                    android:maxLines="100"/>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_withMargin"/>
+
+            <!--名人-->
+            <RelativeLayout
+                android:id="@+id/appreciateMen"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="@dimen/margin_long">
+
+                <TextView
+                    android:id="@+id/persiondata_celebrity_goleft"
+                    style="@style/textInMyFragmentLeft"
+                    android:text="名人"/>
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/persiondata_celebrity_goright"
+                    style="@style/icon_arrowright_style"/>
+
+                <TextView
+                    android:id="@+id/persiondata_celebrity"
+                    style="@style/textInMyFragmentRight"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/persiondata_celebrity_goright"
+                    android:layout_toRightOf="@id/persiondata_celebrity_goleft"
+                    android:gravity="end|center_vertical"
+                    android:maxLines="100"/>
+
+            </RelativeLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="dfsfsfsfsfsf"/>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+</LinearLayout>

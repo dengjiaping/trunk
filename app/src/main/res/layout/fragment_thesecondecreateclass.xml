@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View style="@style/split_line_style_10dp" />
+
+    <!--学校-->
+    <RelativeLayout
+        android:id="@+id/createclass_schoool_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/itemHight"
+        android:background="@color/white"
+        android:onClick="onClick"
+        android:paddingLeft="@dimen/itemMargin">
+
+        <TextView
+            android:id="@+id/school_name_00"
+            style="@style/text_back_v2_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="学校" />
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/school_name_01"
+            style="@style/icon_arrowright_style" />
+
+        <TextView
+            android:id="@+id/createclass_schoool"
+            style="@style/text_gray_v2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/school_name_01"
+            android:layout_toRightOf="@+id/school_name_00"
+            android:gravity="end" />
+
+    </RelativeLayout>
+
+    <View style="@style/split_line_style_withMargin" />
+
+    <!--学段-->
+    <RelativeLayout
+        android:id="@+id/createclass_level_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/itemHight"
+        android:background="@color/white"
+        android:onClick="onClick"
+        android:paddingLeft="@dimen/itemMargin">
+
+        <TextView
+            android:id="@+id/phase_name_00"
+            style="@style/text_back_v2_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="学段" />
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/phase_name_01"
+            style="@style/icon_arrowright_style" />
+
+        <TextView
+            android:id="@+id/createclass_level"
+            style="@style/text_gray_v2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/phase_name_01"
+            android:layout_toRightOf="@+id/phase_name_00"
+            android:gravity="end" />
+
+    </RelativeLayout>
+
+    <View style="@style/split_line_style_withMargin" />
+
+    <!--年级-->
+    <RelativeLayout
+        android:id="@+id/createclass_grade_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/itemHight"
+        android:background="@color/white"
+        android:onClick="onClick"
+        android:paddingLeft="@dimen/itemMargin">
+
+        <TextView
+            android:id="@+id/grade_name_00"
+            style="@style/text_back_v2_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="年级" />
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/grade_name_01"
+            style="@style/icon_arrowright_style" />
+
+        <TextView
+            android:id="@+id/createclass_grade"
+            style="@style/text_gray_v2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/grade_name_01"
+            android:layout_toRightOf="@+id/grade_name_00"
+            android:gravity="end" />
+
+    </RelativeLayout>
+
+    <View style="@style/split_line_style_withMargin" />
+
+    <!--班次-->
+    <RelativeLayout
+        android:id="@+id/createclass_class_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/itemHight"
+        android:background="@color/white"
+        android:onClick="onClick"
+        android:paddingLeft="@dimen/itemMargin">
+
+        <TextView
+            android:id="@+id/class_name_00"
+            style="@style/text_back_v2_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="班次" />
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/class_name_01"
+            style="@style/icon_arrowright_style" />
+
+        <TextView
+            android:id="@+id/createclass_class"
+            style="@style/text_gray_v2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/class_name_01"
+            android:layout_toRightOf="@+id/class_name_00"
+            android:gravity="end" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_color">
+
+        <TextView
+            android:id="@+id/compelet"
+            style="@style/long_gray_button"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:layout_marginRight="@dimen/itemMargin"
+            android:layout_marginTop="@dimen/dp36"
+            android:clickable="false"
+            android:text="完 成" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

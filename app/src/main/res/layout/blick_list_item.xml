@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/parent_view"
+              android:layout_width="match_parent"
+              android:layout_height="240dp"
+              android:layout_gravity="center_vertical"
+              android:background="@color/white"
+              android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:layout_weight="1.4"
+        android:orientation="vertical">
+
+        <TextView
+            android:gravity="center_vertical"
+            android:text="1111"
+            android:id="@+id/tv_type"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.25"
+            android:maxLines="1"
+            android:textColor="@color/text_black_h1"
+            android:textSize="@dimen/sp17"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:paddingTop="@dimen/dp5"
+            android:text="22222222222222222"
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:ellipsize="end"
+            android:maxLines="5"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <com.histudent.jwsoft.histudent.commen.view.swipemenulistview.RoundRectImageView
+        android:id="@+id/iv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/dp20"
+        android:layout_marginRight="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/default_image"
+    />
+
+
+</LinearLayout>

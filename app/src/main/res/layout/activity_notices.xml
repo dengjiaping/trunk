@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new" />
+
+
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/like_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/line_color"
+            android:dividerHeight="0dp"
+            android:scrollbars="none" />
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+
+</LinearLayout>

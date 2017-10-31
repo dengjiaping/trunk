@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="quickSideBarLetters">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>O</item>
+        <item>P</item>
+        <item>Q</item>
+        <item>R</item>
+        <item>X</item>
+        <item>T</item>
+        <item>U</item>
+        <item>V</item>
+        <item>W</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Z</item>
+    </array>
+
+    <array name="boold_name_show">
+        <item>A型血</item>
+        <item>B型血</item>
+        <item>O型血</item>
+        <item>AB型血</item>
+        <item>其他型血</item>
+        <item>未设置</item>
+    </array>
+
+    <array name="boold_name_set">
+        <item>A型血</item>
+        <item>B型血</item>
+        <item>O型血</item>
+        <item>AB型血</item>
+        <item>其他型血</item>
+    </array>
+
+    <array name="constellation_name_show">
+        <item>白羊座</item>
+        <item>金牛座</item>
+        <item>双子座</item>
+        <item>巨蟹座</item>
+        <item>狮子座</item>
+        <item>处女座</item>
+        <item>天秤座</item>
+        <item>天蝎座</item>
+        <item>射手座</item>
+        <item>摩羯座</item>
+        <item>水瓶座</item>
+        <item>双鱼座</item>
+        <item>未设置</item>
+    </array>
+
+    <array name="constellation_name_set">
+        <item>白羊座</item>
+        <item>金牛座</item>
+        <item>双子座</item>
+        <item>巨蟹座</item>
+        <item>狮子座</item>
+        <item>处女座</item>
+        <item>天秤座</item>
+        <item>天蝎座</item>
+        <item>射手座</item>
+        <item>摩羯座</item>
+        <item>水瓶座</item>
+        <item>双鱼座</item>
+    </array>
+
+    <array name="sex_name_show">
+        <item>未设置</item>
+        <item>男</item>
+        <item>女</item>
+    </array>
+
+    <array name="sex_name_set">
+        <item>男</item>
+        <item>女</item>
+    </array>
+
+    <array name="privacyStatu">
+        <item>对所有人公开</item>
+        <item>对同学公开</item>
+        <item>仅自己可见</item>
+        <item>部分可见</item>
+        <item>部分不可见</item>
+    </array>
+
+    <array name="getPicture">
+        <item>拍照</item>
+        <item>从相册中选择</item>
+    </array>
+
+</resources>

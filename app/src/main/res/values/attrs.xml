@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension"/>
+        <attr name="border_color" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="QuickSideBarView">
+        <attr name="sidebarTextColor" format="color|reference"/>
+        <attr name="sidebarBackgroundColor" format="color|reference"/>
+        <attr name="sidebarTextColorChoose" format="color|reference"/>
+        <attr name="sidebarTextSize" format="float"/>
+        <attr name="sidebarTextSizeChoose" format="float"/>
+    </declare-styleable>
+
+    <declare-styleable name="RatingBar">
+        <!--星星间距-->
+        <attr name="starDistance" format="dimension"/>
+        <!--星星大小-->
+        <attr name="starSize" format="dimension"/>
+        <!--星星个数-->
+        <attr name="starCount" format="integer"/>
+        <!--星星空图-->
+        <attr name="starEmpty" format="reference"/>
+        <!--星星满图-->
+        <attr name="starFill" format="reference"/>
+    </declare-styleable>
+
+    <!-- Declare custom theme attributes that allow changing which styles are
+         used for button bars depending on the API level.
+         ?android:attr/buttonBarStyle is new as of API 11 so this is
+         necessary to support previous API levels. -->
+    <declare-styleable name="ButtonBarContainerTheme">
+        <attr name="metaButtonBarStyle" format="reference"/>
+        <attr name="metaButtonBarButtonStyle" format="reference"/>
+    </declare-styleable>
+
+
+    <!--关于自定义的RoundProgressBar 录像进度-->
+    <declare-styleable name="RoundProgressBar">
+        <attr name="roundColor" format="color" />
+        <attr name="roundProgressColor" format="color" />
+        <attr name="roundWidth" format="dimension"></attr>
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <attr name="max" format="integer"></attr>
+        <attr name="textIsDisplayable" format="boolean"></attr>
+        <attr name="style">
+            <enum name="STROKE" value="0"></enum>
+            <enum name="FILL" value="1"></enum>
+        </attr>
+    </declare-styleable>
+
+
+</resources>

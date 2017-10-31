@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new"/>
+
+    <!--账号安全-->
+    <RelativeLayout
+        android:id="@+id/user_accountSafe"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/itemHight"
+        android:background="@color/white"
+        android:onClick="onClick"
+        android:paddingLeft="@dimen/itemMargin">
+
+        <TextView
+            style="@style/textInMyFragmentLeft"
+            android:text="账号安全"
+            android:textSize="@dimen/textSize"/>
+
+        <ImageView
+            android:id="@+id/themy_fragment_accountSafe"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:paddingRight="@dimen/itemMargin"
+            android:src="@mipmap/mine_more_right"/>
+
+    </RelativeLayout>
+
+    <View style="@style/split_line_style_withMargin"/>
+
+    <!--账号绑定-->
+    <RelativeLayout
+        android:id="@+id/user_bind"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/itemHight"
+        android:background="@color/white"
+        android:onClick="onClick"
+        android:paddingLeft="@dimen/itemMargin">
+
+        <TextView
+            style="@style/textInMyFragmentLeft"
+            android:text="账号绑定"
+            android:textSize="@dimen/textSize"/>
+
+        <ImageView
+            android:id="@+id/themy_fragment_blacklist"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:paddingRight="@dimen/itemMargin"
+            android:src="@mipmap/mine_more_right"/>
+
+    </RelativeLayout>
+
+    <View style="@style/split_line_style_withMargin"/>
+
+    <!--通用设置-->
+    <RelativeLayout
+        android:id="@+id/user_setting"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/itemHight"
+        android:background="@color/white"
+        android:onClick="onClick"
+        android:paddingLeft="@dimen/itemMargin">
+
+        <TextView
+            style="@style/textInMyFragmentLeft"
+            android:text="通用设置"
+            android:textSize="@dimen/textSize"/>
+
+        <ImageView
+            android:id="@+id/themy_fragment_set"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:paddingRight="@dimen/itemMargin"
+            android:src="@mipmap/mine_more_right"/>
+
+    </RelativeLayout>
+
+    <View style="@style/split_line_style_withMargin"/>
+
+    <!--意见反馈-->
+    <RelativeLayout
+        android:id="@+id/user_opinion"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/itemHight"
+        android:background="@color/white"
+        android:onClick="onClick"
+        android:paddingLeft="@dimen/itemMargin"
+        android:visibility="gone">
+
+        <TextView
+            style="@style/textInMyFragmentLeft"
+            android:text="意见反馈"
+            android:textSize="@dimen/textSize"/>
+
+        <ImageView
+            android:id="@+id/themy_fragment_opinion"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:paddingRight="@dimen/itemMargin"
+            android:src="@mipmap/mine_more_right"/>
+
+    </RelativeLayout>
+
+    <!--关于嗨同学-->
+    <RelativeLayout
+        android:id="@+id/user_suggestion"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/itemHight"
+        android:background="@color/white"
+        android:onClick="onClick"
+        android:paddingLeft="@dimen/itemMargin">
+
+        <TextView
+            style="@style/textInMyFragmentLeft"
+            android:text="意见反馈"
+            android:textSize="@dimen/textSize"/>
+
+        <ImageView
+            android:id="@+id/themy_fragment_suggestion"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:paddingRight="@dimen/itemMargin"
+            android:src="@mipmap/mine_more_right"/>
+
+    </RelativeLayout>
+
+    <!--<View style="@style/split_line_style_withMargin" />-->
+
+    <!--&lt;!&ndash;关于嗨同学&ndash;&gt;-->
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/user_about"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/itemHight"-->
+    <!--android:background="@color/white"-->
+    <!--android:onClick="onClick"-->
+    <!--android:paddingLeft="@dimen/itemMargin">-->
+
+    <!--<TextView-->
+    <!--style="@style/textInMyFragmentLeft"-->
+    <!--android:text="关于嗨同学"-->
+    <!--android:textSize="@dimen/textSize" />-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/themy_fragment_about"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:paddingRight="@dimen/itemMargin"-->
+    <!--android:src="@mipmap/mine_more_right" />-->
+
+    <!--</RelativeLayout>-->
+
+    <!--退出登录-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_color">
+
+        <Button
+            android:id="@+id/theMyFragment_exit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/buttonHight"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:layout_marginRight="@dimen/itemMargin"
+            android:layout_marginTop="40dp"
+            android:background="@mipmap/themyfragment_exit"
+            android:onClick="onClick"
+            android:text="退出登录"
+            android:textColor="@color/text_white"
+            android:textSize="@dimen/textSize"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="55dp"
+                android:layout_height="50dp"
+                android:orientation="vertical">
+    <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+        android:id="@+id/iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dp5"
+        android:src="@mipmap/avatar_def"/>
+
+    <com.histudent.jwsoft.histudent.commen.view.IconView
+        android:id="@+id/iv_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/photo_dot_witer"
+        android:text="@string/icon_close3"
+        android:textColor="@color/red"
+        android:textSize="@dimen/text_size_18"/>
+
+</RelativeLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg_color"
+              android:orientation="vertical">
+
+    <com.histudent.jwsoft.histudent.commen.view.MyGridView
+        android:paddingRight="@dimen/dp5"
+        android:layout_gravity="center"
+        android:id="@+id/grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv"
+        android:layout_margin="@dimen/dp10"
+        android:background="@color/bg_color"
+        android:gravity="center"
+        android:horizontalSpacing="1dp"
+        android:numColumns="4">
+    </com.histudent.jwsoft.histudent.commen.view.MyGridView>
+</RelativeLayout>

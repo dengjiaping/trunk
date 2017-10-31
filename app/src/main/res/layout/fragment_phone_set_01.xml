@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/text_white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/itemHight"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/itemMargin"
+            android:paddingRight="@dimen/itemMargin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/phoneSet"
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/textSize" />
+
+            <TextView
+                android:id="@+id/accountSafe_phoneSet_fragment_01_edit01"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/itemMargin"
+                android:gravity="center_vertical"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="@dimen/textSize" />
+
+        </LinearLayout>
+
+        <View style="@style/split_line_style_withLeftMargin" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/itemHight"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/itemMargin"
+            android:paddingRight="@dimen/itemMargin">
+
+            <TextView
+                android:id="@+id/accountSafe_phoneSet_fragment_01"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/checkCode"
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/textSize" />
+
+            <Button
+                android:id="@+id/accountSafe_phoneSet_fragment_01_button"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/green_button_bg"
+                android:text="@string/sendCheckCode"
+                android:textColor="@color/white"
+                android:textSize="@dimen/small_textSize" />
+
+            <EditText
+                android:id="@+id/accountSafe_phoneSet_fragment_01_edit02"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/itemMargin"
+                android:layout_toLeftOf="@id/accountSafe_phoneSet_fragment_01_button"
+                android:layout_toRightOf="@id/accountSafe_phoneSet_fragment_01"
+                android:background="@null"
+                android:hint="@string/inputCheckCode"
+                android:inputType="number"
+                android:textColor="@color/text_gray_h2"
+                android:textColorHint="@color/text_gray_h1"
+                android:textSize="@dimen/textSize" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/accountSafe_phoneSet_fragment_01_next"
+        style="@style/long_blue_button"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/gray_button_bg"
+        android:text="提 交" />
+
+
+</LinearLayout>

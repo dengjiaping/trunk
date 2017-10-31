@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/_EFF0F2"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/read_book_layout"
+                android:paddingRight="0dp">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/read_book_text"
+                    android:text="@string/read_book"
+                    android:textColor="@color/_333333"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_read_book_name"
+                    style="@style/read_book_text"
+                    android:layout_marginLeft="@dimen/dp20"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:textColor="@color/_333333"/>
+
+                <LinearLayout
+                    android:id="@+id/ll_scan_layout"
+                    android:layout_width="@dimen/dp50"
+                    android:layout_height="match_parent"
+                    android:gravity="right|center_vertical">
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/iv_icon_scan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/dp12"
+                        android:gravity="center"
+                        android:text="@string/icon_scan"
+                        android:textSize="@dimen/sp20"
+                        android:textColor="@color/_333333"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp0.5"
+                android:background="@color/_cccccc"
+                android:paddingLeft="@dimen/dp8"/>
+
+            <LinearLayout
+                style="@style/read_book_layout"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/read_page"
+                    android:textColor="@color/_333333"
+                    android:textSize="@dimen/sp14"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp45"
+                    android:layout_marginRight="@dimen/dp23"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/et_read_start_page_index"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"
+                        android:background="@null"
+                        android:gravity="center_vertical|left"
+                        android:hint="@string/read_start_page"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:textColor="@color/text_black_h2"
+                        android:textColorHint="@color/_bbbbbb"
+                        android:textSize="@dimen/sp14"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp1"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.2"
+                        android:background="@color/_333333"/>
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/et_read_end_page_index"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"
+                        android:background="@null"
+                        android:gravity="center_vertical|right"
+                        android:hint="@string/read_end_page"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:textColor="@color/text_black_h2"
+                        android:textColorHint="@color/_bbbbbb"
+                        android:textSize="@dimen/sp14"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp0.5"
+                android:background="@color/_cccccc"
+                android:paddingLeft="@dimen/dp8"/>
+
+            <LinearLayout
+                style="@style/read_book_layout"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/read_book_total_time"
+                    android:textColor="@color/_333333"
+                    android:textSize="@dimen/sp14"/>
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/et_read_book_total_time"
+                    style="@style/read_book_text"
+                    android:layout_width="200dp"
+                    android:layout_marginRight="@dimen/dp10"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint="0"
+                    android:inputType="number"
+                    android:maxLength="5"
+                    android:textColor="@color/text_black_h2"
+                    android:textColorHint="@color/_bbbbbb"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/read_book_text"
+                    android:text="@string/read_book_time_min"
+                    android:textColor="@color/_333333"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="@color/white"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp12"
+                android:paddingTop="@dimen/dp24">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/et_record_read_book_feel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp65"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="@string/record_read_book_feel"
+                    android:textColor="@color/text_black_h2"
+                    android:textSize="@dimen/sp15"/>
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rcl_add_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <RelativeLayout
+                    android:id="@+id/rl_publish_movie_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:visibility="gone">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/iv_movie_video"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"/>
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/iv_publish_movie_play"
+                        android:layout_width="@dimen/dp45"
+                        android:layout_height="@dimen/dp45"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/play_bg"
+                        android:gravity="center"
+                        android:text="@string/icon_chooseclass"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp23"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/tv_movie_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="@dimen/dp5"
+                        android:text="12:20"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/tiny_textSize"/>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_location_bottom_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp18"
+                    android:gravity="center_vertical">
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/iv_location_icon"
+                        style="@style/read_book_text"
+                        android:text="@string/icon_localtion"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/tv_current_location"
+                        style="@style/read_book_text"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:text="@string/location"
+                        android:textColor="@color/_bbbbbb"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

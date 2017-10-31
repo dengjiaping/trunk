@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:gravity="center"
+            android:scaleType="centerCrop">
+
+
+            <com.histudent.jwsoft.histudent.commen.view.swipemenulistview.AutoScrollImageView
+                android:id="@+id/scroll_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/group_cover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/group_bg" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/cover_bg_alpha" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+                    android:id="@+id/group_logo"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/default_person" />
+
+                <TextView
+                    android:id="@id/group_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/itemMargin"
+                    android:paddingRight="@dimen/itemMargin"
+                    android:text="社群名称"
+                    android:textColor="@color/text_white"
+                    android:textSize="@dimen/textSize"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/icon_member"
+                        android:textColor="@color/text_white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/group_members"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:text="0"
+                        android:textColor="@color/text_white"
+                        android:textSize="@dimen/small_textSize_login" />
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:text="@string/icon_topic3"
+                        android:textColor="@color/text_white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/group_topics"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:text="0"
+                        android:textColor="@color/text_white"
+                        android:textSize="@dimen/small_textSize_login" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/private_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp50"
+                android:src="@drawable/private_group" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp10"
+                android:text="该社群为私密社群，只对已经入的成员开放"
+                android:textColor="@color/text_gray_h1"
+                android:textSize="@dimen/text_size_13" />
+
+            <TextView
+                android:id="@+id/join"
+                android:layout_width="100dp"
+                android:layout_height="@dimen/dp30"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp30"
+                android:background="@drawable/green_button_bg_stroke_circle"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="申请加入"
+                android:textColor="@color/green_color"
+                android:textSize="@dimen/text_size_13" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/normal_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/group_visit_layout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/group_center_sign"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/itemMargin"
+                    android:layout_marginRight="@dimen/itemMargin"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/group_visit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0人"
+                        android:textColor="@color/text_black_h2"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="今日签到"
+                        android:textColor="@color/text_gray_h2"
+                        android:textSize="@dimen/small_textSize" />
+
+                </LinearLayout>
+
+                <GridView
+                    android:id="@+id/group_visit_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:numColumns="5" />
+
+            </LinearLayout>
+
+            <View style="@style/split_line_style_10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <!--活动-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/group_action"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/blak_button_bg_stroke"
+                        android:gravity="center"
+                        android:text="@string/icon_activity"
+                        android:textColor="@color/text_black_h3"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="bottom|center_horizontal"
+                        android:text="活动"
+                        android:textColor="@color/text_black_h3"
+                        android:textSize="@dimen/tiny_textSize" />
+
+                </LinearLayout>
+
+                <!--相册-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/group_album"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/blak_button_bg_stroke"
+                        android:gravity="center"
+                        android:text="@string/icon_album2"
+                        android:textColor="@color/text_black_h3"
+                        android:textSize="20sp" />
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="bottom|center_horizontal"
+                        android:text="相册"
+                        android:textColor="@color/text_black_h2"
+                        android:textSize="@dimen/tiny_textSize" />
+
+                </LinearLayout>
+
+                <!--直播间-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/group_live"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/blak_button_bg_stroke"
+                        android:gravity="center"
+                        android:text="@string/icon_live"
+                        android:textColor="@color/text_black_h3"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="bottom|center_horizontal"
+                        android:text="直播间"
+                        android:textColor="@color/text_black_h3"
+                        android:textSize="@dimen/tiny_textSize" />
+
+                </LinearLayout>
+
+                <!--群介绍-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.histudent.jwsoft.histudent.commen.view.IconView
+                        android:id="@+id/group_introduction"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/blak_button_bg_stroke"
+                        android:gravity="center"
+                        android:text="@string/icon_introduction"
+                        android:textColor="@color/text_black_h3"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="bottom|center_horizontal"
+                        android:text="群介绍"
+                        android:textColor="@color/text_black_h3"
+                        android:textSize="@dimen/tiny_textSize" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View style="@style/split_line_style_10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/itemMargin"
+                android:text="社群动态"
+                android:textColor="@color/text_black_h2" />
+
+            <View style="@style/split_line_style" />
+
+            <LinearLayout
+                android:id="@+id/empty_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

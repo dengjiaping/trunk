@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+    <include layout="@layout/action_item_head"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--图片-->
+            <GridView
+                android:id="@+id/action_essay_gridView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:scrollbars="none"
+                android:visibility="gone"/>
+
+            <RelativeLayout
+                android:id="@+id/action_essay_movie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/essay_movie_cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"/>
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/video_play"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/play_bg"
+                    android:gravity="center"
+                    android:text="@string/icon_chooseclass"
+                    android:textColor="@color/white"
+                    android:textSize="26sp"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <!--内容-->
+        <com.histudent.jwsoft.histudent.commen.view.RichTextView
+            android:id="@+id/action_essay_content"
+            style="@style/IntroductionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:layout_marginRight="@dimen/itemMargin"
+            android:clickable="true"
+            android:minHeight="20dp"
+            android:textColor="@color/text_black_h2"
+            android:textSize="@dimen/textSize"/>
+
+        <!--位置-->
+        <LinearLayout
+            android:id="@+id/item_location_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:layout_marginRight="@dimen/itemMargin"
+            android:layout_marginTop="@dimen/dp10"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/item_commen_location_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/icon_localtion"
+                android:textColor="@color/icon_color"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/item_group_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="来自社群"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="@dimen/small_textSize"/>
+
+            <TextView
+                android:id="@+id/item_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="西湖区"
+                android:textColor="@color/text_black_h3"
+                android:textSize="@dimen/small_textSize"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/action_item_foot"/>
+
+    <View style="@style/split_line_style_10dp"/>
+
+</LinearLayout>

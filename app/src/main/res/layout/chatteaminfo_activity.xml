@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--班级成员-->
+            <com.histudent.jwsoft.histudent.commen.view.MyGridView
+                android:id="@+id/chatTeam_gridView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:numColumns="4"
+                android:paddingRight="10dp"
+                android:paddingTop="8dp"/>
+
+            <!-- 班级名称  -->
+            <RelativeLayout
+                android:id="@+id/chatTeam_goRight_00"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemHight"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/chatTeam_goRight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="班级名称"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="@dimen/textSize"/>
+
+                <ImageView
+                    android:id="@+id/chatTeam_goRight_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:src="@mipmap/chatpersion_goright"/>
+
+                <TextView
+                    android:id="@+id/chatTeam_text_00"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toLeftOf="@id/chatTeam_goRight_image"
+                    android:layout_toRightOf="@id/chatTeam_goRight"
+                    android:gravity="right|center_vertical"
+                    android:textColor="@color/text_gray_h2"
+                    android:textSize="@dimen/textSize"/>
+            </RelativeLayout>
+
+            <View style="@style/split_line_style"/>
+
+            <!--  班主任 -->
+            <RelativeLayout
+                android:id="@+id/relative_qrcode"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemHight"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/chatTeam_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="班主任"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="@dimen/textSize"/>
+
+                <ImageView
+                    android:id="@+id/iv_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:onClick="onClick"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:src="@mipmap/chatpersion_goright"/>
+
+                <TextView
+                    android:id="@+id/chatTeam_QRcode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@id/iv_next"
+                    android:gravity="right|center_vertical"
+                    android:textColor="@color/text_gray_h2"
+                    android:textSize="@dimen/textSize"/>
+            </RelativeLayout>
+
+            <View style="@style/split_line_style"/>
+
+            <!-- 最新通知  -->
+            <RelativeLayout
+                android:id="@+id/chatTeam_goRight_01"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemHight"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/chatTeam_goRight_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="最新通知"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="@dimen/textSize"/>
+
+                <ImageView
+                    android:id="@+id/chatTeam_goRight_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:src="@mipmap/chatpersion_goright"/>
+
+                <TextView
+                    android:id="@+id/chatTeam_text_01"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toLeftOf="@id/chatTeam_goRight_img"
+                    android:layout_toRightOf="@id/chatTeam_goRight_"
+                    android:ellipsize="end"
+                    android:gravity="right|center_vertical"
+                    android:maxLines="1"/>
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_10dp"/>
+
+            <!-- 消息免打扰  -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemHight"
+                android:background="@color/white"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="消息免打扰"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="@dimen/textSize"/>
+
+                <CheckBox
+                    android:id="@+id/chatTeam_checkBox_00"
+                    style="@style/custom_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="2dp"/>
+            </RelativeLayout>
+
+            <View style="@style/split_line_style_10dp"/>
+
+            <!-- 聊天文件  -->
+            <RelativeLayout
+                android:id="@+id/chatTeam_goRight_02"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemHight"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="聊天文件"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="@dimen/textSize"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:src="@mipmap/chatpersion_goright"/>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style"/>
+
+            <!-- 查找聊天记录  -->
+            <RelativeLayout
+                android:id="@+id/chatTeam_goRight_03"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemHight"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="查找聊天记录"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="@dimen/textSize"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:src="@mipmap/chatpersion_goright"/>
+
+            </RelativeLayout>
+
+            <View style="@style/split_line_style"/>
+
+            <!-- 清空聊天记录  -->
+            <RelativeLayout
+                android:id="@+id/classInfo_jubao"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemHight"
+                android:background="@color/white"
+                android:onClick="onClick"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="清空聊天记录"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="@dimen/textSize"/>
+
+                <ImageView
+                    android:id="@+id/chatTeam_goRight_04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:onClick="onClick"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:src="@mipmap/chatpersion_goright"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

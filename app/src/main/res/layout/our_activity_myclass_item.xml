@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="69.5dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp12"
+        android:paddingRight="@dimen/dp12">
+        <!--头像-->
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/our_activity_myclass_item_picture"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp50"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp10"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/our_activity_myclass_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingLeft="4dp"
+                android:paddingTop="@dimen/dp10"
+                android:text="丹霞路小学2013级1班"
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/textSize"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp20"
+                android:layout_weight="1"
+
+                android:orientation="horizontal">
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/iv_setting_member"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/icon_member"
+                    android:textColor="@color/icon_color"
+                    android:textSize="@dimen/text_size_15"/>
+
+                <TextView
+                    android:id="@+id/number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/dp10"
+                    android:text="111"
+                    android:textColor="@color/text_gray_h2"
+                    android:textSize="@dimen/text_size_13"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View style="@style/split_line_style_withLeftMargin"/>
+
+</LinearLayout>

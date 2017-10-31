@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <RadioButton
+                android:id="@+id/friendaction"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:background="@null"
+                android:button="@null"
+                android:drawableBottom="@drawable/line_selector"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="@string/friendAction"
+                android:textColor="@color/text_blue"
+                android:textSize="@dimen/textSize" />
+
+            <ImageView
+                android:id="@+id/iv_friendaction"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_toRightOf="@id/friendaction"
+                android:src="@drawable/red_point"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <RadioButton
+                android:id="@+id/classaction"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:background="@null"
+                android:button="@null"
+                android:drawableBottom="@drawable/line_selector"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="@string/classAction"
+                android:textColor="@color/text_black_h2"
+                android:textSize="@dimen/textSize" />
+
+            <ImageView
+                android:id="@+id/iv_classaction"
+
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_toRightOf="@id/classaction"
+
+                android:src="@drawable/red_point"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <RadioButton
+                android:id="@+id/myaction"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:background="@null"
+                android:button="@null"
+                android:drawableBottom="@drawable/line_selector"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="@string/myAction"
+                android:textColor="@color/text_black_h2"
+                android:textSize="@dimen/textSize" />
+
+            <ImageView
+                android:id="@+id/iv_myaction"
+
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_toRightOf="@id/myaction"
+                android:src="@drawable/red_point"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/radio_line"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/text_white"
+        android:clickable="false"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:clickable="false" />
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:clickable="false" />
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:clickable="false" />
+    </RadioGroup>
+
+    <View style="@style/split_line_style" />
+
+    <LinearLayout
+        android:id="@+id/hiworld_childfragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical" />
+
+</LinearLayout>

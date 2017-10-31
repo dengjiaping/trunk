@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <include
+        android:id="@+id/createGroup_top"
+        layout="@layout/thetopview" />
+
+    <!--删除分组-->
+    <Button
+        android:id="@+id/createGroup_delet"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/buttonHight"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="@dimen/itemMargin"
+        android:layout_marginRight="@dimen/itemMargin"
+        android:layout_marginTop="15dp"
+        android:background="@mipmap/themyfragment_exit"
+        android:onClick="onClick"
+        android:text="删除分组"
+        android:textColor="@color/text_white"
+        android:textSize="@dimen/textSize"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/creategroup_head"
+        layout="@layout/creategroup_head_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/createGroup_top"
+        android:layout_alignParentLeft="true"/>
+
+    <com.histudent.jwsoft.histudent.commen.view.swipemenulistview.SwipeMenuListView
+        android:id="@+id/creategroup_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/createGroup_delet"
+        android:layout_below="@id/creategroup_head"
+        android:divider="@color/transparent"
+        android:dividerHeight="0.5dp" />
+
+    <ImageView
+        android:id="@+id/default_picture"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/createGroup_top"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+</RelativeLayout>

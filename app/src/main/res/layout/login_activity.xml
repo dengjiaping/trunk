@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_bg_color_v2"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout_"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.6"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/themy_fragment_layout"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/login_head_circle_bg"
+            android:gravity="center">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/icon_user"
+                android:textColor="@color/text_white"
+                android:textSize="35sp" />
+
+            <!--头像-->
+            <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+                android:id="@+id/hendImage"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_centerInParent="true"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/login_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="112dp" />
+
+    <!--语音验证码-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/link_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/link_clik_"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/itemMargin_v2"
+                android:paddingLeft="5dp"
+                android:text="111？"
+                android:textColor="#30ffffff"
+                android:textSize="@dimen/small_textSize" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/link_clik_"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/link_clik_withLine_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:onClick="onClick"
+                    android:text="222"
+                    android:textColor="@color/text_white"
+                    android:textSize="@dimen/small_textSize" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/link_clik"
+                    android:background="@color/text_gray_h1" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+    </LinearLayout>
+
+    <!--登录-->
+    <Button
+        android:id="@+id/login"
+        style="@style/long_gray_button_circle"
+        android:text="@string/login" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+
+        <!--忘记密码-->
+        <TextView
+            android:id="@+id/foegetPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="13dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="忘记密码？"
+            android:textColor="@color/text_white"
+            android:textSize="@dimen/small_textSize" />
+
+        <!--立即注册-->
+        <include
+            android:id="@+id/registUser"
+            layout="@layout/link_layout_v2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="19dp" />
+
+        <!--登录方式-->
+        <RelativeLayout
+            android:id="@+id/login_style"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_above="@id/registUser"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/itemMargin_v2"
+            android:paddingRight="@dimen/itemMargin_v2">
+
+            <!--手机登录-->
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/login_phone_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/login_head_circle_bg"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="@string/icon_telphone"
+                android:textColor="@color/text_white"
+                android:textSize="20sp" />
+
+
+            <!--微信登录-->
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/login_weixin"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/login_head_circle_bg"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="@string/icon_weixin"
+                android:textColor="@color/text_white"
+                android:textSize="20sp" />
+
+
+            <!--QQ登录-->
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/login_QQ"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/login_head_circle_bg"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="@string/icon_qq"
+                android:textColor="@color/text_white"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/login_style"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="22dp"
+            android:text="其他登录方式"
+            android:textColor="#30ffffff"
+            android:textSize="@dimen/tiny_textSize" />
+
+    </RelativeLayout>
+
+</LinearLayout>

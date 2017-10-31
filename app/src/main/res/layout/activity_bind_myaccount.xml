@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new" />
+
+
+    <!--微信-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="@dimen/itemMargin"
+        android:background="@drawable/item_white_gray_stork"
+        android:paddingLeft="10dp"
+        android:paddingStart="10dp"
+
+        >
+
+        <TextView
+            style="@style/text_back_v2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="微信" />
+
+        <ImageView
+            android:id="@+id/checkBox_weixin"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="2dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="2dp" />
+
+    </RelativeLayout>
+
+    <!--QQ-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="@dimen/itemMargin"
+        android:layout_marginRight="@dimen/itemMargin"
+        android:background="@drawable/item_white_gray_stork"
+        android:paddingLeft="10dp"
+        android:paddingStart="10dp"
+
+        >
+
+        <TextView
+            style="@style/text_back_v2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="QQ" />
+
+        <ImageView
+            android:id="@+id/checkBox_QQ"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="2dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="2dp" />
+
+    </RelativeLayout>
+
+    <TextView
+        style="@style/text_gray_v2_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/itemMargin"
+        android:text="绑定第三方账号可直接登录"
+        android:textSize="@dimen/tiny_textSize" />
+
+</LinearLayout>

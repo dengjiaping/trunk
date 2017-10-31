@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_content_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/publish_content_blur_bg"
+    android:fitsSystemWindows="true">
+
+
+    <ImageView
+        android:id="@+id/iv_publish_homework_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="180dp"
+        android:src="@mipmap/random_publish_homework"/>
+
+    <com.histudent.jwsoft.histudent.commen.view.IconView
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp53"
+        android:gravity="center"
+        android:text="@string/icon_close4"
+        android:textColor="@color/_bbbbbb"
+        android:textSize="@dimen/sp30"/>
+
+    <LinearLayout
+        android:id="@+id/ll_homework_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_homework_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="180dp"
+            android:layout_marginTop="@dimen/dp30"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:layout_width="@dimen/dp51"
+                android:layout_height="@dimen/dp51"
+                android:background="@drawable/homework_text_button_bg_circle"
+                android:gravity="center"
+                android:text="@string/icon_pen"
+                android:textColor="@color/text_white"
+                android:textSize="25sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp18"
+                android:text="文字"
+                android:textColor="@color/_666666"
+                android:textSize="@dimen/sp14"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_homework_video"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="180dp"
+            android:layout_marginTop="@dimen/dp30"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:layout_width="@dimen/dp51"
+                android:layout_height="@dimen/dp51"
+                android:background="@drawable/homework_video_button_bg_circle"
+                android:gravity="center"
+                android:text="@string/icon_video"
+                android:textColor="@color/text_white"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp18"
+                android:text="视频"
+                android:textColor="@color/_666666"
+                android:textSize="@dimen/sp14"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_homework_sound"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="180dp"
+            android:layout_marginTop="@dimen/dp30"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:layout_width="@dimen/dp51"
+                android:layout_height="@dimen/dp51"
+                android:background="@drawable/homework_sound_button_bg_circle"
+                android:gravity="center"
+                android:text="@string/icon_microphone"
+                android:textColor="@color/text_white"
+                android:textSize="25sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp18"
+                android:text="语音"
+                android:textColor="@color/_666666"
+                android:textSize="@dimen/sp14"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_homework_picture"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="180dp"
+            android:layout_marginTop="@dimen/dp30"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:layout_width="@dimen/dp51"
+                android:layout_height="@dimen/dp51"
+                android:background="@drawable/homework_picture_button_bg_circle"
+                android:gravity="center"
+                android:text="@string/icon_img2"
+                android:textColor="@color/text_white"
+                android:textSize="25sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp18"
+                android:text="图片"
+                android:textColor="@color/_666666"
+                android:textSize="@dimen/sp14"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

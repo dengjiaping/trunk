@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".body.find.activity.SchoolHomeActivity">
+
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/school_home_listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/line_color"
+            android:dividerHeight="0dp"
+            android:scrollbars="none"/>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+    <include layout="@layout/thetopview_transparent"/>
+
+</RelativeLayout>

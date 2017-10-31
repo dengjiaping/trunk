@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activityRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <include layout="@layout/thetopview_new" />
+
+
+
+        <EditText
+            android:id="@+id/et_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="start"
+            android:hint="这一刻你想说点什么..."
+            android:maxLength="140"
+            android:minHeight="200dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:textSize="@dimen/textSize" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/grid_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <View style="@style/split_line_style" />
+
+        <!--地址-->
+        <RelativeLayout
+            android:id="@+id/relative_address"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:visibility="gone">
+
+            <RadioButton
+                android:id="@+id/rb_address"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="@dimen/itemMargin"
+                android:button="@null"
+                android:drawableLeft="@mipmap/address_location_gray"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="@dimen/textSize" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@id/rb_address"
+                android:gravity="center_vertical"
+                android:text="地址"
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/textSize" />
+
+            <ImageView
+                android:id="@+id/iv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/ImageNextSize"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:paddingBottom="@dimen/ImageNextPandingSizeVert"
+                android:paddingLeft="@dimen/dp5"
+                android:paddingRight="@dimen/itemMargin"
+                android:paddingTop="@dimen/ImageNextPandingSizeVert"
+                android:src="@mipmap/mine_more_right"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@id/iv_address"
+                android:gravity="center_vertical"
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/textSize" />
+
+
+        </RelativeLayout>
+
+        <View
+            style="@style/MyViewHorz"
+            android:layout_height="10dp" />
+
+        <!--权限-->
+        <RelativeLayout
+            android:id="@+id/relative_photo_quality"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:visibility="gone">
+
+            <RadioButton
+                android:id="@+id/rb_authority"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="@dimen/itemMargin"
+                android:button="@null"
+                android:drawableLeft="@mipmap/authority_essay"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:text="权限"
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/textSize" />
+
+            <ImageView
+                android:id="@+id/iv_authority"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/ImageNextSize"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingBottom="@dimen/ImageNextPandingSizeVert"
+                android:paddingLeft="@dimen/dp5"
+                android:paddingRight="@dimen/ImageNextPandingSize"
+                android:paddingTop="@dimen/ImageNextPandingSizeVert"
+                android:src="@mipmap/mine_more_right" />
+
+            <TextView
+                android:id="@+id/tv_authority"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@id/iv_authority"
+                android:gravity="center_vertical"
+                android:text="公开"
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/textSize" />
+        </RelativeLayout>
+
+        <View style="@style/split_line_style" />
+
+        <!--分享-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:visibility="gone">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="@dimen/itemMargin"
+                android:button="@null"
+                android:drawableLeft="@mipmap/share_essay_gray"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:text="分享到"
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/textSize" />
+
+
+            <CheckBox
+                android:id="@+id/iv_share_QQzone"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/image_pressed_seletor"
+                android:button="@null" />
+
+            <CheckBox
+                android:id="@+id/iv_share_friend_quan"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:layout_toLeftOf="@id/iv_share_QQzone"
+                android:background="@drawable/friend_quan_selector"
+                android:button="@null" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <!--插入话题-->
+    <LinearLayout
+        android:id="@+id/essay_topic"
+        android:layout_width="match_parent"
+        android:layout_height="40.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <View style="@style/split_line_style" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:gravity="center"
+            android:text="#"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/public_track"
+            style="@style/long_blue_button"
+            android:layout_marginBottom="@dimen/dp20"
+            android:onClick="onClick"
+            android:text="提  交" />
+
+    </LinearLayout>
+
+</RelativeLayout>

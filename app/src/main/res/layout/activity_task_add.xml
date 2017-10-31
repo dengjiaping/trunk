@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/thetopview_new" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/color_white_ffffffff"
+        android:orientation="horizontal"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="任务标题"
+            android:textColor="@color/text_black_h2"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/add_task_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:hint="请输入阅读任务标题"
+            android:textColorHint="@color/icon_color"
+            android:textColor="@color/text_black_h2"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:src="@mipmap/more" />
+
+
+    </LinearLayout>
+
+    <View style="@style/split_line_style_withLeftMargin"></View>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/color_white_ffffffff"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="开始时间"
+                android:textColor="@color/text_black_h2"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/add_task_time_begin"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|right"
+                android:hint="请选择任务开始时间"
+                android:textColor="@color/text_black_h1"
+                android:textColorHint="@color/icon_color"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:src="@mipmap/more" />
+
+        </LinearLayout>
+
+
+        <View style="@style/split_line_style_withLeftMargin"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="结束时间"
+                android:textColor="@color/text_black_h2"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/add_task_time_end"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|right"
+                android:hint="请选择任务结束时间"
+                android:textColor="@color/text_black_h2"
+                android:textColorHint="@color/icon_color"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:src="@mipmap/more" />
+
+        </LinearLayout>
+
+        <View style="@style/split_line_style_withLeftMargin"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="是否每天"
+                android:textColor="@color/text_black_h2"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:id="@+id/add_task_is_everyday"
+                style="@style/custom_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_alignParentRight="true" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:src="@mipmap/more" />
+
+        </LinearLayout>
+
+        <View style="@style/split_line_style_withLeftMargin"></View>
+
+
+        <LinearLayout
+            android:id="@+id/ll_task_day"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="打卡达标"
+                android:textColor="@color/text_black_h2"
+
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/add_task_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|right"
+                android:hint="0"
+                android:inputType="number"
+                android:textColor="@color/text_black_h2"
+                android:textColorHint="@color/icon_color"
+                android:background="@null"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
+                android:hint="天"
+                android:layout_marginLeft="8dp"
+                android:textColor="@color/text_gray_h1"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/color_white_ffffffff"
+        android:orientation="vertical"
+
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:text="任务描述"
+            android:textColor="@color/text_black_h2"
+            android:textSize="15sp" />
+
+        <View style="@style/split_line_style_withLeftMargin"></View>
+
+
+        <EditText
+            android:id="@+id/add_task_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="4dp"
+            android:lines="10"
+            android:gravity="top"
+            android:hint="任务内容和要求在此填写"
+            android:textColorHint="@color/icon_color"
+            android:textColor="@color/text_black_h2"
+            android:background="@null"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

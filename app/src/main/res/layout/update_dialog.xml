@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <LinearLayout
+        android:elevation="5dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:background="@drawable/dialog_base"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dialog_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/dialog_base"
+            android:gravity="center_vertical"
+            android:text="标题"
+            android:textColor="@color/text_black_h1"
+            android:textSize="@dimen/large_textSize"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/dialog_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dialog_base"
+            android:gravity="center"
+            android:minHeight="@dimen/itemHight"
+            android:padding="15dp"
+            android:text="数据加载中..."
+            android:textColor="@color/text_black_h1"
+            android:textSize="@dimen/textSize"/>
+        <ProgressBar
+            android:id="@+id/progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/dialog_base"
+            android:max="100"
+            android:progress="1"
+            android:secondaryProgress="3"
+        />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/text_gray_h2"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/dialog_base"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/dialog_left"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:text="确定"
+                android:textSize="@dimen/textSize"/>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="@color/text_gray_h2"/>
+
+            <Button
+                android:id="@+id/dialog_right"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:text="取消"
+                android:textSize="@dimen/textSize"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

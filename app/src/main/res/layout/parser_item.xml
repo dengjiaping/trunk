@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="55dp"
+    android:layout_height="55dp">
+
+    <RelativeLayout
+        android:layout_width="@dimen/dp47"
+        android:layout_height="@dimen/dp47">
+
+        <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+            android:id="@+id/iv"
+            android:layout_width="@dimen/dp47"
+            android:layout_height="@dimen/dp47"
+            android:src="@mipmap/iv_default"/>
+
+        <ImageView
+            android:id="@+id/iv_teacher_identity"
+            android:layout_width="@dimen/dp15"
+            android:layout_height="@dimen/dp15"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/hot_person_teacher"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

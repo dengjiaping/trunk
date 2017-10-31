@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/homeWork"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/message_item_portrait_right"
+        android:layout_toRightOf="@id/message_item_portrait_left"
+        android:background="@drawable/homework_bg"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/text_black"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/title"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_marginRight="2dp"
+            android:layout_toLeftOf="@+id/image"
+            android:ellipsize="end"
+            android:lineSpacingMultiplier="1.2"
+            android:maxLines="3"
+            android:paddingTop="5dp"
+            android:textColor="@color/gray7"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

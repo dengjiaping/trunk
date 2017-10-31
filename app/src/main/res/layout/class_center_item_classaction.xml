@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <!--头像-->
+        <com.histudent.jwsoft.histudent.commen.view.CircleImageView
+            android:id="@+id/item_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            app:border_color="#0000"
+            app:border_width="1dp" />
+
+        <TextView
+            android:id="@+id/item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/item_image"
+            android:text="孙晓可"
+            android:textColor="@color/text_black_h1"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/item_publictime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/item_image"
+            android:text="公开发表日志-刚刚" />
+
+        <CheckBox
+            android:id="@+id/item_see"
+            android:layout_width="50dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/addsee_check"
+            android:button="@null"
+            android:src="@mipmap/add_see" />
+
+    </RelativeLayout>
+
+    <!--文本内容-->
+    <RelativeLayout
+        android:id="@+id/item_type_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+        <TextView
+            android:id="@+id/item_type_text_name"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="3dp"
+            android:gravity="bottom"
+            android:text="图书馆奇妙夜"
+            android:textColor="@color/text_black_h1"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/item_type_text_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_type_text_name"
+            android:layout_marginTop="10dp"
+            android:text="今天，我和妈妈去参加一个活动；奇妙夜任务海选，是为了庆祝新图书馆开业。报名的人很多，扮演的角色也很多，我选的是关羽，我妈妈选的是紫霞..."
+            android:textSize="17sp" />
+
+    </RelativeLayout>
+
+    <!--图片内容内容-->
+    <RelativeLayout
+        android:id="@+id/item_type_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:id="@+id/item_type_image_namelog"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginLeft="3dp"
+            android:gravity="bottom"
+            android:text="上传9张照片到 : "
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/item_type_image_name"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="3dp"
+            android:layout_toRightOf="@id/item_type_image_namelog"
+            android:gravity="bottom"
+            android:text="校园生活"
+            android:textColor="@color/text_black_h1"
+            android:textSize="17sp" />
+
+
+        <com.histudent.jwsoft.histudent.commen.view.MyGridView
+            android:id="@+id/item_type_image_picture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_type_image_name"
+            android:layout_marginTop="10dp"
+            android:horizontalSpacing="8dp"
+            android:numColumns="3"
+            android:verticalSpacing="8dp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/item_location"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/item_type_image_picture"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@mipmap/location"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:text="杭州市西湖区华彩国际" />
+
+    <!--底部栏-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_color_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <CheckBox
+                android:id="@+id/item_like"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableLeft="@drawable/addlike_check"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="40dp"
+                android:text="96"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/line_color_gray" />
+
+            <Button
+                android:id="@+id/item_comment"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableLeft="@mipmap/discuss"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="40dp"
+                android:text="96"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/line_color_gray" />
+
+            <Button
+                android:id="@+id/item_share"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableLeft="@mipmap/share"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="40dp"
+                android:text="96"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_color_gray" />
+
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/grid_view_like"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:horizontalSpacing="4dp"
+        android:numColumns="8"
+        android:padding="10dp" />
+
+    <TextView
+        android:id="@+id/text_line"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/line_color_gray" />
+
+</LinearLayout>

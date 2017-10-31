@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+                android:id="@+id/upload_picture"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_centerInParent="true"
+                android:onClick="onClick"
+                android:src="@mipmap/camera" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="上传奖项照片"
+                android:textSize="@dimen/textSize" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/image_show"
+            android:layout_width="240dp"
+            android:layout_height="140dp"
+            android:layout_centerInParent="true"
+            android:onClick="onClick"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/itemMargin"
+        android:paddingRight="@dimen/itemMargin">
+
+        <TextView
+            android:id="@+id/getAward_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="获奖名称"
+            android:textColor="@color/text_black_h1"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/getAward_name_edit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/getAward_name_text"
+            android:background="@null"
+            android:gravity="center_vertical|right"
+            android:hint="不超过30个字"
+            android:maxLength="30"
+            android:textColor="@color/text_black_h1"
+            android:textColorHint="@color/text_gray_h1"
+            android:textSize="@dimen/textSize" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/getAward_timeb"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:onClick="onClick"
+        android:paddingLeft="@dimen/itemMargin"
+        android:paddingRight="@dimen/itemMargin">
+
+        <TextView
+            android:id="@+id/getAward_name_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="获奖时间"
+            android:textColor="@color/text_black_h1"
+            android:textSize="@dimen/textSize" />
+
+        <ImageView
+            android:id="@+id/getAward_time_toright"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:src="@mipmap/mine_more_right" />
+
+        <TextView
+            android:id="@+id/getAward_time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/dp10"
+            android:layout_toLeftOf="@id/getAward_time_toright"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/textSize" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new" />
+
+    <LinearLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_margin="5.0dip"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/search_bar_layout"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="4"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="@dimen/offset_title_left"
+                android:layout_marginLeft="@dimen/offset_title_left"
+                android:layout_marginTop="@dimen/offset_title_left"
+                android:layout_toLeftOf="@+id/btn_search"
+                android:layout_toStartOf="@+id/btn_search"
+                android:background="@drawable/search_bar_edit_selector"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:text="@string/icon_search"
+                    android:textColor="@color/icon_color"
+                    android:textSize="@dimen/text_size_15" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/keyWord"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="4dp"
+                    android:background="@color/transparent"
+                    android:hint="请输入关键字"
+                    android:inputType="text|textAutoComplete"
+                    android:maxLines="1"
+                    android:text=""
+                    android:textColor="@color/text_black_h1"
+                    android:textColorHint="@color/icon_color"
+                    android:textSize="@dimen/text_size_15" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/searchButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp7"
+            android:layout_marginTop="7dp"
+            android:layout_weight="0.9"
+            android:background="@drawable/green_button_bg"
+            android:gravity="center"
+            android:text="搜索"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <com.amap.api.maps2d.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3" />
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:divider="@color/line_split1"
+        android:dividerHeight="0.5dp"
+        android:paddingLeft="@dimen/dp10"
+        android:paddingRight="@dimen/dp10"></ListView>
+
+</LinearLayout>

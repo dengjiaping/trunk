@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 真实姓名-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/itemHight"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:layout_marginRight="@dimen/itemMargin"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextViewProperty"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="真实姓名"
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/textSize" />
+
+            <EditText
+                android:id="@+id/realName"
+                style="@style/EditTextProperty"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:background="@null"
+                android:hint="请输入你的名字"
+                android:inputType="textPersonName"
+                android:textSize="@dimen/textSize" />
+
+        </LinearLayout>
+
+        <View style="@style/split_line_style_withMargin" />
+
+        <!-- 手机号码-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/itemHight"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:layout_marginRight="@dimen/itemMargin"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:textSize="@dimen/regist_text_size">
+
+            <TextView
+                style="@style/TextViewProperty"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="手机号码"
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/textSize" />
+
+            <EditText
+                android:id="@+id/phoneNumber"
+                style="@style/EditTextProperty"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:background="@null"
+                android:hint="手机号将作为默认账号"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:textSize="@dimen/textSize" />
+
+
+        </LinearLayout>
+
+        <View style="@style/split_line_style_withMargin" />
+
+        <!-- 验证码-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/itemHight"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextViewProperty"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="验证码"
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/textSize" />
+
+            <EditText
+                android:id="@+id/phoneCode"
+                style="@style/EditTextProperty"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@null"
+                android:hint="请输入短信验证码"
+                android:inputType="number"
+                android:maxLength="6"
+                android:textSize="@dimen/textSize" />
+
+            <Button
+                android:id="@+id/button_getCode"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/blue_button_bg"
+                android:gravity="center"
+                android:text="获取验证码"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/codeTextSize" />
+
+        </LinearLayout>
+
+        <View style="@style/split_line_style_withMargin" />
+
+        <!-- 设置密码-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/itemHight"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:layout_marginRight="@dimen/itemMargin"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextViewProperty"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="设置密码"
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/textSize" />
+
+            <EditText
+                android:id="@+id/passWord"
+                style="@style/EditTextProperty"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:background="@null"
+                android:hint="6到20位数字、字母和符号组成"
+                android:textSize="@dimen/textSize" />
+
+        </LinearLayout>
+
+        <View style="@style/split_line_style" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.5">
+
+        <Button
+            android:id="@+id/regist_thesecond_fragment_nextbutton"
+            style="@style/long_blue_button"
+            android:layout_marginTop="@dimen/dp30"
+            android:text="@string/regist" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextViewProperty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="点击 “注册” 即默认同意"
+                android:textColor="@color/text_black_h1"
+                android:textSize="@dimen/textSize" />
+
+            <Button
+                android:id="@+id/deal"
+                style="@style/TextViewProperty"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp40"
+                android:background="@null"
+                android:onClick="onClick"
+                android:text="@string/agreement_hi"
+                android:textColor="#5e8fc2"
+                android:textSize="@dimen/textSize" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

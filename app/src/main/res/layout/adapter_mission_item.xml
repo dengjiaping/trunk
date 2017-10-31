@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="@color/yellow_bg"
+    android:orientation="vertical"
+    android:paddingBottom="15dp"
+    android:paddingTop="15dp">
+
+    <com.histudent.jwsoft.histudent.commen.view.IconView
+        android:id="@+id/icon_mission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:onClick="onClick"
+        android:text="@string/icon_arrowright"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/mission_statue"
+        style="@style/text_white_v2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/green_button_bg"
+        android:paddingBottom="8dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="8dp"
+        android:text="去完成" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/mission_statue"
+        android:layout_toRightOf="@id/icon_mission"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/mission_name"
+            style="@style/text_back_v2_"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="邀请班级成员" />
+
+        <TextView
+            android:id="@+id/mission_content"
+            style="@style/text_back_v2_"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="邀请班级成员进班" />
+
+    </LinearLayout>
+
+</RelativeLayout>

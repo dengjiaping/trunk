@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:minHeight="70dp"
+              android:orientation="vertical">
+
+    <com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:contentView="@+id/middle"
+        app:rightMenuView="@+id/right">
+
+        <LinearLayout
+            android:id="@+id/middle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+                android:id="@+id/image"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/per_def"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:text="官方中心"
+                        android:textColor="@color/text_black_h1"
+                        android:textSize="@dimen/textSize"/>
+
+                    <TextView
+                        android:id="@+id/time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="昨天"
+                        android:textColor="@color/text_gray_h2"
+                        android:textSize="@dimen/text_size_13"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:text="三月植树节，植树小明星活动启动！"
+                        android:textColor="@color/text_gray_h2"
+                        android:textSize="@dimen/text_size_13"/>
+
+                    <TextView
+                        android:id="@+id/red_point_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/bg_circle_num_tip"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/delete"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:background="@color/red"
+                android:text="删除"
+                android:textColor="@color/white"
+                android:textSize="17sp"/>
+
+        </LinearLayout>
+    </com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout>
+
+    <View style="@style/split_line_style_withMargin"/>
+</LinearLayout>

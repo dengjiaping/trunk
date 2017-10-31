@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_color"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal">
+
+        <com.histudent.jwsoft.histudent.commen.view.EditText_clear
+            android:id="@+id/subscription_edit"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/search_bar_edit_selector"
+            android:drawableLeft="@drawable/search_bar_icon_normal"
+            android:hint="请输入真实姓名/手机号"
+            android:paddingLeft="10dp"
+            android:maxLines="1"
+            android:textSize="15.0dip" />
+
+    </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/subscription_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/line_color_gray"
+        android:dividerHeight="1dp" />
+
+</LinearLayout>

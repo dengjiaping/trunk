@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+    <include layout="@layout/thetopview"/>
+
+    <RelativeLayout
+        android:id="@+id/relative_setting"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ItemHeight">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:text="隐私设置"
+            android:textColor="@color/text_black_h1"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:src="@mipmap/more"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/split_line_style_withMargin"
+       ></View>
+
+    <RelativeLayout
+        android:id="@+id/relative_sheid"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ItemHeight">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:text="屏蔽动态的人"
+            android:textColor="@color/text_black_h1"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:src="@mipmap/more"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/split_line_style_withMargin"
+    ></View>
+
+    <RelativeLayout
+        android:id="@+id/relative_blackList"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ItemHeight">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:text="黑名单"
+            android:textColor="@color/text_black_h1"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:src="@mipmap/more"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/split_line_style_withMargin"
+    ></View>
+</LinearLayout>

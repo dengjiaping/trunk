@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/album_bg"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_placeholder_style_1" />
+
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/cover_bg"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dp10"
+            android:paddingLeft="@dimen/dp20"
+            android:paddingRight="@dimen/dp20"
+            android:paddingTop="@dimen/dp70">
+
+            <TextView
+                android:id="@+id/album_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp30"
+                android:gravity="center"
+                android:text="相册名称"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_15"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/album_instr"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|top"
+                android:minHeight="@dimen/dp70"
+                android:paddingBottom="@dimen/dp10"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15"
+                android:text="相册名称相册名称相册名称相册名称相册名称"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_13" />
+
+            <TextView
+                android:id="@+id/pic_num"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp30"
+                android:gravity="end|bottom"
+                android:text="21名称"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_13" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_favor"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp5">
+
+        <TextView
+            android:id="@+id/favor_num"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:minHeight="@dimen/dp50"
+            android:paddingLeft="@dimen/dp5"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/text_size_12" />
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/dp5"
+            android:layout_weight="1"
+            android:orientation="horizontal"/>
+    </LinearLayout>
+
+    <View style="@style/split_line_style_10dp"></View>
+
+    <RelativeLayout
+
+        android:id="@+id/album_show_upload"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@drawable/upload_image_bg"
+        android:onClick="onClick">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/icon_upload2"
+                android:textColor="@color/green_color"
+                android:textSize="@dimen/text_size_20" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp10"
+                android:text="上传图片"
+                android:textColor="@color/green_color"
+                android:textSize="@dimen/text_size_15" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

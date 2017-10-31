@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/notices_voice"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@color/white"
+    android:visibility="gone"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="@dimen/itemMargin"
+
+
+        android:background="@drawable/bg_voice_play"
+        android:orientation="horizontal">
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/notices_voice_control"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:padding="4dp"
+            android:text="@string/icon_bofang"
+            android:textColor="@color/_cccccc"/>
+
+        <TextView
+            android:id="@+id/notices_voice_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="8dp"
+            android:text="00:00"
+            android:textColor="@color/grey"
+            android:textSize="10sp"
+            android:textStyle="bold"/>
+
+        <SeekBar
+            android:id="@+id/notices_voice_progress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:maxHeight="4dp"
+            android:minHeight="4dp"
+            android:progressDrawable="@drawable/bg_seekbar"
+            android:splitTrack="false"
+            android:thumb="@drawable/seekbar_thumb"
+            />
+
+        <TextView
+            android:id="@+id/notices_voice_time_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:text="05:00"
+            android:textColor="@color/grey"
+            android:textSize="10sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <com.histudent.jwsoft.histudent.commen.view.IconView
+        android:id="@+id/delete_voice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="6dp"
+        android:text="@string/icon_close3"
+        android:textColor="@color/red_color"
+        android:textSize="14sp"/>
+
+</FrameLayout>

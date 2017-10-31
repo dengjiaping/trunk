@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+   >
+
+    <include layout="@layout/thetopview"/>
+
+    <View
+        android:id="@+id/line1"
+        android:layout_below="@id/thetopview"
+        style="@style/split_line_style_withMargin"
+        ></View>
+    <RelativeLayout
+        android:background="@color/white"
+        android:id="@+id/relative_public"
+        android:layout_below="@id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:id="@+id/tv_public"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:text="公开"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:padding="@dimen/check_box_pading_size"
+            android:src="@drawable/checked_selector"
+            android:id="@+id/iv_public"
+            android:layout_marginRight="12dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="@dimen/check_box_size"
+            android:layout_height="@dimen/check_box_size"/>
+    </RelativeLayout>
+    <View
+        android:id="@+id/line"
+        android:layout_below="@id/relative_public"
+        style="@style/split_line_style_withMargin"
+        ></View>
+    <RelativeLayout
+        android:id="@+id/relative_privata"
+        android:background="@color/white"
+        android:layout_below="@id/line"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:id="@+id/privata"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:text="不公开"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:padding="@dimen/check_box_pading_size"
+            android:src="@drawable/checked_selector"
+            android:id="@+id/iv_private"
+            android:layout_marginRight="12dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="@dimen/check_box_size"
+            android:layout_height="@dimen/check_box_size"/>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginBottom="13dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/action_tuijian_image"
+            android:layout_width="35dp"
+            android:layout_height="15dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/blue_button_bg_green_v2"
+            android:gravity="center"
+            android:text="推荐"
+            android:textColor="@color/text_white"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/action_tuijian_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@id/action_tuijian_image"
+            android:gravity="bottom"
+            android:text="余春杭"
+            android:textColor="@color/text_black_h3"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/action_tuijian_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="bottom"
+            android:text="昨天"
+            android:textColor="@color/text_gray_h1"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/action_tuijian_class"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@id/action_tuijian_time"
+            android:layout_toRightOf="@id/action_tuijian_name"
+            android:ellipsize="middle"
+            android:gravity="bottom"
+            android:lines="1"
+            android:text="湖南人文科技学院计科一班"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="11sp" />
+
+    </RelativeLayout>
+
+    <View style="@style/split_line_style" />
+
+</LinearLayout>

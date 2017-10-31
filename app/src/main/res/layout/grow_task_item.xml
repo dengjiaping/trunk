@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="64dp"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+            android:id="@+id/log"
+            android:layout_width="@dimen/dp36"
+            android:layout_height="@dimen/dp36"
+            android:layout_marginLeft="16dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/default_placeholder_style_1"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="8dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="邀请班级成员"
+                android:textColor="@color/text_black_h1"
+                android:maxLines="1"
+                android:textSize="@dimen/text_size_14"/>
+
+            <TextView
+                android:id="@+id/tv_instr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="邀请班级成员"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/text_gray_h1"
+                android:textSize="@dimen/text_size_12"/>
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/is_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="8dp"
+            android:src="@mipmap/icon_task_finish"/>
+
+        <TextView
+            android:id="@+id/point"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp25"
+            android:layout_marginRight="16dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="right|center_vertical"
+            android:textColor="@color/text_black_h1"
+            android:text="+10"
+            android:textSize="@dimen/text_size_16"/>
+
+
+    </LinearLayout>
+
+    <View
+        style="@style/split_line_style_withLeftMargin"
+        android:layout_alignParentBottom="true"></View>
+
+</LinearLayout>

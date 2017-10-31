@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/text_black_h3"
+    android:orientation="vertical">
+
+    <!--手机号或邮箱-->
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+        <EditText
+            android:id="@+id/login_account_edit"
+            style="@style/regist_edit_style_v2"
+            android:hint="手机号或邮箱"
+            android:inputType="text" />
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/login_account_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="@dimen/itemMargin_v2"
+            android:clickable="true"
+            android:gravity="bottom|end"
+            android:onClick="onClick"
+            android:text="@string/icon_arrowbottom"
+            android:textColor="@color/text_white"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <TextView style="@style/split_line_style_login" />
+
+    <!--密码-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/login_password_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="@dimen/itemMargin_v2"
+            android:clickable="true"
+            android:gravity="bottom|end"
+            android:onClick="onClick"
+            android:text="@string/icon_eye2"
+            android:textColor="@color/text_white"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/login_password_edit"
+            style="@style/regist_edit_style_v2"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/login_password_image"
+            android:digits="@string/edit_limit"
+            android:hint="密码"
+            android:inputType="textPassword" />
+
+    </RelativeLayout>
+
+    <TextView style="@style/split_line_style_login" />
+
+</LinearLayout>

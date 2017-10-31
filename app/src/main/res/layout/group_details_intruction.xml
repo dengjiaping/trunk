@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+    >
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:scaleType="fitXY"
+                android:id="@+id/group_details_iv_bg"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@mipmap/default_group"/>
+
+            <com.histudent.jwsoft.histudent.commen.view.CircleImageView
+                android:id="@+id/grop_details_iv"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="140dp"
+                android:src="@mipmap/avatar_def"/>
+
+            <TextView
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:id="@+id/grop_details_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="165dp"
+                android:layout_toRightOf="@id/grop_details_iv"
+                android:text="社群名称"/>
+
+            <Button
+                android:id="@+id/group_details_btn_name"
+                android:layout_width="80dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="160dp"
+                android:layout_toRightOf="@id/grop_details_tv_name"
+                android:background="@mipmap/yellow_bg"
+                android:text="航模"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/group_details_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/group_details_btn_name"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/grop_details_iv"
+                android:text="浙江-杭州-西湖区"/>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_below="@id/grop_details_iv"
+                android:layout_marginTop="10dp"
+                android:background="@color/line_split1"></View>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_below="@id/view"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+                    android:gravity="center"
+                    android:id="@+id/relative_dis"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/iv_dis"
+                        android:src="@mipmap/group_dis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/tv_disnum"
+                    android:layout_toRightOf="@id/iv_dis"
+                    android:text="0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_below="@id/iv_dis"
+                        android:text="讨论区"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/line_split1"></View>
+
+                <RelativeLayout
+                    android:gravity="center"
+                    android:id="@+id/relative_photo"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/iv_photo"
+                        android:src="@mipmap/group_photo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/tv_picnum"
+                        android:layout_toRightOf="@id/iv_photo"
+                        android:text="0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_below="@id/iv_photo"
+                        android:text="相册"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/line0"
+                android:layout_below="@id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/line_split1"></View>
+
+            <RadioGroup
+                android:id="@+id/group_details_rg"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/line0"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:textSize="16sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:gravity="center_horizontal"
+                    android:text="社群介绍"
+                    android:textColor="#37BAF5"/>
+
+                <RadioButton
+                    android:textSize="16sp"
+                    android:id="@+id/group_details_intr"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:gravity="center_horizontal"
+                    android:text="社群成员"/>
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/group_details_line"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@id/group_details_rg"
+                android:layout_marginLeft="55dp"
+                android:layout_marginRight="55dp"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/group_details_line1"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/text_blue"></View>
+
+                <View
+                    android:layout_width="110dp"
+                    android:layout_height="2dp"></View>
+
+                <View
+                    android:id="@+id/group_details_line2"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/text_blue"
+                    android:visibility="invisible"></View>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/group_details_line"
+                android:background="@color/text_gray_h2"></View>
+
+            <TextView
+                android:id="@+id/group_instr"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/view1"
+                android:gravity="center"
+                android:text="群介绍"></TextView>
+        </RelativeLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:padding="10dp"
+        >
+
+        <Button
+            android:id="@+id/group_details_"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/join_bg_blue"
+            android:gravity="center"
+            android:text="申请加入"
+            android:textColor="@color/white"/>
+    </FrameLayout>
+</RelativeLayout>
+

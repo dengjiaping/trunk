@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/group_details_iv_bg"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/default_group"/>
+
+        <com.histudent.jwsoft.histudent.commen.view.CircleImageView
+            android:id="@+id/grop_details_iv"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="180dp"
+            android:scrollbars="none"
+            android:src="@mipmap/avatar_def"/>
+
+        <TextView
+            android:id="@+id/grop_details_tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="190dp"
+            android:layout_toRightOf="@id/grop_details_iv"
+            android:text="社群名称"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <RadioButton
+            android:id="@+id/group_details_btn_name"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="193dp"
+            android:layout_toRightOf="@id/grop_details_tv_name"
+            android:background="@drawable/same_city_now"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="标签"
+            android:textColor="@color/white"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/group_details_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/group_details_btn_name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="32dp"
+            android:layout_toRightOf="@id/grop_details_iv"
+            android:text="地点"/>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_below="@id/grop_details_iv"
+            android:layout_marginTop="10dp"
+            android:background="@color/line_split1"></View>
+
+
+        <RadioGroup
+            android:id="@+id/group_details_rg"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/view"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingLeft="80dp"
+            android:paddingRight="80dp"
+            android:paddingTop="10dp">
+
+            <RadioButton
+                android:id="@+id/rb_sugestion"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_group_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:text="推荐"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="16sp"/>
+
+            <RadioButton
+                android:id="@+id/rb_all"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_group_selector"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="全部"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+
+            <RadioButton
+                android:id="@+id/rb_recommand"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_group_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:text="精华"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="16sp"/>
+        </RadioGroup>
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_below="@id/group_details_rg"
+            android:background="@color/line_split1"></View>
+
+        <include layout="@layout/activity_topview_shadow"/>
+        <ImageView
+            android:id="@+id/iv_qrcode"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/group_details_btn_name"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp" android:paddingTop="32dp"
+            android:src="@mipmap/qr_code"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/relative">
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_make_topic"
+        style="@style/long_blue_button"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:text="发表讨论帖"/>
+</RelativeLayout>

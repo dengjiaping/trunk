@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activityRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/blue_button_bg"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="30dp">
+
+        <!--班级logo-->
+        <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+            android:id="@+id/class_logo"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:src="@drawable/default_person" />
+
+        <!--班级名称-->
+        <TextView
+            android:id="@+id/class_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:textColor="@color/text_white"
+            android:textSize="@dimen/large_textSize" />
+
+        <!--班级代号-->
+        <LinearLayout
+            android:id="@+id/class_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/share_code_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="班级代号"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/textSize" />
+
+            <TextView
+                android:id="@+id/class_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/green_button_bg_circle"
+                android:paddingBottom="2dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="2dp"
+                android:text="110"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/textSize" />
+
+        </LinearLayout>
+
+        <!--群主-->
+        <LinearLayout
+            android:id="@+id/group_share_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/icon_teacher"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/share_group_marker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="洪达仙"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/textSize" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/share_tip"
+        style="@style/IntroductionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:text="将班级信息分享到微信或者QQ中，邀请班级其它的老师和学生家长通过此信息找到并加入该班级"
+        android:textColor="@color/text_gray_h1"
+        android:textSize="@dimen/tiny_textSize" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <View
+            style="@style/split_line_style"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/share_type"
+            style="@style/text_gray_v2_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="分享到" />
+
+        <View
+            style="@style/split_line_style"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <!--Tab-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <!--随记-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/share_weixin"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/green_button_bg_stroke_circle"
+                android:gravity="center"
+                android:text="@string/icon_weixin"
+                android:textColor="@color/green_color"
+                android:textSize="28sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom|center_horizontal"
+                android:text="微信"
+                android:textColor="@color/green_color"
+                android:textSize="@dimen/textSize" />
+
+        </LinearLayout>
+
+        <!--日志-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/share_qq"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/blue_button_bg_stroke_circle"
+                android:gravity="center"
+                android:text="@string/icon_qq"
+                android:textColor="@color/blue_color"
+                android:textSize="28sp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom|center_horizontal"
+                android:text="QQ"
+                android:textColor="@color/blue_color"
+                android:textSize="@dimen/textSize" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

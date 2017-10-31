@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include layout="@layout/thetopview_new"/>
+
+    <View style="@style/title_split_line"/>
+
+
+    <RadioGroup
+        android:id="@+id/group_point"
+        android:layout_width="300dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_all"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_point_all"
+            android:button="@null"
+            android:gravity="center"
+            android:text="全部"
+            android:textColor="@color/white"/>
+
+        <RadioButton
+            android:id="@+id/rb_earn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="-1dp"
+            android:layout_marginRight="-1dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_point_earn"
+            android:button="@null"
+            android:gravity="center"
+            android:text="赚取"
+            android:textColor="@color/green_color"/>
+
+        <RadioButton
+            android:id="@+id/rb_use"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_point_use"
+            android:button="@null"
+            android:gravity="center"
+            android:text="使用"
+            android:textColor="@color/green_color"/>
+    </RadioGroup>
+
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/point_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+            </android.support.v7.widget.RecyclerView>
+
+            <LinearLayout
+                android:id="@+id/empty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                >
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/net_error_fail"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingMultiplier="1.3"
+                    android:text="暂无数据"
+                    android:textColor="@color/text_black_h1"
+                    android:textSize="@dimen/textSize"/>
+            </LinearLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+</LinearLayout>

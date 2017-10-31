@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/class_center_member_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:listSelector="#00000000"
+        android:scrollbars="none"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/class_center_action_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+    </ListView>
+
+    <include layout="@layout/activity_topview_shadow" />
+
+</RelativeLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".body.find.activity.CommunitySignActivity">
+
+    <include layout="@layout/thetopview_new" />
+
+    <TextView
+        android:id="@+id/community_sign_text"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp24"
+        android:background="@color/bg_color"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp15"
+        android:textColor="@color/text_gray_h1"
+        android:textSize="13sp" />
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/community_sign_listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:divider="@color/transparent"
+        android:scrollbars="none" />
+</LinearLayout>

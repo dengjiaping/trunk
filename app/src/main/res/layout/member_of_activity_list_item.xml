@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/rl_head_layout"
+        android:layout_width="@dimen/dp55"
+        android:layout_height="@dimen/dp55"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="10dp">
+
+        <com.histudent.jwsoft.histudent.commen.view.CircleImageView
+            android:id="@+id/member_of_activty_list_item_iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/avatar_def"/>
+
+
+        <ImageView
+            android:id="@+id/iv_teacher_identity"
+            android:layout_width="@dimen/dp15"
+            android:layout_height="@dimen/dp15"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/hot_person_teacher"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/member_of_activty_list_item_tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_alignTop="@id/rl_head_layout"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@id/rl_head_layout"
+        android:text="学生姓名"
+        android:textColor="@color/text_blue"
+        android:textSize="@dimen/text_size_16"/>
+
+    <RadioButton
+        android:id="@+id/member_of_activty_list_item_rb_describe"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@id/rl_head_layout"
+        android:layout_below="@id/member_of_activty_list_item_tv_name"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@id/rl_head_layout"
+        android:button="@null"
+        android:text="成员情况"
+        android:textColor="@color/text_gray_h1"
+        android:textSize="13sp"/>
+
+    <ImageView
+        android:id="@+id/member_of_activty_list_item_iv_phone"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="30dp"
+        android:src="@mipmap/phone"
+        android:visibility="gone"/>
+
+    <View
+        style="@style/split_line_style_withLeftMargin"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

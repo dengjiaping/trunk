@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent">
+    <SurfaceView
+        android:id="@+id/preview_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"/>
+
+    <ImageView
+        android:id="@+id/qr_code"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="50dp"/>
+    <com.histudent.jwsoft.histudent.commen.zxing.view.ViewfinderView
+        android:id="@+id/viewfinder_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/transparent"/>
+
+    <include layout="@layout/thetopview"/>
+    <Button android:id="@+id/btn"
+            android:onClick="onClick"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="@dimen/dp50"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:text="扫描本地二维码"/>
+</FrameLayout>

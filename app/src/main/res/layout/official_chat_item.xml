@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/headImageSize"
+            android:layout_height="@dimen/headImageSize"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginTop="30dp" />
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/chat_left"
+            android:minHeight="120dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:lineSpacingMultiplier="1.3"
+                android:text="浙江植树小明星活动"
+                android:textColor="@color/text_black_h2"
+                android:textSize="@dimen/small_textSize" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/picture"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/content"
+                    android:lineSpacingMultiplier="1.3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:ellipsize="end"
+                    android:maxLines="4"
+                    android:text="2016年3月植树月来了，为了绿化我们的地球，为了绿化我们的地球为了绿化我们的地球秀秀你绿化地球的贡献。。。"
+                    android:textColor="@color/text_gray_h2"
+                    android:textSize="@dimen/small_textSize_login" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="5dp"
+        android:text="111"
+        android:textColor="@color/text_gray_h1"
+        android:textSize="@dimen/tiny_textSize" />
+
+</LinearLayout>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/catalog"
+        android:layout_width="fill_parent"
+        android:layout_height="20dp"
+        android:background="@color/bg_color"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="A"
+        android:textColor="@color/text_black_h1"
+        android:textSize="@dimen/small_textSize"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp60"
+        android:paddingLeft="@dimen/dp10">
+
+        <ImageView
+            android:id="@+id/checkbox_left"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/unselected"
+            android:visibility="gone" />
+
+        <!--头像-->
+        <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+            android:id="@+id/image_left"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/checkbox_left"
+            android:src="@mipmap/per_def" />
+
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/image_left"
+            android:layout_weight="1.0"
+            android:gravity="center_vertical"
+            android:paddingBottom="10dip"
+            android:paddingTop="10dip"
+            android:text="黄晓欧"
+            android:textColor="@color/text_black_h1"
+            android:textSize="@dimen/textSize" />
+
+        <HorizontalScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/text_null"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:background="@null" />
+
+                <Button
+                    android:id="@+id/button_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="#DA41E8"
+                    android:text="移动分组"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textSize" />
+
+                <Button
+                    android:id="@+id/button_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/red"
+                    android:text="取消关注"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp20"
+        android:background="@color/bg_color" />
+
+</LinearLayout>

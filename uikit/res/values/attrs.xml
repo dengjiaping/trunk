@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_fill_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="ImageViewEx">
+        <attr name="exiv_default_image_res" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="ButtonCircleProgressBar">
+
+        <!--无进度时的颜色-->
+        <attr name="progress_unreached_color" format="color" />
+        <!--进度颜色-->
+        <attr name="progress_reached_color" format="color" />
+        <!--进度条的高-->
+        <attr name="progress_reached_bar_height" format="dimension" />
+        <!--无进度时的边框高-->
+        <attr name="progress_unreached_bar_height" format="dimension" />
+        <!--圆的半径-->
+        <attr name="radius" format="dimension" />
+    </declare-styleable>
+
+</resources>

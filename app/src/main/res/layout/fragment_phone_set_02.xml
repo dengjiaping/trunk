@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/text_white"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/itemHight"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/itemMargin"
+            android:paddingRight="@dimen/itemMargin">
+
+
+            <EditText
+                android:id="@+id/accountSafe_phoneSet_fragment_02_edit01"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/itemMargin"
+                android:background="@null"
+                android:hint="新手机号"
+                android:textColor="@color/text_gray_h2"
+                android:textColorHint="@color/text_gray_h1"
+                android:textSize="@dimen/textSize" />
+
+        </LinearLayout>
+
+        <View style="@style/split_line_style_withMargin" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/itemHight"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/itemMargin"
+            android:paddingRight="@dimen/itemMargin">
+
+            <TextView
+                android:id="@+id/accountSafe_phoneSet_fragment_02"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="验证码"
+                android:textColor="@color/text_gray_h2"
+                android:textSize="@dimen/textSize"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/accountSafe_phoneSet_fragment_02_button"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/gray_button_bg"
+                android:text="发送验证码"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize" />
+
+            <EditText
+                android:id="@+id/accountSafe_phoneSet_fragment_02_edit02"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/itemMargin"
+                android:layout_toLeftOf="@id/accountSafe_phoneSet_fragment_02_button"
+                android:layout_toRightOf="@id/accountSafe_phoneSet_fragment_02"
+                android:background="@null"
+                android:hint="验证码"
+                android:inputType="number"
+                android:textColor="@color/text_gray_h2"
+                android:textColorHint="@color/text_gray_h1"
+                android:textSize="@dimen/textSize" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/accountSafe_phoneSet_fragment_02_next"
+        style="@style/long_blue_button"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/gray_button_bg"
+        android:text="完成" />
+
+</LinearLayout>

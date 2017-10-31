@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color">
+
+    <LinearLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/upload_headImage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="上传头像"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/textSize" />
+
+        <TextView
+            android:id="@+id/add_class"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="加入班级"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/textSize" />
+
+        <TextView
+            android:id="@+id/recommend_attention"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="关注好友"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/textSize" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/upload_headImage_index"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/circle_white_gb"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/text_gray_h2" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/add_class_index"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/circle_white_gb"
+                android:gravity="center"
+                android:text="2"
+                android:textColor="@color/text_gray_h2" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/recommend_attention_index"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/circle_white_gb"
+                android:gravity="center"
+                android:text="3"
+                android:textColor="@color/text_gray_h2" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5" />
+
+        <com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView
+            android:id="@+id/camera"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:src="@mipmap/camera" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/camera"
+            android:layout_marginTop="@dimen/dp20"
+            android:gravity="center"
+            android:text="爱美之心，人皆有之！"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/textSize" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text"
+            android:layout_marginTop="@dimen/dp10"
+            android:gravity="center"
+            android:text="独一无二的头像，让你显得与众不同。"
+            android:textColor="@color/text_gray_h2"
+            android:textSize="@dimen/textSize" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+</RelativeLayout>
