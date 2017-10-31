@@ -96,7 +96,7 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
     @BindView(R.id.refresh)
     SmartRefreshLayout mRefresh;
 
-    @OnClick({R.id.title_left, R.id.title_right_image, R.id.notices_voice_control,R.id.work_detail_photo})
+    @OnClick({R.id.title_left, R.id.title_right_image, R.id.notices_voice_control, R.id.work_detail_photo})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.title_left:
@@ -117,7 +117,9 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
                 }
                 break;
             case R.id.work_detail_photo:
-
+                if (imageAttrs != null && imageAttrs.size() > 0) {
+                    showImageDetail(mDetailPhoto, 0, imageAttrs);
+                }
                 break;
         }
     }
@@ -134,6 +136,7 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
     private GridLayoutManager mImgLayoutManager;
     private String thumb;
     private AudioInfo mAudioInfo = new AudioInfo();
+    private List<ImageAttrEntity> imageAttrs = new ArrayList();
 
     @Override
     protected void initInject() {
@@ -228,19 +231,25 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
         if (homeworkDetail.isHasImage()) {
             List<WorkImgDetailBean> workImgDetailBeens = homeworkDetail.getImgList();
             if (workImgDetailBeens != null && workImgDetailBeens.size() > 0) {
+                for (WorkImgDetailBean workImgDetailBean : workImgDetailBeens) {
+                    ImageAttrEntity imageAttrEntity = new ImageAttrEntity();
+                    imageAttrEntity.setId(workImgDetailBean.getId());
+                    imageAttrEntity.setBigSizeUrl(workImgDetailBean.getFilePath());
+                    imageAttrEntity.setThumbnailUrl(workImgDetailBean.getFilePath());
+                    imageAttrs.add(imageAttrEntity);
+                }
                 CommonGlideImageLoader.getInstance().displayNetImage(WorkDetailTeacherActivity.this, workImgDetailBeens.get(0).getFilePath(), mDetailPhoto);
-                mPhotoNum.setText(String.valueOf(workImgDetailBeens.size())+"张");
+                mPhotoNum.setText(String.valueOf(workImgDetailBeens.size()) + "张");
             }
         }
         if (homeworkDetail.isHasVideo()) {
-
+            homeworkDetail.getVideoId();
         }
         if (homeworkDetail.isHasVoice()) {
             mPresenter.downloadVoice(homeworkDetail.getVoiceId());
             mVoiceLayout.setVisibility(View.VISIBLE);
             mVoiceDel.setVisibility(View.GONE);
             mAudioInfo.setTime(Long.parseLong(homeworkDetail.getVoiceLength()));
-
         }
 
     }
@@ -314,7 +323,7 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
         bundle.putInt("column_num", 3);
         bundle.putInt("horizontal_space", DisplayUtils.dp2px(this, 4));
         bundle.putInt("vertical_space", DisplayUtils.dp2px(this, 4));
-
+        bundle.putBoolean("isCb",false);
         intent.putExtras(bundle);
         this.startActivity(intent);
     }

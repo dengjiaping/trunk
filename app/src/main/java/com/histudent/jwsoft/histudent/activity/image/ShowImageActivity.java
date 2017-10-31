@@ -97,6 +97,7 @@ public class ShowImageActivity extends BaseActivity<ShowImagePresenter> implemen
      * 是否第一次展示
      */
     private boolean isFirst = true;
+    private boolean isCb;
 
 
     @Override
@@ -141,6 +142,7 @@ public class ShowImageActivity extends BaseActivity<ShowImagePresenter> implemen
             x = buildOriginXY(positon)[0];
             y = buildOriginXY(positon)[1];
             mImageAttrs = (List<ImageAttrEntity>) getIntent().getSerializableExtra("photos");
+            isCb = getIntent().getBooleanExtra("isCb",true);
         } else {
             finishAct();
         }
@@ -149,6 +151,11 @@ public class ShowImageActivity extends BaseActivity<ShowImagePresenter> implemen
 
     private void initView() {
         mFavorNum.setVisibility(View.GONE);
+        if (isCb){
+            mCbLayout.setVisibility(View.VISIBLE);
+        }else{
+            mCbLayout.setVisibility(View.GONE);
+        }
         overridePendingTransition(0, 0);
         initViewPager();
     }
