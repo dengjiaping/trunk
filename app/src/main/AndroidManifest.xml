@@ -819,6 +819,7 @@
         <activity android:name="com.histudent.jwsoft.histudent.zxing.CaptureActivity"/>
         <activity android:name=".body.myclass.activity.JoinSpecClassActivity"/>
         <activity android:name=".activity.RichEditorSelectColorActivity"/>
+
         <activity
             android:name=".activity.clock.ReadClockInActivity"
             android:launchMode="singleTask"/>
@@ -831,20 +832,21 @@
             android:theme="@style/AppTheme.Transparent"/>
         <activity android:name=".activity.clock.TextInputActivity"/>
         <activity android:name=".activity.clock.ManualInputBookNameActivity"/>
-        <activity android:name=".activity.homework.HomeworkAlreadyActivity"/>
-        <activity android:name=".activity.homework.HomeworkCreateDivideGroupActivity"/>
+        <activity android:name=".activity.homework.WorkAlreadyCompleteActivity"/>
         <activity
-            android:name=".activity.homework.HomeworkReceiverPersonDetailActivity"
+            android:name=".activity.homework.WorkReceiverPersonDetailActivity"
             android:launchMode="singleTask"/>
-        <activity android:name=".activity.homework.HomeworkAddMemberActivity"/>
+        <activity android:name=".activity.homework.WorkAddMemberActivity"/>
         <activity android:name=".activity.homework.CreateWorkActivity"/>
         <activity android:name=".activity.homework.WorkDetailTeacherActivity"/>
         <activity android:name=".activity.homework.WorkDetailStudentActivity"/>
-        <activity android:name=".activity.homework.HomeworkSubjectManageActivity"/>
+        <activity android:name=".activity.homework.WorkSubjectManageActivity"/>
         <activity android:name=".activity.homework.CorrectWorkActivity"/>
         <activity android:name=".activity.homework.FinishHomeworkActivity"/>
+        <activity android:name=".activity.homework.WorkCreateDivideGroupActivity"/>
+        <activity android:name=".activity.homework.WorkUndoneActivity"/>
         <activity
-            android:name=".activity.homework.HomeworkSelectReceiverPersonActivity"
+            android:name=".activity.homework.WorkSelectReceiverPersonActivity"
             android:launchMode="singleTask"/>
 
         <provider

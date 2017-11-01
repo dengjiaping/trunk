@@ -3,6 +3,7 @@ package com.histudent.jwsoft.histudent.adapter.homework.convert;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.histudent.jwsoft.histudent.bean.homework.CommonMemberBean;
+import com.histudent.jwsoft.histudent.bean.homework.GroupMemberDetailEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,18 +15,27 @@ import java.util.List;
 
 public class HomeworkGroupDetailDataConvert {
 
-    private final String RESPONSE;
+    private String mResponse;
+    private GroupMemberDetailEntity mGroupMemberDetailEntity;
 
     private HomeworkGroupDetailDataConvert(String response) {
-        this.RESPONSE = response;
+        this.mResponse = response;
+    }
+
+    private HomeworkGroupDetailDataConvert(GroupMemberDetailEntity groupMemberDetailEntity) {
+        this.mGroupMemberDetailEntity = groupMemberDetailEntity;
     }
 
     public static final HomeworkGroupDetailDataConvert create(String response) {
         return new HomeworkGroupDetailDataConvert(response);
     }
 
+    public static final HomeworkGroupDetailDataConvert create(GroupMemberDetailEntity groupMemberDetailEntity) {
+        return new HomeworkGroupDetailDataConvert(groupMemberDetailEntity);
+    }
+
     public List<CommonMemberBean> convert() {
-        final JSONObject jsonObject = JSONObject.parseObject(RESPONSE);
+        final JSONObject jsonObject = JSONObject.parseObject(mResponse);
         final List<CommonMemberBean> listData = new ArrayList<>();
         final String teamName = jsonObject.getString("teamName");
         final JSONArray memberList = jsonObject.getJSONArray("memberList");
@@ -45,6 +55,30 @@ public class HomeworkGroupDetailDataConvert {
                         .setTeamMemberId(teamMemberId)
                         .setUserId(userId));
             }
+        }
+        return listData;
+    }
+
+
+    public List<CommonMemberBean> convertEntity() {
+
+        final List<CommonMemberBean> listData = new ArrayList<>();
+        CommonMemberBean commonMemberBean;
+        final List<GroupMemberDetailEntity.SubMemberEntity> memberList = mGroupMemberDetailEntity.getMemberList();
+        final String teamName = mGroupMemberDetailEntity.getTeamName();
+        for (GroupMemberDetailEntity.SubMemberEntity subMemberEntity : memberList) {
+            commonMemberBean = new CommonMemberBean();
+            final String avatar = subMemberEntity.getAvatar();
+            final String realName = subMemberEntity.getRealName();
+            final String teamMemberId = subMemberEntity.getTeamMemberId();
+            final String userId = subMemberEntity.getUserId();
+            commonMemberBean
+                    .setTeamName(teamName)
+                    .setHeadIconUrl(avatar)
+                    .setName(realName)
+                    .setTeamMemberId(teamMemberId)
+                    .setUserId(userId);
+            listData.add(commonMemberBean);
         }
         return listData;
     }

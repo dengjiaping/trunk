@@ -6,6 +6,7 @@ import android.graphics.Point;
 import android.support.v7.content.res.AppCompatResources;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
@@ -28,7 +29,6 @@ public class FlowLayout extends RelativeLayout {
     public static final int STYLE_TEXTVIEW = 1;
     public static final int STYLE_BUTTON = 2;
     public static final int STYLE_CHECKBOX = 3;
-    private View mView;
     private Context mContext;
 
     public FlowLayout(Context context) {
@@ -145,8 +145,8 @@ public class FlowLayout extends RelativeLayout {
             });
         }
 
-        int left = 0;
-        int top = 0;
+        int left = DisplayUtils.dp2px(mContext,12);
+        int top = DisplayUtils.dp2px(mContext,12);
 
         for (int i = 0; i < allViews.size(); i++) {
 
@@ -198,10 +198,13 @@ public class FlowLayout extends RelativeLayout {
     }
 
     private void initCheckBox(String content) {
-        mView = new CheckBox(mContext);
+        View mView = new CheckBox(mContext);
         ((CheckBox) mView).setButtonDrawable(null);
         ((CheckBox) mView).setText(content);
-        ((CheckBox) mView).setTextSize(DisplayUtils.sp2px(mContext, 13));
+        ((CheckBox) mView).setTextSize(13);
+        ((CheckBox) mView).setTextColor(Color.parseColor("#b0b0b0"));
+        ((CheckBox) mView).setBackground(AppCompatResources.getDrawable(mContext, R.drawable.shape_comment_checked));
+        ((CheckBox) mView).setPadding(DisplayUtils.dp2px(mContext,8),DisplayUtils.dp2px(mContext,6),DisplayUtils.dp2px(mContext,8),DisplayUtils.dp2px(mContext,6));
         ((CheckBox) mView).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {

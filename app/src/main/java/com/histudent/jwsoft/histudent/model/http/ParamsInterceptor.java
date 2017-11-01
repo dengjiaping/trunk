@@ -35,13 +35,14 @@ import okio.Buffer;
  */
 
 public class ParamsInterceptor implements Interceptor {
-    private Request request;
+
     private Request.Builder builder;
-    private Map<String, String> bodyParams = new TreeMap<>();
+    private Map<String, String> bodyParams = null;
 
     @Override
     public Response intercept(Chain chain) throws IOException {
-        request = chain.request();
+        bodyParams = new TreeMap<>();
+        Request request = chain.request();
         builder = request.newBuilder();
         RequestBody requestBody = request.body();
         Buffer buffer = new Buffer();
@@ -56,7 +57,7 @@ public class ParamsInterceptor implements Interceptor {
             initParams(paramsStr);
             String headerStr = initHeaderParam();
             builder.addHeader("Authorization", headerStr);
-            initRequestBuilder();
+            initRequestBuilder(request);
             request = builder.build();
         } else if (request.method().equals("POST") && request.body().contentType().subtype().equals("form-data")) {
             String headerStr = initHeaderParam();
@@ -67,7 +68,7 @@ public class ParamsInterceptor implements Interceptor {
         return response;
     }
 
-    private void initRequestBuilder() {
+    private void initRequestBuilder(Request request) {
         // process post body inject
         if (request.method().equals("POST") && request.body().contentType().subtype().equals("x-www-form-urlencoded")) {
             FormBody.Builder formBodyBuilder = new FormBody.Builder();
@@ -85,13 +86,13 @@ public class ParamsInterceptor implements Interceptor {
         } else if (request.method().equals("POST") && request.body().contentType().subtype().equals("form-data")) {
 
         } else {    // can't inject into body, then inject into url
-            injectParamsIntoUrl(bodyParams);
+            injectParamsIntoUrl(request,bodyParams);
         }
 
     }
 
     // func to inject params into url
-    private void injectParamsIntoUrl(Map<String, String> paramsMap) {
+    private void injectParamsIntoUrl(Request request,Map<String, String> paramsMap) {
         HttpUrl.Builder httpUrlBuilder = request.url().newBuilder();
         if (paramsMap.size() > 0) {
             Iterator iterator = paramsMap.entrySet().iterator();

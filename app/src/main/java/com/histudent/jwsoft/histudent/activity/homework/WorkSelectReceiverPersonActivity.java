@@ -4,47 +4,41 @@ import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.text.TextUtils;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
-import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.adapter.decoration.Divider;
-import com.histudent.jwsoft.histudent.adapter.homework.convert.HomeworkGroupMemberDataConvert;
+import com.histudent.jwsoft.histudent.adapter.homework.HomeworkSelectPersonExpandableAdapter;
+import com.histudent.jwsoft.histudent.base.BaseActivity;
 import com.histudent.jwsoft.histudent.bean.homework.HomeworkSelectGroupL0Bean;
-import com.histudent.jwsoft.histudent.bean.homework.HomeworkSelectGroupL1Bean;
-import com.histudent.jwsoft.histudent.bean.homework.HomeworkSelectPersonExpandableAdapter;
-import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
-import com.histudent.jwsoft.histudent.commen.listener.HttpRequestCallBack;
-import com.histudent.jwsoft.histudent.commen.url.HistudentUrl;
-import com.histudent.jwsoft.histudent.commen.utils.HiStudentHttpUtils;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
-import com.histudent.jwsoft.histudent.constant.ParamKeys;
 import com.histudent.jwsoft.histudent.constant.TransferKeys;
 import com.histudent.jwsoft.histudent.entity.WorkReceiverEvent;
 import com.histudent.jwsoft.histudent.listener.homework.OnItemSelectReceiverPersonListener;
-import com.histudent.jwsoft.histudent.manage.ParamsManager;
 import com.histudent.jwsoft.histudent.manage.UserManager;
+import com.histudent.jwsoft.histudent.presenter.homework.WorkSelectReceiverPersonPresenter;
+import com.histudent.jwsoft.histudent.presenter.homework.contract.WorkSelectReceiverPersonContract;
+import com.histudent.jwsoft.histudent.tool.ToastTool;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Created by lichaojie on 2017/10/26.
+ * Created by lichaojie on 2017/11/1.
  * desc:
  * 发布作业-选择接收人
+ * sign:pre
  */
 
-public class HomeworkSelectReceiverPersonActivity extends BaseActivity {
+public class WorkSelectReceiverPersonActivity extends BaseActivity<WorkSelectReceiverPersonPresenter>
+        implements WorkSelectReceiverPersonContract.View {
 
     @BindView(R.id.title_middle_text)
     TextView mTvTitleMiddleText;
@@ -56,7 +50,8 @@ public class HomeworkSelectReceiverPersonActivity extends BaseActivity {
     private List<MultiItemEntity> mListData = new ArrayList<>();
     private HomeworkSelectPersonExpandableAdapter mPersonExpandableAdapter;
     private final List<String> mUserSelectTeamIdList = new ArrayList<>();
-    private List<HomeworkSelectGroupL0Bean> entitys = new ArrayList<>();
+    private List<HomeworkSelectGroupL0Bean> mListEntity = new ArrayList<>();
+    private String mCurrentClassId;
 
     @OnClick(R.id.title_left)
     void finishPage() {
@@ -70,11 +65,11 @@ public class HomeworkSelectReceiverPersonActivity extends BaseActivity {
 
             if (multiItemEntity instanceof HomeworkSelectGroupL0Bean) {
                 final HomeworkSelectGroupL0Bean entity = (HomeworkSelectGroupL0Bean) multiItemEntity;
-                entitys.add(entity);
+                mListEntity.add(entity);
 
             }
         }
-        EventBus.getDefault().postSticky(new WorkReceiverEvent(entitys));
+        EventBus.getDefault().postSticky(new WorkReceiverEvent(mListEntity));
 //        HiStudentLog.i(TAG, "confirm: userSelectTeamIdList----->" + mUserSelectTeamIdList.toString());
 //        final Intent intent = new Intent();
 //        intent.putExtra(TransferKeys.TEAM_ID, (Serializable) entitys);
@@ -82,12 +77,60 @@ public class HomeworkSelectReceiverPersonActivity extends BaseActivity {
         finish();
     }
 
+
+    private static final String TAG = WorkSelectReceiverPersonActivity.class.getName();
+
     @Override
-    public int setViewLayout() {
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        //重新刷新数据 分组成员已经发
+        if (intent != null) {
+            final String classId = intent.getStringExtra(TransferKeys.CLASS_ID);
+            final String groupId = intent.getStringExtra(TransferKeys.GROUP_ID);
+            if (classId != null || groupId != null) {
+                showLoadingDialog();
+                mPresenter.getSelectReceiverPersonList(mCurrentClassId);
+            }
+        }
+    }
+
+    @Override
+    public void showContent(String message) {
+
+    }
+
+    @Override
+    public void updateListData(List<HomeworkSelectGroupL0Bean> list) {
+        mListData.clear();
+        mListData.addAll(list);
+        mPersonExpandableAdapter.setNewData(mListData);
+        mPersonExpandableAdapter.expandAll();
+    }
+
+    @Override
+    public void controlDialogStatus(String message) {
+        if (!TextUtils.isEmpty(message))
+            ToastTool.showCommonToast(message);
+        dismissLoadingDialog();
+    }
+
+
+    @Override
+    protected void initInject() {
+        getActivityComponent().inject(this);
+    }
+
+    @Override
+    protected int getLayout() {
         return R.layout.activity_homework_select_receiver_person;
     }
 
     @Override
+    protected void init() {
+        initView();
+        initData();
+    }
+
     public void initView() {
         mTvTitleMiddleText.setText("接收人");
         mIvTitleRightText.setText(R.string.confirm);
@@ -98,50 +141,14 @@ public class HomeworkSelectReceiverPersonActivity extends BaseActivity {
         mRvSelectGroup.addItemDecoration(divider);
     }
 
-    @Override
-    public void doAction() {
-        super.doAction();
-        requestData();
+
+    public void initData() {
+        showLoadingDialog();
+        mCurrentClassId = UserManager.getInstance().getCurrentClassId();
+        mPresenter.getSelectReceiverPersonList(mCurrentClassId);
         mPersonExpandableAdapter = HomeworkSelectPersonExpandableAdapter.create(mListData);
         mRvSelectGroup.setAdapter(mPersonExpandableAdapter);
         mRvSelectGroup.addOnItemTouchListener(OnItemSelectReceiverPersonListener.create(this, mListData));
     }
 
-    private static final String TAG = HomeworkSelectReceiverPersonActivity.class.getName();
-
-    private void requestData() {
-        final String currentClassId = UserManager.getInstance().getCurrentClassId();
-        final Map<String, Object> paramsMap = ParamsManager.getInstance()
-                .setParams(ParamKeys.CLASS_ID, currentClassId)
-                .getParamsMap();
-        HiStudentHttpUtils.postDataByOKHttp(this, paramsMap, HistudentUrl.TEACHER_HOMEWORK_LIST_TEAM, new HttpRequestCallBack() {
-            @Override
-            public void onSuccess(String result) {
-                Log.e(TAG, "onSuccess: result---->" + result);
-                final List<HomeworkSelectGroupL0Bean> list = HomeworkGroupMemberDataConvert.create(result).convert();
-                mListData.clear();
-                mListData.addAll(list);
-                mPersonExpandableAdapter.setNewData(mListData);
-                mPersonExpandableAdapter.expandAll();
-            }
-
-            @Override
-            public void onFailure(String errorMsg) {
-
-            }
-        });
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        //重新刷新数据 分组成员已经发
-        if (intent != null) {
-            final String classId = intent.getStringExtra(TransferKeys.CLASS_ID);
-            final String groupId = intent.getStringExtra(TransferKeys.GROUP_ID);
-            if (classId != null || groupId != null) {
-                requestData();
-            }
-        }
-    }
 }

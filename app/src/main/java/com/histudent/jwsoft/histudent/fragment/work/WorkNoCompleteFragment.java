@@ -80,7 +80,7 @@ public class WorkNoCompleteFragment extends BaseFragment<WorkNoCompletePresenter
 
     public void initData(){
         loading = PULL_DOWN;
-        mPresenter.getCompleteList(homeworkId, true, 0, PAGE_SIZE);
+        mPresenter.getCompleteList(homeworkId, false, 0, PAGE_SIZE);
     }
 
 
@@ -91,13 +91,13 @@ public class WorkNoCompleteFragment extends BaseFragment<WorkNoCompletePresenter
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {
                 loading = PULL_UP;
-                mPresenter.getCompleteList(homeworkId, true, (int) Math.ceil(((float) mAdapter.getItemCount() / PAGE_SIZE)), PAGE_SIZE);
+                mPresenter.getCompleteList(homeworkId, false, (int) Math.ceil(((float) mAdapter.getItemCount() / PAGE_SIZE)), PAGE_SIZE);
             }
 
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
                 loading = PULL_DOWN;
-                mPresenter.getCompleteList(homeworkId, true, 0, PAGE_SIZE);
+                mPresenter.getCompleteList(homeworkId, false, 0, PAGE_SIZE);
             }
         });
     }
@@ -122,7 +122,7 @@ public class WorkNoCompleteFragment extends BaseFragment<WorkNoCompletePresenter
         } else {
             mAdapter.addList(itemBeans);
         }
-
+        ((WorkDetailTeacherActivity)getActivity()).setTabTwo(mAdapter.getItemCount());
     }
 
     @Override

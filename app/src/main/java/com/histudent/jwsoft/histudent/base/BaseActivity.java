@@ -6,21 +6,16 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.histudent.jwsoft.histudent.HiStudentApplication;
-import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.commen.view.IconView;
+import com.histudent.jwsoft.histudent.commen.view.LoadingDialog;
 import com.histudent.jwsoft.histudent.di.componet.ActivityComponent;
 import com.histudent.jwsoft.histudent.di.componet.DaggerActivityComponent;
 import com.histudent.jwsoft.histudent.di.module.ActivityModule;
 
 import javax.inject.Inject;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 
 
@@ -29,14 +24,13 @@ import butterknife.Unbinder;
  * MVP activity基类
  */
 
-public abstract class  BaseActivity<T extends BasePresenter> extends AppCompatActivity implements BaseView {
+public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity implements BaseView {
 
     @Inject
     protected T mPresenter;
 
     protected Activity mContext;
     private Unbinder mUnbinder;
-
 
 
     @Override
@@ -56,7 +50,6 @@ public abstract class  BaseActivity<T extends BasePresenter> extends AppCompatAc
     public void setContentView(@LayoutRes int layoutResID) {
         setContentView(View.inflate(this, layoutResID, null));
     }
-
 
 
     @Override
@@ -92,6 +85,20 @@ public abstract class  BaseActivity<T extends BasePresenter> extends AppCompatAc
     protected abstract void init();
 
 
+    private LoadingDialog mLoadingDialog;
 
+    public void showLoadingDialog() {
+        if (mLoadingDialog == null) {
+            mLoadingDialog = new LoadingDialog(this);
+            mLoadingDialog.show();
+        }
+    }
+
+    public void dismissLoadingDialog() {
+        if (mLoadingDialog != null) {
+            if (mLoadingDialog.isShowing())
+                mLoadingDialog.dismiss();
+        }
+    }
 
 }

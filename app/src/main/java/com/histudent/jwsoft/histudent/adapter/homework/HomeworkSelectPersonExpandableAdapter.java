@@ -1,14 +1,15 @@
-package com.histudent.jwsoft.histudent.bean.homework;
+package com.histudent.jwsoft.histudent.adapter.homework;
 
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.histudent.jwsoft.histudent.R;
+import com.histudent.jwsoft.histudent.bean.homework.HomeworkSelectGroupL0Bean;
+import com.histudent.jwsoft.histudent.bean.homework.HomeworkSelectGroupL1Bean;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
 
@@ -71,11 +72,11 @@ public class HomeworkSelectPersonExpandableAdapter extends BaseMultiItemQuickAda
                     if (entityL0.isExpandable()) {
                         entityL0.setExpandable(false);
                         collapse(helper.getAdapterPosition());
-                        iconView.setText(R.string.icon_up);
+                        iconView.setText(R.string.icon_down);
                     } else {
                         entityL0.setExpandable(true);
                         expand(helper.getAdapterPosition());
-                        iconView.setText(R.string.icon_down);
+                        iconView.setText(R.string.icon_up);
                     }
                     notifyDataSetChanged();
                 });

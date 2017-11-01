@@ -14,6 +14,9 @@ import com.histudent.jwsoft.histudent.bean.homework.WorkCompleteBean;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
 import com.histudent.jwsoft.histudent.comment2.utils.TimeUtils;
+import com.histudent.jwsoft.histudent.entity.CorrectWorkEvent;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +44,7 @@ public class WorkCompleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         this.mList = list;
         notifyDataSetChanged();
     }
+
     public void addList(List<WorkCompleteBean.ItemsBean> list) {
         this.mList.addAll(list);
         notifyDataSetChanged();
@@ -113,7 +117,8 @@ public class WorkCompleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.item_complete:
-
+                    WorkCompleteBean.ItemsBean itemsBean = mList.get(getLayoutPosition());
+                    EventBus.getDefault().post(new CorrectWorkEvent(itemsBean));
                     break;
             }
         }

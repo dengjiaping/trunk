@@ -1,12 +1,13 @@
 package com.histudent.jwsoft.histudent.bean.homework;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by huyg on 2017/10/27.
  */
 
-public class WorkCompleteBean {
+public class WorkCompleteBean implements Serializable{
     /**
      * itemCount : 1
      * pageCount : 1
@@ -41,7 +42,7 @@ public class WorkCompleteBean {
         this.items = items;
     }
 
-    public static class ItemsBean {
+    public static class ItemsBean implements Serializable{
         /**
          * id : af15a0cc-e042-4014-a819-2a1166eed924
          * homeworkId : b23fb938-1cbd-4ad4-a0a0-7f75f92b080d

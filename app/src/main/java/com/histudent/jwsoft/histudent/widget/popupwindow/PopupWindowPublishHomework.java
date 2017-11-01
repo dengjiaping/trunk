@@ -4,31 +4,18 @@ import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
-import android.content.Intent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.RotateAnimation;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.activity.homework.HomeworkAlreadyActivity;
-import com.histudent.jwsoft.histudent.body.BodyActivity;
-import com.histudent.jwsoft.histudent.body.hiworld.activity.EssayActivity;
-import com.histudent.jwsoft.histudent.body.hiworld.activity.LogActivity;
-import com.histudent.jwsoft.histudent.body.hiworld.activity.UploadPhotoActivity;
-import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.keyword.utils.ScreenUtils;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
-import com.histudent.jwsoft.histudent.commen.view.IconView;
-import com.histudent.jwsoft.histudent.comment2.utils.ActionTypeEnum;
 import com.histudent.jwsoft.histudent.constant.Const;
 import com.histudent.jwsoft.histudent.entity.WorkTypeEvent;
-import com.histudent.jwsoft.histudent.tool.ToastTool;
 
 import org.greenrobot.eventbus.EventBus;
 

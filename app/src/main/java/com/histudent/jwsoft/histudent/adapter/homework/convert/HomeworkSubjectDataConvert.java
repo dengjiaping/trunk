@@ -3,6 +3,8 @@ package com.histudent.jwsoft.histudent.adapter.homework.convert;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.histudent.jwsoft.histudent.bean.homework.CommonSubjectBean;
+import com.histudent.jwsoft.histudent.bean.homework.HomeworkAlreadyBean;
+import com.histudent.jwsoft.histudent.bean.homework.SubjectEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,14 +16,24 @@ import java.util.List;
 
 public class HomeworkSubjectDataConvert {
 
-    private final String mResponse;
+    private String mResponse;
+    private final List<SubjectEntity> LIST = new ArrayList<>();
 
     private HomeworkSubjectDataConvert(String response) {
         this.mResponse = response;
     }
 
+    private HomeworkSubjectDataConvert(List<SubjectEntity> list) {
+        LIST.clear();
+        this.LIST.addAll(list);
+    }
+
     public static final HomeworkSubjectDataConvert create(String response) {
         return new HomeworkSubjectDataConvert(response);
+    }
+
+    public static final HomeworkSubjectDataConvert create(List<SubjectEntity> list) {
+        return new HomeworkSubjectDataConvert(list);
     }
 
     public List<CommonSubjectBean> convert() {
@@ -49,5 +61,30 @@ public class HomeworkSubjectDataConvert {
             }
         }
         return listData;
+    }
+
+    public List<CommonSubjectBean> convertEntity() {
+        final List<CommonSubjectBean> list = new ArrayList<>();
+        CommonSubjectBean commonSubjectBean;
+        if (LIST.size() > 0) {
+            for (SubjectEntity bean : LIST) {
+                commonSubjectBean = new CommonSubjectBean();
+                final String subjectId = bean.getSubjectId();
+                final String subjectName = bean.getName();
+
+                commonSubjectBean.setSubjectName(subjectName)
+                        .setShowDeleteIcon(true)
+                        .setSubjectId(subjectId);
+                if (subjectName.equals("语文")
+                        || subjectName.equals("英语")
+                        || subjectName.equals("外语")
+                        || subjectName.equals("科学")
+                        || subjectName.equals("数学")) {
+                    commonSubjectBean.setShowDeleteIcon(false);
+                }
+                list.add(commonSubjectBean);
+            }
+        }
+        return list;
     }
 }

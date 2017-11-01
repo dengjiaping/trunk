@@ -15,7 +15,7 @@ public class HomeworkAlreadySubBean {
     private String mOwnerId;
     private boolean mIsComplete;
     private String id;
-
+    private boolean onlyOnline;
 
     public boolean isComplete() {
         return mIsComplete;
@@ -86,6 +86,14 @@ public class HomeworkAlreadySubBean {
 
     public String getId() {
         return id;
+    }
+
+    public void setOnlyOnline(boolean isOnlyOnline) {
+        this.onlyOnline = isOnlyOnline;
+    }
+
+    public boolean getOnlyOnline() {
+        return onlyOnline;
     }
 
 }

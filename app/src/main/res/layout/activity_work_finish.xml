@@ -1,50 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <include layout="@layout/thetopview_new" />
 
-    <EditText
-        android:id="@+id/work_content"
+    <ScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:background="@color/white"
-        android:padding="12dp"
-        android:hint="根据老师的要求来完成作业"
-        android:gravity="top|left"
-        android:textColorHint="@color/text_gray_h1"
-        android:textSize="15sp"
-        />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/bg_color"
+        android:scrollbars="none">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_img"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/work_content"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="@color/white"
+                android:gravity="top|left"
+                android:hint="根据老师的要求来完成作业"
+                android:padding="12dp"
+                android:textColorHint="@color/text_gray_h1"
+                android:textSize="15sp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/itemMargin"
+                android:paddingRight="@dimen/itemMargin">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/itemMargin"
+                android:paddingRight="@dimen/itemMargin">
+
+
+            </android.support.v7.widget.RecyclerView>
+
+
+            <include layout="@layout/include_voice_play"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/itemMargin"
-        android:paddingRight="@dimen/itemMargin"
-        android:background="@color/white"
-        >
-
-    </android.support.v7.widget.RecyclerView>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_video"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/itemMargin"
-        android:paddingRight="@dimen/itemMargin"
+        android:layout_height="45dp"
+        android:layout_gravity="bottom"
         android:background="@color/white">
 
+        <!--操作项-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="@dimen/itemMargin"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-    </android.support.v7.widget.RecyclerView>
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/control_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:text="@string/icon_img"
+                android:textColor="@color/icon_color"
+                android:textSize="20sp" />
 
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/control_record"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:clickable="true"
+                android:text="@string/icon_microphone"
+                android:textColor="@color/icon_color"
+                android:textSize="20sp" />
 
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/control_emotion"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="@string/icon_face"
+                android:textColor="@color/icon_color"
+                android:textSize="@dimen/text_size_20" />
 
-    <include
-        layout="@layout/include_voice_play"
-        />
+        </LinearLayout>
+    </FrameLayout>
+
+    <!--表情键盘-->
+    <FrameLayout
+        android:id="@+id/fl_emotionview_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp" />
 
 </LinearLayout>

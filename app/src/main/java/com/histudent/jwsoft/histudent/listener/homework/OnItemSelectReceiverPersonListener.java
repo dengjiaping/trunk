@@ -8,19 +8,14 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.chad.library.adapter.base.listener.SimpleClickListener;
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.activity.homework.HomeworkCreateDivideGroupActivity;
-import com.histudent.jwsoft.histudent.activity.homework.HomeworkReceiverPersonDetailActivity;
-import com.histudent.jwsoft.histudent.activity.homework.HomeworkSelectReceiverPersonActivity;
+import com.histudent.jwsoft.histudent.activity.homework.WorkCreateDivideGroupActivity;
+import com.histudent.jwsoft.histudent.activity.homework.WorkReceiverPersonDetailActivity;
 import com.histudent.jwsoft.histudent.bean.homework.HomeworkSelectGroupL0Bean;
 import com.histudent.jwsoft.histudent.bean.homework.HomeworkSelectGroupL1Bean;
-import com.histudent.jwsoft.histudent.commen.view.IconView;
 import com.histudent.jwsoft.histudent.constant.TransferKeys;
 import com.histudent.jwsoft.histudent.tool.CommonAdvanceUtils;
-import com.histudent.jwsoft.histudent.tool.ToastTool;
 
 import java.util.List;
-
-import static com.facebook.stetho.R.attr.showText;
 
 /**
  * Created by lichaojie on 2017/10/27.
@@ -91,7 +86,7 @@ public class OnItemSelectReceiverPersonListener extends SimpleClickListener {
      * @param position
      */
     private void solveJumpCreateDivideGroup(BaseQuickAdapter adapter, View view, int position) {
-        final Intent intent = new Intent(CONTEXT, HomeworkCreateDivideGroupActivity.class);
+        final Intent intent = new Intent(CONTEXT, WorkCreateDivideGroupActivity.class);
         final MultiItemEntity multiItemEntity = LIST_DATA.get(position);
         if (multiItemEntity instanceof HomeworkSelectGroupL1Bean) {
             final HomeworkSelectGroupL1Bean homeworkSelectGroupL1Bean = (HomeworkSelectGroupL1Bean) multiItemEntity;
@@ -114,7 +109,7 @@ public class OnItemSelectReceiverPersonListener extends SimpleClickListener {
      * @param position
      */
     private void solveJumpGroupDetail(BaseQuickAdapter adapter, View view, int position) {
-        final Intent intent = new Intent(CONTEXT, HomeworkReceiverPersonDetailActivity.class);
+        final Intent intent = new Intent(CONTEXT, WorkReceiverPersonDetailActivity.class);
         final MultiItemEntity multiItemEntity = LIST_DATA.get(position);
         if (multiItemEntity instanceof HomeworkSelectGroupL1Bean) {
             final HomeworkSelectGroupL1Bean homeworkSelectGroupL1Bean = (HomeworkSelectGroupL1Bean) multiItemEntity;

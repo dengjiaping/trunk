@@ -19,22 +19,17 @@ import com.histudent.jwsoft.histudent.HiStudentApplication;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.adapter.decoration.Divider;
 import com.histudent.jwsoft.histudent.adapter.homework.HomeworkCreateDivideGroupAdapter;
-import com.histudent.jwsoft.histudent.adapter.homework.convert.HomeworkGroupDetailDataConvert;
+import com.histudent.jwsoft.histudent.base.BaseActivity;
 import com.histudent.jwsoft.histudent.bean.homework.CommonMemberBean;
-import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
-import com.histudent.jwsoft.histudent.commen.listener.HttpRequestCallBack;
-import com.histudent.jwsoft.histudent.commen.url.HistudentUrl;
-import com.histudent.jwsoft.histudent.commen.utils.HiStudentHttpUtils;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
-import com.histudent.jwsoft.histudent.constant.ParamKeys;
 import com.histudent.jwsoft.histudent.constant.TransferKeys;
-import com.histudent.jwsoft.histudent.manage.ParamsManager;
+import com.histudent.jwsoft.histudent.presenter.homework.WorkCreateDivideGroupPresenter;
+import com.histudent.jwsoft.histudent.presenter.homework.contract.WorkCreateDivideGroupContract;
 import com.histudent.jwsoft.histudent.tool.CommonAdvanceUtils;
 import com.histudent.jwsoft.histudent.tool.ToastTool;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -46,9 +41,11 @@ import butterknife.OnClick;
  * 跳转来源
  * 1.接收人页面
  * 2.小组成员详细列表页面(右上角编辑)
+ * sign:pre
  */
 
-public class HomeworkCreateDivideGroupActivity extends BaseActivity {
+public class WorkCreateDivideGroupActivity extends BaseActivity<WorkCreateDivideGroupPresenter>
+        implements WorkCreateDivideGroupContract.View {
 
 
     @BindView(R.id.title_middle_text)
@@ -96,19 +93,29 @@ public class HomeworkCreateDivideGroupActivity extends BaseActivity {
     }
 
     private void jumpAddMemberPage() {
-        final Intent intent = new Intent(HomeworkCreateDivideGroupActivity.this, HomeworkAddMemberActivity.class);
+        final Intent intent = new Intent(WorkCreateDivideGroupActivity.this, WorkAddMemberActivity.class);
         intent.putParcelableArrayListExtra(TransferKeys.ADD_MEMBER, mDivideGroupBeanList);
         intent.putExtra(TransferKeys.CLASS_ID, mClassId);
-        CommonAdvanceUtils.startActivityForResult(HomeworkCreateDivideGroupActivity.this, intent, TransferKeys.ConstantNum.NUM_2000);
+        CommonAdvanceUtils.startActivityForResult(WorkCreateDivideGroupActivity.this, intent, TransferKeys.ConstantNum.NUM_2000);
     }
 
 
     @Override
-    public int setViewLayout() {
+    protected void initInject() {
+        getActivityComponent().inject(this);
+    }
+
+    @Override
+    protected int getLayout() {
         return R.layout.activity_create_homework_divide_group;
     }
 
     @Override
+    protected void init() {
+        initView();
+        initData();
+    }
+
     public void initView() {
         mTvTitleMiddleText.setText("创建作业分组");
         mTvTitleRightText.setText("保存");
@@ -120,9 +127,7 @@ public class HomeworkCreateDivideGroupActivity extends BaseActivity {
         mDivideGroupRecyclerView.addItemDecoration(divider);
     }
 
-    @Override
-    public void doAction() {
-        super.doAction();
+    public void initData() {
         final Intent intent = getIntent();
         mType = intent.getIntExtra(TransferKeys.TYPE, -1);
         mGroupId = intent.getStringExtra(TransferKeys.GROUP_ID);
@@ -141,26 +146,52 @@ public class HomeworkCreateDivideGroupActivity extends BaseActivity {
         mEtInputDivideName.addTextChangedListener(new InputTextWatcher());
     }
 
+
     private void requestData() {
-        final Map<String, Object> paramsMap = ParamsManager.getInstance().setParams(ParamKeys.TEAM_ID, mGroupId).getParamsMap();
-        HiStudentHttpUtils.postDataByOKHttp(this, paramsMap, HistudentUrl.TEACHER_HOMEWORK_LIST_TEAM_MEMBER, new HttpRequestCallBack() {
-            @Override
-            public void onSuccess(String result) {
-                final List<CommonMemberBean> convert = HomeworkGroupDetailDataConvert.create(result).convert();
-                final String teamName = convert.get(0).getTeamName();
-                mEtInputDivideName.setText(teamName);
-                mDivideGroupBeanList.clear();
-                mDivideGroupBeanList.addAll(HomeworkGroupDetailDataConvert.create(result).convert());
-                mDivideGroupAdapter.setNewData(mDivideGroupBeanList);
-                mTvDivideGroupMember.setText("分组成员(" + mDivideGroupBeanList.size() + ")");
-            }
-
-            @Override
-            public void onFailure(String errorMsg) {
-
-            }
-        });
+        showLoadingDialog();
+        mPresenter.getGroupMemberList(mGroupId);
     }
+
+    @Override
+    public void showContent(String message) {
+
+    }
+
+    @Override
+    public void controlDialogStatus(String message) {
+        if (!TextUtils.isEmpty(message))
+            ToastTool.showCommonToast(message);
+        dismissLoadingDialog();
+    }
+
+    @Override
+    public void updateListData(List<CommonMemberBean> convert) {
+        final String teamName = convert.get(0).getTeamName();
+        mEtInputDivideName.setText(teamName);
+        mDivideGroupBeanList.clear();
+        mDivideGroupBeanList.addAll(convert);
+        mDivideGroupAdapter.setNewData(mDivideGroupBeanList);
+        mTvDivideGroupMember.setText("分组成员(" + mDivideGroupBeanList.size() + ")");
+    }
+
+    @Override
+    public void addGroupInformationSuccess() {
+        final Intent intent = new Intent(WorkCreateDivideGroupActivity.this, WorkSelectReceiverPersonActivity.class);
+        intent.putExtra(TransferKeys.CLASS_ID, mClassId);
+        CommonAdvanceUtils.startActivity(WorkCreateDivideGroupActivity.this, intent);
+        finish();
+    }
+
+    @Override
+    public void modifyGroupInformationSuccess() {
+        final Intent intent = new Intent(WorkCreateDivideGroupActivity.this, WorkReceiverPersonDetailActivity.class);
+        intent.putExtra(TransferKeys.CLASS_ID, mClassId);
+        intent.putExtra(TransferKeys.GROUP_ID, mGroupId);
+        CommonAdvanceUtils.startActivity(WorkCreateDivideGroupActivity.this, intent);
+        finish();
+    }
+
+
 
     private final class OnItemCreateDivideGroupListener extends OnItemChildClickListener {
 
@@ -196,6 +227,8 @@ public class HomeworkCreateDivideGroupActivity extends BaseActivity {
         mTvDivideGroupMember.setText("分组成员(" + mDivideGroupBeanList.size() + ")");
         if (mDivideGroupBeanList.size() > 0) {
             mLLAddLayoutHead.setVisibility(View.GONE);
+        } else {
+            mLLAddLayoutHead.setVisibility(View.VISIBLE);
         }
     }
 
@@ -223,6 +256,9 @@ public class HomeworkCreateDivideGroupActivity extends BaseActivity {
         }
     }
 
+    /**
+     * 保存处理
+     */
     private void saveBuildGroup() {
         //处理studentId
         final String groupName = mEtInputDivideName.getText().toString().trim();
@@ -248,50 +284,14 @@ public class HomeworkCreateDivideGroupActivity extends BaseActivity {
     }
 
     private void modifyGroup(String studentId, String groupName) {
-        final Map<String, Object> paramsMap = ParamsManager.getInstance()
-                .setParams(ParamKeys.NAME, groupName)
-                .setParams(ParamKeys.TEAM_ID, mGroupId)
-                .setParams(ParamKeys.STUDENT_ID, studentId)
-                .getParamsMap();
-        HiStudentHttpUtils.postDataByOKHttp(this, paramsMap, HistudentUrl.TEACHER_HOMEWORK_EDIT_TEAM, new HttpRequestCallBack() {
-            @Override
-            public void onSuccess(String result) {
-                final Intent intent = new Intent(HomeworkCreateDivideGroupActivity.this, HomeworkReceiverPersonDetailActivity.class);
-                intent.putExtra(TransferKeys.CLASS_ID, mClassId);
-                intent.putExtra(TransferKeys.GROUP_ID, mGroupId);
-                CommonAdvanceUtils.startActivity(HomeworkCreateDivideGroupActivity.this, intent);
-                finish();
-            }
-
-            @Override
-            public void onFailure(String errorMsg) {
-
-            }
-        });
+        showLoadingDialog();
+        mPresenter.modifyGroupInformation(groupName, mGroupId, studentId);
     }
 
     private void createGroup(String studentId, String groupName) {
-        final Map<String, Object> paramsMap = ParamsManager.getInstance()
-                .setParams(ParamKeys.NAME, groupName)
-                .setParams(ParamKeys.CLASS_ID, mClassId)
-                .setParams(ParamKeys.STUDENT_ID, studentId)
-                .getParamsMap();
-        HiStudentHttpUtils.postDataByOKHttp(this, paramsMap, HistudentUrl.TEACHER_HOMEWORK_ADD_TEAM, new HttpRequestCallBack() {
-            @Override
-            public void onSuccess(String result) {
-                final Intent intent = new Intent(HomeworkCreateDivideGroupActivity.this, HomeworkSelectReceiverPersonActivity.class);
-                intent.putExtra(TransferKeys.CLASS_ID, mClassId);
-                CommonAdvanceUtils.startActivity(HomeworkCreateDivideGroupActivity.this, intent);
-                finish();
-            }
-
-            @Override
-            public void onFailure(String errorMsg) {
-
-            }
-        });
+        showLoadingDialog();
+        mPresenter.addGroupInformation(groupName, mClassId, studentId);
     }
-
     public List<CommonMemberBean> getListData() {
         return mDivideGroupBeanList;
     }

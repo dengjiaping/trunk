@@ -146,7 +146,7 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
                     Toast.makeText(CreateWorkActivity.this, "请填写作业内容", Toast.LENGTH_SHORT).show();
                 }
 
-                mPresenter.createHomeWork(subjectId, receiverStr, mWorkContent.getText().toString(), false, videoIdsStr, mAudioInfo.getFile(), imgFiles);
+                mPresenter.createHomeWork(subjectId, receiverStr, mWorkContent.getText().toString(), mOnline.isChecked(), videoIdsStr, mAudioInfo.getFile(), imgFiles);
                 break;
             case R.id.control_photo://图片或视频
                 SystemUtil.hideSoftKeyboard(CreateWorkActivity.this);
@@ -179,12 +179,12 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
                 break;
             case R.id.work_subject_layout://科目
                 Intent subject = new Intent();
-                subject.setClass(CreateWorkActivity.this, HomeworkSubjectManageActivity.class);
+                subject.setClass(CreateWorkActivity.this, WorkSubjectManageActivity.class);
                 startActivityForResult(subject, REQ_SUBJECT);
                 break;
             case R.id.work_receiver_layout://接收人
                 Intent receiver = new Intent();
-                receiver.setClass(CreateWorkActivity.this, HomeworkSelectReceiverPersonActivity.class);
+                receiver.setClass(CreateWorkActivity.this, WorkSelectReceiverPersonActivity.class);
                 startActivityForResult(receiver, REQ_RECEIVER);
                 break;
             case R.id.delete_voice://删除语音
@@ -236,7 +236,6 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
     private static final int REQ_RECEIVER = 2002;
     private String subjectId;
     private List<String> receivers = new ArrayList<>();
-    private List<HomeworkSelectGroupL0Bean> homeworkSelectGroupL0Beens;
 
 
     @Override
@@ -577,13 +576,6 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
 
                 break;
             case REQ_RECEIVER:
-                if (resultCode == TransferKeys.ConstantNum.NUM_2002) {
-//                    StringBuilder stringBuilder = new StringBuilder();
-//                    if (data != null) {
-//                        homeworkSelectGroupL0Beens = (List<HomeworkSelectGroupL0Bean>) data.getSerializableExtra(TransferKeys.TEAM_ID);
-//
-
-                }
 
                 break;
         }

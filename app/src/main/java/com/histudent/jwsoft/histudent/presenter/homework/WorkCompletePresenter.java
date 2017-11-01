@@ -41,12 +41,7 @@ public class WorkCompletePresenter extends RxPresenter<WorkCompleteContract.View
                             WorkCompleteBean workComplete = response.getData();
                             if (workComplete != null) {
                                 List<WorkCompleteBean.ItemsBean> itemsBeens = workComplete.getItems();
-                                itemsBeens.addAll(itemsBeens);
-                                itemsBeens.addAll(itemsBeens);
-                                itemsBeens.addAll(itemsBeens);
-                                itemsBeens.addAll(itemsBeens);
-                                itemsBeens.addAll(itemsBeens);
-                                itemsBeens.addAll(itemsBeens);
+
                                 mView.showCompleteList(itemsBeens);
                             }
                         } else {

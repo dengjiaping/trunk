@@ -1,7 +1,6 @@
 package com.histudent.jwsoft.histudent.activity.homework;
 
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,31 +17,29 @@ import com.chad.library.adapter.base.listener.SimpleClickListener;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.adapter.decoration.Divider;
 import com.histudent.jwsoft.histudent.adapter.homework.HomeworkAddMemberAdapter;
-import com.histudent.jwsoft.histudent.adapter.homework.convert.AddMemberDataConvert;
+import com.histudent.jwsoft.histudent.base.BaseActivity;
 import com.histudent.jwsoft.histudent.bean.homework.CommonMemberBean;
-import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
-import com.histudent.jwsoft.histudent.commen.listener.HttpRequestCallBack;
-import com.histudent.jwsoft.histudent.commen.url.HistudentUrl;
-import com.histudent.jwsoft.histudent.commen.utils.HiStudentHttpUtils;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
-import com.histudent.jwsoft.histudent.constant.ParamKeys;
 import com.histudent.jwsoft.histudent.constant.TransferKeys;
-import com.histudent.jwsoft.histudent.manage.ParamsManager;
-import com.histudent.jwsoft.histudent.manage.UserManager;
+import com.histudent.jwsoft.histudent.presenter.homework.WorkAddMemberPresenter;
+import com.histudent.jwsoft.histudent.presenter.homework.contract.WorkAddMemberContract;
+import com.histudent.jwsoft.histudent.tool.ToastTool;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Created by lichaojie on 2017/10/25.
+ * Created by lichaojie on 2017/10/31.
  * desc:
+ * 作业-添加组成员
+ * sign:pre
  */
 
-public class HomeworkAddMemberActivity extends BaseActivity {
+public class WorkAddMemberActivity extends BaseActivity<WorkAddMemberPresenter>
+        implements WorkAddMemberContract.View {
 
     @BindView(R.id.title_middle_text)
     TextView mTvTitleMiddleText;
@@ -89,7 +86,7 @@ public class HomeworkAddMemberActivity extends BaseActivity {
      * true:如果是搜索状态-->点击条目处理搜索数据
      */
     private boolean isSearchStatus;
-    private static final String TAG = HomeworkAddMemberActivity.class.getName();
+    private static final String TAG = WorkAddMemberActivity.class.getName();
 
     @OnClick(R.id.title_left_text)
     void cancel() {
@@ -125,13 +122,8 @@ public class HomeworkAddMemberActivity extends BaseActivity {
         mAddMemberAdapter.setNewData(mSearchMemberList);
     }
 
-    @Override
-    public int setViewLayout() {
-        return R.layout.activity_homework_add_member;
-    }
 
-    @Override
-    public void initView() {
+    private void initView() {
         findViewById(R.id.title_left_image).setVisibility(View.GONE);
         mTvTitleLeftText.setText("取消");
         mTvTitleLeftText.setTextColor(ContextCompat.getColor(this, R.color._999999));
@@ -142,9 +134,7 @@ public class HomeworkAddMemberActivity extends BaseActivity {
         mEtInputSearchMember.addTextChangedListener(new InputTextWatcher());
     }
 
-    @Override
-    public void doAction() {
-        super.doAction();
+    private void initData() {
         //获取上个页面已选中成员列表
         mTransferSelectList = getIntent().getParcelableArrayListExtra(TransferKeys.ADD_MEMBER);
         mCurrentSelectMemberList.clear();
@@ -158,50 +148,10 @@ public class HomeworkAddMemberActivity extends BaseActivity {
         mAddMemberAdapter = HomeworkAddMemberAdapter
                 .create(R.layout.item_homework_select_member, mMemberBeanList);
         mRvAddGroupMember.addOnItemTouchListener(new OnItemClickListener());
-        loadData();
+        showLoadingDialog();
+        mPresenter.getGroupMemberList(mCurrentClassId);
     }
 
-    private void loadData() {
-        final Map<String, Object> map = ParamsManager.getInstance()
-                .setParams(ParamKeys.CLASS_ID, mCurrentClassId)
-                .getParamsMap();
-        HiStudentHttpUtils.postDataByOKHttp(this, map, HistudentUrl.getClassTeamber_url, new HttpRequestCallBack() {
-            @Override
-            public void onSuccess(String result) {
-                mMemberBeanList.clear();
-                Log.e(TAG, "onSuccess: result----->" + result);
-                final AddMemberDataConvert addMemberDataConvert = new AddMemberDataConvert();
-                final List<CommonMemberBean> listData = addMemberDataConvert.setJsonData(result)
-                        .convert();
-                for (CommonMemberBean subData : listData) {
-                    mAllNameList.add(subData.getName());
-                }
-                mMemberBeanList.addAll(listData);
-                //默认选中传递过来的成员数据
-                if (mTransferSelectList != null && mTransferSelectList.size() > 0) {
-                    for (CommonMemberBean memberBean : mTransferSelectList) {
-                        final String transferUserId = memberBean.getUserId();
-                        for (CommonMemberBean commonMemberBean : mMemberBeanList) {
-                            final String userId = commonMemberBean.getUserId();
-                            if (transferUserId != null) {
-                                if (transferUserId.equals(userId)) {
-                                    commonMemberBean.setCheck(true);
-                                    break;
-                                }
-                            }
-                        }
-                    }
-
-                }
-                mRvAddGroupMember.setAdapter(mAddMemberAdapter);
-            }
-
-            @Override
-            public void onFailure(String msg) {
-
-            }
-        });
-    }
 
     private final class OnItemClickListener extends SimpleClickListener {
 
@@ -303,5 +253,61 @@ public class HomeworkAddMemberActivity extends BaseActivity {
         public void afterTextChanged(Editable s) {
 
         }
+    }
+
+
+    @Override
+    protected void initInject() {
+        getActivityComponent().inject(this);
+    }
+
+    @Override
+    protected int getLayout() {
+        return R.layout.activity_homework_add_member;
+    }
+
+    @Override
+    protected void init() {
+        initView();
+        initData();
+    }
+
+    @Override
+    public void showContent(String message) {
+
+    }
+
+    @Override
+    public void updateListData(List<CommonMemberBean> commonMemberBean) {
+        mMemberBeanList.clear();
+        Log.e(TAG, "onSuccess: result----->" + commonMemberBean.toString());
+        for (CommonMemberBean subData : commonMemberBean) {
+            mAllNameList.add(subData.getName());
+        }
+        mMemberBeanList.addAll(commonMemberBean);
+        //默认选中传递过来的成员数据
+        if (mTransferSelectList != null && mTransferSelectList.size() > 0) {
+            for (CommonMemberBean memberBean : mTransferSelectList) {
+                final String transferUserId = memberBean.getUserId();
+                for (CommonMemberBean subCommonMemberBean : mMemberBeanList) {
+                    final String userId = subCommonMemberBean.getUserId();
+                    if (transferUserId != null) {
+                        if (transferUserId.equals(userId)) {
+                            subCommonMemberBean.setCheck(true);
+                            break;
+                        }
+                    }
+                }
+            }
+
+        }
+        mRvAddGroupMember.setAdapter(mAddMemberAdapter);
+    }
+
+    @Override
+    public void controlDialogStatus(String message) {
+        if (!TextUtils.isEmpty(message))
+            ToastTool.showCommonToast(message);
+        dismissLoadingDialog();
     }
 }

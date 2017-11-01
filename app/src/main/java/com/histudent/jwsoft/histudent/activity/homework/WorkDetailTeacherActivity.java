@@ -40,6 +40,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -95,6 +96,8 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
     TabLayout mTabLayout;
     @BindView(R.id.refresh)
     SmartRefreshLayout mRefresh;
+    @BindView(R.id.work_detail_imgs)
+    FrameLayout mImgLayout;
 
     @OnClick({R.id.title_left, R.id.title_right_image, R.id.notices_voice_control, R.id.work_detail_photo})
     public void onClick(View view) {
@@ -129,7 +132,7 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
     private WorkNoCompleteFragment mNoCompleteFragment;
     private List<Fragment> mFragments = new ArrayList<>();
     private ViewPagerAdapter mAdapter;
-    private static final String[] titles = {"已完成(0)", "未完成(0)"};
+    private List<String> titles = new ArrayList<>();
     private String homeworkId;
     private VideoAdapter mVideoAdapter;
     private LinearLayoutManager mVideoLayoutManager;
@@ -171,9 +174,9 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
     private void initView() {
         initTitle();
         initRecycler();
+        initTabLayout();
         initFragment();
         initViewPager();
-        initTabLayout();
         initRefresh();
     }
 
@@ -198,7 +201,6 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
 
     private void initTitle() {
         mTitle.setText("作业详情");
-        mRightImg.setText(R.string.icon_more3);
     }
 
     private void initFragment() {
@@ -216,6 +218,16 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
     private void initTabLayout() {
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
         mTabLayout.setupWithViewPager(mViewPager);
+        titles.add("已完成(0)");
+        titles.add("未完成(0)");
+    }
+
+    public void setTabOne(int num){
+        mTabLayout.getTabAt(0).setText("已完成("+num+")");
+    }
+
+    public void setTabTwo(int num){
+        mTabLayout.getTabAt(1).setText("已完成("+num+")");
     }
 
     @Override
@@ -231,6 +243,7 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
         if (homeworkDetail.isHasImage()) {
             List<WorkImgDetailBean> workImgDetailBeens = homeworkDetail.getImgList();
             if (workImgDetailBeens != null && workImgDetailBeens.size() > 0) {
+                mImgLayout.setVisibility(View.VISIBLE);
                 for (WorkImgDetailBean workImgDetailBean : workImgDetailBeens) {
                     ImageAttrEntity imageAttrEntity = new ImageAttrEntity();
                     imageAttrEntity.setId(workImgDetailBean.getId());
@@ -240,7 +253,11 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
                 }
                 CommonGlideImageLoader.getInstance().displayNetImage(WorkDetailTeacherActivity.this, workImgDetailBeens.get(0).getFilePath(), mDetailPhoto);
                 mPhotoNum.setText(String.valueOf(workImgDetailBeens.size()) + "张");
+            }else{
+                mImgLayout.setVisibility(View.GONE);
             }
+        }else{
+            mImgLayout.setVisibility(View.GONE);
         }
         if (homeworkDetail.isHasVideo()) {
             homeworkDetail.getVideoId();
@@ -301,7 +318,7 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return titles[position];
+            return titles.get(position);
         }
     }
 
@@ -351,6 +368,22 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
                 mVoiceTime.setText("00:00");
                 mVoiceControl.setText(getResources().getString(R.string.icon_bofang));
                 break;
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (!EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().register(this);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().unregister(this);
         }
     }
 }

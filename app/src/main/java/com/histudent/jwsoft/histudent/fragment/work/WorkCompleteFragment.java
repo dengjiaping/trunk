@@ -1,11 +1,13 @@
 package com.histudent.jwsoft.histudent.fragment.work;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.histudent.jwsoft.histudent.R;
+import com.histudent.jwsoft.histudent.activity.homework.CorrectWorkActivity;
 import com.histudent.jwsoft.histudent.activity.homework.WorkDetailStudentActivity;
 import com.histudent.jwsoft.histudent.activity.homework.WorkDetailTeacherActivity;
 import com.histudent.jwsoft.histudent.adapter.work.WorkCompleteAdapter;
@@ -13,12 +15,16 @@ import com.histudent.jwsoft.histudent.adapter.work.WorkNoCompleteAdapter;
 import com.histudent.jwsoft.histudent.base.BaseFragment;
 import com.histudent.jwsoft.histudent.bean.RecordBean;
 import com.histudent.jwsoft.histudent.bean.homework.WorkCompleteBean;
+import com.histudent.jwsoft.histudent.entity.CorrectWorkEvent;
 import com.histudent.jwsoft.histudent.presenter.homework.WorkCompletePresenter;
 import com.histudent.jwsoft.histudent.presenter.homework.contract.WorkCompleteContract;
 import com.histudent.jwsoft.histudent.presenter.homework.contract.WorkDetailTeacherContract;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
@@ -43,6 +49,7 @@ public class WorkCompleteFragment extends BaseFragment<WorkCompletePresenter> im
     private static final int PULL_DOWN = 0;
     private static final int PULL_UP = 1;
     private int loading = 0;
+    private Intent intent = new Intent();
 
     @Override
     protected void initInject() {
@@ -81,7 +88,7 @@ public class WorkCompleteFragment extends BaseFragment<WorkCompletePresenter> im
         initRefresh();
     }
 
-    public void initData(){
+    public void initData() {
         loading = PULL_DOWN;
         mPresenter.getCompleteList(homeworkId, true, 0, PAGE_SIZE);
     }
@@ -94,13 +101,13 @@ public class WorkCompleteFragment extends BaseFragment<WorkCompletePresenter> im
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {
                 loading = PULL_UP;
-                mPresenter.getCompleteList(homeworkId, false, (int) Math.ceil(((float) mAdapter.getItemCount() / PAGE_SIZE)), PAGE_SIZE);
+                mPresenter.getCompleteList(homeworkId, true, (int) Math.ceil(((float) mAdapter.getItemCount() / PAGE_SIZE)), PAGE_SIZE);
             }
 
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
                 loading = PULL_DOWN;
-                mPresenter.getCompleteList(homeworkId, false, 0, PAGE_SIZE);
+                mPresenter.getCompleteList(homeworkId, true, 0, PAGE_SIZE);
             }
         });
     }
@@ -115,7 +122,7 @@ public class WorkCompleteFragment extends BaseFragment<WorkCompletePresenter> im
 
     @Override
     public void showContent(String message) {
-        Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT);
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT);
     }
 
     @Override
@@ -126,7 +133,7 @@ public class WorkCompleteFragment extends BaseFragment<WorkCompletePresenter> im
         } else {
             mAdapter.addList(itemBeans);
         }
-
+        ((WorkDetailTeacherActivity)getActivity()).setTabOne(mAdapter.getItemCount());
     }
 
     @Override
@@ -135,9 +142,35 @@ public class WorkCompleteFragment extends BaseFragment<WorkCompletePresenter> im
         finishRefreshAndLoadmore();
     }
 
+    @Subscribe
+    public void onEvent(CorrectWorkEvent event) {
+        WorkCompleteBean.ItemsBean itemsBean = event.itemsBean;
+        if (itemsBean != null) {
+            intent.setClass(getActivity(), CorrectWorkActivity.class);
+            intent.putExtra("completeInfo",itemsBean);
+            startActivity(intent);
+        }
+    }
+
     private void finishRefreshAndLoadmore() {
         mRefreshLayout.finishLoadmore();
         mRefreshLayout.finishRefresh();
-        ((WorkDetailTeacherActivity)getActivity()).finishRefresh();
+        ((WorkDetailTeacherActivity) getActivity()).finishRefresh();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
     }
 }

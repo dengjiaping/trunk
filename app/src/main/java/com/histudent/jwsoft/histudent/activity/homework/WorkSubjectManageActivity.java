@@ -10,26 +10,20 @@ import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
-import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.adapter.decoration.Divider;
 import com.histudent.jwsoft.histudent.adapter.homework.HomeworkSubjectManageAdapter;
-import com.histudent.jwsoft.histudent.adapter.homework.convert.HomeworkSubjectDataConvert;
+import com.histudent.jwsoft.histudent.base.BaseActivity;
 import com.histudent.jwsoft.histudent.bean.homework.CommonSubjectBean;
-import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
-import com.histudent.jwsoft.histudent.commen.listener.HttpRequestCallBack;
-import com.histudent.jwsoft.histudent.commen.url.HistudentUrl;
-import com.histudent.jwsoft.histudent.commen.utils.HiStudentHttpUtils;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
-import com.histudent.jwsoft.histudent.constant.ParamKeys;
 import com.histudent.jwsoft.histudent.constant.TransferKeys;
 import com.histudent.jwsoft.histudent.dialog.CommonInputDialog;
-import com.histudent.jwsoft.histudent.manage.ParamsManager;
+import com.histudent.jwsoft.histudent.presenter.homework.WorkSubjectManagePresenter;
+import com.histudent.jwsoft.histudent.presenter.homework.contract.WorkSubjectManageContract;
 import com.histudent.jwsoft.histudent.tool.ToastTool;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -38,9 +32,11 @@ import butterknife.OnClick;
  * Created by lichaojie on 2017/10/25.
  * desc:
  * 科目管理
+ * sign:pre
  */
 
-public class HomeworkSubjectManageActivity extends BaseActivity {
+public class WorkSubjectManageActivity extends BaseActivity<WorkSubjectManagePresenter>
+        implements WorkSubjectManageContract.View {
 
     @BindView(R.id.title_middle_text)
     TextView mTvTitleMiddleText;
@@ -54,6 +50,7 @@ public class HomeworkSubjectManageActivity extends BaseActivity {
     private HomeworkSubjectManageAdapter mSubjectManageAdapter;
     private int mPrePosition = 0;
     private CommonInputDialog mInputDialog = null;
+    private int mDeletePosition = -1;
 
 
     @OnClick(R.id.title_left)
@@ -64,7 +61,7 @@ public class HomeworkSubjectManageActivity extends BaseActivity {
     @OnClick(R.id.title_right_text)
     void confirm() {
         final Intent intent = new Intent();
-        intent.putExtra(TransferKeys.GROUP_ID, mCurrentSubjectItem);
+        intent.putExtra(TransferKeys.GROUP_ID, mCurrentSubjectItem.getSubjectId());
         setResult(TransferKeys.ConstantNum.NUM_2000, intent);
         finish();
     }
@@ -80,34 +77,64 @@ public class HomeworkSubjectManageActivity extends BaseActivity {
                     return;
                 }
             }
-
-            final Map<String, Object> paramsMap = ParamsManager.getInstance()
-                    .setParams(ParamKeys.SUBJECT_NAME, inputContent)
-                    .getParamsMap();
-            HiStudentHttpUtils.postDataByOKHttp(this, paramsMap, HistudentUrl.HOMEWORK_SUBJECT_ADD, new HttpRequestCallBack() {
-                @Override
-                public void onSuccess(String result) {
-                    requestData();
-                }
-
-                @Override
-                public void onFailure(String errorMsg) {
-
-                }
-            });
-
+            showLoadingDialog();
+            mPresenter.addSpecifiedSubject(inputContent);
         } else {
             ToastTool.showCommonToast("请输入科目");
         }
     }
 
 
+    private static final String TAG = WorkSubjectManageActivity.class.getName();
+
+
     @Override
-    public int setViewLayout() {
+    public void controlDialogStatus(String message) {
+        if (!TextUtils.isEmpty(message))
+            ToastTool.showCommonToast(message);
+        dismissLoadingDialog();
+    }
+
+    @Override
+    public void updateListData(List<CommonSubjectBean> commonSubjectBean) {
+        mCommonSubjectBeanList.clear();
+        mCommonSubjectBeanList.addAll(commonSubjectBean);
+        mSubjectManageAdapter.setNewData(mCommonSubjectBeanList);
+        if (mInputDialog != null) {
+            if (mInputDialog.isShowing())
+                mInputDialog.dismiss();
+        }
+    }
+
+    @Override
+    public void deleteSpecifiedSubjectSuccess() {
+        mCommonSubjectBeanList.remove(mDeletePosition);
+        mSubjectManageAdapter.setNewData(mCommonSubjectBeanList);
+    }
+
+    @Override
+    public void addSpecifiedSubjectSuccess() {
+        showLoadingDialog();
+        mPresenter.getSubjectList();
+    }
+
+
+    @Override
+    protected void initInject() {
+        getActivityComponent().inject(this);
+    }
+
+    @Override
+    protected int getLayout() {
         return R.layout.activity_homework_subject_manage;
     }
 
     @Override
+    protected void init() {
+        initView();
+        initData();
+    }
+
     public void initView() {
         mTvTitleMiddleText.setText("科目管理");
         mIvTitleRightText.setText(R.string.confirm);
@@ -118,37 +145,17 @@ public class HomeworkSubjectManageActivity extends BaseActivity {
         mRvReceiverDetail.addItemDecoration(divider);
     }
 
-    private static final String TAG = HomeworkSubjectManageActivity.class.getName();
-
-    private void requestData() {
-        HiStudentHttpUtils.postDataByOKHttp(this, null, HistudentUrl.HOMEWORK_SUBJECT_LIST, new HttpRequestCallBack() {
-            @Override
-            public void onSuccess(String result) {
-                HiStudentLog.i(TAG, "onSuccess: result" + result);
-                final List<CommonSubjectBean> convert = HomeworkSubjectDataConvert.create(result).convert();
-                mCommonSubjectBeanList.clear();
-                mCommonSubjectBeanList.addAll(convert);
-                mSubjectManageAdapter.setNewData(mCommonSubjectBeanList);
-                if (mInputDialog != null) {
-                    if (mInputDialog.isShowing())
-                        mInputDialog.dismiss();
-                }
-            }
-
-            @Override
-            public void onFailure(String errorMsg) {
-
-            }
-        });
-    }
-
-    @Override
-    public void doAction() {
-        super.doAction();
+    public void initData() {
         mSubjectManageAdapter = HomeworkSubjectManageAdapter.create(R.layout.item_homework_subject_manage, mCommonSubjectBeanList);
         mRvReceiverDetail.setAdapter(mSubjectManageAdapter);
         mRvReceiverDetail.addOnItemTouchListener(new OnItemClickListener());
-        requestData();
+        showLoadingDialog();
+        mPresenter.getSubjectList();
+    }
+
+    @Override
+    public void showContent(String message) {
+
     }
 
     private final class OnItemClickListener extends OnItemChildClickListener {
@@ -158,13 +165,16 @@ public class HomeworkSubjectManageActivity extends BaseActivity {
             final int id = view.getId();
             switch (id) {
                 case R.id.ll_subject_manage_delete:
-                    solveDeleteSubject(position);
+                    mDeletePosition = position;
+                    showLoadingDialog();
+                    final String subjectId = mCommonSubjectBeanList.get(position).getSubjectId();
+                    mPresenter.deleteSpecifiedSubject(subjectId);
                     break;
                 case R.id.ll_subject_manage_select:
                     solveSelectSubject(position);
                     break;
                 case R.id.ll_add_layout:
-                    mInputDialog = new CommonInputDialog(HomeworkSubjectManageActivity.this);
+                    mInputDialog = new CommonInputDialog(WorkSubjectManageActivity.this);
                     mInputDialog.setOnPositiveClickListener(() -> solveAddSubject());
                     mInputDialog.setOnNegativeClickListener(() -> mInputDialog.dismiss());
                     mInputDialog.show();
@@ -173,23 +183,6 @@ public class HomeworkSubjectManageActivity extends BaseActivity {
                     break;
             }
         }
-    }
-
-    private void solveDeleteSubject(int position) {
-        final String subjectId = mCommonSubjectBeanList.get(position).getSubjectId();
-        final Map<String, Object> paramsMap = ParamsManager.getInstance().setParams(ParamKeys.SUBJECT_ID, subjectId).getParamsMap();
-        HiStudentHttpUtils.postDataByOKHttp(this, paramsMap, HistudentUrl.HOMEWORK_SUBJECT_DEL, new HttpRequestCallBack() {
-            @Override
-            public void onSuccess(String result) {
-                mCommonSubjectBeanList.remove(position);
-                mSubjectManageAdapter.setNewData(mCommonSubjectBeanList);
-            }
-
-            @Override
-            public void onFailure(String errorMsg) {
-
-            }
-        });
     }
 
     private void solveSelectSubject(int position) {

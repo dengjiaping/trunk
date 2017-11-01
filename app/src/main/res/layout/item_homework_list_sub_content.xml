@@ -45,22 +45,8 @@
             <LinearLayout
                 android:id="@+id/ll_homework_type_group"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp10"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_homework_group_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/homework_group_shape"
-                    android:gravity="center"
-                    android:text="英语作业A组"
-                    android:textColor="@color/_B0B0B0"
-                    android:textSize="@dimen/sp11"/>
-
-
-            </LinearLayout>
+                android:layout_height="@dimen/dp23"
+                android:orientation="horizontal"/>
 
         </LinearLayout>
 

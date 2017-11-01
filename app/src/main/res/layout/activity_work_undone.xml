@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+    <include layout="@layout/thetopview_new" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/include_work_detail_header" />
+
+            <View style="@style/split_line_style_1dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/work_detail_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+
+                    <ImageView
+                        android:id="@+id/work_detail_photo"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:scaleType="fitXY" />
+
+                    <TextView
+                        android:id="@+id/work_detail_photo_num"
+                        android:layout_width="48dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="bottom|right"
+                        android:background="@color/_11ffffff"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                </FrameLayout>
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/work_detail_recycler_video"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingLeft="@dimen/itemMargin"
+                    android:paddingRight="@dimen/itemMargin">
+
+                </android.support.v7.widget.RecyclerView>
+
+                <include layout="@layout/include_voice_play" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="116dp"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_gravity="bottom"
+        android:gravity="center_vertical">
+        
+        <TextView
+            android:id="@+id/undone_goto_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_gray_h1"
+            android:layout_gravity="center_horizontal"
+            android:textSize="12dp"
+            android:text="作业需要在线提交，点击去完成"
+            />
+        
+        <Button
+            android:id="@+id/undone_goto_finish"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_btn_green"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:text="去完成"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            />
+    </LinearLayout>
+
+</LinearLayout>

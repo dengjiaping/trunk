@@ -28,7 +28,7 @@ import com.histudent.jwsoft.histudent.CodeNum;
 import com.histudent.jwsoft.histudent.HiStudentApplication;
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.activity.homework.HomeworkAlreadyActivity;
+import com.histudent.jwsoft.histudent.activity.homework.WorkAlreadyCompleteActivity;
 import com.histudent.jwsoft.histudent.body.find.adapter.SortGroupAdapter;
 import com.histudent.jwsoft.histudent.body.hiworld.bean.SimpleUserModel;
 import com.histudent.jwsoft.histudent.body.message.model.ClassModel;
@@ -353,7 +353,7 @@ public class ClassFragment extends BaseFragment {
             case ClassAppKey.HOMEWORK:
                 isRefresh = true;
 //                MyWebActivity.start(getActivity(), bean.getAppUrl());
-                final Intent intent = new Intent(getContext(), HomeworkAlreadyActivity.class);
+                final Intent intent = new Intent(getContext(), WorkAlreadyCompleteActivity.class);
                 intent.putExtra(TransferKeys.IS_ADMIN,classModel.isIsAdmin());
                 CommonAdvanceUtils.startActivity(getContext(), intent);
                 break;

@@ -1,23 +1,25 @@
 package com.histudent.jwsoft.histudent.activity.homework;
 
+import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.base.BaseActivity;
+import com.histudent.jwsoft.histudent.presenter.homework.WorkDetailStudentPresenter;
 import com.histudent.jwsoft.histudent.presenter.homework.contract.WorkDetailStudentContract;
 
 /**
  * Created by huyg on 2017/10/25.
  */
 
-public class WorkDetailStudentActivity extends BaseActivity<WorkDetailStudentContract.Presenter> implements WorkDetailStudentContract.View{
+public class WorkDetailStudentActivity extends BaseActivity<WorkDetailStudentPresenter> implements WorkDetailStudentContract.View{
 
 
     @Override
     protected void initInject() {
-
+        getActivityComponent().inject(this);
     }
 
     @Override
     protected int getLayout() {
-        return 0;
+        return R.layout.activity_work_detail_student;
     }
 
     @Override

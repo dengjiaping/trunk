@@ -7,7 +7,7 @@ package com.histudent.jwsoft.histudent.model.http;
 public class HttpResponse<T> extends BaseHttpResponse{
 
 
-    private T data;
+        private T data;
 
     public T getData() {
         return data;

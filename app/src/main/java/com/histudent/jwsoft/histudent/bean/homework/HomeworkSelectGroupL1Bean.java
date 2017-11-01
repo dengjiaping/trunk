@@ -1,6 +1,7 @@
 package com.histudent.jwsoft.histudent.bean.homework;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.histudent.jwsoft.histudent.adapter.homework.HomeworkSelectPersonExpandableAdapter;
 
 import java.io.Serializable;
 

@@ -42,7 +42,7 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.http.Field;
-import top.zibin.luban.Luban;
+//import top.zibin.luban.Luban;
 
 /**
  * Created by huyg on 2017/10/23.
@@ -223,7 +223,8 @@ public class CreateWorkPresenter extends RxPresenter<CreateWorkContract.View> im
                 .observeOn(Schedulers.io())
                 .map(new Function<List<String>, List<File>>() {
                     @Override public List<File> apply(@NonNull List<String> list) throws Exception {
-                        return Luban.with(context).load(list).get();
+//                        return Luban.with(context).load(list).get();
+                        return null;
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())

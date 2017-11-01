@@ -8,12 +8,10 @@ import android.widget.ImageView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.activity.homework.HomeworkCreateDivideGroupActivity;
-import com.histudent.jwsoft.histudent.activity.homework.HomeworkReceiverPersonDetailActivity;
+import com.histudent.jwsoft.histudent.activity.homework.WorkCreateDivideGroupActivity;
+import com.histudent.jwsoft.histudent.activity.homework.WorkReceiverPersonDetailActivity;
 import com.histudent.jwsoft.histudent.bean.homework.CommonMemberBean;
-import com.histudent.jwsoft.histudent.bean.homework.HomeworkSelectGroupL1Bean;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
-import com.histudent.jwsoft.histudent.commen.view.IconView;
 
 import java.util.List;
 
@@ -48,10 +46,11 @@ public class HomeworkCreateDivideGroupAdapter extends BaseQuickAdapter<CommonMem
             deleteIcon.setVisibility(View.VISIBLE);
         }
         helper.addOnClickListener(R.id.ll_delete_add_group_member);
+        helper.addOnClickListener(R.id.ll_add_layout);
         helper.setText(R.id.tv_add, "添加成员");
         helper.setText(R.id.tv_create_homework_divider_group_name, item.getName());
-        if (mContext instanceof HomeworkCreateDivideGroupActivity) {
-            final List<CommonMemberBean> listData = ((HomeworkCreateDivideGroupActivity) mContext).getListData();
+        if (mContext instanceof WorkCreateDivideGroupActivity) {
+            final List<CommonMemberBean> listData = ((WorkCreateDivideGroupActivity) mContext).getListData();
             if (listData.size() > 0) {
                 if (helper.getAdapterPosition() == listData.size() - 1) {
                     helper.getView(R.id.ll_add_layout).setVisibility(View.VISIBLE);
@@ -64,7 +63,7 @@ public class HomeworkCreateDivideGroupAdapter extends BaseQuickAdapter<CommonMem
                 helper.getView(R.id.ll_add_layout).setVisibility(View.GONE);
                 helper.getView(R.id.view_line).setVisibility(View.VISIBLE);
             }
-        } else if (mContext instanceof HomeworkReceiverPersonDetailActivity) {
+        } else if (mContext instanceof WorkReceiverPersonDetailActivity) {
             helper.getView(R.id.ll_add_layout).setVisibility(View.GONE);
             helper.getView(R.id.view_line).setVisibility(View.GONE);
         }
