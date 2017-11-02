@@ -41,7 +41,6 @@ import butterknife.OnClick;
  * 跳转来源
  * 1.接收人页面
  * 2.小组成员详细列表页面(右上角编辑)
- * sign:pre
  */
 
 public class WorkCreateDivideGroupActivity extends BaseActivity<WorkCreateDivideGroupPresenter>

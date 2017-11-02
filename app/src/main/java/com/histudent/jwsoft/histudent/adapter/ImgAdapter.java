@@ -11,6 +11,7 @@ import com.histudent.jwsoft.histudent.HiStudentApplication;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.MyImageLoader;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
+import com.histudent.jwsoft.histudent.entity.ImgAddEvent;
 import com.histudent.jwsoft.histudent.entity.WorkImgDeleteEvent;
 
 import org.greenrobot.eventbus.EventBus;
@@ -32,9 +33,11 @@ public class ImgAdapter extends RecyclerView.Adapter<ImgAdapter.ViewHolder> {
     private boolean isDelete = false;//是否可以删除
     private boolean isAdd = false;//是否可以添加
     private Context mContext;
-    public ImgAdapter(Context context){
+
+    public ImgAdapter(Context context) {
         this.mContext = context;
     }
+
     public void setList(List<String> list) {
         this.mList = list;
         notifyDataSetChanged();
@@ -106,7 +109,9 @@ public class ImgAdapter extends RecyclerView.Adapter<ImgAdapter.ViewHolder> {
 
                     break;
                 case R.id.item_work_img:
-
+                    if (getLayoutPosition() == mList.size()) {
+                        EventBus.getDefault().post(new ImgAddEvent());
+                    }
                     break;
             }
         }

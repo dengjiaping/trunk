@@ -19,12 +19,16 @@ public interface WorkAlreadyCompleteContract {
         void controlDialogStatus(String message);
 
         void updateListData(ArrayList<HomeworkAlreadyBean> convertEntity);
+
+        void deleteHomeworkSuccess();
     }
 
     interface Presenter extends BasePresenter<View> {
 
-        void getAlreadyCompleteHomeworkList(Map<String,Object> map);
+        void getAlreadyCompleteHomeworkList(Map<String, Object> map);
 
-        void getAlreadyCompleteAllHomeworkList(Map<String,Object> map);
+        void getAlreadyCompleteAllHomeworkList(Map<String, Object> map);
+
+        void deleteCompleteSpecifiedHomework(String homeworkId);
     }
 }

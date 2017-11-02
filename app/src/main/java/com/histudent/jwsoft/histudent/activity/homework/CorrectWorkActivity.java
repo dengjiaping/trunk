@@ -2,6 +2,8 @@ package com.histudent.jwsoft.histudent.activity.homework;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
@@ -11,11 +13,17 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -26,18 +34,23 @@ import com.histudent.jwsoft.histudent.activity.image.ShowImageActivity;
 import com.histudent.jwsoft.histudent.adapter.VideoAdapter;
 import com.histudent.jwsoft.histudent.base.BaseActivity;
 import com.histudent.jwsoft.histudent.bean.homework.CommentBean;
+import com.histudent.jwsoft.histudent.bean.homework.CompleteDetailBean;
 import com.histudent.jwsoft.histudent.bean.homework.HomeworkDetailBean;
 import com.histudent.jwsoft.histudent.bean.homework.WorkCompleteBean;
 import com.histudent.jwsoft.histudent.bean.homework.WorkImgDetailBean;
 import com.histudent.jwsoft.histudent.commen.keyword.fragment.EmotionMainFragment;
 import com.histudent.jwsoft.histudent.commen.keyword.utils.DisplayUtils;
+import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
 import com.histudent.jwsoft.histudent.comment2.utils.TimeUtils;
+import com.histudent.jwsoft.histudent.constant.Const;
 import com.histudent.jwsoft.histudent.entity.AudioInfo;
 import com.histudent.jwsoft.histudent.entity.AudioPlayEvent;
 import com.histudent.jwsoft.histudent.entity.AudioPlayStatusEvent;
 import com.histudent.jwsoft.histudent.entity.ImageAttrEntity;
+import com.histudent.jwsoft.histudent.entity.RecordInfoEvent;
+import com.histudent.jwsoft.histudent.entity.RecordStatusEvent;
 import com.histudent.jwsoft.histudent.fragment.work.WorkCompleteFragment;
 import com.histudent.jwsoft.histudent.fragment.work.WorkNoCompleteFragment;
 import com.histudent.jwsoft.histudent.presenter.homework.CorrectPresenter;
@@ -81,18 +94,7 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
     ImageView mDetailPhoto;
     @BindView(R.id.work_detail_photo_num)
     TextView mPhotoNum;
-    @BindView(R.id.notices_voice)
-    FrameLayout mVoiceLayout;
-    @BindView(R.id.notices_voice_control)
-    IconView mVoiceControl;
-    @BindView(R.id.notices_voice_time)
-    TextView mVoiceTime;
-    @BindView(R.id.notices_voice_time_total)
-    TextView mVoiceTimeTotal;
-    @BindView(R.id.notices_voice_progress)
-    SeekBar mProgress;
-    @BindView(R.id.delete_voice)
-    IconView mVoiceDel;
+
     @BindView(R.id.write_comment)
     LinearLayout mWriteComment;
     @BindView(R.id.comment_content)
@@ -109,28 +111,27 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
     IconView mEmotionBtn;
     @BindView(R.id.scroll_view)
     ScrollView mScrollView;
-    @OnClick({R.id.title_left, R.id.notices_voice_control, R.id.work_detail_photo})
+    @BindView(R.id.correct_finish)
+    Button mCorrectFinish;
+    @BindView(R.id.layout)
+    LinearLayout mLayout;
+    @OnClick({R.id.title_left, R.id.work_detail_photo,R.id.correct_finish,R.id.control_record})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.title_left:
                 finish();
                 break;
-            case R.id.notices_voice_control://语音播放控制
-                if (mPresenter.getAudioState()) {
-                    mVoiceControl.setText(getResources().getString(R.string.icon_bofang));
-                    mPresenter.pauseAudio();
-                } else {
-                    if (mAudioInfo != null) {
-                        mVoiceControl.setText(getResources().getString(R.string.icon_zanting));
-                        mPresenter.playAudio(mAudioInfo.getFile().getAbsolutePath());
-                    }
-
-                }
-                break;
             case R.id.work_detail_photo:
                 if (imageAttrs != null && imageAttrs.size() > 0) {
                     showImageDetail(mDetailPhoto, 0, imageAttrs);
                 }
+                break;
+            case R.id.correct_finish:
+
+                break;
+            case R.id.control_record:
+                SystemUtil.hideSoftKeyboard(CorrectWorkActivity.this);
+                showRecordWindow();
                 break;
         }
     }
@@ -141,10 +142,34 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
     private LinearLayoutManager mVideoLayoutManager;
     private GridLayoutManager mImgLayoutManager;
     private AudioInfo mAudioInfo = new AudioInfo();
+    private AudioInfo mCommentAudioInfo = new AudioInfo();
     private List<ImageAttrEntity> imageAttrs = new ArrayList();
     private List<String> commens = new ArrayList<>();
     private EmotionMainFragment emotionMainFragment;
-
+    private TextView mRecordTime;
+    private TextView mTip;
+    private LinearLayout mRecordLayout;
+    private PopupWindow mPopupWindow;
+    private ImageView mRecord;
+    private boolean isRecord = false;
+    private int time;
+    private static final int MSG_RECORD = 1;
+    private View commentAudio;
+    private IconView mCommentVoiceControl;
+    private TextView mCommentVoiceTime;
+    private TextView mCommentVoiceTimeTotal;
+    private SeekBar mCommentProgress;
+    private IconView mCommentVoiceDel;
+    private View detailAudio;
+    private IconView mDetailVoiceControl;
+    private TextView mDetailVoiceTime;
+    private TextView mDetailVoiceTimeTotal;
+    private SeekBar mDetailProgress;
+    private IconView mDetailVoiceDel;
+    private static final int TYPE_VOICE_DETAIL = 1;
+    private static final int TYPE_VOICE_COMMENT = 2;
+    private int voiceType;
+    private long detailVoiceTime;
     @Override
     protected void initInject() {
         getActivityComponent().inject(this);
@@ -186,6 +211,73 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
         initRecycler();
         initComment();
         initEmotionMainFragment();
+        initAudioPlay();
+    }
+
+
+    private void initAudioPlay() {
+        commentAudio = findViewById(R.id.comment_audio);
+        mCommentVoiceControl = commentAudio.findViewById(R.id.notices_voice_control);
+        mCommentVoiceTime = commentAudio.findViewById(R.id.notices_voice_time);
+        mCommentProgress = commentAudio.findViewById(R.id.notices_voice_progress);
+        mCommentVoiceTimeTotal = commentAudio.findViewById(R.id.notices_voice_time_total);
+        mCommentVoiceDel = commentAudio.findViewById(R.id.delete_voice);
+
+        detailAudio = findViewById(R.id.detail_audio);
+        mDetailVoiceControl = detailAudio.findViewById(R.id.notices_voice_control);
+        mDetailVoiceTime = detailAudio.findViewById(R.id.notices_voice_time);
+        mDetailProgress = detailAudio.findViewById(R.id.notices_voice_progress);
+        mDetailVoiceTimeTotal = detailAudio.findViewById(R.id.notices_voice_time_total);
+        mDetailVoiceDel = detailAudio.findViewById(R.id.delete_voice);
+
+        mCommentVoiceControl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mPresenter.getAudioState()) {
+                    if (voiceType == TYPE_VOICE_COMMENT) {
+                        mCommentVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                        mPresenter.pauseAudio();
+                        mCommentVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                    } else {
+                        mCommentVoiceControl.setText(getResources().getString(R.string.icon_zanting));
+                        mPresenter.playAudio(mCommentAudioInfo.getFile().getAbsolutePath());
+                    }
+
+                    mDetailVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                    voiceType = TYPE_VOICE_COMMENT;
+                } else {
+                    if (mAudioInfo != null) {
+                        mCommentVoiceControl.setText(getResources().getString(R.string.icon_zanting));
+                        mPresenter.playAudio(mCommentAudioInfo.getFile().getAbsolutePath());
+                    }
+                    voiceType = TYPE_VOICE_COMMENT;
+                }
+            }
+        });
+
+        mDetailVoiceControl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mPresenter.getAudioState()) {
+                    if (voiceType == TYPE_VOICE_DETAIL) {
+                        mPresenter.pauseAudio();
+                        mDetailVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                    } else {
+                        mPresenter.playAudio(mAudioInfo.getFile().getAbsolutePath());
+                        mDetailVoiceControl.setText(getResources().getString(R.string.icon_zanting));
+                    }
+
+                    mCommentVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                    voiceType = TYPE_VOICE_DETAIL;
+                } else {
+                    if (mAudioInfo != null) {
+                        mPresenter.playAudio(mAudioInfo.getFile().getAbsolutePath());
+                    }
+                    mDetailVoiceControl.setText(getResources().getString(R.string.icon_zanting));
+                    voiceType = TYPE_VOICE_DETAIL;
+                }
+            }
+        });
     }
 
     private void initComment() {
@@ -216,7 +308,7 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
     }
 
     private void initData() {
-        mPresenter.getHomeworkDetail(itemsBean.getHomeworkId());
+        mPresenter.getCompleteDetail(itemsBean.getHomeworkId(),itemsBean.getUserId());
     }
 
 
@@ -253,50 +345,55 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
         transaction.commit();
     }
 
-    @Override
-    public void getHomeworkDetailFail() {
-        showContent("获取详情失败");
-        finish();
-    }
 
-    @Override
-    public void showHomeworkDetail(HomeworkDetailBean homeworkDetail) {
-        initContent(homeworkDetail);
-        mPresenter.getCommentList("");
-    }
 
-    private void initContent(HomeworkDetailBean homeworkDetail) {
-        if (!TextUtils.isEmpty(homeworkDetail.getContents())) {
-            mWorkContent.setText(homeworkDetail.getContents());
+
+    private void initContent(CompleteDetailBean completeDetail) {
+        if (!TextUtils.isEmpty(completeDetail.getContents())) {
+            mWorkContent.setText(completeDetail.getContents());
         }
-        if (homeworkDetail.isHasImage()) {
-            List<WorkImgDetailBean> workImgDetailBeens = homeworkDetail.getImgList();
-            if (workImgDetailBeens != null && workImgDetailBeens.size() > 0) {
-                for (WorkImgDetailBean workImgDetailBean : workImgDetailBeens) {
+        if (completeDetail.isHasImage()) {
+            List<CompleteDetailBean.CompleteImagesBean> completeImages = completeDetail.getCompleteImages();
+            if (completeImages != null && completeImages.size() > 0) {
+                for (CompleteDetailBean.CompleteImagesBean completeImage : completeImages) {
                     ImageAttrEntity imageAttrEntity = new ImageAttrEntity();
-                    imageAttrEntity.setId(workImgDetailBean.getId());
-                    imageAttrEntity.setBigSizeUrl(workImgDetailBean.getFilePath());
-                    imageAttrEntity.setThumbnailUrl(workImgDetailBean.getFilePath());
+                    imageAttrEntity.setId(completeImage.getId());
+                    imageAttrEntity.setBigSizeUrl(completeImage.getFilePath());
+                    imageAttrEntity.setThumbnailUrl(completeImage.getFilePath());
                     imageAttrs.add(imageAttrEntity);
                 }
                 mImgLayout.setVisibility(View.VISIBLE);
-                CommonGlideImageLoader.getInstance().displayNetImage(CorrectWorkActivity.this, workImgDetailBeens.get(0).getFilePath(), mDetailPhoto);
-                mPhotoNum.setText(String.valueOf(workImgDetailBeens.size()) + "张");
+                CommonGlideImageLoader.getInstance().displayNetImage(CorrectWorkActivity.this, completeImages.get(0).getFilePath(), mDetailPhoto);
+                mPhotoNum.setText(String.valueOf(completeImages.size()) + "张");
             }else{
                     mImgLayout.setVisibility(View.GONE);
             }
         }else{
             mImgLayout.setVisibility(View.GONE);
         }
-        if (homeworkDetail.isHasVideo()) {
-            homeworkDetail.getVideoId();
+        if (completeDetail.isHasVideo()) {
+//            homeworkDetail.getVideoId();
         }
-        if (homeworkDetail.isHasVoice()) {
-            mPresenter.downloadVoice(homeworkDetail.getVoiceId());
-            mVoiceLayout.setVisibility(View.VISIBLE);
-            mVoiceDel.setVisibility(View.GONE);
-            mAudioInfo.setTime(Long.parseLong(homeworkDetail.getVoiceLength()));
+        if (completeDetail.isHasVoice()) {
+            mPresenter.downloadVoice(completeDetail.getCompleteVoice().getId());
+            detailAudio.setVisibility(View.VISIBLE);
+            mDetailVoiceDel.setVisibility(View.GONE);
+            mAudioInfo.setTime(completeDetail.getCompleteVoice().getFileLength());
+            detailVoiceTime = completeDetail.getCompleteVoice().getFileLength();
+            mDetailVoiceTimeTotal.setText(TimeUtils.formatTime2(completeDetail.getCompleteVoice().getFileLength()/1000));
+
         }
+
+    }
+
+    @Override
+    public void showCompleteDetail(CompleteDetailBean completeDetailBean) {
+        mPresenter.getCommentList("");
+        initContent(completeDetailBean);
+    }
+
+    @Override
+    public void getCompleteDetailFail() {
 
     }
 
@@ -312,6 +409,54 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
         }
         mFlowLayout.setData(commens,STYLE_CHECKBOX);
     }
+
+
+    @Subscribe
+    public void onEvent(RecordStatusEvent event) {
+        int state = event.status;
+        switch (state) {
+            case Const.START:
+                mHandler.sendEmptyMessage(MSG_RECORD);
+                break;
+            case Const.SUCCESS:
+            case Const.CANCEL:
+            case Const.MAX:
+                mHandler.removeCallbacksAndMessages(null);
+                mPopupWindow.dismiss();
+                mCommentVoiceTimeTotal.setText(TimeUtils.formatTime2(time));
+                commentAudio.setVisibility(View.VISIBLE);
+
+                break;
+
+        }
+
+    }
+
+    @Subscribe
+    public void onEvent(RecordInfoEvent event) {
+        if (event != null) {
+            mCommentAudioInfo.setFile(event.mFile);
+            mCommentAudioInfo.setRecordType(event.mRecordType);
+            mCommentAudioInfo.setTime(event.time);
+        }
+
+    }
+
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case MSG_RECORD:
+                    time++;
+                    mRecordTime.setText(TimeUtils.formatTime2(time) + "/");
+                    mHandler.sendEmptyMessageDelayed(MSG_RECORD, 1000);
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
 
 
     private void showImageDetail(View view, int position, List<ImageAttrEntity> imageAttrs) {
@@ -339,8 +484,13 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(AudioPlayEvent event) {
-//        mProgress.setProgress((int) ((event.position / (time * 1000.0)) * 100));
-        mVoiceTime.setText(TimeUtils.formatTime2(event.position / 1000));
+        if (voiceType==TYPE_VOICE_COMMENT){
+            mCommentProgress.setProgress((int) ((event.position / (time * 1000.0)) * 100));
+            mCommentVoiceTime.setText(TimeUtils.formatTime2(event.position / 1000));
+        }else{
+            mDetailProgress.setProgress((int) ((event.position / (float)detailVoiceTime) * 100));
+            mDetailVoiceTime.setText(TimeUtils.formatTime2(event.position / 1000));
+        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -349,16 +499,84 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
         switch (status) {
             case 0:
             case -1:
-                mProgress.setProgress(0);
-                mVoiceTime.setText("00:00");
-                mVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                if (voiceType==TYPE_VOICE_COMMENT){
+                    mCommentProgress.setProgress(0);
+                    mCommentVoiceTime.setText("00:00");
+                    mCommentVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                }else{
+                    mDetailProgress.setProgress(0);
+                    mDetailVoiceTime.setText("00:00");
+                    mDetailVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                }
                 break;
+        }
+    }
+
+    /**
+     * 录音
+     */
+    private void showRecordWindow() {
+        View view = LayoutInflater.from(this).inflate(R.layout.popup_record_layout, null);
+        mRecordTime = view.findViewById(R.id.record);
+        mTip = view.findViewById(R.id.tip);
+        mRecordLayout = view.findViewById(R.id.record_layout);
+        mRecord = view.findViewById(R.id.record_img);
+
+        mPopupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        setBackgroundAlpha(0.5f);//设置屏幕透明度
+        mPopupWindow.setFocusable(true);// 点击空白处时，隐藏掉pop窗口
+        mRecord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeRecordPop(isRecord);
+                isRecord = !isRecord;
+            }
+        });
+        mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                setBackgroundAlpha(1.0f);
+                if (mPresenter.getRecordState()) {
+                    mPresenter.stopRecord();
+                }
+            }
+        });
+        mPopupWindow.setAnimationStyle(R.style.popwin_anim_style);
+        mPopupWindow.showAtLocation(mLayout, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+    }
+
+
+    public void changeRecordPop(boolean record) {
+        if (record) {
+            mTip.setVisibility(View.VISIBLE);
+            mRecordLayout.setVisibility(View.GONE);
+            mRecord.setImageDrawable(getResources().getDrawable(R.mipmap.icon_record_start));
+            mPresenter.stopRecord();
+            mPopupWindow.dismiss();
+        } else {
+            mRecordTime.setText("00:00/");
+            mTip.setVisibility(View.GONE);
+            mRecordLayout.setVisibility(View.VISIBLE);
+            mRecord.setImageDrawable(getResources().getDrawable(R.mipmap.icon_record_stop));
+            mPresenter.startRecord();
         }
     }
 
     @Override
     public void showContent(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * 设置添加屏幕的背景透明度
+     *
+     * @param bgAlpha 屏幕透明度0.0-1.0 1表示完全不透明
+     */
+    public void setBackgroundAlpha(float bgAlpha) {
+        WindowManager.LayoutParams lp = getWindow()
+                .getAttributes();
+        lp.alpha = bgAlpha;
+        getWindow().setAttributes(lp);
     }
 
     @Override

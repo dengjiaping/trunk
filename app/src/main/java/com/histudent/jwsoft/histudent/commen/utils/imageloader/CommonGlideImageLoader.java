@@ -95,8 +95,7 @@ public class CommonGlideImageLoader {
     public void displayNetImageWithCircle(Context context, String imageUrl, ImageView imageView, Drawable defaultDrawableImage) {
         Glide.with(context)
                 .load(imageUrl)
-                .apply(RequestOptions.bitmapTransform(new CircleCrop()))
-                .apply(buildRequestOptions(defaultDrawableImage))
+                .apply(RequestOptions.bitmapTransform(new CircleCrop()).error(defaultDrawableImage))
                 .into(imageView);
     }
 

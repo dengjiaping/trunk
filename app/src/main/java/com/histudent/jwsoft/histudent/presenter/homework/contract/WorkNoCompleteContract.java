@@ -19,6 +19,7 @@ public interface WorkNoCompleteContract {
 
     interface Presenter extends BasePresenter<View> {
         void getCompleteList(String homeworkId,boolean isComplete, int index, int size);
+        void singleNotice(String homeworkId,String userId,int type);
     }
 
 

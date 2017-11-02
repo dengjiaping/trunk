@@ -44,7 +44,7 @@ public class HomeworkAlreadyAdapter extends BaseSectionQuickAdapter<HomeworkAlre
 
     @Override
     protected void convert(BaseViewHolder helper, HomeworkAlreadyBean item) {
-        
+
         int maxLength = 0;
         final HomeworkAlreadySubBean homeworkAlreadySubBean = item.t;
         helper.setText(R.id.tv_homework_name, homeworkAlreadySubBean.getHomeWorkName())
@@ -53,54 +53,61 @@ public class HomeworkAlreadyAdapter extends BaseSectionQuickAdapter<HomeworkAlre
         //针对分组单独进行设置
         final LinearLayout groupLayout = helper.getView(R.id.ll_homework_type_group);
         final String groupName = homeworkAlreadySubBean.getGroupName();
-        if (groupName.contains(",")) {
-            maxLength = homeworkAlreadySubBean.getHomeWorkName().length();
-            final String[] split = groupName.split(",");
-            final int length = split.length;
-            if (length > 0) {
-                groupLayout.setVisibility(View.VISIBLE);
-                groupLayout.removeAllViews();
-                final LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                params.setMargins(SystemUtil.dp2px(12), 0, 0, 0);
-                for (int i = 0; i < length; i++) {
-                    final TextView subGroupView = (TextView) LayoutInflater
-                            .from(mContext)
-                            .inflate(R.layout.item_homework_list_sub_content_group_name_view, null);
-                    final String subContent = split[i];
-                    subGroupView.setText(subContent);
-                    subGroupView.setLayoutParams(params);
-                    groupLayout.addView(subGroupView);
-
-                    maxLength += subContent.length();
-                    //根据字符总数 动态显示分组状态
-                    if (maxLength > 18) {
-                        //分组的名称 已超过限定的长度  就不再给Layout继续添加子view 移除最后一个view 并添加一个带省略号的TextView
-                        final int childCount = groupLayout.getChildCount();
-                        groupLayout.removeViewAt(childCount - 1);
-                        final TextView textView = (TextView) LayoutInflater
+        groupLayout.removeAllViews();
+        if (groupName.length() > 0) {
+            final LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.setMargins(SystemUtil.dp2px(12), 0, 0, 0);
+            if (groupName.contains(",")) {
+                //有多个组
+                maxLength = homeworkAlreadySubBean.getHomeWorkName().length();
+                final String[] split = groupName.split(",");
+                final int length = split.length;
+                if (length > 0) {
+                    for (int i = 0; i < length; i++) {
+                        final TextView subGroupView = (TextView) LayoutInflater
                                 .from(mContext)
                                 .inflate(R.layout.item_homework_list_sub_content_group_name_view, null);
-                        textView.setBackground(null);
-                        textView.setText("...");
-                        params.setMargins(SystemUtil.dp2px(5), 0, 0, 0);
-                        textView.setLayoutParams(params);
-                        groupLayout.addView(textView);
-                        break;
+                        final String subContent = split[i];
+                        subGroupView.setText(subContent);
+                        subGroupView.setLayoutParams(params);
+                        groupLayout.addView(subGroupView);
+
+                        maxLength += subContent.length();
+                        //根据字符总数 动态显示分组状态
+                        if (maxLength > 18) {
+                            //分组的名称 已超过限定的长度  就不再给Layout继续添加子view 移除最后一个view 并添加一个带省略号的TextView
+                            final int childCount = groupLayout.getChildCount();
+                            groupLayout.removeViewAt(childCount - 1);
+                            final TextView textView = (TextView) LayoutInflater
+                                    .from(mContext)
+                                    .inflate(R.layout.item_homework_list_sub_content_group_name_view, null);
+                            textView.setBackground(null);
+                            textView.setText("...");
+                            params.setMargins(SystemUtil.dp2px(5), 0, 0, 0);
+                            textView.setLayoutParams(params);
+                            groupLayout.addView(textView);
+                            break;
+                        }
                     }
                 }
-            }
-        } else {
-            if (groupName.length() > 0) {
-                //仅有一个分组
+
+
+            } else {
+                //仅有一组数据
                 final TextView textView = (TextView) LayoutInflater
                         .from(mContext)
                         .inflate(R.layout.item_homework_list_sub_content_group_name_view, null);
                 textView.setText(groupName);
+                textView.setLayoutParams(params);
                 groupLayout.addView(textView);
-            } else {
-                groupLayout.setVisibility(View.GONE);
+                maxLength = homeworkAlreadySubBean.getHomeWorkName().length() + groupName.length();
+                if (maxLength > 12) {
+                    textView.setText("...");
+                    textView.setBackground(null);
+                }
             }
         }
+
 
         final View publishName = helper.getView(R.id.ll_homework_publish_name);
         final TextView complete = helper.getView(R.id.tv_complete);

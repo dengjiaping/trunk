@@ -124,8 +124,10 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
                 }
                 if (TextUtils.isEmpty(mWorkContent.getText())) {
                     showContent("请填写作业内容");
+                    return;
                 }
-                mPresenter.completeHomeWork(homeworkId, mWorkContent.getText().toString(), videoIdsStr, mAudioInfo.getFile(), imgFiles);
+                showDialog();
+                mPresenter.completeHomeWork(homeworkId, mWorkContent.getText().toString(), videoIdsStr, mAudioInfo, imgFiles);
 
                 break;
             case R.id.control_photo://图片或视频
@@ -436,6 +438,7 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
     @Override
     public void showContent(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        closeDialog();
     }
 
 
@@ -501,6 +504,7 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
 
     @Override
     public void createWorkSucceed() {
+        closeDialog();
         showContent("完成作业");
         finish();
     }

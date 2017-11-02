@@ -18,9 +18,9 @@
             android:id="@+id/ll_subject_manage_select"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingRight="@dimen/dp15">
+            android:orientation="horizontal">
 
             <com.histudent.jwsoft.histudent.commen.view.IconView
                 android:id="@+id/iv_subject_manage_select"
@@ -31,18 +31,18 @@
                 android:textColor="@color/_cccccc"
                 android:textSize="@dimen/sp18"/>
 
+
+            <TextView
+                android:id="@+id/tv_subject_manage_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp15"
+                android:layout_weight="1"
+                android:text="会飞的鱼"
+                android:textColor="@color/_333333"
+                android:textSize="@dimen/sp15"/>
+
         </LinearLayout>
-
-
-        <TextView
-            android:id="@+id/tv_subject_manage_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="会飞的鱼"
-            android:textColor="@color/_333333"
-            android:textSize="@dimen/sp15"/>
-
 
         <LinearLayout
             android:id="@+id/ll_subject_manage_delete"

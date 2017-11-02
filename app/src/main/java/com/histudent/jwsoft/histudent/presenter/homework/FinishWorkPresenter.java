@@ -13,6 +13,7 @@ import com.histudent.jwsoft.histudent.bean.UploadAuthBean;
 import com.histudent.jwsoft.histudent.component.AudioManager;
 import com.histudent.jwsoft.histudent.component.RecordManager;
 import com.histudent.jwsoft.histudent.constant.Const;
+import com.histudent.jwsoft.histudent.entity.AudioInfo;
 import com.histudent.jwsoft.histudent.model.http.ApiFactory;
 import com.histudent.jwsoft.histudent.model.http.BaseHttpResponse;
 import com.histudent.jwsoft.histudent.model.http.HttpResponse;
@@ -39,6 +40,7 @@ import io.reactivex.schedulers.Schedulers;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import top.zibin.luban.Luban;
+//import top.zibin.luban.Luban;
 
 /**
  * Created by huyg on 2017/10/30.
@@ -98,14 +100,14 @@ public class FinishWorkPresenter extends RxPresenter<FinishWorkContract.View> im
     public void completeHomeWork(String homeworkId,
                                  String contents,
                                  String videoIds,
-                                 File audioFiles,
+                                 AudioInfo audioInfo,
                                  List<File> imgFiles) {
         List<MultipartBody.Part> parts = new ArrayList<>();
         Map<String, String> params = new HashMap<>();
         RequestUtils.addTextPart(parts, "homeworkId", homeworkId);
         params.put("homeworkId", homeworkId);
-        RequestUtils.addTextPart(parts, "contents", contents);
-        params.put("contents", contents);
+        RequestUtils.addTextPart(parts, "content", contents);
+        params.put("content", contents);
         if (!TextUtils.isEmpty(videoIds)) {
             RequestUtils.addTextPart(parts, "videoIds", videoIds);
             params.put("videoIds", videoIds);
@@ -117,16 +119,20 @@ public class FinishWorkPresenter extends RxPresenter<FinishWorkContract.View> im
         }
 
         RequestUtils.initFixedParams(parts, params);
-        if (audioFiles != null) {
+        if (audioInfo.getFile() != null) {
             RequestUtils.addTextPart(parts, "hasVoice", String.valueOf(true));
             params.put("videoIds", String.valueOf(true));
-            RequestBody requestBody = RequestBody.create(Const.MEDIA_TYPE_MARKDOWN, audioFiles);
+            RequestUtils.addTextPart(parts, "voiceLength",String.valueOf(audioInfo.getTime()));
+            params.put("voiceLength", String.valueOf(audioInfo.getTime()));
+            RequestBody requestBody = RequestBody.create(Const.MEDIA_TYPE_MARKDOWN, audioInfo.getFile());
             MultipartBody.Part part = MultipartBody.Part.
-                    createFormData("voicefile", audioFiles.getName(), requestBody);
+                    createFormData("voicefile", audioInfo.getFile().getName(), requestBody);
             parts.add(part);
         } else {
             RequestUtils.addTextPart(parts, "hasVoice", String.valueOf(false));
             params.put("hasVoice", String.valueOf(false));
+            RequestUtils.addTextPart(parts, "voiceLength",String.valueOf(0));
+            params.put("voiceLength", String.valueOf(0));
         }
         if (imgFiles != null && imgFiles.size() > 0) {
             RequestUtils.addTextPart(parts, "hasImage", String.valueOf(true));

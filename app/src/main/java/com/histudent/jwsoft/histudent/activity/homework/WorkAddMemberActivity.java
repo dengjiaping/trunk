@@ -35,7 +35,6 @@ import butterknife.OnClick;
  * Created by lichaojie on 2017/10/31.
  * desc:
  * 作业-添加组成员
- * sign:pre
  */
 
 public class WorkAddMemberActivity extends BaseActivity<WorkAddMemberPresenter>

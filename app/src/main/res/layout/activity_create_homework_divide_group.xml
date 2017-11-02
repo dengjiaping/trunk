@@ -6,7 +6,7 @@
     android:background="@color/_EFF0F2"
     android:orientation="vertical">
 
-    <include layout="@layout/thetopview_new"/>
+    <include layout="@layout/common_top_layout"/>
 
 
     <TextView
@@ -47,6 +47,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_divide_group"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:background="@color/white"/>
 
 </LinearLayout>

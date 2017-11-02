@@ -44,7 +44,9 @@ public class HomeworkSelectPersonExpandableAdapter extends BaseMultiItemQuickAda
             case TYPE_LEVEL_0:
                 final HomeworkSelectGroupL0Bean entityL0 = (HomeworkSelectGroupL0Bean) item;
                 final ImageView classIcon = helper.getView(R.id.iv_receive_select_class_icon);
-                CommonGlideImageLoader.getInstance().displayNetImageWithCircle(mContext, entityL0.getClassThumbIcon(), classIcon);
+                CommonGlideImageLoader.getInstance()
+                        .displayNetImageWithCircle(mContext, entityL0.getClassThumbIcon(),
+                                classIcon, ContextCompat.getDrawable(mContext, R.mipmap.default_class_style));
                 helper.setText(R.id.tv_receive_class_name, entityL0.getClassName());
                 helper.addOnClickListener(R.id.ll_receive_select_class_check);
                 helper.addOnClickListener(R.id.ll_head_create_divide_group);

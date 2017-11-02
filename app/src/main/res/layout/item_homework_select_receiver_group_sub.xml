@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@drawable/selector_press_style_1"
     android:gravity="center_vertical"
     android:orientation="vertical">
 
@@ -17,9 +17,9 @@
             android:id="@+id/ll_receive_select_class_sub_group_check"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingRight="@dimen/dp16">
+            android:orientation="horizontal">
 
             <com.histudent.jwsoft.histudent.commen.view.IconView
                 android:id="@+id/iv_receive_select_class_sub_group_check"
@@ -30,22 +30,24 @@
                 android:textColor="@color/_cccccc"
                 android:textSize="@dimen/sp18"/>
 
+            <TextView
+                android:id="@+id/tv_receive_class_sub_group_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp16"
+                android:text="作业A组"
+                android:textColor="@color/_333333"
+                android:textSize="@dimen/sp15"/>
+
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_receive_class_sub_group_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="作业A组"
-            android:textColor="@color/_333333"
-            android:textSize="@dimen/sp15"/>
+
 
         <LinearLayout
             android:id="@+id/ll_receive_class_look_group_detail"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
+            android:gravity="center_vertical|right"
             android:orientation="horizontal">
 
             <TextView

@@ -713,4 +713,5 @@
     <string name="not_modify_name">真实姓名不可自行修改，如需修改请联系客服电话：0571-89712287</string>
     <string name="tip_message">提醒消息</string>
     <string name="homework">作业</string>
+    <string name="cancle_homework">是否取消作业</string>
 </resources>

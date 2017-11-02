@@ -55,7 +55,7 @@ public class WorkAddMemberPresenter extends RxPresenter<WorkAddMemberContract.Vi
                             final List<CommonMemberBean> commonMemberBean = addMemberDataConvert.convertEntity(data);
                             mView.updateListData(commonMemberBean);
                         }
-                        mView.controlDialogStatus(null);
+                        mView.controlDialogStatus(classMemberEntityHttpResponse.getMsg());
                     }
                 }, new RxException<>(e -> {
                     e.printStackTrace();

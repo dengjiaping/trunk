@@ -69,8 +69,8 @@ public class FlowLayout extends RelativeLayout {
             measureChild(child, widthMeasureSpec, heightMeasureSpec);
 
             MarginLayoutParams childLayoutParams = (MarginLayoutParams) child.getLayoutParams();
-            int childMeasuredHeight = child.getMeasuredHeight() + childLayoutParams.bottomMargin + childLayoutParams.topMargin;
-            int childMeasuredWidth = child.getMeasuredWidth() + childLayoutParams.leftMargin + childLayoutParams.rightMargin;
+            int childMeasuredHeight = child.getMeasuredHeight() + childLayoutParams.bottomMargin + DisplayUtils.dp2px(mContext,12);
+            int childMeasuredWidth = child.getMeasuredWidth() + DisplayUtils.dp2px(mContext,12) + childLayoutParams.rightMargin;
 
             if (lineWidth + childMeasuredWidth > widthSpecSize) {//The line is full
                 width = Math.max(lineWidth, childMeasuredWidth);
@@ -113,8 +113,8 @@ public class FlowLayout extends RelativeLayout {
         for (int i = 0; i < childCount; i++) {
             View child = getChildAt(i);
             MarginLayoutParams layoutParams = (MarginLayoutParams) child.getLayoutParams();
-            int childMeasuredHeight = child.getMeasuredHeight() + layoutParams.bottomMargin + layoutParams.topMargin;
-            int childMeasuredWidth = child.getMeasuredWidth() + layoutParams.leftMargin + layoutParams.rightMargin;
+            int childMeasuredHeight = child.getMeasuredHeight() + layoutParams.bottomMargin + DisplayUtils.dp2px(mContext,12);
+            int childMeasuredWidth = child.getMeasuredWidth() + DisplayUtils.dp2px(mContext,12) + layoutParams.rightMargin;
 
 
             if (lineWidth + childMeasuredWidth > getWidth()) {//The line is full
@@ -145,8 +145,8 @@ public class FlowLayout extends RelativeLayout {
             });
         }
 
-        int left = DisplayUtils.dp2px(mContext,12);
-        int top = DisplayUtils.dp2px(mContext,12);
+        int left = 0;
+        int top = 0;
 
         for (int i = 0; i < allViews.size(); i++) {
 
@@ -162,14 +162,14 @@ public class FlowLayout extends RelativeLayout {
                 MarginLayoutParams lp = (MarginLayoutParams) child
                         .getLayoutParams();
                 //calc childView's left,top,right,bottom
-                int lc = left + lp.leftMargin;
-                int tc = top + lp.topMargin;
+                int lc = left + DisplayUtils.dp2px(mContext,12);
+                int tc = top + DisplayUtils.dp2px(mContext,12);
                 int rc = lc + child.getMeasuredWidth();
                 int bc = tc + child.getMeasuredHeight();
                 child.layout(lc, tc, rc, bc);
 
                 left += child.getMeasuredWidth() + lp.rightMargin
-                        + lp.leftMargin;
+                        + DisplayUtils.dp2px(mContext,12);
                 Point point = new Point();
                 point.x = lc;
                 point.y = tc;
@@ -199,6 +199,7 @@ public class FlowLayout extends RelativeLayout {
 
     private void initCheckBox(String content) {
         View mView = new CheckBox(mContext);
+
         ((CheckBox) mView).setButtonDrawable(null);
         ((CheckBox) mView).setText(content);
         ((CheckBox) mView).setTextSize(13);
@@ -217,7 +218,9 @@ public class FlowLayout extends RelativeLayout {
                 }
             }
         });
+
         addView(mView);
+
     }
 
 
@@ -230,5 +233,13 @@ public class FlowLayout extends RelativeLayout {
 
     public interface Callback {
         void onItemClick(int position);
+    }
+
+    public  void setMargins (View v, int l, int t, int r, int b) {
+        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            p.setMargins(l, t, r, b);
+            v.requestLayout();
+        }
     }
 }

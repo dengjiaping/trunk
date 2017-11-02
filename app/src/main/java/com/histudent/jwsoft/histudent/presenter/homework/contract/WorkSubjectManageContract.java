@@ -11,19 +11,19 @@ import java.util.List;
  * desc:
  */
 
-public class WorkSubjectManageContract {
+public interface WorkSubjectManageContract {
 
-    public interface View extends BaseView {
+    interface View extends BaseView {
         void controlDialogStatus(String message);
 
         void updateListData(List<CommonSubjectBean> commonSubjectBean);
 
         void deleteSpecifiedSubjectSuccess();
 
-        void addSpecifiedSubjectSuccess();
+        void addSpecifiedSubjectSuccess(String subjectId);
     }
 
-    public interface Presenter extends BasePresenter<View> {
+    interface Presenter extends BasePresenter<View> {
         void getSubjectList();
 
         void deleteSpecifiedSubject(String subjectId);

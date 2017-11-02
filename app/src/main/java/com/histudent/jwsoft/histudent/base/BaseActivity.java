@@ -91,6 +91,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         if (mLoadingDialog == null) {
             mLoadingDialog = new LoadingDialog(this);
             mLoadingDialog.show();
+        } else {
+            if (!mLoadingDialog.isShowing()) {
+                mLoadingDialog.show();
+            }
         }
     }
 

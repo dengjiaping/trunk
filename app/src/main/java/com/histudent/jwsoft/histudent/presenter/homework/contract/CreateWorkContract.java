@@ -7,6 +7,7 @@ import com.histudent.jwsoft.histudent.base.BasePresenter;
 import com.histudent.jwsoft.histudent.base.BaseView;
 import com.histudent.jwsoft.histudent.bean.UploadAuthBean;
 import com.histudent.jwsoft.histudent.commen.bean.VideoAuthBean;
+import com.histudent.jwsoft.histudent.entity.AudioInfo;
 
 import java.io.File;
 import java.util.List;
@@ -51,7 +52,7 @@ public interface CreateWorkContract {
                             String contents,
                             boolean onlyOnline,
                             String videoIds,
-                            File audioFiles,
+                            AudioInfo mAudioInfo,
                             List<File> imgFiles);
 
         /**

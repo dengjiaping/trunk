@@ -207,9 +207,7 @@ public class NoticeDetailActivity extends BaseActivity {
         return ms;
     }
 
-    /**
-     * 初始化拍照选择照片的PopWindow
-     */
+
     private void initPopWindow() {
 
 

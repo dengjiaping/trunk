@@ -3,6 +3,7 @@ package com.histudent.jwsoft.histudent.presenter.homework.contract;
 import com.histudent.jwsoft.histudent.base.BasePresenter;
 import com.histudent.jwsoft.histudent.base.BaseView;
 import com.histudent.jwsoft.histudent.bean.homework.CommentBean;
+import com.histudent.jwsoft.histudent.bean.homework.CompleteDetailBean;
 import com.histudent.jwsoft.histudent.bean.homework.HomeworkDetailBean;
 
 import java.io.File;
@@ -15,19 +16,23 @@ import java.util.List;
 public interface CorrectContract {
 
     interface View extends BaseView{
-        void showHomeworkDetail(HomeworkDetailBean homeworkDetail);
-        void getHomeworkDetailFail();
+        void showCompleteDetail(CompleteDetailBean completeDetailBean);
+        void getCompleteDetailFail();
         void downloadVoiceSuccess(File file);
         void commentProposalSuccess(List<CommentBean> commentBeen);
     }
 
     interface Presenter extends BasePresenter<View>{
-        void getHomeworkDetail(String homeworkId);
+        void startRecord();
+        void stopRecord();
+        boolean getRecordState();
+        void getCompleteDetail(String homeworkId,String userId);
         boolean getAudioState();
         void playAudio(String source);
         void pauseAudio();
         void stopAudio();
         void downloadVoice(String voiceId);
         void getCommentList(String completeId);
+        void commentHomework(String completeId,String commentContent,String proposalIds);
     }
 }

@@ -2,11 +2,13 @@ package com.histudent.jwsoft.histudent.presenter.homework;
 
 import com.histudent.jwsoft.histudent.adapter.homework.convert.HomeworkSubjectDataConvert;
 import com.histudent.jwsoft.histudent.base.RxPresenter;
+import com.histudent.jwsoft.histudent.bean.homework.AddHomeworkSubjectEntity;
 import com.histudent.jwsoft.histudent.bean.homework.CommonSubjectBean;
 import com.histudent.jwsoft.histudent.bean.homework.SubjectEntity;
 import com.histudent.jwsoft.histudent.body.message.uikit.infra.Params;
 import com.histudent.jwsoft.histudent.constant.ParamKeys;
 import com.histudent.jwsoft.histudent.manage.ParamsManager;
+import com.histudent.jwsoft.histudent.manage.UserManager;
 import com.histudent.jwsoft.histudent.model.http.ApiFactory;
 import com.histudent.jwsoft.histudent.model.http.BaseHttpResponse;
 import com.histudent.jwsoft.histudent.model.http.HttpResponse;
@@ -40,16 +42,20 @@ public class WorkSubjectManagePresenter extends RxPresenter<WorkSubjectManageCon
 
     @Override
     public void getSubjectList() {
-        final Map<String, Object> paramsMap = ParamsManager.getInstance().getParamsMap();
+        final Map<String, Object> paramsMap = ParamsManager.getInstance()
+                .setParams(ParamKeys.CLASS_ID, UserManager.getInstance().getCurrentClassId())
+                .getParamsMap();
         Disposable disposable = APIFACTORY.getWorkApi().getAllSubjectsList(paramsMap)
                 .compose(RxSchedulers.io_main())
                 .subscribe(new Consumer<HttpResponse<List<SubjectEntity>>>() {
                     @Override
                     public void accept(HttpResponse<List<SubjectEntity>> listHttpResponse) throws Exception {
-                        final List<SubjectEntity> data = listHttpResponse.getData();
-                        final List<CommonSubjectBean> commonSubjectBean = HomeworkSubjectDataConvert.create(data).convertEntity();
-                        mView.updateListData(commonSubjectBean);
-                        mView.controlDialogStatus(null);
+                        if (listHttpResponse.isSuccess()) {
+                            final List<SubjectEntity> data = listHttpResponse.getData();
+                            final List<CommonSubjectBean> commonSubjectBean = HomeworkSubjectDataConvert.create(data).convertEntity();
+                            mView.updateListData(commonSubjectBean);
+                        }
+                        mView.controlDialogStatus(listHttpResponse.getMsg());
                     }
                 }, new RxException<>(e -> {
                     e.printStackTrace();
@@ -69,7 +75,7 @@ public class WorkSubjectManagePresenter extends RxPresenter<WorkSubjectManageCon
                         if (baseHttpResponse.isSuccess()) {
                             mView.deleteSpecifiedSubjectSuccess();
                         }
-                        mView.controlDialogStatus(null);
+                        mView.controlDialogStatus(baseHttpResponse.getMsg());
                     }
                 }, new RxException<>(e -> {
                     e.printStackTrace();
@@ -82,17 +88,17 @@ public class WorkSubjectManagePresenter extends RxPresenter<WorkSubjectManageCon
     public void addSpecifiedSubject(String subjectName) {
         final Map<String, Object> paramsMap = ParamsManager.getInstance()
                 .setParams(ParamKeys.SUBJECT_NAME, subjectName)
+                .setParams(ParamKeys.CLASS_ID, UserManager.getInstance().getCurrentClassId())
                 .getParamsMap();
         Disposable disposable = APIFACTORY.getWorkApi().addSpecifiedSubject(paramsMap)
                 .compose(RxSchedulers.io_main())
-                .subscribe(new Consumer<BaseHttpResponse>() {
+                .subscribe(new Consumer<HttpResponse<AddHomeworkSubjectEntity>>() {
                     @Override
-                    public void accept(BaseHttpResponse baseHttpResponse) throws Exception {
-                        if (baseHttpResponse.isSuccess()) {
-                            mView.addSpecifiedSubjectSuccess();
+                    public void accept(HttpResponse<AddHomeworkSubjectEntity> response) throws Exception {
+                        if (response.isSuccess()) {
+                            mView.addSpecifiedSubjectSuccess(response.getData().getId());
                         }
-
-                        mView.controlDialogStatus(null);
+                        mView.controlDialogStatus(response.getMsg());
                     }
                 }, new RxException<>(e -> {
                     e.printStackTrace();

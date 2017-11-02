@@ -35,6 +35,7 @@ public class RetrofitClient {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.addNetworkInterceptor(new StethoInterceptor());
         builder.addInterceptor(new ParamsInterceptor());
+        builder.addInterceptor(new LoggingInterceptor());
         //设置超时
         builder.connectTimeout(10, TimeUnit.SECONDS);
         builder.readTimeout(20, TimeUnit.SECONDS);

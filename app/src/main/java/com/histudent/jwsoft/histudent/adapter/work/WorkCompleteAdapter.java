@@ -33,8 +33,12 @@ public class WorkCompleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private final int TYPE_EMPTY = 0;
     private final int TYPE_ITEM = 1;
+
+
+
     private List<WorkCompleteBean.ItemsBean> mList = new ArrayList<>();
     private Context mContext;
+
 
     public WorkCompleteAdapter(Context context) {
         this.mContext = context;
@@ -48,6 +52,10 @@ public class WorkCompleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public void addList(List<WorkCompleteBean.ItemsBean> list) {
         this.mList.addAll(list);
         notifyDataSetChanged();
+    }
+
+    public List<WorkCompleteBean.ItemsBean> getList() {
+        return mList;
     }
 
 
@@ -89,9 +97,12 @@ public class WorkCompleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public int getItemViewType(int position) {
+
         if (mList != null && mList.size() > 0) {
+
             return TYPE_ITEM;
         }
+
         return TYPE_EMPTY;
     }
 

@@ -38,8 +38,8 @@ public class WorkSelectReceiverPersonPresenter extends RxPresenter<WorkSelectRec
     @Override
     public void getSelectReceiverPersonList(String classId) {
         final Map<String, Object> paramsMap = ParamsManager.getInstance()
-                .setParams(ParamKeys.CLASS_ID, "8d3c244c-065a-4bfa-b67e-82949c11760d")
-//                .setParams(ParamKeys.CLASS_ID, classId)
+//                .setParams(ParamKeys.CLASS_ID, "8d3c244c-065a-4bfa-b67e-82949c11760d")
+                .setParams(ParamKeys.CLASS_ID, classId)
                 .getParamsMap();
         Disposable disposable = APIFACTORY.getWorkApi().getSelectReceiverList(paramsMap)
                 .compose(RxSchedulers.io_main())
@@ -52,7 +52,7 @@ public class WorkSelectReceiverPersonPresenter extends RxPresenter<WorkSelectRec
                                     HomeworkGroupMemberDataConvert.create(data).convertEntity();
                             mView.updateListData(homeworkSelectGroupL0Been);
                         }
-                        mView.controlDialogStatus(null);
+                        mView.controlDialogStatus(response.getMsg());
                     }
                 }, new RxException<>(e -> {
                     e.printStackTrace();

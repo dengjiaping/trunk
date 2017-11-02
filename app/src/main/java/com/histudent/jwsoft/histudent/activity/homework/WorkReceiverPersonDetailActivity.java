@@ -36,7 +36,6 @@ import butterknife.OnClick;
  * desc:
  * 发布作业-选择接收人详情
  * tip:adapter 与创建分组相同 共用
- * sign:pre
  */
 
 public class WorkReceiverPersonDetailActivity extends BaseActivity<WorkReceiverPersonPresenter>
@@ -69,6 +68,41 @@ public class WorkReceiverPersonDetailActivity extends BaseActivity<WorkReceiverP
     void onClickMore() {
         //右上角更多
         showPopupWindow();
+    }
+
+    @Override
+    protected void initInject() {
+        getActivityComponent().inject(this);
+    }
+
+    @Override
+    protected int getLayout() {
+        return R.layout.activity_homework_receiver_person_detail;
+    }
+
+    @Override
+    protected void init() {
+        initView();
+        initData();
+    }
+
+    public void initView() {
+        mIvTitleRightIcon.setText(R.string.icon_more);
+    }
+
+    public void initData() {
+        mTeamId = getIntent().getStringExtra(TransferKeys.GROUP_ID);
+        mClassId = getIntent().getStringExtra(TransferKeys.CLASS_ID);
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        final Divider divider = new Divider(ContextCompat.getDrawable(this, R.drawable.divider_line), LinearLayoutManager.VERTICAL);
+        divider.setMargin(SystemUtil.dp2px(12), 0, 0, 0);
+        mRvReceiverDetail.setLayoutManager(linearLayoutManager);
+        mRvReceiverDetail.addItemDecoration(divider);
+        mDivideGroupAdapter = HomeworkCreateDivideGroupAdapter.create(R.layout.item_create_homework_divide_group, mListData);
+        mDivideGroupAdapter.setType(0);
+        mRvReceiverDetail.setAdapter(mDivideGroupAdapter);
+        showLoadingDialog();
+        mPresenter.getGroupMemberList(mTeamId);
     }
 
     private void showPopupWindow() {
@@ -123,40 +157,6 @@ public class WorkReceiverPersonDetailActivity extends BaseActivity<WorkReceiverP
 
     }
 
-    @Override
-    protected void initInject() {
-        getActivityComponent().inject(this);
-    }
-
-    @Override
-    protected int getLayout() {
-        return R.layout.activity_homework_receiver_person_detail;
-    }
-
-    @Override
-    protected void init() {
-        initView();
-        initData();
-    }
-
-    public void initView() {
-        mIvTitleRightIcon.setText(R.string.icon_more);
-    }
-
-    public void initData() {
-        mTeamId = getIntent().getStringExtra(TransferKeys.GROUP_ID);
-        mClassId = getIntent().getStringExtra(TransferKeys.CLASS_ID);
-        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        final Divider divider = new Divider(ContextCompat.getDrawable(this, R.drawable.divider_line), LinearLayoutManager.VERTICAL);
-        divider.setMargin(SystemUtil.dp2px(12), 0, 0, 0);
-        mRvReceiverDetail.setLayoutManager(linearLayoutManager);
-        mRvReceiverDetail.addItemDecoration(divider);
-        mDivideGroupAdapter = HomeworkCreateDivideGroupAdapter.create(R.layout.item_create_homework_divide_group, mListData);
-        mDivideGroupAdapter.setType(0);
-        mRvReceiverDetail.setAdapter(mDivideGroupAdapter);
-        showLoadingDialog();
-        mPresenter.getGroupMemberList(mTeamId);
-    }
 
     @Override
     public void updateListData(List<CommonMemberBean> convert) {

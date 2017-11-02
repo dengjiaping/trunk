@@ -140,6 +140,8 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
     private String thumb;
     private AudioInfo mAudioInfo = new AudioInfo();
     private List<ImageAttrEntity> imageAttrs = new ArrayList();
+    private String voiceId;
+    private long voiceTime;
 
     @Override
     protected void initInject() {
@@ -222,12 +224,12 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
         titles.add("未完成(0)");
     }
 
-    public void setTabOne(int num){
-        mTabLayout.getTabAt(0).setText("已完成("+num+")");
+    public void setTabOne(int num) {
+        mTabLayout.getTabAt(0).setText("已完成(" + num + ")");
     }
 
-    public void setTabTwo(int num){
-        mTabLayout.getTabAt(1).setText("已完成("+num+")");
+    public void setTabTwo(int num) {
+        mTabLayout.getTabAt(1).setText("未完成(" + num + ")");
     }
 
     @Override
@@ -253,20 +255,24 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
                 }
                 CommonGlideImageLoader.getInstance().displayNetImage(WorkDetailTeacherActivity.this, workImgDetailBeens.get(0).getFilePath(), mDetailPhoto);
                 mPhotoNum.setText(String.valueOf(workImgDetailBeens.size()) + "张");
-            }else{
+            } else {
                 mImgLayout.setVisibility(View.GONE);
             }
-        }else{
+        } else {
             mImgLayout.setVisibility(View.GONE);
         }
+
         if (homeworkDetail.isHasVideo()) {
             homeworkDetail.getVideoId();
         }
+
         if (homeworkDetail.isHasVoice()) {
             mPresenter.downloadVoice(homeworkDetail.getVoiceId());
             mVoiceLayout.setVisibility(View.VISIBLE);
             mVoiceDel.setVisibility(View.GONE);
-            mAudioInfo.setTime(Long.parseLong(homeworkDetail.getVoiceLength()));
+            voiceTime = Long.parseLong(homeworkDetail.getVoiceLength());
+            mAudioInfo.setTime(voiceTime / 1000);
+            mVoiceTimeTotal.setText(TimeUtils.formatTime2(voiceTime / 1000));
         }
 
     }
@@ -340,7 +346,7 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
         bundle.putInt("column_num", 3);
         bundle.putInt("horizontal_space", DisplayUtils.dp2px(this, 4));
         bundle.putInt("vertical_space", DisplayUtils.dp2px(this, 4));
-        bundle.putBoolean("isCb",false);
+        bundle.putBoolean("isCb", false);
         intent.putExtras(bundle);
         this.startActivity(intent);
     }
@@ -354,7 +360,7 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(AudioPlayEvent event) {
-//        mProgress.setProgress((int) ((event.position / (time * 1000.0)) * 100));
+        mProgress.setProgress((int) ((event.position / (float) (voiceTime)) * 100));
         mVoiceTime.setText(TimeUtils.formatTime2(event.position / 1000));
     }
 
@@ -374,7 +380,7 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
     @Override
     protected void onStart() {
         super.onStart();
-        if (!EventBus.getDefault().isRegistered(this)){
+        if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
     }
@@ -382,7 +388,7 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
     @Override
     protected void onStop() {
         super.onStop();
-        if (EventBus.getDefault().isRegistered(this)){
+        if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
     }

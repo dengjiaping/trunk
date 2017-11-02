@@ -3,9 +3,11 @@ package com.histudent.jwsoft.histudent.model.http.api;
 import android.icu.text.AlphabeticIndex;
 
 import com.histudent.jwsoft.histudent.bean.RecordBean;
+import com.histudent.jwsoft.histudent.bean.homework.AddHomeworkSubjectEntity;
 import com.histudent.jwsoft.histudent.bean.homework.AlreadyCompleteHomeworkEntity;
 import com.histudent.jwsoft.histudent.bean.homework.ClassMemberEntity;
 import com.histudent.jwsoft.histudent.bean.homework.CommentBean;
+import com.histudent.jwsoft.histudent.bean.homework.CompleteDetailBean;
 import com.histudent.jwsoft.histudent.bean.homework.GroupMemberDetailEntity;
 import com.histudent.jwsoft.histudent.bean.homework.SelectReceiverPersonEntity;
 import com.histudent.jwsoft.histudent.bean.homework.SubjectEntity;
@@ -79,6 +81,11 @@ public interface WorkApi {
     @POST("homework/teacher/completeDetailed")
     Observable<BaseHttpResponse> getCompleteDetail(@Field("completeId") String completeId);
 
+
+    @FormUrlEncoded
+    @POST("homework/singleNotice")
+    Observable<BaseHttpResponse> singleNotice(@Field("hwId") String homeworkId,@Field("userId") String userId,@Field("noticeType") int type);
+
     /**
      * 评价完成的作业
      *
@@ -123,6 +130,18 @@ public interface WorkApi {
     Observable<BaseHttpResponse> finishHomework(@Field("homeworkId") String homeworkId);
 
     /**
+     * 作业完成详情
+     *
+     * @param homeworkId 作业id
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("homework/completeDetailed")
+    Observable<HttpResponse<CompleteDetailBean>> completeDetailed(@Field("homeworkId") String homeworkId, @Field("studentId") String studentId);
+
+
+
+    /**
      * 获取小组成员详细列表
      *
      * @param map
@@ -163,17 +182,17 @@ public interface WorkApi {
     Observable<HttpResponse<List<SubjectEntity>>> getAllSubjectsList(@FieldMap Map<String, Object> map);
 
     /**
-     * 删除指定下的科目
+     * 添加指定下的科目
      *
      * @param map
      * @return
      */
     @FormUrlEncoded
     @POST("/homework/subject/add")
-    Observable<BaseHttpResponse> addSpecifiedSubject(@FieldMap Map<String, Object> map);
+    Observable<HttpResponse<AddHomeworkSubjectEntity>> addSpecifiedSubject(@FieldMap Map<String, Object> map);
 
     /**
-     * 添加指定下的科目
+     * 删除指定下的科目
      *
      * @param map
      * @return
@@ -233,5 +252,15 @@ public interface WorkApi {
     @FormUrlEncoded
     @POST("/homework/homeWorkAllListNew")
     Observable<HttpResponse<AlreadyCompleteHomeworkEntity>> getAlreadyCompleteAllHomeworkList(@FieldMap Map<String, Object> map);
+
+    /**
+     * 删除作业
+     *
+     * @param map
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("/homework/homeWorkDelete")
+    Observable<BaseHttpResponse> deleteCompleteSpecifiedHomework(@FieldMap Map<String, Object> map);
 
 }

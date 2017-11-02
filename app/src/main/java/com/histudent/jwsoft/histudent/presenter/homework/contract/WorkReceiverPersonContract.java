@@ -11,9 +11,9 @@ import java.util.List;
  * desc:
  */
 
-public class WorkReceiverPersonContract {
+public interface WorkReceiverPersonContract {
 
-    public interface View extends BaseView {
+     interface View extends BaseView {
 
         void updateListData(List<CommonMemberBean> convert);
 
@@ -22,7 +22,7 @@ public class WorkReceiverPersonContract {
         void controlDialogStatus(String message);
     }
 
-    public interface Presenter extends BasePresenter<View> {
+     interface Presenter extends BasePresenter<View> {
         void getGroupMemberList(String teamId);
 
         void deleteGroupName(String teamId);

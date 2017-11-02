@@ -44,6 +44,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
 
     public void setList(List<VideoInfoEntity> list) {
         this.mList = list;
+        notifyDataSetChanged();
     }
 
     @Override

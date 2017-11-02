@@ -1,7 +1,5 @@
 package com.histudent.jwsoft.histudent.adapter.homework.convert;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import com.histudent.jwsoft.histudent.bean.homework.AlreadyCompleteHomeworkEntity;
 import com.histudent.jwsoft.histudent.bean.homework.HomeworkAlreadyBean;
 import com.histudent.jwsoft.histudent.bean.homework.HomeworkAlreadySubBean;
@@ -60,20 +58,6 @@ public class HomeworkAlreadyConvert {
                                 .setOwnerId(ownerId)
                                 .setId(id)
                                 .setOnlyOnline(onlyOnline);
-                        //// TODO: 2017/10/31  模拟添加groupName名称
-//                        if (j == 0) {
-//                            homeworkAlreadySubBean.setGroupName("作业,作业(组),作业A3(组),作业,作业A5(组)");
-//                        } else if (j == 1) {
-//                            homeworkAlreadySubBean.setGroupName("作业B1(组),作业B2(组),作业(组),作业,作业B5(组)");
-//                        } else if (j == 2) {
-//                            homeworkAlreadySubBean.setGroupName("作业,作业c2(组),作业c3(组),作业c4(组),作业c5(组)");
-//                        } else if (j == 3) {
-//                            homeworkAlreadySubBean.setGroupName("作业d1(组),作业,作业d3(组),作业d4(组),作业d5(组)");
-//                        } else if (j == 4) {
-//                            homeworkAlreadySubBean.setGroupName("作业e1(组),e2,作业e3(组),作业,作业e5(组)");
-//                        } else if (j == 5) {
-//                            homeworkAlreadySubBean.setGroupName("作业f1(组),作业f2,作业f3(组),作业,作业f5(组)");
-//                        }
                         final HomeworkAlreadyBean subHomeAlreadyBean = new HomeworkAlreadyBean(homeworkAlreadySubBean);
                         list.add(subHomeAlreadyBean);
                     }

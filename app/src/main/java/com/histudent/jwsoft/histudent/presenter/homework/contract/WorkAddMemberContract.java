@@ -11,15 +11,15 @@ import java.util.List;
  * desc:
  */
 
-public class WorkAddMemberContract {
+public interface WorkAddMemberContract {
 
-    public interface View extends BaseView {
+    interface View extends BaseView {
         void updateListData(List<CommonMemberBean> commonMemberBean);
 
         void controlDialogStatus(String message);
     }
 
-    public interface Presenter extends BasePresenter<View> {
+    interface Presenter extends BasePresenter<View> {
         void getGroupMemberList(String classId);
     }
 }

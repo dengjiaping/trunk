@@ -133,7 +133,7 @@ public class WorkCompleteFragment extends BaseFragment<WorkCompletePresenter> im
         } else {
             mAdapter.addList(itemBeans);
         }
-        ((WorkDetailTeacherActivity)getActivity()).setTabOne(mAdapter.getItemCount());
+        ((WorkDetailTeacherActivity) getActivity()).setTabOne(mAdapter.getList() == null ? 0 : mAdapter.getList().size());
     }
 
     @Override
@@ -147,7 +147,7 @@ public class WorkCompleteFragment extends BaseFragment<WorkCompletePresenter> im
         WorkCompleteBean.ItemsBean itemsBean = event.itemsBean;
         if (itemsBean != null) {
             intent.setClass(getActivity(), CorrectWorkActivity.class);
-            intent.putExtra("completeInfo",itemsBean);
+            intent.putExtra("completeInfo", itemsBean);
             startActivity(intent);
         }
     }

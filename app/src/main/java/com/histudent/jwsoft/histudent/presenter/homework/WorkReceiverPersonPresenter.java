@@ -54,7 +54,7 @@ public class WorkReceiverPersonPresenter extends RxPresenter<WorkReceiverPersonC
                                     .convertEntity();
                             mView.updateListData(convert);
                         }
-                        mView.controlDialogStatus(null);
+                        mView.controlDialogStatus(groupMemberDetailEntityHttpResponse.getMsg());
                     }
                 }, new RxException<>(e -> {
                     e.printStackTrace();
@@ -79,9 +79,12 @@ public class WorkReceiverPersonPresenter extends RxPresenter<WorkReceiverPersonC
                         } else {
                             HiStudentLog.i(TAG, "failure");
                         }
+                        mView.controlDialogStatus(baseHttpResponse.getMsg());
                     }
                 }, new RxException<>(e -> {
                     e.printStackTrace();
+                    final String message = e.getMessage();
+                    mView.controlDialogStatus(message);
                 }));
         addDispose(disposable);
     }

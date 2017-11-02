@@ -57,7 +57,7 @@ public class WorkCreateDivideGroupPresenter extends RxPresenter<WorkCreateDivide
                             final List<CommonMemberBean> convert = HomeworkGroupDetailDataConvert.create(data).convertEntity();
                             mView.updateListData(convert);
                         }
-                        mView.controlDialogStatus(null);
+                        mView.controlDialogStatus(groupMemberDetailEntityHttpResponse.getMsg());
                     }
                 }, new RxException<>(e -> {
                     e.printStackTrace();
@@ -89,7 +89,7 @@ public class WorkCreateDivideGroupPresenter extends RxPresenter<WorkCreateDivide
                         if (baseHttpResponse.isSuccess()) {
                             mView.modifyGroupInformationSuccess();
                         }
-                        mView.controlDialogStatus(null);
+                        mView.controlDialogStatus(baseHttpResponse.getMsg());
                     }
                 }, new RxException<>(e -> {
                     e.printStackTrace();

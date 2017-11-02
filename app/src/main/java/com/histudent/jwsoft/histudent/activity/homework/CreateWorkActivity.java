@@ -48,10 +48,12 @@ import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
 import com.histudent.jwsoft.histudent.comment2.utils.TimeUtils;
 import com.histudent.jwsoft.histudent.constant.Const;
+import com.histudent.jwsoft.histudent.constant.ParamKeys;
 import com.histudent.jwsoft.histudent.constant.TransferKeys;
 import com.histudent.jwsoft.histudent.entity.AudioInfo;
 import com.histudent.jwsoft.histudent.entity.AudioPlayEvent;
 import com.histudent.jwsoft.histudent.entity.AudioPlayStatusEvent;
+import com.histudent.jwsoft.histudent.entity.ImgAddEvent;
 import com.histudent.jwsoft.histudent.entity.RecordInfoEvent;
 import com.histudent.jwsoft.histudent.entity.RecordStatusEvent;
 import com.histudent.jwsoft.histudent.entity.VideoInfoEntity;
@@ -122,6 +124,7 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
     SeekBar mProgress;
     @BindView(R.id.delete_voice)
     IconView mVoiceDel;
+    private List<HomeworkSelectGroupL0Bean> mWorkGroupL0;
 
     @OnClick({R.id.title_left_image, R.id.title_right_text, R.id.control_photo, R.id.control_record,
             R.id.control_emotion, R.id.work_subject_layout, R.id.work_receiver_layout,
@@ -141,12 +144,14 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
                     receiverStr = new Gson().toJson(receivers);
                 } else {
                     Toast.makeText(CreateWorkActivity.this, "请选择科目", Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 if (TextUtils.isEmpty(mWorkContent.getText())) {
                     Toast.makeText(CreateWorkActivity.this, "请填写作业内容", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-
-                mPresenter.createHomeWork(subjectId, receiverStr, mWorkContent.getText().toString(), mOnline.isChecked(), videoIdsStr, mAudioInfo.getFile(), imgFiles);
+                showLoadingDialog();
+                mPresenter.createHomeWork(subjectId, receiverStr, mWorkContent.getText().toString(), mOnline.isChecked(), videoIdsStr, mAudioInfo, imgFiles);
                 break;
             case R.id.control_photo://图片或视频
                 SystemUtil.hideSoftKeyboard(CreateWorkActivity.this);
@@ -178,13 +183,15 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
 
                 break;
             case R.id.work_subject_layout://科目
-                Intent subject = new Intent();
-                subject.setClass(CreateWorkActivity.this, WorkSubjectManageActivity.class);
-                startActivityForResult(subject, REQ_SUBJECT);
+                final Intent intent = new Intent();
+                intent.setClass(CreateWorkActivity.this, WorkSubjectManageActivity.class);
+                intent.putExtra(ParamKeys.SUBJECT_ID, subjectId);
+                startActivityForResult(intent, REQ_SUBJECT);
                 break;
             case R.id.work_receiver_layout://接收人
                 Intent receiver = new Intent();
                 receiver.setClass(CreateWorkActivity.this, WorkSelectReceiverPersonActivity.class);
+                EventBus.getDefault().postSticky(new WorkReceiverEvent(mWorkGroupL0));
                 startActivityForResult(receiver, REQ_RECEIVER);
                 break;
             case R.id.delete_voice://删除语音
@@ -236,6 +243,7 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
     private static final int REQ_RECEIVER = 2002;
     private String subjectId;
     private List<String> receivers = new ArrayList<>();
+    private long voiceTime;
 
 
     @Override
@@ -322,6 +330,11 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
     }
 
     @Subscribe
+    public void onEvent(ImgAddEvent event) {
+        mClipHelper.selectPictures(this, imgUrls, 9);
+    }
+
+    @Subscribe
     public void onEvent(RecordStatusEvent event) {
         int state = event.status;
         switch (state) {
@@ -333,7 +346,8 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
             case Const.MAX:
                 mHandler.removeCallbacksAndMessages(null);
                 mPopupWindow.dismiss();
-                mVoiceTimeTotal.setText(TimeUtils.formatTime2(time));
+                voiceTime = time;
+                time = 0;
                 mVoiceLayout.setVisibility(View.VISIBLE);
                 break;
 
@@ -362,13 +376,14 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
             mAudioInfo.setFile(event.mFile);
             mAudioInfo.setRecordType(event.mRecordType);
             mAudioInfo.setTime(event.time);
+            mVoiceTimeTotal.setText(TimeUtils.formatTime2(event.time/1000));
         }
 
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(AudioPlayEvent event) {
-        mProgress.setProgress((int) ((event.position / (time * 1000.0)) * 100));
+        mProgress.setProgress((int) ((event.position / (voiceTime * 1000.0)) * 100));
         mVoiceTime.setText(TimeUtils.formatTime2(event.position / 1000));
     }
 
@@ -408,7 +423,7 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
 
     @Subscribe(sticky = true)
     public void onEvent(WorkReceiverEvent event) {
-        List<HomeworkSelectGroupL0Bean> mWorkGroupL0 = event.mWorkGroupL0;
+        mWorkGroupL0 = event.mWorkGroupL0;
         StringBuilder stringBuilder = new StringBuilder();
         if (mWorkGroupL0 != null && mWorkGroupL0.size() > 0) {
             for (HomeworkSelectGroupL0Bean homeworkSelectGroupL0Bean : mWorkGroupL0) {
@@ -422,7 +437,7 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
                 if (homeworkSelectGroupL1Beens != null && homeworkSelectGroupL1Beens.size() > 0) {
                     for (HomeworkSelectGroupL1Bean homeworkSelectGroupL1Bean : homeworkSelectGroupL1Beens) {
                         if (homeworkSelectGroupL1Bean.isCheck()) {
-                            stringBuilder.append(homeworkSelectGroupL1Bean.getGroupDivideName());
+                            stringBuilder.append(homeworkSelectGroupL1Bean.getGroupDivideName() + ",");
                             receivers.add(homeworkSelectGroupL0Bean.getTeamId());
                         }
                     }
@@ -431,7 +446,12 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
             }
         }
         if (!TextUtils.isEmpty(stringBuilder)) {
-            mReceiver.setText(stringBuilder);
+            if (stringBuilder.toString().endsWith(",")) {
+                mReceiver.setText(stringBuilder.subSequence(0, stringBuilder.length() - 1));
+            } else {
+                mReceiver.setText(stringBuilder);
+            }
+
         }
     }
 
@@ -529,6 +549,7 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
 
     @Override
     public void showContent(String message) {
+        closeDialog();
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
@@ -556,7 +577,9 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
             case PictureTailorHelper.PHOTO_REQUEST_GALLERYS://图片选择
                 if (data != null) {
                     imgUrls = (List<String>) data.getSerializableExtra("return");
+                    mImgAdapter.setList(imgUrls);
                     mPresenter.compressImg(CreateWorkActivity.this, imgUrls);
+
 
                 }
 
@@ -643,6 +666,7 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
 
     @Override
     public void createWorkSucceed() {
+        closeDialog();
         showContent("发布成功");
         finish();
     }
@@ -650,11 +674,6 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
     @Override
     public void showImgList(List<File> files) {
         imgFiles = files;
-        imgUrls.clear();
-        for (File file : files) {
-            imgUrls.add(file.getAbsolutePath());
-        }
-        mImgAdapter.setList(imgUrls);
     }
 
 

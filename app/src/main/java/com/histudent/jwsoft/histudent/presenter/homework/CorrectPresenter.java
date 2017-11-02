@@ -2,9 +2,11 @@ package com.histudent.jwsoft.histudent.presenter.homework;
 
 import com.histudent.jwsoft.histudent.base.RxPresenter;
 import com.histudent.jwsoft.histudent.bean.homework.CommentBean;
+import com.histudent.jwsoft.histudent.bean.homework.CompleteDetailBean;
 import com.histudent.jwsoft.histudent.bean.homework.HomeworkDetailBean;
 import com.histudent.jwsoft.histudent.commen.utils.FileUtil;
 import com.histudent.jwsoft.histudent.component.AudioManager;
+import com.histudent.jwsoft.histudent.component.RecordManager;
 import com.histudent.jwsoft.histudent.model.http.ApiFactory;
 import com.histudent.jwsoft.histudent.model.http.BaseHttpResponse;
 import com.histudent.jwsoft.histudent.model.http.HttpResponse;
@@ -31,34 +33,52 @@ import okhttp3.ResponseBody;
 public class CorrectPresenter extends RxPresenter<CorrectContract.View> implements CorrectContract.Presenter {
     private ApiFactory mApiFactory;
     private AudioManager mAudioManager;
+    private RecordManager mRecordManager;
 
     @Inject
-    public CorrectPresenter(ApiFactory mApiFactory, AudioManager audioManager) {
+    public CorrectPresenter(ApiFactory mApiFactory, AudioManager mAudioManager, RecordManager mRecordManager) {
         this.mApiFactory = mApiFactory;
-        this.mAudioManager = audioManager;
+        this.mAudioManager = mAudioManager;
+        this.mRecordManager = mRecordManager;
     }
 
     @Override
-    public void getHomeworkDetail(String homeworkId) {
-        Disposable disposable = mApiFactory.getWorkApi().getHomeworkDetail(homeworkId)
+    public void getCompleteDetail(String homeworkId, String userId) {
+        Disposable disposable = mApiFactory.getWorkApi().completeDetailed(homeworkId, userId)
                 .compose(RxSchedulers.io_main())
-                .subscribe(new Consumer<HttpResponse<HomeworkDetailBean>>() {
+                .subscribe(new Consumer<HttpResponse<CompleteDetailBean>>() {
                     @Override
-                    public void accept(HttpResponse<HomeworkDetailBean> response) throws Exception {
+                    public void accept(HttpResponse<CompleteDetailBean> response) throws Exception {
                         if (response.isSuccess()) {
-                            HomeworkDetailBean homeworkDetail = response.getData();
-                            if (homeworkDetail != null) {
-                                mView.showHomeworkDetail(homeworkDetail);
+                            CompleteDetailBean completeDetailBean = response.getData();
+                            if (completeDetailBean != null) {
+                                mView.showCompleteDetail(completeDetailBean);
                             }
                         } else {
-                            mView.getHomeworkDetailFail();
+                            mView.showContent("获取作业失败");
                         }
                     }
                 }, new RxException<>(e -> {
                     e.printStackTrace();
-                    mView.getHomeworkDetailFail();
+                    mView.showContent("获取作业失败");
                 }));
         addDispose(disposable);
+    }
+
+
+    @Override
+    public void startRecord() {
+        mRecordManager.startRecord();
+    }
+
+    @Override
+    public void stopRecord() {
+        mRecordManager.stopRecord();
+    }
+
+    @Override
+    public boolean getRecordState() {
+        return mRecordManager.isRecording();
     }
 
     @Override

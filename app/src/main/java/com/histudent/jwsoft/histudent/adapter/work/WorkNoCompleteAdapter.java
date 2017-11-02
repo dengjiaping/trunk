@@ -17,7 +17,10 @@ import com.histudent.jwsoft.histudent.commen.adapter.RecyclerAdapter;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
 import com.histudent.jwsoft.histudent.comment2.utils.TimeUtils;
+import com.histudent.jwsoft.histudent.entity.WorkNoticeEvent;
 import com.histudent.jwsoft.histudent.presenter.homework.WorkNoCompletePresenter;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +38,8 @@ public class WorkNoCompleteAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     private final int TYPE_EMPTY = 0;
     private final int TYPE_ITEM = 1;
+
+
     private List<WorkCompleteBean.ItemsBean> mList = new ArrayList<>();
     private Context mContext;
 
@@ -50,6 +55,11 @@ public class WorkNoCompleteAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     public void addList(List<WorkCompleteBean.ItemsBean> list) {
         this.mList.addAll(list);
         notifyDataSetChanged();
+    }
+
+
+    public List<WorkCompleteBean.ItemsBean> getList() {
+        return mList;
     }
 
 
@@ -110,7 +120,8 @@ public class WorkNoCompleteAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.item_no_complete_tip:
-
+                    WorkCompleteBean.ItemsBean itemsBean=mList.get(getLayoutPosition());
+                    EventBus.getDefault().post(new WorkNoticeEvent(itemsBean.getUserId()));
                     break;
             }
         }

@@ -1,6 +1,7 @@
 package com.histudent.jwsoft.histudent.presenter.homework;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.alibaba.sdk.android.vod.upload.VODUploadCallback;
 import com.alibaba.sdk.android.vod.upload.VODUploadClientImpl;
@@ -15,6 +16,7 @@ import com.histudent.jwsoft.histudent.commen.utils.RequestManager;
 import com.histudent.jwsoft.histudent.component.AudioManager;
 import com.histudent.jwsoft.histudent.component.RecordManager;
 import com.histudent.jwsoft.histudent.constant.Const;
+import com.histudent.jwsoft.histudent.entity.AudioInfo;
 import com.histudent.jwsoft.histudent.model.http.ApiFactory;
 import com.histudent.jwsoft.histudent.model.http.BaseHttpResponse;
 import com.histudent.jwsoft.histudent.model.http.HttpResponse;
@@ -42,6 +44,7 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.http.Field;
+import top.zibin.luban.Luban;
 //import top.zibin.luban.Luban;
 
 /**
@@ -100,7 +103,7 @@ public class CreateWorkPresenter extends RxPresenter<CreateWorkContract.View> im
     }
 
     @Override
-    public void createHomeWork(String subjectId, String userTeamIds, String contents, boolean onlyOnline, String videoIds, File audioFiles, List<File> imgFiles) {
+    public void createHomeWork(String subjectId, String userTeamIds, String contents, boolean onlyOnline, String videoIds, AudioInfo mAudioInfo, List<File> imgFiles) {
         List<MultipartBody.Part> parts = new ArrayList<>();
         Map<String, String> params = new HashMap<>();
         RequestUtils.addTextPart(parts, "subjectId", subjectId);
@@ -111,14 +114,22 @@ public class CreateWorkPresenter extends RxPresenter<CreateWorkContract.View> im
         params.put("contents", contents);
         RequestUtils.addTextPart(parts, "onlyOnline", String.valueOf(onlyOnline));
         params.put("onlyOnline", String.valueOf(onlyOnline));
-        RequestUtils.addTextPart(parts, "videoIds", videoIds);
-        params.put("videoIds", videoIds);
+        if (!TextUtils.isEmpty(videoIds)) {
+            RequestUtils.addTextPart(parts, "videoIds", videoIds);
+            params.put("videoIds", videoIds);
+        }
+
         RequestUtils.initFixedParams(parts, params);
-        if (audioFiles != null) {
-            RequestBody requestBody = RequestBody.create(Const.MEDIA_TYPE_MARKDOWN, audioFiles);
+        if (mAudioInfo.getFile() != null) {
+            RequestBody requestBody = RequestBody.create(Const.MEDIA_TYPE_MARKDOWN, mAudioInfo.getFile());
             MultipartBody.Part part = MultipartBody.Part.
-                    createFormData("voicefile", audioFiles.getName(), requestBody);
+                    createFormData("voicefile", mAudioInfo.getFile().getName(), requestBody);
+            RequestUtils.addTextPart(parts, "voiceLength", String.valueOf(mAudioInfo.getTime()));
+            params.put("voiceLength", String.valueOf(mAudioInfo.getTime()));
             parts.add(part);
+        } else {
+            RequestUtils.addTextPart(parts, "voiceLength", "0");
+            params.put("voiceLength", "0");
         }
         for (int i = 0; i < imgFiles.size(); i++) {
             RequestBody requestBody = RequestBody.create(Const.MEDIA_TYPE_MARKDOWN, imgFiles.get(i));
@@ -218,18 +229,19 @@ public class CreateWorkPresenter extends RxPresenter<CreateWorkContract.View> im
     }
 
     @Override
-    public void compressImg(Context context,List<String> imgUrls) {
+    public void compressImg(Context context, List<String> imgUrls) {
         Flowable.just(imgUrls)
                 .observeOn(Schedulers.io())
                 .map(new Function<List<String>, List<File>>() {
-                    @Override public List<File> apply(@NonNull List<String> list) throws Exception {
-//                        return Luban.with(context).load(list).get();
-                        return null;
+                    @Override
+                    public List<File> apply(@NonNull List<String> list) throws Exception {
+                        return Luban.with(context).load(list).get();
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<List<File>>() {
-                    @Override public void accept(@NonNull List<File> list) throws Exception {
+                    @Override
+                    public void accept(@NonNull List<File> list) throws Exception {
                         mView.showImgList(list);
                     }
                 });

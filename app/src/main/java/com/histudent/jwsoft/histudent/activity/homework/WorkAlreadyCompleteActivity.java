@@ -19,6 +19,7 @@ import com.histudent.jwsoft.histudent.adapter.homework.HomeworkAlreadyAdapter;
 import com.histudent.jwsoft.histudent.base.BaseActivity;
 import com.histudent.jwsoft.histudent.bean.PagingBean;
 import com.histudent.jwsoft.histudent.bean.homework.HomeworkAlreadyBean;
+import com.histudent.jwsoft.histudent.commen.helper.ReminderHelper;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import com.histudent.jwsoft.histudent.constant.Const;
 import com.histudent.jwsoft.histudent.constant.TransferKeys;
@@ -44,7 +45,6 @@ import butterknife.OnClick;
  * Created by lichaojie on 2017/11/1.
  * desc:
  * 已发布的作业 其中包括(学生、老师、及老师发布全部作业)
- * sign:pre
  */
 
 public class WorkAlreadyCompleteActivity extends BaseActivity<WorkAlreadyCompletePresenter> implements
@@ -88,14 +88,6 @@ public class WorkAlreadyCompleteActivity extends BaseActivity<WorkAlreadyComplet
     private HomeworkAlreadyAdapter mAdapter;
     private static final int REQ_CODE = 2000;
 
-    @OnClick(R.id.title_middle_text)
-    void testDivideGroup() {
-        final Intent intent = new Intent(this, WorkSelectReceiverPersonActivity.class);
-        CommonAdvanceUtils.startActivity(this, intent);
-//        final Intent intent = new Intent(this, WorkSubjectManageActivity.class);
-//        CommonAdvanceUtils.startActivity(this, intent);
-    }
-
     @OnClick({R.id.title_right_text, R.id.title_left, R.id.rl_teacher_publish_homework_self, R.id.rl_teacher_publish_homework_all})
     void onClickView(View view) {
         switch (view.getId()) {
@@ -131,6 +123,55 @@ public class WorkAlreadyCompleteActivity extends BaseActivity<WorkAlreadyComplet
 
     private final List<HomeworkAlreadyBean> mHomeworkAlreadyBeanList = new ArrayList<>();
 
+    @Override
+    protected void initInject() {
+        getActivityComponent().inject(this);
+    }
+
+    @Override
+    protected int getLayout() {
+        return R.layout.activity_homework_already_publish;
+    }
+
+    @Override
+    protected void init() {
+        initView();
+        initData();
+    }
+
+    public void initView() {
+        mTvTitleMiddleText.setText(R.string.homework);
+        mTvTitleRightText.setText("我要发布");
+        mTvTitleRightText.setTextColor(ContextCompat.getColor(this, R.color._28ca7e));
+
+        mFootView = LayoutInflater.from(this).inflate(R.layout.load_more_bottom_no_data, null);
+        mEmptyView = LayoutInflater.from(this).inflate(R.layout.item_layout_empty, null);
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        final Divider divider = new Divider(ContextCompat.getDrawable(this, R.drawable.divider_line), LinearLayoutManager.VERTICAL);
+        divider.setMargin(SystemUtil.dp2px(12), 0, 0, 0);
+        mHomeworkRecyclerView.setLayoutManager(linearLayoutManager);
+        mHomeworkRecyclerView.addItemDecoration(divider);
+        mHomeworkRecyclerView.addOnItemTouchListener(new ItemClickListener());
+    }
+
+
+    public void initData() {
+        initOther();
+        final boolean isAdmin = getIntent().getBooleanExtra(TransferKeys.IS_ADMIN, false);
+        if (isAdmin) {
+            //老师
+            mType = 3;
+        } else {
+            mType = 1;
+        }
+        updateUi();
+        mAdapter = HomeworkAlreadyAdapter
+                .create(R.layout.item_homework_list_sub_content, R.layout.item_homework_list_title_time, mHomeworkAlreadyBeanList)
+                .setType(mType);
+        mRefreshHandler = RefreshHandler.create(this, mRefreshLayout, mHomeworkRecyclerView, mAdapter, new PagingBean(), mPresenter);
+        mRefreshHandler.setType(mType);
+        mRefreshHandler.requestData();
+    }
 
     /**
      * 老师
@@ -160,6 +201,7 @@ public class WorkAlreadyCompleteActivity extends BaseActivity<WorkAlreadyComplet
     public void showContent(String message) {
         if (!TextUtils.isEmpty(message))
             ToastTool.showCommonToast(message);
+        dismissLoadingDialog();
         mRefreshHandler.completeOnRefresh();
     }
 
@@ -174,6 +216,13 @@ public class WorkAlreadyCompleteActivity extends BaseActivity<WorkAlreadyComplet
     public void updateListData(ArrayList<HomeworkAlreadyBean> convertEntity) {
         dismissLoadingDialog();
         mRefreshHandler.updateListData(convertEntity);
+    }
+
+    @Override
+    public void deleteHomeworkSuccess() {
+        //删除作业成功后重新刷新数据
+        mRefreshHandler.clearData();
+        mRefreshHandler.requestData();
     }
 
     private class ItemClickListener extends SimpleClickListener {
@@ -196,9 +245,9 @@ public class WorkAlreadyCompleteActivity extends BaseActivity<WorkAlreadyComplet
                         intent.putExtra("homeworkId", mRefreshHandler.getList().get(position).t.getId());
                         intent.putExtra("online", mRefreshHandler.getList().get(position).t.getOnlyOnline());
                         intent.putExtra("thumb", mRefreshHandler.getList().get(position).t.getThumb());
+                        intent.putExtra("isComplete", mRefreshHandler.getList().get(position).t.isComplete());
                         intent.setClass(WorkAlreadyCompleteActivity.this, WorkUndoneActivity.class);
                     }
-
                     break;
             }
             CommonAdvanceUtils.startActivityForResult(WorkAlreadyCompleteActivity.this, intent, REQ_CODE);
@@ -207,6 +256,16 @@ public class WorkAlreadyCompleteActivity extends BaseActivity<WorkAlreadyComplet
 
         @Override
         public void onItemLongClick(BaseQuickAdapter adapter, View view, int position) {
+            if (mType != 1) {
+                //只有老师可以取消作业
+                ReminderHelper.getIntentce().showDialog(WorkAlreadyCompleteActivity.this, "", getString(R.string.cancle_homework), getString(R.string.cancel), () -> {
+                }, getString(R.string.confirm), () -> {
+                    //确认
+                    final List<HomeworkAlreadyBean> listData = mRefreshHandler.getList();
+                    final String id = listData.get(position).t.getId();
+                    mPresenter.deleteCompleteSpecifiedHomework(id);
+                });
+            }
 
         }
 
@@ -292,56 +351,6 @@ public class WorkAlreadyCompleteActivity extends BaseActivity<WorkAlreadyComplet
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
-    }
-
-    @Override
-    protected void initInject() {
-        getActivityComponent().inject(this);
-    }
-
-    @Override
-    protected int getLayout() {
-        return R.layout.activity_homework_already_publish;
-    }
-
-    @Override
-    protected void init() {
-        initView();
-        initData();
-    }
-
-    public void initView() {
-        mTvTitleMiddleText.setText(R.string.homework);
-        mTvTitleRightText.setText("我要发布");
-        mTvTitleRightText.setTextColor(ContextCompat.getColor(this, R.color._28ca7e));
-
-        mFootView = LayoutInflater.from(this).inflate(R.layout.load_more_bottom_no_data, null);
-        mEmptyView = LayoutInflater.from(this).inflate(R.layout.item_layout_empty, null);
-        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        final Divider divider = new Divider(ContextCompat.getDrawable(this, R.drawable.divider_line), LinearLayoutManager.VERTICAL);
-        divider.setMargin(SystemUtil.dp2px(12), 0, 0, 0);
-        mHomeworkRecyclerView.setLayoutManager(linearLayoutManager);
-        mHomeworkRecyclerView.addItemDecoration(divider);
-        mHomeworkRecyclerView.addOnItemTouchListener(new ItemClickListener());
-    }
-
-
-    public void initData() {
-        initOther();
-        final boolean isAdmin = getIntent().getBooleanExtra(TransferKeys.IS_ADMIN, false);
-        if (isAdmin) {
-            //老师
-            mType = 3;
-        } else {
-            mType = 1;
-        }
-        updateUi();
-        mAdapter = HomeworkAlreadyAdapter
-                .create(R.layout.item_homework_list_sub_content, R.layout.item_homework_list_title_time, mHomeworkAlreadyBeanList)
-                .setType(mType);
-        mRefreshHandler = RefreshHandler.create(this, mRefreshLayout, mHomeworkRecyclerView, mAdapter, new PagingBean(), mPresenter);
-        mRefreshHandler.setType(mType);
-        mRefreshHandler.requestData();
     }
 
 

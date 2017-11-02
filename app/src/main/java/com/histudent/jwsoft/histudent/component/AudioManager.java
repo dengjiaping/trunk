@@ -75,8 +75,8 @@ public class AudioManager {
      */
     public void pause() {
         if (mPlayer != null) {
-            mPlayer.stop();
             position = mPlayer.getCurrentPosition();
+            mPlayer.stop();
         }
     }
 
@@ -122,6 +122,7 @@ public class AudioManager {
         // 播放结束
         public void onCompletion() {
             EventBus.getDefault().post(new AudioPlayStatusEvent(0));
+            position = 0;
         }
 
         // 播放被中断了

@@ -76,6 +76,7 @@
 
 
     <LinearLayout
+        android:id="@+id/undone_control"
         android:layout_width="match_parent"
         android:layout_height="116dp"
         android:orientation="vertical"

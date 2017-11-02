@@ -11,15 +11,15 @@ import java.util.List;
  * desc:
  */
 
-public class WorkSelectReceiverPersonContract {
+public interface WorkSelectReceiverPersonContract {
 
-    public interface View extends BaseView {
+    interface View extends BaseView {
         void updateListData(List<HomeworkSelectGroupL0Bean> list);
 
         void controlDialogStatus(String message);
     }
 
-    public interface Presenter extends BasePresenter<View> {
+    interface Presenter extends BasePresenter<View> {
 
         void getSelectReceiverPersonList(String classId);
     }

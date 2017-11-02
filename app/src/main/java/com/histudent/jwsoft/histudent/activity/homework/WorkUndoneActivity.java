@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -84,6 +85,8 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
     Button mGotoFinish;
     @BindView(R.id.undone_goto_tip)
     TextView mGotoTip;
+    @BindView(R.id.undone_control)
+    LinearLayout mControl;
 
 
     @OnClick({R.id.title_left, R.id.title_right_image, R.id.notices_voice_control, R.id.work_detail_photo, R.id.undone_goto_finish})
@@ -132,6 +135,7 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
     private AudioInfo mAudioInfo = new AudioInfo();
     private List<ImageAttrEntity> imageAttrs = new ArrayList();
     private boolean online;
+    private boolean isComplete;
 
     @Override
     protected void initInject() {
@@ -160,6 +164,7 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
             homeworkId = intent.getStringExtra("homeworkId");
             thumb = intent.getStringExtra("thumb");
             online = intent.getBooleanExtra("online", false);
+            isComplete = intent.getBooleanExtra("isComplete", false);
         }
     }
 
@@ -170,6 +175,11 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
     }
 
     private void initFooter() {
+        if (isComplete){
+            mControl.setVisibility(View.GONE);
+        }else{
+            mControl.setVisibility(View.VISIBLE);
+        }
         if (online) {
             mGotoTip.setVisibility(View.VISIBLE);
             mGotoFinish.setText("去完成");

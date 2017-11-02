@@ -32,7 +32,6 @@ import butterknife.OnClick;
  * Created by lichaojie on 2017/10/25.
  * desc:
  * 科目管理
- * sign:pre
  */
 
 public class WorkSubjectManageActivity extends BaseActivity<WorkSubjectManagePresenter>
@@ -51,7 +50,8 @@ public class WorkSubjectManageActivity extends BaseActivity<WorkSubjectManagePre
     private int mPrePosition = 0;
     private CommonInputDialog mInputDialog = null;
     private int mDeletePosition = -1;
-
+    private String mTransferSubjectId = null;
+    private String mAddSubjectId = null;
 
     @OnClick(R.id.title_left)
     void finishPage() {
@@ -61,9 +61,44 @@ public class WorkSubjectManageActivity extends BaseActivity<WorkSubjectManagePre
     @OnClick(R.id.title_right_text)
     void confirm() {
         final Intent intent = new Intent();
-        intent.putExtra(TransferKeys.GROUP_ID, mCurrentSubjectItem.getSubjectId());
+        intent.putExtra(TransferKeys.GROUP_ID, mCurrentSubjectItem);
         setResult(TransferKeys.ConstantNum.NUM_2000, intent);
         finish();
+    }
+
+    @Override
+    protected void initInject() {
+        getActivityComponent().inject(this);
+    }
+
+    @Override
+    protected int getLayout() {
+        return R.layout.activity_homework_subject_manage;
+    }
+
+    @Override
+    protected void init() {
+        initView();
+        initData();
+    }
+
+    public void initView() {
+        mTvTitleMiddleText.setText("科目管理");
+        mIvTitleRightText.setText(R.string.confirm);
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        final Divider divider = new Divider(ContextCompat.getDrawable(this, R.drawable.divider_line), LinearLayoutManager.VERTICAL);
+        divider.setMargin(SystemUtil.dp2px(12), 0, 0, 0);
+        mRvReceiverDetail.setLayoutManager(linearLayoutManager);
+        mRvReceiverDetail.addItemDecoration(divider);
+    }
+
+    public void initData() {
+        mTransferSubjectId = getIntent().getStringExtra(TransferKeys.SUBJECT_ID);
+        mSubjectManageAdapter = HomeworkSubjectManageAdapter.create(R.layout.item_homework_subject_manage, mCommonSubjectBeanList);
+        mRvReceiverDetail.setAdapter(mSubjectManageAdapter);
+        mRvReceiverDetail.addOnItemTouchListener(new OnItemClickListener());
+        showLoadingDialog();
+        mPresenter.getSubjectList();
     }
 
     private void solveAddSubject() {
@@ -99,11 +134,31 @@ public class WorkSubjectManageActivity extends BaseActivity<WorkSubjectManagePre
     public void updateListData(List<CommonSubjectBean> commonSubjectBean) {
         mCommonSubjectBeanList.clear();
         mCommonSubjectBeanList.addAll(commonSubjectBean);
+        //根据传来的id 默认选择该科目
+        if (!TextUtils.isEmpty(mTransferSubjectId) || !TextUtils.isEmpty(mAddSubjectId)) {
+            final int size = mCommonSubjectBeanList.size();
+            for (int i = 0; i < size; i++) {
+                final CommonSubjectBean subjectBean = mCommonSubjectBeanList.get(i);
+                final String subjectId = subjectBean.getSubjectId();
+                if (subjectId.equals(mTransferSubjectId) || subjectId.equals(mAddSubjectId)) {
+                    if (!TextUtils.isEmpty(mTransferSubjectId) || !TextUtils.isEmpty(mAddSubjectId)) {
+                        mPrePosition = i;
+                        mCurrentSubjectItem = subjectBean;
+                        subjectBean.setCheck(true);
+                        break;
+                    }
+                }
+            }
+            mTransferSubjectId = null;
+            mAddSubjectId = null;
+        }
+
         mSubjectManageAdapter.setNewData(mCommonSubjectBeanList);
         if (mInputDialog != null) {
             if (mInputDialog.isShowing())
                 mInputDialog.dismiss();
         }
+
     }
 
     @Override
@@ -113,45 +168,12 @@ public class WorkSubjectManageActivity extends BaseActivity<WorkSubjectManagePre
     }
 
     @Override
-    public void addSpecifiedSubjectSuccess() {
+    public void addSpecifiedSubjectSuccess(String subjectId) {
+        this.mAddSubjectId = subjectId;
         showLoadingDialog();
         mPresenter.getSubjectList();
     }
 
-
-    @Override
-    protected void initInject() {
-        getActivityComponent().inject(this);
-    }
-
-    @Override
-    protected int getLayout() {
-        return R.layout.activity_homework_subject_manage;
-    }
-
-    @Override
-    protected void init() {
-        initView();
-        initData();
-    }
-
-    public void initView() {
-        mTvTitleMiddleText.setText("科目管理");
-        mIvTitleRightText.setText(R.string.confirm);
-        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        final Divider divider = new Divider(ContextCompat.getDrawable(this, R.drawable.divider_line), LinearLayoutManager.VERTICAL);
-        divider.setMargin(SystemUtil.dp2px(12), 0, 0, 0);
-        mRvReceiverDetail.setLayoutManager(linearLayoutManager);
-        mRvReceiverDetail.addItemDecoration(divider);
-    }
-
-    public void initData() {
-        mSubjectManageAdapter = HomeworkSubjectManageAdapter.create(R.layout.item_homework_subject_manage, mCommonSubjectBeanList);
-        mRvReceiverDetail.setAdapter(mSubjectManageAdapter);
-        mRvReceiverDetail.addOnItemTouchListener(new OnItemClickListener());
-        showLoadingDialog();
-        mPresenter.getSubjectList();
-    }
 
     @Override
     public void showContent(String message) {
