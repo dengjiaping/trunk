@@ -23,6 +23,17 @@ public class HomeworkSelectGroupL1Bean implements MultiItemEntity, Serializable 
     private String mClassName;
     private String mGroupDivideId;
 
+    private String mGradeName;
+
+    public String getGradeName() {
+        return mGradeName;
+    }
+
+    public HomeworkSelectGroupL1Bean setGradeName(String gradeName) {
+        mGradeName = gradeName;
+        return this;
+    }
+
     public String getMemberThumbIcon() {
         return mMemberThumbIcon;
     }

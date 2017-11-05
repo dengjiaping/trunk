@@ -92,6 +92,9 @@ public class WorkCompleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 }
 
             }
+        }else if (viewHolder instanceof WorkCompleteAdapter.EmptyViewHolder){
+            WorkCompleteAdapter.EmptyViewHolder holder = ((EmptyViewHolder) viewHolder);
+            holder.mTip.setText("还没有人完成");
         }
     }
 
@@ -142,8 +145,11 @@ public class WorkCompleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     class EmptyViewHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.content)
+        TextView mTip;
         public EmptyViewHolder(View itemView) {
             super(itemView);
+            ButterKnife.bind(this,itemView);
         }
     }
 }

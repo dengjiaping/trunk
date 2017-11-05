@@ -7,11 +7,15 @@ import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.histudent.jwsoft.histudent.R;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 /**
@@ -28,9 +32,11 @@ public class CommonInputDialog extends Dialog {
     private String mTitleContent, mNegativeContent, mPositiveContent;
     private OnPositiveClickListener mPositiveClickListener;
     private OnNegativeClickListener mNegativeClickListener;
+    private final Context mContext;
 
     public CommonInputDialog(Context context) {
         super(context, R.style.common_dialog);
+        this.mContext = context;
     }
 
     @Override
@@ -57,6 +63,18 @@ public class CommonInputDialog extends Dialog {
         mEtInputContent = findViewById(R.id.et_input_content);
         mNegative = findViewById(R.id.bt_negative);
         mPositive = findViewById(R.id.bt_positive);
+    }
+
+    public void showDefaultSoftKeyboard() {
+//        获取焦点后 自动弹出键盘
+        final Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            public void run() {
+                InputMethodManager inputManager = (InputMethodManager) mEtInputContent.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.showSoftInput(mEtInputContent, 0);
+            }
+
+        }, 100);
     }
 
     private void loadData() {

@@ -1,5 +1,6 @@
 package com.histudent.jwsoft.histudent.activity.homework;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -12,8 +13,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,17 +24,21 @@ import android.widget.Toast;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.activity.image.ShowImageActivity;
 import com.histudent.jwsoft.histudent.adapter.VideoAdapter;
+import com.histudent.jwsoft.histudent.adapter.work.VideoDetailAdapter;
 import com.histudent.jwsoft.histudent.base.BaseActivity;
 import com.histudent.jwsoft.histudent.bean.homework.HomeworkDetailBean;
 import com.histudent.jwsoft.histudent.bean.homework.WorkImgDetailBean;
+import com.histudent.jwsoft.histudent.body.hiworld.activity.WatchActionVideoActivity;
 import com.histudent.jwsoft.histudent.commen.keyword.utils.DisplayUtils;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
+import com.histudent.jwsoft.histudent.comment2.utils.EmotionUtils;
 import com.histudent.jwsoft.histudent.comment2.utils.TimeUtils;
 import com.histudent.jwsoft.histudent.entity.AudioInfo;
 import com.histudent.jwsoft.histudent.entity.AudioPlayEvent;
 import com.histudent.jwsoft.histudent.entity.AudioPlayStatusEvent;
 import com.histudent.jwsoft.histudent.entity.ImageAttrEntity;
+import com.histudent.jwsoft.histudent.entity.WorkVideoEvent;
 import com.histudent.jwsoft.histudent.fragment.work.WorkCompleteFragment;
 import com.histudent.jwsoft.histudent.fragment.work.WorkNoCompleteFragment;
 import com.histudent.jwsoft.histudent.presenter.homework.WorkDetailTeacherPresenter;
@@ -43,6 +50,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.Serializable;
@@ -98,14 +106,16 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
     SmartRefreshLayout mRefresh;
     @BindView(R.id.work_detail_imgs)
     FrameLayout mImgLayout;
+    @BindView(R.id.ll_content)
+    LinearLayout mContentLayout;
+    @BindView(R.id.detail_expansion)
+    IconView mExpansion;
 
-    @OnClick({R.id.title_left, R.id.title_right_image, R.id.notices_voice_control, R.id.work_detail_photo})
+    @OnClick({R.id.title_left, R.id.notices_voice_control, R.id.work_detail_photo, R.id.detail_expansion})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.title_left:
                 finish();
-                break;
-            case R.id.title_right_image:
                 break;
             case R.id.notices_voice_control://语音播放控制
                 if (mPresenter.getAudioState()) {
@@ -124,6 +134,12 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
                     showImageDetail(mDetailPhoto, 0, imageAttrs);
                 }
                 break;
+            case R.id.detail_expansion:
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mContentLayout.getLayoutParams();
+                params.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                mContentLayout.setLayoutParams(params);
+                mExpansion.setVisibility(View.GONE);
+                break;
         }
     }
 
@@ -134,10 +150,9 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
     private ViewPagerAdapter mAdapter;
     private List<String> titles = new ArrayList<>();
     private String homeworkId;
-    private VideoAdapter mVideoAdapter;
+    private VideoDetailAdapter mVideoAdapter;
     private LinearLayoutManager mVideoLayoutManager;
     private GridLayoutManager mImgLayoutManager;
-    private String thumb;
     private AudioInfo mAudioInfo = new AudioInfo();
     private List<ImageAttrEntity> imageAttrs = new ArrayList();
     private String voiceId;
@@ -169,7 +184,6 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
         Intent intent = getIntent();
         if (intent != null) {
             homeworkId = intent.getStringExtra("homeworkId");
-            thumb = intent.getStringExtra("thumb");
         }
     }
 
@@ -195,7 +209,7 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
     }
 
     private void initRecycler() {
-        mVideoAdapter = new VideoAdapter(this);
+        mVideoAdapter = new VideoDetailAdapter(this);
         mVideoLayoutManager = new LinearLayoutManager(this);
         mRecyclerVideo.setAdapter(mVideoAdapter);
         mRecyclerVideo.setLayoutManager(mVideoLayoutManager);
@@ -236,11 +250,30 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
     public void showHomeworkDetail(HomeworkDetailBean homeworkDetail) {
         initHeader(homeworkDetail);
         initContent(homeworkDetail);
+        changeLayout();
+    }
+
+    private void changeLayout() {
+        mContentLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                int height = mContentLayout.getMeasuredHeight();
+                if (height > DisplayUtils.dp2px(WorkDetailTeacherActivity.this, 120)) {
+                    LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mContentLayout.getLayoutParams();
+                    params.height = DisplayUtils.dp2px(WorkDetailTeacherActivity.this, 120);
+                    mContentLayout.setLayoutParams(params);
+                    mExpansion.setVisibility(View.VISIBLE);
+                } else {
+                    mExpansion.setVisibility(View.GONE);
+                }
+            }
+        });
+
     }
 
     private void initContent(HomeworkDetailBean homeworkDetail) {
         if (!TextUtils.isEmpty(homeworkDetail.getContents())) {
-            mWorkContent.setText(homeworkDetail.getContents());
+            mWorkContent.setText(EmotionUtils.convertNormalStringToSpannableString(homeworkDetail.getContents()));
         }
         if (homeworkDetail.isHasImage()) {
             List<WorkImgDetailBean> workImgDetailBeens = homeworkDetail.getImgList();
@@ -249,11 +282,11 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
                 for (WorkImgDetailBean workImgDetailBean : workImgDetailBeens) {
                     ImageAttrEntity imageAttrEntity = new ImageAttrEntity();
                     imageAttrEntity.setId(workImgDetailBean.getId());
-                    imageAttrEntity.setBigSizeUrl(workImgDetailBean.getFilePath());
+                    imageAttrEntity.setBigSizeUrl(workImgDetailBean.getThumbnailFilePath());
                     imageAttrEntity.setThumbnailUrl(workImgDetailBean.getFilePath());
                     imageAttrs.add(imageAttrEntity);
                 }
-                CommonGlideImageLoader.getInstance().displayNetImage(WorkDetailTeacherActivity.this, workImgDetailBeens.get(0).getFilePath(), mDetailPhoto);
+                CommonGlideImageLoader.getInstance().displayNetImage(WorkDetailTeacherActivity.this, workImgDetailBeens.get(0).getThumbnailFilePath(), mDetailPhoto);
                 mPhotoNum.setText(String.valueOf(workImgDetailBeens.size()) + "张");
             } else {
                 mImgLayout.setVisibility(View.GONE);
@@ -263,14 +296,18 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
         }
 
         if (homeworkDetail.isHasVideo()) {
-            homeworkDetail.getVideoId();
+            mRecyclerVideo.setVisibility(View.VISIBLE);
+            List<HomeworkDetailBean.VideoListBean> videoList = homeworkDetail.getVideoList();
+            mVideoAdapter.setList(videoList);
+        } else {
+            mRecyclerVideo.setVisibility(View.GONE);
         }
 
         if (homeworkDetail.isHasVoice()) {
             mPresenter.downloadVoice(homeworkDetail.getVoiceId());
             mVoiceLayout.setVisibility(View.VISIBLE);
             mVoiceDel.setVisibility(View.GONE);
-            voiceTime = Long.parseLong(homeworkDetail.getVoiceLength());
+            voiceTime = homeworkDetail.getVoiceLength();
             mAudioInfo.setTime(voiceTime / 1000);
             mVoiceTimeTotal.setText(TimeUtils.formatTime2(voiceTime / 1000));
         }
@@ -287,7 +324,7 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
         if (!TextUtils.isEmpty(homeworkDetail.getCreateTime())) {
             mCreateTime.setText(TimeUtils.exchangeTime(homeworkDetail.getCreateTime()));
         }
-        CommonGlideImageLoader.getInstance().displayNetImage(this, thumb, mHeadImg);
+        CommonGlideImageLoader.getInstance().displayNetImage(this, homeworkDetail.getLogo(), mHeadImg);
     }
 
     @Override
@@ -375,6 +412,11 @@ public class WorkDetailTeacherActivity extends BaseActivity<WorkDetailTeacherPre
                 mVoiceControl.setText(getResources().getString(R.string.icon_bofang));
                 break;
         }
+    }
+    @Subscribe
+    public void onEvent(WorkVideoEvent workVideoEvent){
+        HomeworkDetailBean.VideoListBean videoListBean=workVideoEvent.videoListBean;
+        WatchActionVideoActivity.start(this, videoListBean.getAliVideoId());
     }
 
     @Override

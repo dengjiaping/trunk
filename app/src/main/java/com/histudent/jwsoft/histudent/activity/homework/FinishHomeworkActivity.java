@@ -1,5 +1,6 @@
 package com.histudent.jwsoft.histudent.activity.homework;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -10,6 +11,7 @@ import android.os.Message;
 import android.os.PowerManager;
 import android.provider.MediaStore;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -66,6 +69,8 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -110,14 +115,14 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
     @BindView(R.id.delete_voice)
     IconView mVoiceDel;
 
-    @OnClick({R.id.title_left_text, R.id.title_right, R.id.control_photo, R.id.control_record,
+    @OnClick({R.id.title_left, R.id.title_right_text, R.id.control_photo, R.id.control_record,
             R.id.control_emotion, R.id.delete_voice, R.id.notices_voice_control})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.title_left_text:
+            case R.id.title_left:
                 finish();
                 break;
-            case R.id.title_right:
+            case R.id.title_right_text:
                 String videoIdsStr = "";
                 if (videoIds != null && videoIds.size() > 0) {
                     videoIdsStr = new Gson().toJson(videoIds);
@@ -160,7 +165,6 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
                         mVoiceControl.setText(getResources().getString(R.string.icon_zanting));
                         mPresenter.playAudio(mAudioInfo.getFile().getAbsolutePath());
                     }
-
                 }
                 break;
         }
@@ -224,11 +228,25 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
         initTitle();
         initRecycler();
         initEmotionMainFragment();
+        initInputSoftKeyboard();
     }
 
     private void initTitle() {
         mTitle.setText("完成作业");
         mTitleRight.setText("完成");
+        mTitleRight.setTextColor(ContextCompat.getColor(this, R.color._28ca7e));
+    }
+
+    private void initInputSoftKeyboard() {
+//        获取焦点后 自动弹出键盘
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            public void run() {
+                InputMethodManager inputManager = (InputMethodManager) mWorkContent.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.showSoftInput(mWorkContent, 0);
+            }
+
+        }, 100);
     }
 
     private void initOther() {
@@ -264,7 +282,7 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
         int state = event.status;
         switch (state) {
             case Const.START:
-                mHandler.sendEmptyMessage(MSG_RECORD);
+                mHandler.sendEmptyMessageDelayed(MSG_RECORD,1000);
                 break;
             case Const.SUCCESS:
             case Const.CANCEL:
@@ -438,7 +456,7 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
     @Override
     public void showContent(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-        closeDialog();
+        dismissLoadingDialog();
     }
 
 
@@ -483,7 +501,8 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
     @Override
     public void showVideoList(String videoId) {
         videoIds.add(videoId);
-        mVideoAdapter.setList(mVideos);
+        //上传视频耗时操作  时间过长会导致UI刷新阻塞 使用以下方法进行刷新
+        runOnUiThread(() -> mVideoAdapter.setList(mVideos));
     }
 
     @Override
@@ -494,12 +513,12 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
 
     @Override
     public void showDialog() {
-
+        showLoadingDialog();
     }
 
     @Override
     public void closeDialog() {
-
+       dismissLoadingDialog();
     }
 
     @Override

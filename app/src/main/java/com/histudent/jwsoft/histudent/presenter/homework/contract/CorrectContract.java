@@ -5,6 +5,7 @@ import com.histudent.jwsoft.histudent.base.BaseView;
 import com.histudent.jwsoft.histudent.bean.homework.CommentBean;
 import com.histudent.jwsoft.histudent.bean.homework.CompleteDetailBean;
 import com.histudent.jwsoft.histudent.bean.homework.HomeworkDetailBean;
+import com.histudent.jwsoft.histudent.entity.AudioInfo;
 
 import java.io.File;
 import java.util.List;
@@ -15,24 +16,39 @@ import java.util.List;
 
 public interface CorrectContract {
 
-    interface View extends BaseView{
+    interface View extends BaseView {
         void showCompleteDetail(CompleteDetailBean completeDetailBean);
+
         void getCompleteDetailFail();
+
         void downloadVoiceSuccess(File file);
+
         void commentProposalSuccess(List<CommentBean> commentBeen);
+
+        void commentHomeworkSuccess();
     }
 
-    interface Presenter extends BasePresenter<View>{
+    interface Presenter extends BasePresenter<View> {
         void startRecord();
+
         void stopRecord();
+
         boolean getRecordState();
-        void getCompleteDetail(String homeworkId,String userId);
+
+        void getCompleteDetail(String homeworkId, String userId);
+
         boolean getAudioState();
+
         void playAudio(String source);
+
         void pauseAudio();
+
         void stopAudio();
+
         void downloadVoice(String voiceId);
+
         void getCommentList(String completeId);
-        void commentHomework(String completeId,String commentContent,String proposalIds);
+
+        void commentHomework(String completeId, String commentContent, String proposalIds, AudioInfo audioInfo);
     }
 }

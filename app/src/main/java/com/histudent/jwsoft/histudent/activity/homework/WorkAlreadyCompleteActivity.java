@@ -103,6 +103,8 @@ public class WorkAlreadyCompleteActivity extends BaseActivity<WorkAlreadyComplet
                     return;
                 mType = 3;
                 refreshUi(0);
+                mRefreshHandler.setType(mType);
+                mRefreshHandler.setRefreshOrLoadMore(false);
                 mRefreshHandler.clearData();
                 mRefreshHandler.requestData();
                 break;
@@ -111,6 +113,8 @@ public class WorkAlreadyCompleteActivity extends BaseActivity<WorkAlreadyComplet
                     return;
                 mType = 0;
                 refreshUi(1);
+                mRefreshHandler.setType(mType);
+                mRefreshHandler.setRefreshOrLoadMore(false);
                 mRefreshHandler.clearData();
                 mRefreshHandler.requestData();
                 break;
@@ -118,7 +122,6 @@ public class WorkAlreadyCompleteActivity extends BaseActivity<WorkAlreadyComplet
                 break;
         }
         mAdapter.setType(mType);
-        mRefreshHandler.setType(mType);
     }
 
     private final List<HomeworkAlreadyBean> mHomeworkAlreadyBeanList = new ArrayList<>();
@@ -157,7 +160,7 @@ public class WorkAlreadyCompleteActivity extends BaseActivity<WorkAlreadyComplet
 
     public void initData() {
         initOther();
-        final boolean isAdmin = getIntent().getBooleanExtra(TransferKeys.IS_ADMIN, false);
+        final boolean isAdmin = getIntent().getBooleanExtra(TransferKeys.IS_TEACHER, false);
         if (isAdmin) {
             //老师
             mType = 3;
@@ -232,10 +235,9 @@ public class WorkAlreadyCompleteActivity extends BaseActivity<WorkAlreadyComplet
             Intent intent = new Intent();
             switch (mType) {
                 case 3:
+                case 0:
                     intent.putExtra("homeworkId", mRefreshHandler.getList().get(position).t.getId());
-                    intent.putExtra("thumb", mRefreshHandler.getList().get(position).t.getThumb());
                     intent.setClass(WorkAlreadyCompleteActivity.this, WorkDetailTeacherActivity.class);
-
                     break;
                 case 1:
                     if (mRefreshHandler.getList().get(position).t.isComplete()) {
@@ -251,14 +253,13 @@ public class WorkAlreadyCompleteActivity extends BaseActivity<WorkAlreadyComplet
                     break;
             }
             CommonAdvanceUtils.startActivityForResult(WorkAlreadyCompleteActivity.this, intent, REQ_CODE);
-
         }
 
         @Override
         public void onItemLongClick(BaseQuickAdapter adapter, View view, int position) {
             if (mType != 1) {
                 //只有老师可以取消作业
-                ReminderHelper.getIntentce().showDialog(WorkAlreadyCompleteActivity.this, "", getString(R.string.cancle_homework), getString(R.string.cancel), () -> {
+                ReminderHelper.getIntentce().showDialog(WorkAlreadyCompleteActivity.this, getString(R.string.hint_title), getString(R.string.cancle_homework), getString(R.string.cancel), () -> {
                 }, getString(R.string.confirm), () -> {
                     //确认
                     final List<HomeworkAlreadyBean> listData = mRefreshHandler.getList();

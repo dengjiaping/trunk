@@ -7,33 +7,32 @@
 
     <include layout="@layout/thetopview_new" />
 
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout
-        android:id="@+id/refresh"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        >
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
 
-        <ScrollView
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refresh"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="none">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
                 <include layout="@layout/include_work_detail_header" />
 
                 <View style="@style/split_line_style_1dp" />
 
                 <LinearLayout
+                    android:id="@+id/ll_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@color/white">
+                    android:background="@color/white"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/work_detail_content"
@@ -46,7 +45,8 @@
                     <FrameLayout
                         android:id="@+id/work_detail_imgs"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp">
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
 
                         <ImageView
                             android:id="@+id/work_detail_photo"
@@ -72,12 +72,22 @@
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:paddingLeft="@dimen/itemMargin"
-                        android:paddingRight="@dimen/itemMargin">
+                        android:paddingRight="@dimen/itemMargin"
+                        android:visibility="gone">
 
                     </android.support.v7.widget.RecyclerView>
 
                     <include layout="@layout/include_voice_play" />
                 </LinearLayout>
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:id="@+id/detail_expansion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:paddingTop="8dp"
+                    android:text="@string/icon_doublearrow2" />
 
                 <android.support.design.widget.TabLayout
                     android:id="@+id/tab_layout"
@@ -94,13 +104,14 @@
                 <android.support.v4.view.ViewPager
                     android:id="@+id/viewpager"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp">
+                    android:layout_height="wrap_content"
+                    >
 
                 </android.support.v4.view.ViewPager>
 
             </LinearLayout>
-        </ScrollView>
-    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </ScrollView>
 
 </LinearLayout>

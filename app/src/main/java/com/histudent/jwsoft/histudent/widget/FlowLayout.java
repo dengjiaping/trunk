@@ -13,6 +13,9 @@ import android.widget.RelativeLayout;
 
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.commen.keyword.utils.DisplayUtils;
+import com.histudent.jwsoft.histudent.entity.FlowClickEvent;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.IllegalFormatCodePointException;
@@ -69,8 +72,8 @@ public class FlowLayout extends RelativeLayout {
             measureChild(child, widthMeasureSpec, heightMeasureSpec);
 
             MarginLayoutParams childLayoutParams = (MarginLayoutParams) child.getLayoutParams();
-            int childMeasuredHeight = child.getMeasuredHeight() + childLayoutParams.bottomMargin + DisplayUtils.dp2px(mContext,12);
-            int childMeasuredWidth = child.getMeasuredWidth() + DisplayUtils.dp2px(mContext,12) + childLayoutParams.rightMargin;
+            int childMeasuredHeight = child.getMeasuredHeight() + childLayoutParams.bottomMargin + DisplayUtils.dp2px(mContext, 12);
+            int childMeasuredWidth = child.getMeasuredWidth() + DisplayUtils.dp2px(mContext, 12) + childLayoutParams.rightMargin;
 
             if (lineWidth + childMeasuredWidth > widthSpecSize) {//The line is full
                 width = Math.max(lineWidth, childMeasuredWidth);
@@ -113,8 +116,8 @@ public class FlowLayout extends RelativeLayout {
         for (int i = 0; i < childCount; i++) {
             View child = getChildAt(i);
             MarginLayoutParams layoutParams = (MarginLayoutParams) child.getLayoutParams();
-            int childMeasuredHeight = child.getMeasuredHeight() + layoutParams.bottomMargin + DisplayUtils.dp2px(mContext,12);
-            int childMeasuredWidth = child.getMeasuredWidth() + DisplayUtils.dp2px(mContext,12) + layoutParams.rightMargin;
+            int childMeasuredHeight = child.getMeasuredHeight() + layoutParams.bottomMargin + DisplayUtils.dp2px(mContext, 12);
+            int childMeasuredWidth = child.getMeasuredWidth() + DisplayUtils.dp2px(mContext, 12) + layoutParams.rightMargin;
 
 
             if (lineWidth + childMeasuredWidth > getWidth()) {//The line is full
@@ -162,14 +165,14 @@ public class FlowLayout extends RelativeLayout {
                 MarginLayoutParams lp = (MarginLayoutParams) child
                         .getLayoutParams();
                 //calc childView's left,top,right,bottom
-                int lc = left + DisplayUtils.dp2px(mContext,12);
-                int tc = top + DisplayUtils.dp2px(mContext,12);
+                int lc = left + DisplayUtils.dp2px(mContext, 12);
+                int tc = top + DisplayUtils.dp2px(mContext, 12);
                 int rc = lc + child.getMeasuredWidth();
                 int bc = tc + child.getMeasuredHeight();
                 child.layout(lc, tc, rc, bc);
 
                 left += child.getMeasuredWidth() + lp.rightMargin
-                        + DisplayUtils.dp2px(mContext,12);
+                        + DisplayUtils.dp2px(mContext, 12);
                 Point point = new Point();
                 point.x = lc;
                 point.y = tc;
@@ -189,7 +192,7 @@ public class FlowLayout extends RelativeLayout {
                     case STYLE_BUTTON:
                         break;
                     case STYLE_CHECKBOX:
-                        initCheckBox(lists.get(i));
+                        initCheckBox(lists.get(i), i);
                         break;
 
                 }
@@ -197,7 +200,7 @@ public class FlowLayout extends RelativeLayout {
         }
     }
 
-    private void initCheckBox(String content) {
+    private void initCheckBox(String content, int position) {
         View mView = new CheckBox(mContext);
 
         ((CheckBox) mView).setButtonDrawable(null);
@@ -205,7 +208,7 @@ public class FlowLayout extends RelativeLayout {
         ((CheckBox) mView).setTextSize(13);
         ((CheckBox) mView).setTextColor(Color.parseColor("#b0b0b0"));
         ((CheckBox) mView).setBackground(AppCompatResources.getDrawable(mContext, R.drawable.shape_comment_checked));
-        ((CheckBox) mView).setPadding(DisplayUtils.dp2px(mContext,8),DisplayUtils.dp2px(mContext,6),DisplayUtils.dp2px(mContext,8),DisplayUtils.dp2px(mContext,6));
+        ((CheckBox) mView).setPadding(DisplayUtils.dp2px(mContext, 8), DisplayUtils.dp2px(mContext, 6), DisplayUtils.dp2px(mContext, 8), DisplayUtils.dp2px(mContext, 6));
         ((CheckBox) mView).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -216,6 +219,7 @@ public class FlowLayout extends RelativeLayout {
                     ((CheckBox) mView).setTextColor(Color.parseColor("#b0b0b0"));
                     ((CheckBox) mView).setBackground(AppCompatResources.getDrawable(mContext, R.drawable.shape_comment_checked));
                 }
+                EventBus.getDefault().post(new FlowClickEvent(position,b));
             }
         });
 
@@ -235,7 +239,7 @@ public class FlowLayout extends RelativeLayout {
         void onItemClick(int position);
     }
 
-    public  void setMargins (View v, int l, int t, int r, int b) {
+    public void setMargins(View v, int l, int t, int r, int b) {
         if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
             p.setMargins(l, t, r, b);

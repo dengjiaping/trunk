@@ -20,7 +20,8 @@
             android:layout_height="50dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="16dp"
-            android:src="@drawable/default_person" />
+
+            android:src="@drawable/avatar_def" />
 
         <TextView
             android:id="@+id/item_complete_name"

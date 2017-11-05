@@ -31,6 +31,7 @@ public class TransferKeys {
     public static final String DIVIDE_GROUP_NAME = "divideGroupName";
     public static final String ADD_MEMBER = "addMember";
     public static final String IS_ADMIN = "isAdmin";
+    public static final String IS_TEACHER = "isTeacher";
     public static final String GROUP_MEMBER_LIST = "group_member_list";
     public static final String GROUP_ID = "group_id";
     public static final String CLASS_ID = "class_id";

@@ -104,6 +104,10 @@ public class WorkSubjectManageActivity extends BaseActivity<WorkSubjectManagePre
     private void solveAddSubject() {
         final String inputContent = mInputDialog.getInputContent();
         if (!TextUtils.isEmpty(inputContent)) {
+            if (inputContent.length() > 10) {
+                ToastTool.showCommonToast("科目名称不能超过10个字符");
+                return;
+            }
             //判断用户添加的科目是否存在 存在的话提示重新输入
             for (CommonSubjectBean commonSubjectBean : mCommonSubjectBeanList) {
                 final String subjectName = commonSubjectBean.getSubjectName();
@@ -115,7 +119,7 @@ public class WorkSubjectManageActivity extends BaseActivity<WorkSubjectManagePre
             showLoadingDialog();
             mPresenter.addSpecifiedSubject(inputContent);
         } else {
-            ToastTool.showCommonToast("请输入科目");
+            ToastTool.showCommonToast("科目名称不能为空");
         }
     }
 
@@ -163,6 +167,10 @@ public class WorkSubjectManageActivity extends BaseActivity<WorkSubjectManagePre
 
     @Override
     public void deleteSpecifiedSubjectSuccess() {
+        final CommonSubjectBean commonSubjectBean = mCommonSubjectBeanList.get(mDeletePosition);
+        if (commonSubjectBean.isCheck()) {
+            mCurrentSubjectItem = null;
+        }
         mCommonSubjectBeanList.remove(mDeletePosition);
         mSubjectManageAdapter.setNewData(mCommonSubjectBeanList);
     }
@@ -189,8 +197,8 @@ public class WorkSubjectManageActivity extends BaseActivity<WorkSubjectManagePre
                 case R.id.ll_subject_manage_delete:
                     mDeletePosition = position;
                     showLoadingDialog();
-                    final String subjectId = mCommonSubjectBeanList.get(position).getSubjectId();
-                    mPresenter.deleteSpecifiedSubject(subjectId);
+                    final String deleteSubjectId = mCommonSubjectBeanList.get(position).getSubjectId();
+                    mPresenter.deleteSpecifiedSubject(deleteSubjectId);
                     break;
                 case R.id.ll_subject_manage_select:
                     solveSelectSubject(position);
@@ -200,6 +208,7 @@ public class WorkSubjectManageActivity extends BaseActivity<WorkSubjectManagePre
                     mInputDialog.setOnPositiveClickListener(() -> solveAddSubject());
                     mInputDialog.setOnNegativeClickListener(() -> mInputDialog.dismiss());
                     mInputDialog.show();
+                    mInputDialog.showDefaultSoftKeyboard();
                     break;
                 default:
                     break;

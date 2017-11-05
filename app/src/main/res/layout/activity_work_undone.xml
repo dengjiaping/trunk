@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:fillViewport="true"
         android:scrollbars="none">
 
         <LinearLayout
@@ -24,9 +25,11 @@
             <View style="@style/split_line_style_1dp" />
 
             <LinearLayout
+                android:id="@+id/ll_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@color/white">
 
                 <TextView
                     android:id="@+id/work_detail_content"
@@ -37,8 +40,10 @@
                     android:layout_marginTop="12dp" />
 
                 <FrameLayout
+                    android:id="@+id/work_detail_imgs"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp">
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
 
                     <ImageView
                         android:id="@+id/work_detail_photo"
@@ -64,12 +69,22 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:paddingLeft="@dimen/itemMargin"
-                    android:paddingRight="@dimen/itemMargin">
+                    android:paddingRight="@dimen/itemMargin"
+                    android:visibility="gone">
 
                 </android.support.v7.widget.RecyclerView>
 
                 <include layout="@layout/include_voice_play" />
             </LinearLayout>
+
+            <com.histudent.jwsoft.histudent.commen.view.IconView
+                android:id="@+id/detail_expansion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center"
+                android:paddingTop="8dp"
+                android:text="@string/icon_doublearrow2" />
 
         </LinearLayout>
     </ScrollView>

@@ -2,6 +2,7 @@ package com.histudent.jwsoft.histudent.activity.homework;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.activity.image.ShowImageActivity;
 import com.histudent.jwsoft.histudent.adapter.VideoAdapter;
+import com.histudent.jwsoft.histudent.adapter.work.VideoDetailAdapter;
 import com.histudent.jwsoft.histudent.base.BaseActivity;
 import com.histudent.jwsoft.histudent.bean.homework.HomeworkDetailBean;
 import com.histudent.jwsoft.histudent.bean.homework.WorkImgDetailBean;
@@ -87,9 +89,15 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
     TextView mGotoTip;
     @BindView(R.id.undone_control)
     LinearLayout mControl;
+    @BindView(R.id.ll_content)
+    LinearLayout mContentLayout;
+    @BindView(R.id.detail_expansion)
+    IconView mExpansion;
+    @BindView(R.id.work_detail_imgs)
+    FrameLayout mImgLayout;
 
 
-    @OnClick({R.id.title_left, R.id.title_right_image, R.id.notices_voice_control, R.id.work_detail_photo, R.id.undone_goto_finish})
+    @OnClick({R.id.title_left, R.id.title_right_image, R.id.notices_voice_control, R.id.work_detail_photo, R.id.undone_goto_finish,R.id.detail_expansion})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.title_left:
@@ -122,14 +130,21 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
                     startActivity(intent);
                 } else {
                     //完成
+                    showLoadingDialog();
                     mPresenter.completeHomework(homeworkId);
                 }
+                break;
+            case R.id.detail_expansion:
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mContentLayout.getLayoutParams();
+                params.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                mContentLayout.setLayoutParams(params);
+                mExpansion.setVisibility(View.GONE);
                 break;
         }
     }
 
     private String homeworkId;
-    private VideoAdapter mVideoAdapter;
+    private VideoDetailAdapter mVideoAdapter;
     private LinearLayoutManager mVideoLayoutManager;
     private String thumb;
     private AudioInfo mAudioInfo = new AudioInfo();
@@ -191,7 +206,7 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
 
 
     private void initRecycler() {
-        mVideoAdapter = new VideoAdapter(this);
+        mVideoAdapter = new VideoDetailAdapter(this);
         mVideoLayoutManager = new LinearLayoutManager(this);
         mRecyclerVideo.setAdapter(mVideoAdapter);
         mRecyclerVideo.setLayoutManager(mVideoLayoutManager);
@@ -212,22 +227,30 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
                 for (WorkImgDetailBean workImgDetailBean : workImgDetailBeens) {
                     ImageAttrEntity imageAttrEntity = new ImageAttrEntity();
                     imageAttrEntity.setId(workImgDetailBean.getId());
-                    imageAttrEntity.setBigSizeUrl(workImgDetailBean.getFilePath());
+                    imageAttrEntity.setBigSizeUrl(workImgDetailBean.getThumbnailFilePath());
                     imageAttrEntity.setThumbnailUrl(workImgDetailBean.getFilePath());
                     imageAttrs.add(imageAttrEntity);
                 }
-                CommonGlideImageLoader.getInstance().displayNetImage(WorkUndoneActivity.this, workImgDetailBeens.get(0).getFilePath(), mDetailPhoto);
+                CommonGlideImageLoader.getInstance().displayNetImage(WorkUndoneActivity.this, workImgDetailBeens.get(0).getThumbnailFilePath(), mDetailPhoto);
                 mPhotoNum.setText(String.valueOf(workImgDetailBeens.size()) + "张");
+            }else{
+                mImgLayout.setVisibility(View.GONE);
             }
+        }else{
+            mImgLayout.setVisibility(View.GONE);
         }
         if (homeworkDetail.isHasVideo()) {
-            homeworkDetail.getVideoId();
+            mRecyclerVideo.setVisibility(View.VISIBLE);
+            List<HomeworkDetailBean.VideoListBean> videoList = homeworkDetail.getVideoList();
+            mVideoAdapter.setList(videoList);
+        } else {
+            mRecyclerVideo.setVisibility(View.GONE);
         }
         if (homeworkDetail.isHasVoice()) {
             mPresenter.downloadVoice(homeworkDetail.getVoiceId());
             mVoiceLayout.setVisibility(View.VISIBLE);
             mVoiceDel.setVisibility(View.GONE);
-            mAudioInfo.setTime(Long.parseLong(homeworkDetail.getVoiceLength()));
+            mAudioInfo.setTime(homeworkDetail.getVoiceLength());
         }
 
     }
@@ -292,6 +315,26 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
     public void showHomeworkDetail(HomeworkDetailBean homeworkDetail) {
         initHeader(homeworkDetail);
         initContent(homeworkDetail);
+        changeLayout();
+    }
+
+
+
+    private void changeLayout() {
+        mContentLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                int height = mContentLayout.getMeasuredHeight();
+                if (height > DisplayUtils.dp2px(WorkUndoneActivity.this, 120)) {
+                    LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mContentLayout.getLayoutParams();
+                    params.height = DisplayUtils.dp2px(WorkUndoneActivity.this, 120);
+                    mContentLayout.setLayoutParams(params);
+                    mExpansion.setVisibility(View.VISIBLE);
+                } else {
+                    mExpansion.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     @Override
@@ -300,10 +343,14 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
         finish();
     }
 
+
     @Override
     public void finishHomework() {
+        dismissLoadingDialog();
         showContent("完成作业");
-        finish();
+        mGotoFinish.setText("已完成");
+        mGotoFinish.setClickable(false);
+        mGotoFinish.setBackground(getResources().getDrawable(R.drawable.bg_btn_gray));
     }
 
 
@@ -325,6 +372,7 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
 
     @Override
     public void showContent(String message) {
+        dismissLoadingDialog();
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
 

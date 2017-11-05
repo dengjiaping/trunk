@@ -134,11 +134,12 @@ public class WorkUndonePresenter extends RxPresenter<WorkUndoneContract.View> im
                         if (response.isSuccess()) {
                            mView.finishHomework();
                         } else {
-
+                            mView.showContent(response.getMsg());
                         }
                     }
                 }, new RxException<>(e -> {
                     e.printStackTrace();
+                    mView.showContent("完成作业失败");
                 }));
         addDispose(disposable);
     }

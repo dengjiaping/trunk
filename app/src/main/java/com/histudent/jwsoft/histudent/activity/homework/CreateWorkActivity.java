@@ -1,5 +1,6 @@
 package com.histudent.jwsoft.histudent.activity.homework;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -10,6 +11,7 @@ import android.os.Message;
 import android.os.PowerManager;
 import android.provider.MediaStore;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -38,6 +41,7 @@ import com.histudent.jwsoft.histudent.adapter.decoration.UploadItemDecoration;
 import com.histudent.jwsoft.histudent.base.BaseActivity;
 import com.histudent.jwsoft.histudent.bean.UploadAuthBean;
 import com.histudent.jwsoft.histudent.bean.homework.CommonSubjectBean;
+import com.histudent.jwsoft.histudent.bean.homework.CreateWorkBean;
 import com.histudent.jwsoft.histudent.bean.homework.HomeworkSelectGroupL0Bean;
 import com.histudent.jwsoft.histudent.bean.homework.HomeworkSelectGroupL1Bean;
 import com.histudent.jwsoft.histudent.body.hiworld.activity.WatchEssayVideoActivity;
@@ -64,6 +68,7 @@ import com.histudent.jwsoft.histudent.entity.WorkVideoPlayEvent;
 import com.histudent.jwsoft.histudent.presenter.homework.CreateWorkPresenter;
 import com.histudent.jwsoft.histudent.presenter.homework.contract.CreateWorkContract;
 import com.histudent.jwsoft.histudent.tool.CommonTool;
+import com.histudent.jwsoft.histudent.tool.ToastTool;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -72,6 +77,8 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -125,6 +132,7 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
     @BindView(R.id.delete_voice)
     IconView mVoiceDel;
     private List<HomeworkSelectGroupL0Bean> mWorkGroupL0;
+    private int mDeletePosition;
 
     @OnClick({R.id.title_left_image, R.id.title_right_text, R.id.control_photo, R.id.control_record,
             R.id.control_emotion, R.id.work_subject_layout, R.id.work_receiver_layout,
@@ -135,23 +143,27 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
                 finish();
                 break;
             case R.id.title_right_text:
-                String videoIdsStr = "";
-                if (videoIds != null && videoIds.size() > 0) {
-                    videoIdsStr = new Gson().toJson(videoIds);
+                if (TextUtils.isEmpty(subjectId)) {
+                    ToastTool.showCommonToast(getString(R.string.please_select_subject));
+                    return;
                 }
-                String receiverStr = "";
-                if (receivers != null && receivers.size() > 0) {
-                    receiverStr = new Gson().toJson(receivers);
+                if (receivers.size() == 0) {
+                    ToastTool.showCommonToast(getString(R.string.please_select_receiver));
+                    return;
+                }
+                if (!TextUtils.isEmpty(mWorkContent.getText()) || (videoIds != null && videoIds.size() > 0) || mAudioInfo.getFile() != null || (imgFiles != null && imgFiles.size() > 0)) {
+
+                    String videoIdsStr = "";
+                    if (videoIds != null && videoIds.size() > 0) {
+                        videoIdsStr = new Gson().toJson(videoIds);
+                    }
+                    final String receiverStr = new Gson().toJson(receivers);
+                    showLoadingDialog();
+                    mPresenter.createHomeWork(subjectId, receiverStr, mWorkContent.getText().toString(), mOnline.isChecked(), videoIdsStr, mAudioInfo, imgFiles);
                 } else {
-                    Toast.makeText(CreateWorkActivity.this, "请选择科目", Toast.LENGTH_SHORT).show();
-                    return;
+                    ToastTool.showCommonToast(getString(R.string.please_input_homework_content));
                 }
-                if (TextUtils.isEmpty(mWorkContent.getText())) {
-                    Toast.makeText(CreateWorkActivity.this, "请填写作业内容", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                showLoadingDialog();
-                mPresenter.createHomeWork(subjectId, receiverStr, mWorkContent.getText().toString(), mOnline.isChecked(), videoIdsStr, mAudioInfo, imgFiles);
+
                 break;
             case R.id.control_photo://图片或视频
                 SystemUtil.hideSoftKeyboard(CreateWorkActivity.this);
@@ -161,13 +173,22 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
                         if (imgUrls != null && imgUrls.size() > 0) {
                             mClipHelper.selectPictures(this, imgUrls, 9);
                         } else if (videoIds != null && videoIds.size() > 0) {
-                            PictureTailorHelper.getInstance(false).takePhotoAndAudio(CreateWorkActivity.this, REQ_CODE_VIDEO, 2);
+                            if (videoIds.size() < 4) {
+                                PictureTailorHelper.getInstance(false).takePhotoAndAudio(CreateWorkActivity.this, REQ_CODE_VIDEO, 2);
+                            } else {
+                                showContent("视频最多4个");
+                            }
                         } else {
                             showPhotoWindow();
                         }
                         break;
                     case Const.WORK_VEDIO://视频
-                        PictureTailorHelper.getInstance(false).takePhotoAndAudio(CreateWorkActivity.this, REQ_CODE_VIDEO, 2);
+
+                        if (videoIds.size() < 4) {
+                            PictureTailorHelper.getInstance(false).takePhotoAndAudio(CreateWorkActivity.this, REQ_CODE_VIDEO, 2);
+                        } else {
+                            showContent("视频最多4个");
+                        }
                         break;
 
                     case Const.WORK_PHOTO://图片
@@ -242,7 +263,7 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
     private static final int REQ_SUBJECT = 2001;
     private static final int REQ_RECEIVER = 2002;
     private String subjectId;
-    private List<String> receivers = new ArrayList<>();
+    private final List<String> receivers = new ArrayList<>();
     private long voiceTime;
 
 
@@ -303,6 +324,19 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
         initTitle();
         initRecycler();
         initEmotionMainFragment();
+        initInputSoftKeyboard();
+    }
+
+    private void initInputSoftKeyboard() {
+//        获取焦点后 自动弹出键盘
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            public void run() {
+                InputMethodManager inputManager = (InputMethodManager) mWorkContent.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.showSoftInput(mWorkContent, 0);
+            }
+
+        }, 100);
     }
 
     private void initRecycler() {
@@ -320,8 +354,9 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
     }
 
     private void initTitle() {
-        mTitle.setText("发布作业");
-        mRightText.setText("提交");
+        mTitle.setText(R.string.publish_homework);
+        mRightText.setText(R.string.submit);
+        mRightText.setTextColor(ContextCompat.getColor(this, R.color._28ca7e));
     }
 
     private void initLock() {
@@ -339,7 +374,7 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
         int state = event.status;
         switch (state) {
             case Const.START:
-                mHandler.sendEmptyMessage(MSG_RECORD);
+                mHandler.sendEmptyMessageDelayed(MSG_RECORD,1000);
                 break;
             case Const.SUCCESS:
             case Const.CANCEL:
@@ -367,6 +402,7 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
     @Subscribe
     public void onEvent(WorkVideoPlayEvent event) {
         VideoInfoEntity videoInfo = event.videoInfoEntity;
+        mDeletePosition = event.position;
         WatchEssayVideoActivity.start(CreateWorkActivity.this, videoInfo.getFileName(), 10);
     }
 
@@ -376,7 +412,7 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
             mAudioInfo.setFile(event.mFile);
             mAudioInfo.setRecordType(event.mRecordType);
             mAudioInfo.setTime(event.time);
-            mVoiceTimeTotal.setText(TimeUtils.formatTime2(event.time/1000));
+            mVoiceTimeTotal.setText(TimeUtils.formatTime2(event.time / 1000));
         }
 
     }
@@ -386,6 +422,7 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
         mProgress.setProgress((int) ((event.position / (voiceTime * 1000.0)) * 100));
         mVoiceTime.setText(TimeUtils.formatTime2(event.position / 1000));
     }
+
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(AudioPlayStatusEvent event) {
@@ -421,17 +458,17 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
     };
 
 
-    @Subscribe(sticky = true)
+    @Subscribe
     public void onEvent(WorkReceiverEvent event) {
         mWorkGroupL0 = event.mWorkGroupL0;
         StringBuilder stringBuilder = new StringBuilder();
         if (mWorkGroupL0 != null && mWorkGroupL0.size() > 0) {
             for (HomeworkSelectGroupL0Bean homeworkSelectGroupL0Bean : mWorkGroupL0) {
                 if (homeworkSelectGroupL0Bean.isCheck()) {
-                    stringBuilder.append(homeworkSelectGroupL0Bean.getClassName());
+                    stringBuilder.append(homeworkSelectGroupL0Bean.getGradeName());
                     receivers.add(homeworkSelectGroupL0Bean.getTeamId());
                 } else {
-                    stringBuilder.append(homeworkSelectGroupL0Bean.getClassName());
+                    stringBuilder.append(homeworkSelectGroupL0Bean.getGradeName());
                 }
                 List<HomeworkSelectGroupL1Bean> homeworkSelectGroupL1Beens = homeworkSelectGroupL0Bean.getSubItems();
                 if (homeworkSelectGroupL1Beens != null && homeworkSelectGroupL1Beens.size() > 0) {
@@ -555,6 +592,13 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode == -10) {
+            //从删除页面返回
+            mVideos.remove(mDeletePosition);
+            mVideoAdapter.notifyDataSetChanged();
+            return;
+        }
         switch (requestCode) {
             case REQ_CODE_VIDEO:
                 if (resultCode == -1) {//摄像返回
@@ -645,7 +689,8 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
     @Override
     public void showVideoList(String videoId) {
         videoIds.add(videoId);
-        mVideoAdapter.setList(mVideos);
+        //上传视频耗时操作  时间过长会导致UI刷新阻塞 使用以下方法进行刷新
+        runOnUiThread(() -> mVideoAdapter.setList(mVideos));
     }
 
     @Override
@@ -656,18 +701,21 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
 
     @Override
     public void showDialog() {
-
+        showLoadingDialog();
     }
 
     @Override
     public void closeDialog() {
-
+        dismissLoadingDialog();
     }
 
     @Override
-    public void createWorkSucceed() {
+    public void createWorkSucceed(CreateWorkBean createWorkBean) {
         closeDialog();
-        showContent("发布成功");
+        showContent(getString(R.string.publish_homework_success));
+        Intent intent = new Intent(this, WorkDetailTeacherActivity.class);
+        intent.putExtra("homeworkId", createWorkBean.getClassHomeWorkList().get(0).getHomeWorkId());
+        startActivity(intent);
         finish();
     }
 

@@ -34,7 +34,59 @@ public class CompleteDetailBean {
     private String userRealName;
     private String userAvatar;
     private String contents;
+    private String comment;
+    private boolean commentImg;
+    private boolean commentVoice;
+    private String commentTime;
+    private String commentUser;
 
+    public boolean isCommented() {
+        return isCommented;
+    }
+
+    public void setCommented(boolean commented) {
+        isCommented = commented;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public boolean isCommentImg() {
+        return commentImg;
+    }
+
+    public void setCommentImg(boolean commentImg) {
+        this.commentImg = commentImg;
+    }
+
+    public boolean isCommentVoice() {
+        return commentVoice;
+    }
+
+    public void setCommentVoice(boolean commentVoice) {
+        this.commentVoice = commentVoice;
+    }
+
+    public String getCommentTime() {
+        return commentTime;
+    }
+
+    public void setCommentTime(String commentTime) {
+        this.commentTime = commentTime;
+    }
+
+    public String getCommentUser() {
+        return commentUser;
+    }
+
+    public void setCommentUser(String commentUser) {
+        this.commentUser = commentUser;
+    }
 
     public String getContents() {
         return contents;

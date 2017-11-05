@@ -6,6 +6,7 @@ import com.alibaba.sdk.android.vod.upload.model.UploadFileInfo;
 import com.histudent.jwsoft.histudent.base.BasePresenter;
 import com.histudent.jwsoft.histudent.base.BaseView;
 import com.histudent.jwsoft.histudent.bean.UploadAuthBean;
+import com.histudent.jwsoft.histudent.bean.homework.CreateWorkBean;
 import com.histudent.jwsoft.histudent.commen.bean.VideoAuthBean;
 import com.histudent.jwsoft.histudent.entity.AudioInfo;
 
@@ -23,7 +24,7 @@ public interface CreateWorkContract {
         void uploadFile(UploadAuthBean uploadAuthBean);
         void showDialog();
         void closeDialog();
-        void createWorkSucceed();
+        void createWorkSucceed(CreateWorkBean createWorkBean);
         void showImgList(List<File> files);
     }
 

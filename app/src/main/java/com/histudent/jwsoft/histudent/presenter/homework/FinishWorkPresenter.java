@@ -122,7 +122,7 @@ public class FinishWorkPresenter extends RxPresenter<FinishWorkContract.View> im
         if (audioInfo.getFile() != null) {
             RequestUtils.addTextPart(parts, "hasVoice", String.valueOf(true));
             params.put("videoIds", String.valueOf(true));
-            RequestUtils.addTextPart(parts, "voiceLength",String.valueOf(audioInfo.getTime()));
+            RequestUtils.addTextPart(parts, "voiceLength", String.valueOf(audioInfo.getTime()));
             params.put("voiceLength", String.valueOf(audioInfo.getTime()));
             RequestBody requestBody = RequestBody.create(Const.MEDIA_TYPE_MARKDOWN, audioInfo.getFile());
             MultipartBody.Part part = MultipartBody.Part.
@@ -131,7 +131,7 @@ public class FinishWorkPresenter extends RxPresenter<FinishWorkContract.View> im
         } else {
             RequestUtils.addTextPart(parts, "hasVoice", String.valueOf(false));
             params.put("hasVoice", String.valueOf(false));
-            RequestUtils.addTextPart(parts, "voiceLength",String.valueOf(0));
+            RequestUtils.addTextPart(parts, "voiceLength", String.valueOf(0));
             params.put("voiceLength", String.valueOf(0));
         }
         if (imgFiles != null && imgFiles.size() > 0) {
@@ -198,8 +198,8 @@ public class FinishWorkPresenter extends RxPresenter<FinishWorkContract.View> im
 
             @Override
             public void onUploadSucceed(UploadFileInfo info) {
-                mView.closeDialog();
                 mView.showVideoList(uploadAuthBean.getVideoId());
+                mView.closeDialog();
             }
 
             @Override
@@ -247,6 +247,7 @@ public class FinishWorkPresenter extends RxPresenter<FinishWorkContract.View> im
                     @Override
                     public List<File> apply(@NonNull List<String> list) throws Exception {
                         return Luban.with(context).load(list).get();
+
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())

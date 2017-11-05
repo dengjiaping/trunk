@@ -130,7 +130,7 @@ public class HiStudentApplication extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         Stetho.initializeWithDefaults(this);
-        LeakCanary.install(this);
+//        LeakCanary.install(this);
         instance = this;
         iconTypeFace = Typeface.createFromAsset(getAssets(), "fonts/icomoon.ttf");
 

@@ -116,9 +116,9 @@ public class WorkCreateDivideGroupActivity extends BaseActivity<WorkCreateDivide
     }
 
     public void initView() {
-        mTvTitleMiddleText.setText("创建作业分组");
-        mTvTitleRightText.setText("保存");
-        ((TextView) findViewById(R.id.tv_add)).setText("添加成员");
+        mTvTitleMiddleText.setText(R.string.create_homework_group);
+        mTvTitleRightText.setText(R.string.save);
+        ((TextView) findViewById(R.id.tv_add)).setText(R.string.add_member);
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         final Divider divider = new Divider(ContextCompat.getDrawable(this, R.drawable.divider_line), LinearLayoutManager.VERTICAL);
         divider.setMargin(SystemUtil.dp2px(12), 0, 0, 0);
@@ -191,7 +191,6 @@ public class WorkCreateDivideGroupActivity extends BaseActivity<WorkCreateDivide
     }
 
 
-
     private final class OnItemCreateDivideGroupListener extends OnItemChildClickListener {
 
         @Override
@@ -262,11 +261,15 @@ public class WorkCreateDivideGroupActivity extends BaseActivity<WorkCreateDivide
         //处理studentId
         final String groupName = mEtInputDivideName.getText().toString().trim();
         if (TextUtils.isEmpty(groupName)) {
-            ToastTool.showCommonToast("组名不可以为空");
+            ToastTool.showCommonToast(getString(R.string.please_input_group_name));
+            return;
+        }
+        if (groupName.length() > 10) {
+            ToastTool.showCommonToast(getString(R.string.group_name_exceed_10_char));
             return;
         }
         if (mDivideGroupBeanList.size() == 0) {
-            ToastTool.showCommonToast("请先添加成员");
+            ToastTool.showCommonToast(getString(R.string.please_select_group_member));
             return;
         }
         final int size = mDivideGroupBeanList.size();
@@ -291,6 +294,7 @@ public class WorkCreateDivideGroupActivity extends BaseActivity<WorkCreateDivide
         showLoadingDialog();
         mPresenter.addGroupInformation(groupName, mClassId, studentId);
     }
+
     public List<CommonMemberBean> getListData() {
         return mDivideGroupBeanList;
     }

@@ -1,5 +1,6 @@
 package com.histudent.jwsoft.histudent.activity.homework;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -29,6 +31,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.activity.image.ShowImageActivity;
 import com.histudent.jwsoft.histudent.adapter.VideoAdapter;
@@ -48,6 +51,7 @@ import com.histudent.jwsoft.histudent.constant.Const;
 import com.histudent.jwsoft.histudent.entity.AudioInfo;
 import com.histudent.jwsoft.histudent.entity.AudioPlayEvent;
 import com.histudent.jwsoft.histudent.entity.AudioPlayStatusEvent;
+import com.histudent.jwsoft.histudent.entity.FlowClickEvent;
 import com.histudent.jwsoft.histudent.entity.ImageAttrEntity;
 import com.histudent.jwsoft.histudent.entity.RecordInfoEvent;
 import com.histudent.jwsoft.histudent.entity.RecordStatusEvent;
@@ -56,6 +60,7 @@ import com.histudent.jwsoft.histudent.fragment.work.WorkNoCompleteFragment;
 import com.histudent.jwsoft.histudent.presenter.homework.CorrectPresenter;
 import com.histudent.jwsoft.histudent.presenter.homework.contract.CorrectContract;
 import com.histudent.jwsoft.histudent.widget.FlowLayout;
+import com.netease.nim.uikit.common.util.sys.TimeUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -64,7 +69,13 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Stack;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -97,8 +108,10 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
 
     @BindView(R.id.write_comment)
     LinearLayout mWriteComment;
-    @BindView(R.id.comment_content)
+    @BindView(R.id.comment_content_layout)
     LinearLayout mCommentLayout;
+    @BindView(R.id.comment_content)
+    TextView mCommentContent;
     @BindView(R.id.work_detail_imgs)
     FrameLayout mImgLayout;
     @BindView(R.id.correct_content)
@@ -115,7 +128,11 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
     Button mCorrectFinish;
     @BindView(R.id.layout)
     LinearLayout mLayout;
-    @OnClick({R.id.title_left, R.id.work_detail_photo,R.id.correct_finish,R.id.control_record})
+    @BindView(R.id.modify_comment)
+    LinearLayout mModifyComment;
+
+
+    @OnClick({R.id.title_left, R.id.work_detail_photo, R.id.correct_finish, R.id.control_record,R.id.modify_comment})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.title_left:
@@ -127,13 +144,41 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
                 }
                 break;
             case R.id.correct_finish:
-
+                String contentStr = mCorrectContent.getText().toString();
+                if (TextUtils.isEmpty(contentStr)) {
+                    showContent("请填写评语");
+                    return;
+                }
+                String proposalStr = initProposal();
+                showLoadingDialog();
+                mPresenter.commentHomework(completeId, contentStr, proposalStr, mCommentAudioInfo);
                 break;
             case R.id.control_record:
                 SystemUtil.hideSoftKeyboard(CorrectWorkActivity.this);
                 showRecordWindow();
                 break;
+            case R.id.modify_comment:
+                mWriteComment.setVisibility(View.VISIBLE);
+                mCommentLayout.setVisibility(View.GONE);
+                proposalState.clear();
+                break;
+
         }
+    }
+
+    private String initProposal() {
+        Iterator iter = proposalState.entrySet().iterator();
+        while (iter.hasNext()) {
+            Map.Entry entry = (Map.Entry) iter.next();
+            if ((boolean) entry.getValue()) {
+                proposalIds.add(commens.get((int) entry.getKey()).getCommentId());
+            }
+        }
+        if (proposalIds!=null&&proposalIds.size()>0){
+            return new Gson().toJson(proposalIds);
+        }
+        return "";
+
     }
 
     private WorkCompleteBean.ItemsBean itemsBean;
@@ -144,7 +189,8 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
     private AudioInfo mAudioInfo = new AudioInfo();
     private AudioInfo mCommentAudioInfo = new AudioInfo();
     private List<ImageAttrEntity> imageAttrs = new ArrayList();
-    private List<String> commens = new ArrayList<>();
+    private List<String> commensContent = new ArrayList<>();
+    private List<CommentBean> commens = new ArrayList<>();
     private EmotionMainFragment emotionMainFragment;
     private TextView mRecordTime;
     private TextView mTip;
@@ -169,7 +215,11 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
     private static final int TYPE_VOICE_DETAIL = 1;
     private static final int TYPE_VOICE_COMMENT = 2;
     private int voiceType;
+    private String completeId;
     private long detailVoiceTime;
+    private List<String> proposalIds = new ArrayList<>();
+    private Map<Integer, Boolean> proposalState = new HashMap<>();
+
     @Override
     protected void initInject() {
         getActivityComponent().inject(this);
@@ -189,7 +239,7 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
 
 
     private void initView() {
-        mCorrectContent.setFilters(new InputFilter[] { new InputFilter.LengthFilter(150) });
+        mCorrectContent.setFilters(new InputFilter[]{new InputFilter.LengthFilter(150)});
         mCorrectContent.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -198,7 +248,7 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                mContentNum.setText(charSequence.length()+"/150");
+                mContentNum.setText(charSequence.length() + "/150");
             }
 
             @Override
@@ -209,9 +259,21 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
         initHeader();
         initTitle();
         initRecycler();
-        initComment();
+        initInputSoftKeyboard();
         initEmotionMainFragment();
         initAudioPlay();
+    }
+
+    private void initInputSoftKeyboard() {
+//        获取焦点后 自动弹出键盘
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            public void run() {
+                InputMethodManager inputManager = (InputMethodManager) mCorrectContent.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.showSoftInput(mCorrectContent, 0);
+            }
+
+        }, 100);
     }
 
 
@@ -280,11 +342,12 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
         });
     }
 
-    private void initComment() {
-        if (itemsBean.isIsComment()){
+    private void initComment(CompleteDetailBean completeDetailBean) {
+        if (itemsBean.isIsComment()) {
             mCommentLayout.setVisibility(View.VISIBLE);
             mWriteComment.setVisibility(View.GONE);
-        }else{
+            mCommentContent.setText(completeDetailBean.getComment());
+        } else {
             mWriteComment.setVisibility(View.VISIBLE);
             mCommentLayout.setVisibility(View.GONE);
         }
@@ -308,7 +371,8 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
     }
 
     private void initData() {
-        mPresenter.getCompleteDetail(itemsBean.getHomeworkId(),itemsBean.getUserId());
+        mPresenter.getCompleteDetail(itemsBean.getHomeworkId(), itemsBean.getUserId());
+        mPresenter.getCommentList("");
     }
 
 
@@ -346,9 +410,8 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
     }
 
 
-
-
     private void initContent(CompleteDetailBean completeDetail) {
+        completeId = completeDetail.getId();
         if (!TextUtils.isEmpty(completeDetail.getContents())) {
             mWorkContent.setText(completeDetail.getContents());
         }
@@ -365,10 +428,10 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
                 mImgLayout.setVisibility(View.VISIBLE);
                 CommonGlideImageLoader.getInstance().displayNetImage(CorrectWorkActivity.this, completeImages.get(0).getFilePath(), mDetailPhoto);
                 mPhotoNum.setText(String.valueOf(completeImages.size()) + "张");
-            }else{
-                    mImgLayout.setVisibility(View.GONE);
+            } else {
+                mImgLayout.setVisibility(View.GONE);
             }
-        }else{
+        } else {
             mImgLayout.setVisibility(View.GONE);
         }
         if (completeDetail.isHasVideo()) {
@@ -380,17 +443,20 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
             mDetailVoiceDel.setVisibility(View.GONE);
             mAudioInfo.setTime(completeDetail.getCompleteVoice().getFileLength());
             detailVoiceTime = completeDetail.getCompleteVoice().getFileLength();
-            mDetailVoiceTimeTotal.setText(TimeUtils.formatTime2(completeDetail.getCompleteVoice().getFileLength()/1000));
-
+            mDetailVoiceTimeTotal.setText(TimeUtils.formatTime2(completeDetail.getCompleteVoice().getFileLength() / 1000));
         }
 
     }
 
     @Override
     public void showCompleteDetail(CompleteDetailBean completeDetailBean) {
-        mPresenter.getCommentList("");
+
         initContent(completeDetailBean);
+        initComment(completeDetailBean);
     }
+
+
+
 
     @Override
     public void getCompleteDetailFail() {
@@ -404,10 +470,18 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
 
     @Override
     public void commentProposalSuccess(List<CommentBean> commentBeens) {
-        for (CommentBean commentBeen:commentBeens){
-            commens.add(commentBeen.getCommentContent());
+        for (CommentBean commentBeen : commentBeens) {
+            commens.add(commentBeen);
+            commensContent.add(commentBeen.getCommentContent());
         }
-        mFlowLayout.setData(commens,STYLE_CHECKBOX);
+        mFlowLayout.setData(commensContent, STYLE_CHECKBOX);
+
+    }
+
+    @Override
+    public void commentHomeworkSuccess() {
+        dismissLoadingDialog();
+        mPresenter.getCompleteDetail(itemsBean.getHomeworkId(), itemsBean.getUserId());
     }
 
 
@@ -416,7 +490,7 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
         int state = event.status;
         switch (state) {
             case Const.START:
-                mHandler.sendEmptyMessage(MSG_RECORD);
+                mHandler.sendEmptyMessageDelayed(MSG_RECORD,1000);
                 break;
             case Const.SUCCESS:
             case Const.CANCEL:
@@ -440,6 +514,13 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
             mCommentAudioInfo.setTime(event.time);
         }
 
+    }
+
+    @Subscribe
+    public void onEvent(FlowClickEvent event) {
+        int position = event.position;
+        boolean isCheck = event.isCheck;
+        proposalState.put(position, isCheck);
     }
 
 
@@ -484,11 +565,11 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(AudioPlayEvent event) {
-        if (voiceType==TYPE_VOICE_COMMENT){
+        if (voiceType == TYPE_VOICE_COMMENT) {
             mCommentProgress.setProgress((int) ((event.position / (time * 1000.0)) * 100));
             mCommentVoiceTime.setText(TimeUtils.formatTime2(event.position / 1000));
-        }else{
-            mDetailProgress.setProgress((int) ((event.position / (float)detailVoiceTime) * 100));
+        } else {
+            mDetailProgress.setProgress((int) ((event.position / (float) detailVoiceTime) * 100));
             mDetailVoiceTime.setText(TimeUtils.formatTime2(event.position / 1000));
         }
     }
@@ -499,11 +580,11 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
         switch (status) {
             case 0:
             case -1:
-                if (voiceType==TYPE_VOICE_COMMENT){
+                if (voiceType == TYPE_VOICE_COMMENT) {
                     mCommentProgress.setProgress(0);
                     mCommentVoiceTime.setText("00:00");
                     mCommentVoiceControl.setText(getResources().getString(R.string.icon_bofang));
-                }else{
+                } else {
                     mDetailProgress.setProgress(0);
                     mDetailVoiceTime.setText("00:00");
                     mDetailVoiceControl.setText(getResources().getString(R.string.icon_bofang));
@@ -565,6 +646,7 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
     @Override
     public void showContent(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        dismissLoadingDialog();
     }
 
     /**

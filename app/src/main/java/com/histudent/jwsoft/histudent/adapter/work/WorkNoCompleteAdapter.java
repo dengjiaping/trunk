@@ -90,6 +90,10 @@ public class WorkNoCompleteAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 holder.mName.setText(itemsBean.getUserName());
             }
         }
+        else if (viewHolder instanceof WorkNoCompleteAdapter.EmptyViewHolder){
+            WorkNoCompleteAdapter.EmptyViewHolder holder = ((WorkNoCompleteAdapter.EmptyViewHolder) viewHolder);
+            holder.mTip.setText("全部已完成");
+        }
     }
 
     @Override
@@ -134,8 +138,12 @@ public class WorkNoCompleteAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     class EmptyViewHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.content)
+        TextView mTip;
+
         public EmptyViewHolder(View itemView) {
             super(itemView);
+            ButterKnife.bind(this,itemView);
         }
     }
 }

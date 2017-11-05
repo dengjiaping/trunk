@@ -56,9 +56,9 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         VideoInfoEntity videoInfo = mList.get(position);
-        if (isDelete){
+        if (isDelete) {
             holder.mVideoDelete.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             holder.mVideoDelete.setVisibility(View.GONE);
         }
         if (videoInfo != null) {
@@ -100,7 +100,9 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
                     break;
                 case R.id.publish_movie_play:
                 case R.id.item_video_cover:
-                    EventBus.getDefault().post(new WorkVideoPlayEvent(mList.get(getLayoutPosition())));
+                    final WorkVideoPlayEvent workVideoPlayEvent = new WorkVideoPlayEvent(mList.get(getLayoutPosition()));
+                    workVideoPlayEvent.position = getLayoutPosition();
+                    EventBus.getDefault().post(workVideoPlayEvent);
                     break;
             }
         }

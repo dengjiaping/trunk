@@ -37,6 +37,16 @@ public class WorkImgDetailBean {
     private String ext;
     private String batchNumber;
 
+    public String getThumbnailFilePath() {
+        return thumbnailFilePath;
+    }
+
+    public void setThumbnailFilePath(String thumbnailFilePath) {
+        this.thumbnailFilePath = thumbnailFilePath;
+    }
+
+    private String thumbnailFilePath;
+
     public String getId() {
         return id;
     }

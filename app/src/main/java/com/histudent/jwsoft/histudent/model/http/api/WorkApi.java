@@ -8,6 +8,7 @@ import com.histudent.jwsoft.histudent.bean.homework.AlreadyCompleteHomeworkEntit
 import com.histudent.jwsoft.histudent.bean.homework.ClassMemberEntity;
 import com.histudent.jwsoft.histudent.bean.homework.CommentBean;
 import com.histudent.jwsoft.histudent.bean.homework.CompleteDetailBean;
+import com.histudent.jwsoft.histudent.bean.homework.CreateWorkBean;
 import com.histudent.jwsoft.histudent.bean.homework.GroupMemberDetailEntity;
 import com.histudent.jwsoft.histudent.bean.homework.SelectReceiverPersonEntity;
 import com.histudent.jwsoft.histudent.bean.homework.SubjectEntity;
@@ -48,7 +49,7 @@ public interface WorkApi {
      */
     @Multipart
     @POST("homework/homeWorkAddBatch")
-    Observable<BaseHttpResponse> createHomeWork(@Part List<MultipartBody.Part> parts);
+    Observable<HttpResponse<CreateWorkBean>> createHomeWork(@Part List<MultipartBody.Part> parts);
 
 
     @FormUrlEncoded
@@ -86,25 +87,6 @@ public interface WorkApi {
     @POST("homework/singleNotice")
     Observable<BaseHttpResponse> singleNotice(@Field("hwId") String homeworkId,@Field("userId") String userId,@Field("noticeType") int type);
 
-    /**
-     * 评价完成的作业
-     *
-     * @param completeId     作业id
-     * @param commentContent 评论内容
-     * @param haveImg        是否有图片
-     * @param haveVoice      是否有语音
-     * @param voiceId        语音Id
-     * @param voiceLength    语音长度
-     * @return
-     */
-    @FormUrlEncoded
-    @POST("homework/teacher/comment")
-    Observable<BaseHttpResponse> commentHomework(@Field("completeId") String completeId,
-                                                 @Field("commentContent") String commentContent,
-                                                 @Field("haveImg") boolean haveImg,
-                                                 @Field("haveVoice") boolean haveVoice,
-                                                 @Field("voiceId") String voiceId,
-                                                 @Field("voiceLength") String voiceLength);
 
     @FormUrlEncoded
     @POST("homework/teacher/commentProposalList")
@@ -139,6 +121,11 @@ public interface WorkApi {
     @POST("homework/completeDetailed")
     Observable<HttpResponse<CompleteDetailBean>> completeDetailed(@Field("homeworkId") String homeworkId, @Field("studentId") String studentId);
 
+
+
+    @Multipart
+    @POST("homework/teacher/comment")
+    Observable<BaseHttpResponse> commentHomework(@Part List<MultipartBody.Part> parts);
 
 
     /**

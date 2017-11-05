@@ -6,6 +6,7 @@ package com.histudent.jwsoft.histudent.entity;
 
 public class WorkVideoPlayEvent {
     public VideoInfoEntity videoInfoEntity;
+    public int position;
 
     public WorkVideoPlayEvent(VideoInfoEntity videoInfoEntity) {
         this.videoInfoEntity = videoInfoEntity;

@@ -34,6 +34,7 @@ public class RefreshHandler implements OnRefreshLoadmoreListener {
     private final List<HomeworkAlreadyBean> mAlreadyBeanArrayList = new ArrayList<>();
     private int mType = -1;
     private final WorkAlreadyCompletePresenter PRESENTER;
+    private boolean isRefreshOrLoadMore;
 
     private RefreshHandler(Context context, SmartRefreshLayout refresh_layout, RecyclerView recyclerview,
                            BaseSectionQuickAdapter adapter, PagingBean page_bean, WorkAlreadyCompletePresenter presenter) {
@@ -53,7 +54,11 @@ public class RefreshHandler implements OnRefreshLoadmoreListener {
     }
 
     public void requestData() {
-        ((WorkAlreadyCompleteActivity) CONTEXT).showLoadingDialog();
+        if (isRefreshOrLoadMore) {
+            isRefreshOrLoadMore = false;
+        } else {
+            ((WorkAlreadyCompleteActivity) CONTEXT).showLoadingDialog();
+        }
         final Map<String, Object> params = ParamsManager.getInstance()
                 .setParams(ParamKeys.USER_TYPE, mType)
                 .setParams(ParamKeys.PAGE_INDEX, PAGE_BEAN.getCurrentIndex())
@@ -69,12 +74,14 @@ public class RefreshHandler implements OnRefreshLoadmoreListener {
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
         PAGE_BEAN.addCurrentIndex();
+        isRefreshOrLoadMore = true;
         requestData();
     }
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
         PAGE_BEAN.resetCurrentIndex();
+        isRefreshOrLoadMore = true;
         requestData();
     }
 
@@ -105,6 +112,13 @@ public class RefreshHandler implements OnRefreshLoadmoreListener {
             if (footerLayoutCount == 0)
                 ADAPTER.addFooterView(((WorkAlreadyCompleteActivity) CONTEXT).getFootView());
         }
+    }
+    public boolean isRefreshOrLoadMore() {
+        return isRefreshOrLoadMore;
+    }
+
+    public void setRefreshOrLoadMore(boolean refreshOrLoadMore) {
+        isRefreshOrLoadMore = refreshOrLoadMore;
     }
 
 

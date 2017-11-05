@@ -70,7 +70,7 @@ public class WorkSelectReceiverPersonActivity extends BaseActivity<WorkSelectRec
                 mListEntity.add(entity);
             }
         }
-        EventBus.getDefault().postSticky(new WorkReceiverEvent(mListEntity));
+        EventBus.getDefault().post(new WorkReceiverEvent(mListEntity));
         finish();
     }
 

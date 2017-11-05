@@ -354,7 +354,14 @@ public class ClassFragment extends BaseFragment {
                 isRefresh = true;
 //                MyWebActivity.start(getActivity(), bean.getAppUrl());
                 final Intent intent = new Intent(getContext(), WorkAlreadyCompleteActivity.class);
-                intent.putExtra(TransferKeys.IS_ADMIN,classModel.isIsAdmin());
+                final int userType = HiCache.getInstance().getLoginUserInfo().getUserType();
+                boolean isTeacher;
+                if (userType == 3) {
+                    isTeacher = true;
+                } else {
+                    isTeacher = false;
+                }
+                intent.putExtra(TransferKeys.IS_TEACHER, isTeacher);
                 CommonAdvanceUtils.startActivity(getContext(), intent);
                 break;
             //班级任务

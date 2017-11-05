@@ -12,9 +12,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.histudent.jwsoft.histudent.R;
+import com.histudent.jwsoft.histudent.bean.homework.HomeworkDetailBean;
+import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
 import com.histudent.jwsoft.histudent.entity.VideoInfoEntity;
 import com.histudent.jwsoft.histudent.entity.WorkVideoDeleteEvent;
+import com.histudent.jwsoft.histudent.entity.WorkVideoEvent;
 import com.histudent.jwsoft.histudent.entity.WorkVideoPlayEvent;
 import com.histudent.jwsoft.histudent.tool.CommonTool;
 
@@ -33,14 +36,13 @@ import butterknife.OnClick;
 
 public class VideoDetailAdapter extends RecyclerView.Adapter<VideoDetailAdapter.ViewHolder> {
     private Context mContext;
-    private List<VideoInfoEntity> mList = new ArrayList<>();
-    private boolean isDelete = false;//是否可以删除
+    private List<HomeworkDetailBean.VideoListBean> mList = new ArrayList<>();
 
     public VideoDetailAdapter(Context context) {
         this.mContext = context;
     }
 
-    public void setList(List<VideoInfoEntity> list) {
+    public void setList(List<HomeworkDetailBean.VideoListBean> list) {
         this.mList = list;
         notifyDataSetChanged();
     }
@@ -53,16 +55,11 @@ public class VideoDetailAdapter extends RecyclerView.Adapter<VideoDetailAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        VideoInfoEntity videoInfo = mList.get(position);
-        if (isDelete){
-            holder.mVideoDelete.setVisibility(View.VISIBLE);
-        }else{
-            holder.mVideoDelete.setVisibility(View.GONE);
-        }
+        HomeworkDetailBean.VideoListBean videoInfo = mList.get(position);
+        holder.mVideoDelete.setVisibility(View.GONE);
         if (videoInfo != null) {
-            Bitmap bitmap = ThumbnailUtils.createVideoThumbnail(videoInfo.getFileName(), MediaStore.Images.Thumbnails.MINI_KIND);
-            holder.mVideoCover.setImageBitmap(bitmap);
-            holder.mVideoTime.setText(CommonTool.getTimeFromMillisecond(videoInfo.getDuration()));
+            CommonGlideImageLoader.getInstance().displayNetImage(mContext, videoInfo.getAliVideoCover(), holder.mVideoCover);
+            holder.mVideoTime.setText(CommonTool.getTimeFromMillisecond((long) videoInfo.getAliVideoPlayDuration() * 1000));
         }
     }
 
@@ -87,7 +84,7 @@ public class VideoDetailAdapter extends RecyclerView.Adapter<VideoDetailAdapter.
             switch (view.getId()) {
                 case R.id.publish_movie_play:
                 case R.id.item_video_cover:
-                    EventBus.getDefault().post(new WorkVideoPlayEvent(mList.get(getLayoutPosition())));
+                    EventBus.getDefault().post(new WorkVideoEvent(mList.get(getLayoutPosition())));
                     break;
             }
         }

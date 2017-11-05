@@ -25,6 +25,17 @@ public class HomeworkSelectGroupL0Bean extends AbstractExpandableItem<HomeworkSe
      */
     private String mTeamId;
 
+    private String mGradeName;
+
+    public String getGradeName() {
+        return mGradeName;
+    }
+
+    public HomeworkSelectGroupL0Bean setGradeName(String gradeName) {
+        mGradeName = gradeName;
+        return this;
+    }
+
     public String getTeamId() {
         return mTeamId;
     }

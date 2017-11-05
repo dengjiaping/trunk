@@ -25,6 +25,15 @@ public class SelectReceiverPersonEntity {
         private String classFullName;
         private String classId;
         private String teamId;
+        private String className;
+
+        public String getClassName() {
+            return className;
+        }
+
+        public void setClassName(String className) {
+            this.className = className;
+        }
 
         public List<ReceiverClassGroupPerson> getTeamList() {
             return teamList;

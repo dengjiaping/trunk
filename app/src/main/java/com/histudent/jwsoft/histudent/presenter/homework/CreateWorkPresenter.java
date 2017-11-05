@@ -10,6 +10,7 @@ import com.alibaba.sdk.android.vod.upload.model.VodInfo;
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.base.RxPresenter;
 import com.histudent.jwsoft.histudent.bean.UploadAuthBean;
+import com.histudent.jwsoft.histudent.bean.homework.CreateWorkBean;
 import com.histudent.jwsoft.histudent.body.hiworld.activity.EssayActivity;
 import com.histudent.jwsoft.histudent.commen.bean.VideoAuthBean;
 import com.histudent.jwsoft.histudent.commen.utils.RequestManager;
@@ -140,13 +141,14 @@ public class CreateWorkPresenter extends RxPresenter<CreateWorkContract.View> im
 
         Disposable disposable = mApiFactory.getWorkApi().createHomeWork(parts)
                 .compose(RxSchedulers.io_main())
-                .subscribe(new Consumer<BaseHttpResponse>() {
+                .subscribe(new Consumer<HttpResponse<CreateWorkBean>>() {
                     @Override
-                    public void accept(BaseHttpResponse baseHttpResponse) throws Exception {
-                        if (baseHttpResponse.isSuccess()) {
-                            mView.createWorkSucceed();
+                    public void accept(HttpResponse<CreateWorkBean> response) throws Exception {
+                        if (response.isSuccess()) {
+                            CreateWorkBean createWorkBean=response.getData();
+                            mView.createWorkSucceed(createWorkBean);
                         } else {
-                            mView.showContent(baseHttpResponse.getMsg());
+                            mView.showContent(response.getMsg());
                         }
                     }
                 }, new RxException<>(e -> {
@@ -187,8 +189,8 @@ public class CreateWorkPresenter extends RxPresenter<CreateWorkContract.View> im
 
             @Override
             public void onUploadSucceed(UploadFileInfo info) {
-                mView.closeDialog();
                 mView.showVideoList(uploadAuthBean.getVideoId());
+
             }
 
             @Override

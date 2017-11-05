@@ -45,7 +45,7 @@ public class WorkCompleteFragment extends BaseFragment<WorkCompletePresenter> im
     private WorkCompleteAdapter mAdapter;
     private LinearLayoutManager mLayoutManager;
     private String homeworkId;
-    private static final int PAGE_SIZE = 20;
+    private static final int PAGE_SIZE = 60;
     private static final int PULL_DOWN = 0;
     private static final int PULL_UP = 1;
     private int loading = 0;
@@ -74,6 +74,7 @@ public class WorkCompleteFragment extends BaseFragment<WorkCompletePresenter> im
     protected void init() {
         initArguments();
         initView();
+//        initData();
     }
 
     private void initArguments() {

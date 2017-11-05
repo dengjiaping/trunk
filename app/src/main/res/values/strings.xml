@@ -714,4 +714,17 @@
     <string name="tip_message">提醒消息</string>
     <string name="homework">作业</string>
     <string name="cancle_homework">是否取消作业</string>
+    <string name="please_input_group_name">请填写分组名称</string>
+    <string name="group_name_exceed_10_char">分组名称不能超过10个字符</string>
+    <string name="please_select_group_member">请选择分组成员</string>
+    <string name="create_homework_group">创建作业分组</string>
+    <string name="save">保存</string>
+    <string name="add_member">添加成员</string>
+    <string name="please_select_subject">请选择科目</string>
+    <string name="please_select_receiver">请选择接收人</string>
+    <string name="please_input_homework_content">请填写作业内容</string>
+    <string name="publish_homework">发布作业</string>
+    <string name="submit">提交</string>
+    <string name="publish_homework_success">发布成功</string>
+    <string name="hint_title">提示</string>
 </resources>
