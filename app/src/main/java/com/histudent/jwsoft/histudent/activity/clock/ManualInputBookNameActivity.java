@@ -9,7 +9,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.TextView;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.listener.HttpRequestCallBack;
@@ -72,7 +72,7 @@ public class ManualInputBookNameActivity extends BaseActivity {
         mTvTopRightText.setOnClickListener((View view) -> {
             final String inputBookName = mEtInputBookName.getText().toString().trim();
             if (TextUtils.isEmpty(inputBookName)) {
-                ToastTool.showCommonToast(HiStudentApplication.getInstance(), getString(R.string.book_name_is_empty));
+                ToastTool.showCommonToast(HTApplication.getInstance(), getString(R.string.book_name_is_empty));
                 return;
             }
 

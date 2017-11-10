@@ -13,11 +13,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.body.find.activity.EditApplicationActivity;
 import com.histudent.jwsoft.histudent.body.find.bean.HuodongBean;
-import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
 import com.histudent.jwsoft.histudent.comment2.utils.DragHolderCallBack;
 import com.histudent.jwsoft.histudent.comment2.utils.RecycleCallBack;

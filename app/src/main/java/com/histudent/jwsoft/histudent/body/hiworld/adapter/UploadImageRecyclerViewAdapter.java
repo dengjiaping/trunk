@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.body.hiworld.bean.RelationPersonModel;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.MyImageLoader;
@@ -70,7 +70,7 @@ public class UploadImageRecyclerViewAdapter extends RecyclerView.Adapter {
             final ImageView imageView = ((BodyItemAdapter) holder).getImageView();
 
             File file = new File(list.get(position));
-            MyImageLoader.getIntent().displayLocalImage(HiStudentApplication.getInstance(), file, imageView,R.drawable.default_placeholder_style_1);
+            MyImageLoader.getIntent().displayLocalImage(HTApplication.getInstance(), file, imageView,R.drawable.default_placeholder_style_1);
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             if (isHaveRelationPerson(file.getName())) {
                 ((BodyItemAdapter) holder).getRelationIcon().setVisibility(View.VISIBLE);

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/_EFF0F2"
@@ -8,70 +9,15 @@
 
     <include layout="@layout/common_top_layout"/>
 
-    <LinearLayout
-        android:id="@+id/ll_teacher_layout"
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tl_tab_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp50"
         android:background="@color/white"
-        android:orientation="horizontal">
-
-        <RelativeLayout
-            android:id="@+id/rl_teacher_publish_homework_self"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/tv_teacher_publish_homework_self"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:text="我发布的"
-                android:textColor="@color/_333333"
-                android:textSize="@dimen/sp16"/>
-
-
-            <View
-                android:id="@+id/view_teacher_publish_homework_self_line"
-                android:layout_width="@dimen/dp60"
-                android:layout_height="@dimen/dp2"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:background="@color/_28ca7e"/>
-
-
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:id="@+id/rl_teacher_publish_homework_all"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/tv_teacher_publish_homework_all"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="全部"
-                android:textColor="@color/_bbbbbb"/>
-
-            <View
-                android:id="@+id/view_teacher_publish_homework_all_line"
-                android:layout_width="@dimen/dp60"
-                android:layout_height="@dimen/dp2"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="bottom"
-                android:background="@color/_28ca7e"
-                android:visibility="gone"/>
-
-
-        </RelativeLayout>
-
-    </LinearLayout>
+        app:tabIndicatorColor="@color/_28ca7e"
+        app:tabSelectedTextColor="@color/_333333"
+        app:tabTextColor="@color/_bbbbbb"/>
 
     <View
         android:id="@+id/view_teacher_line"

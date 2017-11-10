@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -34,18 +33,19 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.activity.image.ShowImageActivity;
-import com.histudent.jwsoft.histudent.adapter.VideoAdapter;
+import com.histudent.jwsoft.histudent.adapter.work.VideoDetailAdapter;
 import com.histudent.jwsoft.histudent.base.BaseActivity;
 import com.histudent.jwsoft.histudent.bean.homework.CommentBean;
 import com.histudent.jwsoft.histudent.bean.homework.CompleteDetailBean;
-import com.histudent.jwsoft.histudent.bean.homework.HomeworkDetailBean;
+import com.histudent.jwsoft.histudent.bean.homework.VideoDetailBean;
 import com.histudent.jwsoft.histudent.bean.homework.WorkCompleteBean;
-import com.histudent.jwsoft.histudent.bean.homework.WorkImgDetailBean;
+import com.histudent.jwsoft.histudent.body.hiworld.activity.WatchActionVideoActivity;
 import com.histudent.jwsoft.histudent.commen.keyword.fragment.EmotionMainFragment;
 import com.histudent.jwsoft.histudent.commen.keyword.utils.DisplayUtils;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
+import com.histudent.jwsoft.histudent.comment2.utils.EmotionUtils;
 import com.histudent.jwsoft.histudent.comment2.utils.TimeUtils;
 import com.histudent.jwsoft.histudent.constant.Const;
 import com.histudent.jwsoft.histudent.entity.AudioInfo;
@@ -55,12 +55,11 @@ import com.histudent.jwsoft.histudent.entity.FlowClickEvent;
 import com.histudent.jwsoft.histudent.entity.ImageAttrEntity;
 import com.histudent.jwsoft.histudent.entity.RecordInfoEvent;
 import com.histudent.jwsoft.histudent.entity.RecordStatusEvent;
-import com.histudent.jwsoft.histudent.fragment.work.WorkCompleteFragment;
-import com.histudent.jwsoft.histudent.fragment.work.WorkNoCompleteFragment;
+import com.histudent.jwsoft.histudent.entity.WorkVideoEvent;
 import com.histudent.jwsoft.histudent.presenter.homework.CorrectPresenter;
 import com.histudent.jwsoft.histudent.presenter.homework.contract.CorrectContract;
+import com.histudent.jwsoft.histudent.widget.FlowInfo;
 import com.histudent.jwsoft.histudent.widget.FlowLayout;
-import com.netease.nim.uikit.common.util.sys.TimeUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -69,11 +68,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Stack;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -132,7 +127,7 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
     LinearLayout mModifyComment;
 
 
-    @OnClick({R.id.title_left, R.id.work_detail_photo, R.id.correct_finish, R.id.control_record,R.id.modify_comment})
+    @OnClick({R.id.title_left, R.id.work_detail_photo, R.id.correct_finish, R.id.control_record, R.id.modify_comment})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.title_left:
@@ -144,37 +139,51 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
                 }
                 break;
             case R.id.correct_finish:
+                mPresenter.stopAudio();
+                voiceType =TYPE_VOICE_COMMENT;
                 String contentStr = mCorrectContent.getText().toString();
-                if (TextUtils.isEmpty(contentStr)) {
+                String proposalStr = initProposal();
+                String delVoiceStr = "";
+                if (delVoice != null && delVoice.size() > 0) {
+                    delVoiceStr = new Gson().toJson(delVoice);
+                }
+                if (TextUtils.isEmpty(contentStr) && TextUtils.isEmpty(proposalStr)) {
                     showContent("请填写评语");
                     return;
                 }
-                String proposalStr = initProposal();
+
                 showLoadingDialog();
-                mPresenter.commentHomework(completeId, contentStr, proposalStr, mCommentAudioInfo);
+                mPresenter.commentHomework(completeId, contentStr, proposalStr, mCommentAudioInfo, delVoiceStr);
                 break;
             case R.id.control_record:
+                SystemUtil.hideSoftKeyboard(CorrectWorkActivity.this);
                 SystemUtil.hideSoftKeyboard(CorrectWorkActivity.this);
                 showRecordWindow();
                 break;
             case R.id.modify_comment:
+                mPresenter.stopAudio();
+                voiceType =TYPE_VOICE_COMMENT_DETAIL;
                 mWriteComment.setVisibility(View.VISIBLE);
                 mCommentLayout.setVisibility(View.GONE);
-                proposalState.clear();
+                initWriteComment();
                 break;
 
         }
     }
 
+
     private String initProposal() {
-        Iterator iter = proposalState.entrySet().iterator();
-        while (iter.hasNext()) {
-            Map.Entry entry = (Map.Entry) iter.next();
-            if ((boolean) entry.getValue()) {
-                proposalIds.add(commens.get((int) entry.getKey()).getCommentId());
+        proposalIds.clear();
+        List<FlowInfo> flowInfos = mFlowLayout.getFlowInfos();
+        if (flowInfos != null && flowInfos.size() > 0) {
+            for (int i = 0; i < flowInfos.size(); i++) {
+                if (flowInfos.get(i).getIsCheck()) {
+                    proposalIds.add(commens.get(i).getCommentId());
+                }
+
             }
         }
-        if (proposalIds!=null&&proposalIds.size()>0){
+        if (proposalIds != null && proposalIds.size() > 0) {
             return new Gson().toJson(proposalIds);
         }
         return "";
@@ -183,11 +192,12 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
 
     private WorkCompleteBean.ItemsBean itemsBean;
 
-    private VideoAdapter mVideoAdapter;
+    private VideoDetailAdapter mVideoAdapter;
     private LinearLayoutManager mVideoLayoutManager;
     private GridLayoutManager mImgLayoutManager;
-    private AudioInfo mAudioInfo = new AudioInfo();
-    private AudioInfo mCommentAudioInfo = new AudioInfo();
+    private AudioInfo mAudioInfo = new AudioInfo();//作业详情音频
+    private AudioInfo mCommentAudioInfo = new AudioInfo();//修改评语音频
+    private AudioInfo mCommentDetailAudioInfo = new AudioInfo();//完成评语音频
     private List<ImageAttrEntity> imageAttrs = new ArrayList();
     private List<String> commensContent = new ArrayList<>();
     private List<CommentBean> commens = new ArrayList<>();
@@ -200,25 +210,36 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
     private boolean isRecord = false;
     private int time;
     private static final int MSG_RECORD = 1;
-    private View commentAudio;
+    private View commentAudio;//评语修改的audio
     private IconView mCommentVoiceControl;
     private TextView mCommentVoiceTime;
     private TextView mCommentVoiceTimeTotal;
     private SeekBar mCommentProgress;
     private IconView mCommentVoiceDel;
-    private View detailAudio;
+
+    private View detailAudio; //作业的audio
     private IconView mDetailVoiceControl;
     private TextView mDetailVoiceTime;
     private TextView mDetailVoiceTimeTotal;
     private SeekBar mDetailProgress;
     private IconView mDetailVoiceDel;
-    private static final int TYPE_VOICE_DETAIL = 1;
+
+    private View commentdetailAudio;
+    private IconView mCommentDetailVoiceControl;
+    private TextView mCommentDetailVoiceTime;
+    private TextView mCommentDetailVoiceTimeTotal;
+    private SeekBar mCommentDetailProgress;
+    private IconView mCommentDetailVoiceDel;
+    private static final int TYPE_VOICE_DETAIL = 1;//作业的audio
     private static final int TYPE_VOICE_COMMENT = 2;
+    private static final int TYPE_VOICE_COMMENT_DETAIL = 3;
     private int voiceType;
     private String completeId;
     private long detailVoiceTime;
     private List<String> proposalIds = new ArrayList<>();
-    private Map<Integer, Boolean> proposalState = new HashMap<>();
+    private CompleteDetailBean mCompleteDetailBean;
+    private List<String> delVoice = new ArrayList<>();
+    private List<FlowInfo> flowInfos;
 
     @Override
     protected void initInject() {
@@ -239,7 +260,7 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
 
 
     private void initView() {
-        mCorrectContent.setFilters(new InputFilter[]{new InputFilter.LengthFilter(150)});
+//        mCorrectContent.setFilters(new InputFilter[]{new InputFilter.LengthFilter(150)});
         mCorrectContent.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -248,7 +269,7 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                mContentNum.setText(charSequence.length() + "/150");
+
             }
 
             @Override
@@ -256,6 +277,7 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
 
             }
         });
+        mContentNum.setVisibility(View.GONE);
         initHeader();
         initTitle();
         initRecycler();
@@ -284,6 +306,66 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
         mCommentProgress = commentAudio.findViewById(R.id.notices_voice_progress);
         mCommentVoiceTimeTotal = commentAudio.findViewById(R.id.notices_voice_time_total);
         mCommentVoiceDel = commentAudio.findViewById(R.id.delete_voice);
+        mCommentVoiceDel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                commentAudio.setVisibility(View.GONE);
+                mPresenter.stopAudio();
+                delVoice.clear();
+                if (mCompleteDetailBean != null) {
+                    if (mCompleteDetailBean.getCompleteVoice() != null) {
+                        if (!TextUtils.isEmpty(mCompleteDetailBean.getCompleteVoice().getId())){
+                            delVoice.add(mCompleteDetailBean.getCompleteVoice().getId());
+                        }
+                    }
+                }
+                mCommentAudioInfo.setFile(null);
+            }
+        });
+
+        mCommentVoiceControl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mPresenter.getAudioState()) {
+
+                    if (voiceType == TYPE_VOICE_COMMENT) {
+                        mPresenter.pauseAudio();
+                        mCommentVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                    } else {
+                        pauseAudio(TYPE_VOICE_COMMENT);
+                        mPresenter.playAudio(mCommentAudioInfo.getFile().getAbsolutePath());
+                        mCommentVoiceControl.setText(getResources().getString(R.string.icon_zanting));
+                    }
+                } else {
+                    if (voiceType != TYPE_VOICE_COMMENT) {
+                        pauseAudio(TYPE_VOICE_COMMENT);
+                    }
+                    mPresenter.playAudio(mCommentAudioInfo.getFile().getAbsolutePath());
+                    mCommentVoiceControl.setText(getResources().getString(R.string.icon_zanting));
+                }
+                voiceType = TYPE_VOICE_COMMENT;
+            }
+        });
+        mCommentProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                double position = seekBar.getProgress() / 100.0;
+                voiceType = TYPE_VOICE_COMMENT;
+                pauseAudio(TYPE_VOICE_COMMENT);
+                mCommentVoiceControl.setText(getResources().getString(R.string.icon_zanting));
+                mPresenter.playAudio(mCommentAudioInfo.getFile().getAbsolutePath(), (int) (mCommentAudioInfo.getTime() * 1000 * position));
+            }
+        });
 
         detailAudio = findViewById(R.id.detail_audio);
         mDetailVoiceControl = detailAudio.findViewById(R.id.notices_voice_control);
@@ -292,61 +374,151 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
         mDetailVoiceTimeTotal = detailAudio.findViewById(R.id.notices_voice_time_total);
         mDetailVoiceDel = detailAudio.findViewById(R.id.delete_voice);
 
-        mCommentVoiceControl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mPresenter.getAudioState()) {
-                    if (voiceType == TYPE_VOICE_COMMENT) {
-                        mCommentVoiceControl.setText(getResources().getString(R.string.icon_bofang));
-                        mPresenter.pauseAudio();
-                        mCommentVoiceControl.setText(getResources().getString(R.string.icon_bofang));
-                    } else {
-                        mCommentVoiceControl.setText(getResources().getString(R.string.icon_zanting));
-                        mPresenter.playAudio(mCommentAudioInfo.getFile().getAbsolutePath());
-                    }
-
-                    mDetailVoiceControl.setText(getResources().getString(R.string.icon_bofang));
-                    voiceType = TYPE_VOICE_COMMENT;
-                } else {
-                    if (mAudioInfo != null) {
-                        mCommentVoiceControl.setText(getResources().getString(R.string.icon_zanting));
-                        mPresenter.playAudio(mCommentAudioInfo.getFile().getAbsolutePath());
-                    }
-                    voiceType = TYPE_VOICE_COMMENT;
-                }
-            }
-        });
-
         mDetailVoiceControl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (mPresenter.getAudioState()) {
+
                     if (voiceType == TYPE_VOICE_DETAIL) {
                         mPresenter.pauseAudio();
                         mDetailVoiceControl.setText(getResources().getString(R.string.icon_bofang));
                     } else {
+                        pauseAudio(TYPE_VOICE_DETAIL);
                         mPresenter.playAudio(mAudioInfo.getFile().getAbsolutePath());
                         mDetailVoiceControl.setText(getResources().getString(R.string.icon_zanting));
                     }
-
-                    mCommentVoiceControl.setText(getResources().getString(R.string.icon_bofang));
-                    voiceType = TYPE_VOICE_DETAIL;
                 } else {
-                    if (mAudioInfo != null) {
-                        mPresenter.playAudio(mAudioInfo.getFile().getAbsolutePath());
+                    if (voiceType != TYPE_VOICE_DETAIL) {
+                        pauseAudio(TYPE_VOICE_DETAIL);
                     }
+                    mPresenter.playAudio(mAudioInfo.getFile().getAbsolutePath());
                     mDetailVoiceControl.setText(getResources().getString(R.string.icon_zanting));
-                    voiceType = TYPE_VOICE_DETAIL;
                 }
+                voiceType = TYPE_VOICE_DETAIL;
+
+            }
+        });
+
+        mDetailProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                double position = seekBar.getProgress() / 100.0;
+                voiceType = TYPE_VOICE_DETAIL;
+                pauseAudio(TYPE_VOICE_DETAIL);
+                mDetailVoiceControl.setText(getResources().getString(R.string.icon_zanting));
+                mPresenter.playAudio(mAudioInfo.getFile().getAbsolutePath(), (int) (mAudioInfo.getTime() * 1000 * position));
+            }
+        });
+
+        commentdetailAudio = findViewById(R.id.comment_detail_audio);
+        mCommentDetailVoiceControl = commentdetailAudio.findViewById(R.id.notices_voice_control);
+        mCommentDetailVoiceTime = commentdetailAudio.findViewById(R.id.notices_voice_time);
+        mCommentDetailProgress = commentdetailAudio.findViewById(R.id.notices_voice_progress);
+        mCommentDetailVoiceTimeTotal = commentdetailAudio.findViewById(R.id.notices_voice_time_total);
+        mCommentDetailVoiceDel = commentdetailAudio.findViewById(R.id.delete_voice);
+        mCommentDetailVoiceDel.setVisibility(View.GONE);
+
+
+        mCommentDetailVoiceControl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mPresenter.getAudioState()) {
+
+                    if (voiceType == TYPE_VOICE_COMMENT_DETAIL) {
+                        mPresenter.pauseAudio();
+                        mCommentDetailVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                    } else {
+                        pauseAudio(TYPE_VOICE_COMMENT_DETAIL);
+                        mPresenter.playAudio(mCommentDetailAudioInfo.getFile().getAbsolutePath());
+                        mCommentDetailVoiceControl.setText(getResources().getString(R.string.icon_zanting));
+                    }
+                } else {
+                    if (voiceType != TYPE_VOICE_COMMENT_DETAIL) {
+                        mPresenter.pauseAudio();
+                    }
+                    mPresenter.playAudio(mCommentDetailAudioInfo.getFile().getAbsolutePath());
+                    mCommentDetailVoiceControl.setText(getResources().getString(R.string.icon_zanting));
+                }
+                voiceType = TYPE_VOICE_COMMENT_DETAIL;
+            }
+        });
+
+        mCommentDetailProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                double position = seekBar.getProgress() / 100.0;
+                voiceType = TYPE_VOICE_COMMENT_DETAIL;
+                pauseAudio(TYPE_VOICE_COMMENT_DETAIL);
+                mDetailVoiceControl.setText(getResources().getString(R.string.icon_zanting));
+                mPresenter.playAudio(mCommentDetailAudioInfo.getFile().getAbsolutePath(), (int) (mCommentDetailAudioInfo.getTime() * 1000 * position));
             }
         });
     }
 
+    private void pauseAudio(int voiceType) {
+        switch (voiceType) {
+            case TYPE_VOICE_DETAIL:
+                mCommentDetailVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                mCommentDetailVoiceTime.setText("00:00");
+                mCommentDetailProgress.setProgress(0);
+                mCommentVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                mCommentVoiceTime.setText("00:00");
+                mCommentProgress.setProgress(0);
+                break;
+            case TYPE_VOICE_COMMENT:
+                mDetailVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                mDetailVoiceTime.setText("00:00");
+                mDetailProgress.setProgress(0);
+                mCommentDetailVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                mCommentDetailVoiceTime.setText("00:00");
+                mCommentDetailProgress.setProgress(0);
+                break;
+            case TYPE_VOICE_COMMENT_DETAIL:
+                mCommentVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                mCommentVoiceTime.setText("00:00");
+                mCommentProgress.setProgress(0);
+                mDetailVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                mDetailVoiceTime.setText("00:00");
+                mDetailProgress.setProgress(0);
+                break;
+        }
+        mPresenter.stopAudio();
+    }
+
     private void initComment(CompleteDetailBean completeDetailBean) {
-        if (itemsBean.isIsComment()) {
+        if (completeDetailBean.isCommented()) {
             mCommentLayout.setVisibility(View.VISIBLE);
             mWriteComment.setVisibility(View.GONE);
-            mCommentContent.setText(completeDetailBean.getComment());
+            mCommentContent.setText(EmotionUtils.convertNormalStringToSpannableString(completeDetailBean.getComment()));
+            if (completeDetailBean.isCommentVoice()) {
+                CompleteDetailBean.CompleteVoiceBean completeVoiceBean = completeDetailBean.getCommentedVoice();
+                mCommentDetailVoiceTimeTotal.setText(TimeUtils.formatTime2(completeVoiceBean.getFileLength()));
+                mCommentDetailAudioInfo.setTime(completeVoiceBean.getFileLength());
+                commentdetailAudio.setVisibility(View.VISIBLE);
+                mPresenter.downloadVoice(completeVoiceBean.getId(), TYPE_VOICE_COMMENT_DETAIL);
+            } else {
+                commentdetailAudio.setVisibility(View.GONE);
+            }
         } else {
             mWriteComment.setVisibility(View.VISIBLE);
             mCommentLayout.setVisibility(View.GONE);
@@ -354,10 +526,51 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
     }
 
     private void initRecycler() {
-        mVideoAdapter = new VideoAdapter(this);
+        mVideoAdapter = new VideoDetailAdapter(this);
         mVideoLayoutManager = new LinearLayoutManager(this);
         mRecyclerVideo.setAdapter(mVideoAdapter);
         mRecyclerVideo.setLayoutManager(mVideoLayoutManager);
+    }
+
+    private void initWriteComment() {
+        if (mCompleteDetailBean != null) {
+            String flowInfoStr = "";
+            StringBuilder flowInfoBuilder = new StringBuilder();
+            if (flowInfos != null && flowInfos.size() > 0) {
+                for (FlowInfo flowInfo : flowInfos) {
+                    if (flowInfo.getIsCheck()) {
+                        flowInfoBuilder.append(flowInfo.getContent());
+                        flowInfoBuilder.append(",");
+                    }
+
+                }
+            }
+            flowInfoStr = flowInfoBuilder.toString();
+            if (flowInfoStr.endsWith(",")) {
+                flowInfoStr.substring(0, flowInfoStr.length() - 1);
+            }
+            String comment = "";
+            if (!TextUtils.isEmpty(mCompleteDetailBean.getComment())) {
+                if (flowInfoStr.length() < mCompleteDetailBean.getComment().length()) {
+                    comment = mCompleteDetailBean.getComment().substring(flowInfoStr.length());
+                } else {
+                    comment = "";
+                }
+
+            }
+            mCorrectContent.setText(comment);
+            mCorrectContent.setSelection(mCorrectContent.getText().length());
+            if (mCompleteDetailBean.isCommentVoice()) {
+                CompleteDetailBean.CompleteVoiceBean completeVoiceBean = mCompleteDetailBean.getCommentedVoice();
+                mCommentVoiceTimeTotal.setText(TimeUtils.formatTime2(completeVoiceBean.getFileLength()));
+                mCommentAudioInfo.setTime(completeVoiceBean.getFileLength());
+                mCommentAudioInfo.setFile(mCommentDetailAudioInfo.getFile());
+                commentAudio.setVisibility(View.VISIBLE);
+                mPresenter.downloadVoice(completeVoiceBean.getId(), TYPE_VOICE_COMMENT);
+            } else {
+                commentAudio.setVisibility(View.GONE);
+            }
+        }
     }
 
     private void initTitle() {
@@ -371,8 +584,9 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
     }
 
     private void initData() {
+        showLoadingDialog();
         mPresenter.getCompleteDetail(itemsBean.getHomeworkId(), itemsBean.getUserId());
-        mPresenter.getCommentList("");
+        mPresenter.getCommentList(itemsBean.getCompleteId());
     }
 
 
@@ -413,9 +627,10 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
     private void initContent(CompleteDetailBean completeDetail) {
         completeId = completeDetail.getId();
         if (!TextUtils.isEmpty(completeDetail.getContents())) {
-            mWorkContent.setText(completeDetail.getContents());
+            mWorkContent.setText(EmotionUtils.convertNormalStringToSpannableString(completeDetail.getContents()));
         }
         if (completeDetail.isHasImage()) {
+            imageAttrs.clear();
             List<CompleteDetailBean.CompleteImagesBean> completeImages = completeDetail.getCompleteImages();
             if (completeImages != null && completeImages.size() > 0) {
                 for (CompleteDetailBean.CompleteImagesBean completeImage : completeImages) {
@@ -435,47 +650,56 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
             mImgLayout.setVisibility(View.GONE);
         }
         if (completeDetail.isHasVideo()) {
-//            homeworkDetail.getVideoId();
+            mRecyclerVideo.setVisibility(View.VISIBLE);
+            List<VideoDetailBean> videoDetailBeen = completeDetail.getCompleteVideos();
+            mVideoAdapter.setList(videoDetailBeen);
         }
         if (completeDetail.isHasVoice()) {
-            mPresenter.downloadVoice(completeDetail.getCompleteVoice().getId());
+            mPresenter.downloadVoice(completeDetail.getCompleteVoice().getId(), TYPE_VOICE_DETAIL);
             detailAudio.setVisibility(View.VISIBLE);
             mDetailVoiceDel.setVisibility(View.GONE);
             mAudioInfo.setTime(completeDetail.getCompleteVoice().getFileLength());
             detailVoiceTime = completeDetail.getCompleteVoice().getFileLength();
-            mDetailVoiceTimeTotal.setText(TimeUtils.formatTime2(completeDetail.getCompleteVoice().getFileLength() / 1000));
+            mDetailVoiceTimeTotal.setText(TimeUtils.formatTime2(completeDetail.getCompleteVoice().getFileLength()));
         }
 
     }
 
     @Override
     public void showCompleteDetail(CompleteDetailBean completeDetailBean) {
-
+        dismissLoadingDialog();
+        mCompleteDetailBean = completeDetailBean;
         initContent(completeDetailBean);
         initComment(completeDetailBean);
     }
 
 
-
-
     @Override
     public void getCompleteDetailFail() {
-
+        dismissLoadingDialog();
     }
 
     @Override
-    public void downloadVoiceSuccess(File file) {
-        mAudioInfo.setFile(file);
+    public void downloadVoiceSuccess(File file, int type) {
+        if (type == TYPE_VOICE_COMMENT_DETAIL) {
+            mCommentDetailAudioInfo.setFile(file);
+        } else if (type == TYPE_VOICE_DETAIL) {
+            mAudioInfo.setFile(file);
+        }
+
+
     }
 
     @Override
     public void commentProposalSuccess(List<CommentBean> commentBeens) {
+        flowInfos = new ArrayList<>();
         for (CommentBean commentBeen : commentBeens) {
             commens.add(commentBeen);
             commensContent.add(commentBeen.getCommentContent());
+            FlowInfo flowInfo = new FlowInfo(commentBeen.getCommentContent(), commentBeen.isSign());
+            flowInfos.add(flowInfo);
         }
-        mFlowLayout.setData(commensContent, STYLE_CHECKBOX);
-
+        mFlowLayout.setData(flowInfos, STYLE_CHECKBOX);
     }
 
     @Override
@@ -490,16 +714,20 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
         int state = event.status;
         switch (state) {
             case Const.START:
-                mHandler.sendEmptyMessageDelayed(MSG_RECORD,1000);
+                mHandler.sendEmptyMessageDelayed(MSG_RECORD, 1000);
+
                 break;
             case Const.SUCCESS:
             case Const.CANCEL:
             case Const.MAX:
                 mHandler.removeCallbacksAndMessages(null);
                 mPopupWindow.dismiss();
+                mCommentVoiceTime.setText("00:00");
+                mCommentProgress.setProgress(0);
                 mCommentVoiceTimeTotal.setText(TimeUtils.formatTime2(time));
+                mCommentVoiceControl.setText(getResources().getString(R.string.icon_bofang));
                 commentAudio.setVisibility(View.VISIBLE);
-
+                time = 0;
                 break;
 
         }
@@ -511,16 +739,21 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
         if (event != null) {
             mCommentAudioInfo.setFile(event.mFile);
             mCommentAudioInfo.setRecordType(event.mRecordType);
-            mCommentAudioInfo.setTime(event.time);
+            mCommentAudioInfo.setTime(event.time / 1000);
         }
 
+    }
+
+    @Subscribe
+    public void onEvent(WorkVideoEvent workVideoEvent) {
+        VideoDetailBean videoListBean = workVideoEvent.videoDetailBean;
+        WatchActionVideoActivity.start(this, videoListBean.getAliVideoId());
     }
 
     @Subscribe
     public void onEvent(FlowClickEvent event) {
         int position = event.position;
         boolean isCheck = event.isCheck;
-        proposalState.put(position, isCheck);
     }
 
 
@@ -566,11 +799,14 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(AudioPlayEvent event) {
         if (voiceType == TYPE_VOICE_COMMENT) {
-            mCommentProgress.setProgress((int) ((event.position / (time * 1000.0)) * 100));
+            mCommentProgress.setProgress((int) ((event.position / (mCommentAudioInfo.getTime() * 1000.0)) * 100));
             mCommentVoiceTime.setText(TimeUtils.formatTime2(event.position / 1000));
-        } else {
-            mDetailProgress.setProgress((int) ((event.position / (float) detailVoiceTime) * 100));
+        } else if (voiceType == TYPE_VOICE_DETAIL) {
+            mDetailProgress.setProgress((int) ((event.position / (mAudioInfo.getTime() * 1000.0)) * 100));
             mDetailVoiceTime.setText(TimeUtils.formatTime2(event.position / 1000));
+        } else if (voiceType == TYPE_VOICE_COMMENT_DETAIL) {
+            mCommentDetailProgress.setProgress((int) ((event.position / (mCommentDetailAudioInfo.getTime() * 1000.0)) * 100));
+            mCommentDetailVoiceTime.setText(TimeUtils.formatTime2(event.position / 1000));
         }
     }
 
@@ -581,13 +817,41 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
             case 0:
             case -1:
                 if (voiceType == TYPE_VOICE_COMMENT) {
-                    mCommentProgress.setProgress(0);
-                    mCommentVoiceTime.setText("00:00");
-                    mCommentVoiceControl.setText(getResources().getString(R.string.icon_bofang));
-                } else {
-                    mDetailProgress.setProgress(0);
-                    mDetailVoiceTime.setText("00:00");
-                    mDetailVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                    mCommentProgress.setProgress(100);
+
+                    mHandler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mCommentProgress.setProgress(0);
+                            mCommentVoiceTime.setText("00:00");
+                            mCommentVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                        }
+                    }, 500);
+
+                } else if (voiceType == TYPE_VOICE_DETAIL) {
+                    mDetailProgress.setProgress(100);
+
+                    mHandler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mDetailProgress.setProgress(0);
+                            mDetailVoiceTime.setText("00:00");
+                            mDetailVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                        }
+                    }, 500);
+
+                } else if (voiceType == TYPE_VOICE_COMMENT_DETAIL) {
+                    mCommentDetailProgress.setProgress(100);
+
+                    mHandler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mCommentDetailProgress.setProgress(0);
+                            mCommentDetailVoiceTime.setText("00:00");
+                            mCommentDetailVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                        }
+                    }, 500);
+
                 }
                 break;
         }
@@ -603,9 +867,8 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
         mRecordLayout = view.findViewById(R.id.record_layout);
         mRecord = view.findViewById(R.id.record_img);
 
-        mPopupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        mPopupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         setBackgroundAlpha(0.5f);//设置屏幕透明度
-        mPopupWindow.setFocusable(true);// 点击空白处时，隐藏掉pop窗口
         mRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -675,5 +938,11 @@ public class CorrectWorkActivity extends BaseActivity<CorrectPresenter> implemen
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mPresenter.stopAudio();
     }
 }

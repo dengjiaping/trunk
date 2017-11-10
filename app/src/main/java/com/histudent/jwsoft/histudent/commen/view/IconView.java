@@ -2,11 +2,10 @@ package com.histudent.jwsoft.histudent.commen.view;
 
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 
 /**
  * Created by liuguiyu-pc on 2017/4/25.
@@ -30,6 +29,6 @@ public class IconView extends TextView{
 
     private void init() {
         //设置字体图标
-        this.setTypeface(HiStudentApplication.getInstance().getIconTypeFace());
+        this.setTypeface(HTApplication.getInstance().getIconTypeFace());
     }
 }

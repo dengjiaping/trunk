@@ -8,6 +8,15 @@ public class VideoInfoEntity {
     private String fileName;
     private long duration;
     private String cover;
+    private String videoId;
+
+    public String getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(String videoId) {
+        this.videoId = videoId;
+    }
 
     public String getCover() {
         return cover;

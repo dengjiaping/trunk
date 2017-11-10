@@ -14,6 +14,15 @@ public class HomeworkAlreadyBean extends SectionEntity<HomeworkAlreadySubBean> {
      * 头标题内容
      */
     private String mTitleHeadContent;
+    private boolean isShowTitle;
+
+    public boolean isShowTitle() {
+        return isShowTitle;
+    }
+
+    public void setShowTitle(boolean showTitle) {
+        isShowTitle = showTitle;
+    }
 
     public HomeworkAlreadyBean(boolean isHeader, String header) {
         super(isHeader, header);

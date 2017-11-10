@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.body.BodyActivity;
+import com.histudent.jwsoft.histudent.body.HTMainActivity;
 import com.histudent.jwsoft.histudent.body.find.bean.ClassMemberBean;
 import com.histudent.jwsoft.histudent.body.find.bean.CreateHuoDongBean;
 import com.histudent.jwsoft.histudent.body.find.bean.GroupBean;
@@ -222,7 +222,7 @@ public class ClassHelper {
                                 @Override
                                 public void onSuccess(String result) {
 
-                                    BodyActivity.start(activity);
+                                    HTMainActivity.start(activity);
 
                                 }
 
@@ -244,7 +244,7 @@ public class ClassHelper {
                                 @Override
                                 public void onSuccess(String result) {
 
-                                    BodyActivity.start(activity);
+                                    HTMainActivity.start(activity);
 
                                 }
 

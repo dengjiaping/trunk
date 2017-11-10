@@ -2,6 +2,7 @@ package com.histudent.jwsoft.histudent.activity.homework;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,15 +22,19 @@ import com.histudent.jwsoft.histudent.adapter.VideoAdapter;
 import com.histudent.jwsoft.histudent.adapter.work.VideoDetailAdapter;
 import com.histudent.jwsoft.histudent.base.BaseActivity;
 import com.histudent.jwsoft.histudent.bean.homework.HomeworkDetailBean;
+import com.histudent.jwsoft.histudent.bean.homework.VideoDetailBean;
 import com.histudent.jwsoft.histudent.bean.homework.WorkImgDetailBean;
+import com.histudent.jwsoft.histudent.body.hiworld.activity.WatchActionVideoActivity;
 import com.histudent.jwsoft.histudent.commen.keyword.utils.DisplayUtils;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
+import com.histudent.jwsoft.histudent.comment2.utils.EmotionUtils;
 import com.histudent.jwsoft.histudent.comment2.utils.TimeUtils;
 import com.histudent.jwsoft.histudent.entity.AudioInfo;
 import com.histudent.jwsoft.histudent.entity.AudioPlayEvent;
 import com.histudent.jwsoft.histudent.entity.AudioPlayStatusEvent;
 import com.histudent.jwsoft.histudent.entity.ImageAttrEntity;
+import com.histudent.jwsoft.histudent.entity.WorkVideoEvent;
 import com.histudent.jwsoft.histudent.presenter.homework.WorkUndonePresenter;
 import com.histudent.jwsoft.histudent.presenter.homework.contract.WorkUndoneContract;
 
@@ -91,13 +96,11 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
     LinearLayout mControl;
     @BindView(R.id.ll_content)
     LinearLayout mContentLayout;
-    @BindView(R.id.detail_expansion)
-    IconView mExpansion;
     @BindView(R.id.work_detail_imgs)
     FrameLayout mImgLayout;
 
 
-    @OnClick({R.id.title_left, R.id.title_right_image, R.id.notices_voice_control, R.id.work_detail_photo, R.id.undone_goto_finish,R.id.detail_expansion})
+    @OnClick({R.id.title_left, R.id.title_right_image, R.id.notices_voice_control, R.id.work_detail_photo, R.id.undone_goto_finish})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.title_left:
@@ -127,18 +130,12 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
                     //去完成
                     Intent intent = new Intent(WorkUndoneActivity.this, FinishHomeworkActivity.class);
                     intent.putExtra("homeworkId", homeworkId);
-                    startActivity(intent);
+                    startActivityForResult(intent, REQ_FINISH);
                 } else {
                     //完成
                     showLoadingDialog();
                     mPresenter.completeHomework(homeworkId);
                 }
-                break;
-            case R.id.detail_expansion:
-                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mContentLayout.getLayoutParams();
-                params.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-                mContentLayout.setLayoutParams(params);
-                mExpansion.setVisibility(View.GONE);
                 break;
         }
     }
@@ -151,6 +148,9 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
     private List<ImageAttrEntity> imageAttrs = new ArrayList();
     private boolean online;
     private boolean isComplete;
+    private long audioTime;
+    private Handler mHandler = new Handler();
+    private static final int REQ_FINISH = 2000;
 
     @Override
     protected void initInject() {
@@ -177,7 +177,6 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
         Intent intent = getIntent();
         if (intent != null) {
             homeworkId = intent.getStringExtra("homeworkId");
-            thumb = intent.getStringExtra("thumb");
             online = intent.getBooleanExtra("online", false);
             isComplete = intent.getBooleanExtra("isComplete", false);
         }
@@ -187,12 +186,35 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
         initTitle();
         initRecycler();
         initFooter();
+        initProgress();
+    }
+
+
+    private void initProgress() {
+        mProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                mVoiceControl.setText(getResources().getString(R.string.icon_zanting));
+                double position = seekBar.getProgress() / 100.0;
+                mPresenter.playAudio(mAudioInfo.getFile().getAbsolutePath(), (int) (mAudioInfo.getTime() * 1000 * position));
+            }
+        });
     }
 
     private void initFooter() {
-        if (isComplete){
+        if (isComplete) {
             mControl.setVisibility(View.GONE);
-        }else{
+        } else {
             mControl.setVisibility(View.VISIBLE);
         }
         if (online) {
@@ -218,12 +240,31 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
 
 
     private void initContent(HomeworkDetailBean homeworkDetail) {
-        if (!TextUtils.isEmpty(homeworkDetail.getContents())) {
-            mWorkContent.setText(homeworkDetail.getContents());
+        if (homeworkDetail.isOnlyOnline()) {
+            mGotoTip.setVisibility(View.VISIBLE);
+            mGotoFinish.setText("去完成");
+        } else {
+            mGotoTip.setVisibility(View.GONE);
+            mGotoFinish.setText("完成");
         }
-        if (homeworkDetail.isHasImage()) {
+        if (homeworkDetail.isIsComplete()) {
+            mControl.setVisibility(View.GONE);
+        } else {
+            mControl.setVisibility(View.VISIBLE);
+        }
+
+        if (!TextUtils.isEmpty(homeworkDetail.getContents()))
+
+        {
+            mWorkContent.setText(EmotionUtils.convertNormalStringToSpannableString(homeworkDetail.getContents()));
+        }
+        imageAttrs.clear();
+        if (homeworkDetail.isHasImage())
+
+        {
             List<WorkImgDetailBean> workImgDetailBeens = homeworkDetail.getImgList();
             if (workImgDetailBeens != null && workImgDetailBeens.size() > 0) {
+                mImgLayout.setVisibility(View.VISIBLE);
                 for (WorkImgDetailBean workImgDetailBean : workImgDetailBeens) {
                     ImageAttrEntity imageAttrEntity = new ImageAttrEntity();
                     imageAttrEntity.setId(workImgDetailBean.getId());
@@ -231,26 +272,36 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
                     imageAttrEntity.setThumbnailUrl(workImgDetailBean.getFilePath());
                     imageAttrs.add(imageAttrEntity);
                 }
-                CommonGlideImageLoader.getInstance().displayNetImage(WorkUndoneActivity.this, workImgDetailBeens.get(0).getThumbnailFilePath(), mDetailPhoto);
+                CommonGlideImageLoader.getInstance().displayNetImage(WorkUndoneActivity.this, workImgDetailBeens.get(0).getFilePath(), mDetailPhoto);
                 mPhotoNum.setText(String.valueOf(workImgDetailBeens.size()) + "张");
-            }else{
+            } else {
                 mImgLayout.setVisibility(View.GONE);
             }
-        }else{
+        } else
+
+        {
             mImgLayout.setVisibility(View.GONE);
         }
-        if (homeworkDetail.isHasVideo()) {
+        if (homeworkDetail.isHasVideo())
+
+        {
             mRecyclerVideo.setVisibility(View.VISIBLE);
-            List<HomeworkDetailBean.VideoListBean> videoList = homeworkDetail.getVideoList();
+            List<VideoDetailBean> videoList = homeworkDetail.getVideoList();
             mVideoAdapter.setList(videoList);
-        } else {
+        } else
+
+        {
             mRecyclerVideo.setVisibility(View.GONE);
         }
-        if (homeworkDetail.isHasVoice()) {
+        if (homeworkDetail.isHasVoice())
+
+        {
             mPresenter.downloadVoice(homeworkDetail.getVoiceId());
             mVoiceLayout.setVisibility(View.VISIBLE);
             mVoiceDel.setVisibility(View.GONE);
             mAudioInfo.setTime(homeworkDetail.getVoiceLength());
+            audioTime = homeworkDetail.getVoiceLength();
+            mVoiceTimeTotal.setText(TimeUtils.formatTime2(audioTime));
         }
 
     }
@@ -265,7 +316,7 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
         if (!TextUtils.isEmpty(homeworkDetail.getCreateTime())) {
             mCreateTime.setText(TimeUtils.exchangeTime(homeworkDetail.getCreateTime()));
         }
-        CommonGlideImageLoader.getInstance().displayNetImage(this, thumb, mHeadImg);
+        CommonGlideImageLoader.getInstance().displayNetImage(this, homeworkDetail.getLogo(), mHeadImg);
     }
 
 
@@ -294,8 +345,15 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(AudioPlayEvent event) {
-//        mProgress.setProgress((int) ((event.position / (time * 1000.0)) * 100));
+        mProgress.setProgress((int) ((event.position / (float) (audioTime * 1000.0)) * 100));
         mVoiceTime.setText(TimeUtils.formatTime2(event.position / 1000));
+    }
+
+
+    @Subscribe
+    public void onEvent(WorkVideoEvent workVideoEvent) {
+        VideoDetailBean videoListBean = workVideoEvent.videoDetailBean;
+        WatchActionVideoActivity.start(this, videoListBean.getAliVideoId());
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -304,9 +362,15 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
         switch (status) {
             case 0:
             case -1:
-                mProgress.setProgress(0);
-                mVoiceTime.setText("00:00");
-                mVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                mProgress.setProgress(100);
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mProgress.setProgress(0);
+                        mVoiceTime.setText("00:00");
+                        mVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                    }
+                }, 500);
                 break;
         }
     }
@@ -315,27 +379,8 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
     public void showHomeworkDetail(HomeworkDetailBean homeworkDetail) {
         initHeader(homeworkDetail);
         initContent(homeworkDetail);
-        changeLayout();
     }
 
-
-
-    private void changeLayout() {
-        mContentLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                int height = mContentLayout.getMeasuredHeight();
-                if (height > DisplayUtils.dp2px(WorkUndoneActivity.this, 120)) {
-                    LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mContentLayout.getLayoutParams();
-                    params.height = DisplayUtils.dp2px(WorkUndoneActivity.this, 120);
-                    mContentLayout.setLayoutParams(params);
-                    mExpansion.setVisibility(View.VISIBLE);
-                } else {
-                    mExpansion.setVisibility(View.GONE);
-                }
-            }
-        });
-    }
 
     @Override
     public void getHomeworkDetailFail() {
@@ -368,16 +413,27 @@ public class WorkUndoneActivity extends BaseActivity<WorkUndonePresenter> implem
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
+        if (mPresenter != null) {
+            mPresenter.stopAudio();
+        }
     }
 
     @Override
     public void showContent(String message) {
         dismissLoadingDialog();
-        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void downloadVoiceSuccess(File file) {
         mAudioInfo.setFile(file);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQ_FINISH && resultCode == 3000) {
+            finish();
+        }
+    }
+
 }

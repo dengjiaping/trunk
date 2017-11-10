@@ -55,7 +55,6 @@ public class WorkNoCompleteFragment extends BaseFragment<WorkNoCompletePresenter
     private int loading = 0;
     private String noticeUserId;
 
-
     @Override
     protected void initInject() {
         getFragmentComponent().inject(this);
@@ -79,7 +78,7 @@ public class WorkNoCompleteFragment extends BaseFragment<WorkNoCompletePresenter
     protected void init() {
         initArguments();
         initView();
-//        initData();
+        initData();
     }
 
     private void initArguments() {
@@ -92,6 +91,7 @@ public class WorkNoCompleteFragment extends BaseFragment<WorkNoCompletePresenter
     private void initView() {
         initAdapter();
         initRefresh();
+        initData();
     }
 
     public void initData() {

@@ -4,7 +4,7 @@ import android.widget.Toast;
 
 import com.histudent.jwsoft.histudent.body.message.model.ClassModel;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
-import com.histudent.jwsoft.histudent.body.BodyActivity;
+import com.histudent.jwsoft.histudent.body.HTMainActivity;
 import com.histudent.jwsoft.histudent.commen.listener.HttpRequestCallBack;
 import com.histudent.jwsoft.histudent.commen.url.HistudentUrl;
 import com.histudent.jwsoft.histudent.commen.utils.HiStudentHttpUtils;
@@ -55,7 +55,7 @@ public class ClassUtils {
 
                 Toast.makeText(activity, "操作成功！", Toast.LENGTH_SHORT).show();
 
-                BodyActivity.start(activity);
+                HTMainActivity.start(activity);
 
             }
 

@@ -13,7 +13,7 @@
         android:label="Tests for com.netease.nim.uikit.test"
         android:targetPackage="com.netease.nim.uikit.test" />
 
-    <application>
+    <application android:debuggable="true" >
         <uses-library android:name="android.test.runner" />
         <!-- 会话窗口 -->
         <!--

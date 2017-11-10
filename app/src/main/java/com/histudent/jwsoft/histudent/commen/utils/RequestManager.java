@@ -8,12 +8,11 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.account.login.model.CurrentUserInfoModel;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
-import com.histudent.jwsoft.histudent.model.http.ParamsInterceptor;
 import com.umeng.message.PushAgent;
 
 import org.json.JSONObject;
@@ -87,7 +86,7 @@ public class RequestManager {
     }
 
     private static final class RequestManagerHolder{
-        static final RequestManager instance = new RequestManager(HiStudentApplication.getInstance().getApplicationContext());
+        static final RequestManager instance = new RequestManager(HTApplication.getInstance().getApplicationContext());
     }
 
     public static RequestManager getInstance(){
@@ -101,12 +100,12 @@ public class RequestManager {
 //     */
 //    public static RequestManager getInstance(Context context) {
 //        RequestManager inst = mInstance;
-//        RequestManager.context = HiStudentApplication.getInstance().getApplicationContext();
+//        RequestManager.context = HTApplication.getInstance().getApplicationContext();
 //        if (inst == null) {
 //            synchronized (RequestManager.class) {
 //                inst = mInstance;
 //                if (inst == null) {
-//                    inst = new RequestManager(HiStudentApplication.getInstance().getApplicationContext());
+//                    inst = new RequestManager(HTApplication.getInstance().getApplicationContext());
 //                    mInstance = inst;
 //                }
 //            }

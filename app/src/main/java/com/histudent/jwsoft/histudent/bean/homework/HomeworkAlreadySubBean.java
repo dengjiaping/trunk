@@ -16,13 +16,24 @@ public class HomeworkAlreadySubBean {
     private boolean mIsComplete;
     private String id;
     private boolean onlyOnline;
+    private String mHeadDesc;
+
+    public String getHeadDesc() {
+        return mHeadDesc;
+    }
+
+    public HomeworkAlreadySubBean setHeadDesc(String headDesc) {
+        mHeadDesc = headDesc;
+        return this;
+    }
 
     public boolean isComplete() {
         return mIsComplete;
     }
 
-    public void setComplete(boolean isComplete) {
+    public HomeworkAlreadySubBean setComplete(boolean isComplete) {
         mIsComplete = isComplete;
+        return this;
     }
 
     public HomeworkAlreadySubBean setThumb(String thumb) {

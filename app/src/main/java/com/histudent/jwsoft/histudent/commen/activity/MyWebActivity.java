@@ -37,6 +37,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import com.gzsll.jsbridge.WVJBWebView;
 import com.gzsll.jsbridge.WVJBWebViewClient;
+import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.activity.clock.AddClockActivity;
 import com.histudent.jwsoft.histudent.activity.clock.ReadClockInActivity;
@@ -63,7 +64,6 @@ import com.histudent.jwsoft.histudent.entity.ReadTaskEvent;
 import com.histudent.jwsoft.histudent.info.persioninfo.activity.PersonCenterActivity;
 import com.histudent.jwsoft.histudent.tool.CommonAdvanceUtils;
 import com.histudent.jwsoft.histudent.zxing.CaptureActivity;
-import com.orhanobut.logger.Logger;
 import com.umeng.socialize.UMShareAPI;
 
 import org.greenrobot.eventbus.EventBus;
@@ -130,7 +130,7 @@ public class MyWebActivity extends BaseActivity implements TopMenuPopupWindow.On
                 } else {
                     //7.0以上版本拍照
                     mPicUri = FileProvider.getUriForFile(getApplicationContext(), Const.AUTHORITIES_SIT, photo);
-                    Logger.e("fileProvider:-->" + mPicUri);
+                    HiStudentLog.e("fileProvider:-->" + mPicUri);
                     //将拍取的照片保存到指定URI\
                     cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, mPicUri);
                     //添加这一句表示对目标应用临时授权该Uri所代表的文件
@@ -141,7 +141,7 @@ public class MyWebActivity extends BaseActivity implements TopMenuPopupWindow.On
                 break;
             case R.id.btn_02:
                 flag_onclick = true;
-                Logger.e("相册选择页面");
+                HiStudentLog.e("相册选择页面");
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("image/*");
@@ -360,7 +360,7 @@ public class MyWebActivity extends BaseActivity implements TopMenuPopupWindow.On
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Logger.e("onActivityResult: ---->requestCode:" + requestCode + "resultCode:" + requestCode);
+        HiStudentLog.e("onActivityResult: ---->requestCode:" + requestCode + "resultCode:" + requestCode);
         if (resultCode == 0) {
             if (mUploadCallbackAboveL != null) {
                 mUploadCallbackAboveL.onReceiveValue(null);

@@ -10,7 +10,7 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.call.IPermissionCallBackListener;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
@@ -92,7 +92,7 @@ public class LocationUtils {
 
     private void setLocationInfor() {
 
-        final DbUtils dbUtils = DbUtils.create(HiStudentApplication.getInstance());
+        final DbUtils dbUtils = DbUtils.create(HTApplication.getInstance());
         final LocationDB locationDB[] = new LocationDB[1];
         try {
             locationDB[0] = dbUtils.findById(LocationDB.class, USER_LOCATION);

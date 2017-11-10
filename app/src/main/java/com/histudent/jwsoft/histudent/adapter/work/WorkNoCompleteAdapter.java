@@ -93,6 +93,7 @@ public class WorkNoCompleteAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         else if (viewHolder instanceof WorkNoCompleteAdapter.EmptyViewHolder){
             WorkNoCompleteAdapter.EmptyViewHolder holder = ((WorkNoCompleteAdapter.EmptyViewHolder) viewHolder);
             holder.mTip.setText("全部已完成");
+            holder.mEmptyImg.setImageDrawable(mContext.getResources().getDrawable(R.drawable.new_person_finish));
         }
     }
 
@@ -138,8 +139,10 @@ public class WorkNoCompleteAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     class EmptyViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.content)
+        @BindView(R.id.tv_empty_content)
         TextView mTip;
+        @BindView(R.id.iv_empty_resource)
+        ImageView mEmptyImg;
 
         public EmptyViewHolder(View itemView) {
             super(itemView);

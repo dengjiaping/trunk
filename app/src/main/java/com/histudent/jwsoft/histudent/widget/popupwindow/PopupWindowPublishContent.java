@@ -15,7 +15,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.body.BodyActivity;
+import com.histudent.jwsoft.histudent.body.HTMainActivity;
 import com.histudent.jwsoft.histudent.body.hiworld.activity.EssayActivity;
 import com.histudent.jwsoft.histudent.body.hiworld.activity.LogActivity;
 import com.histudent.jwsoft.histudent.body.hiworld.activity.UploadPhotoActivity;
@@ -193,7 +193,7 @@ public class PopupWindowPublishContent extends PopupWindow implements View.OnCli
             closeAnimation(mRLContentView);
         }
         mRotateAnimation.cancel();
-        ((BodyActivity) mContext).showPublishIcon();
+        ((HTMainActivity) mContext).showPublishIcon();
     }
 
 }

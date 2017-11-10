@@ -15,16 +15,24 @@
         android:layout_marginTop="8dp"/>
 
 
-    <com.histudent.jwsoft.histudent.commen.view.IconView
-        android:id="@+id/item_img_delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <LinearLayout
+        android:layout_width="14dp"
+        android:layout_height="14dp"
         android:layout_gravity="right|top"
-        android:text="@string/icon_close3"
-        android:textColor="@color/red_color"
-        android:textSize="14sp"/>
+        android:gravity="center"
+        android:orientation="vertical">
+        <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/item_img_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@drawable/circle_close"
+            android:text="@string/icon_close5"
 
-
+            android:textColor="@color/white"
+            android:textSize="6sp" />
+    </LinearLayout>
 
 
 

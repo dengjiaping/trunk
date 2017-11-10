@@ -1,9 +1,8 @@
 package com.histudent.jwsoft.histudent.component;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.constant.Const;
-import com.histudent.jwsoft.histudent.entity.AudioPlayStatusEvent;
 import com.histudent.jwsoft.histudent.entity.RecordInfoEvent;
 import com.histudent.jwsoft.histudent.entity.RecordStatusEvent;
 import com.netease.nimlib.sdk.media.record.AudioRecorder;
@@ -23,10 +22,11 @@ public class RecordManager {
 
     private AudioRecorder mRecorder;
     private static final int MAX_TIME = 60 * 5;
-
+    private File mFile;
+    private RecordType mRecordType;
 
     public RecordManager() {
-        mRecorder = new AudioRecorder(HiStudentApplication.getInstance(), RecordType.AAC, MAX_TIME, callback);
+        mRecorder = new AudioRecorder(HTApplication.getInstance(), RecordType.AAC, MAX_TIME, callback);
     }
 
 
@@ -41,6 +41,8 @@ public class RecordManager {
 
         @Override
         public void onRecordStart(File file, RecordType recordType) {
+            RecordManager.this.mFile = file;
+            RecordManager.this.mRecordType = recordType;
             EventBus.getDefault().post(new RecordStatusEvent(Const.START));
         }
 
@@ -66,6 +68,7 @@ public class RecordManager {
         public void onRecordReachedMaxTime(int i) {
             HiStudentLog.e("到达指定的最长录音时间");
             EventBus.getDefault().post(new RecordStatusEvent(Const.MAX));
+            EventBus.getDefault().post(new RecordInfoEvent(RecordManager.this.mFile,i,RecordManager.this.mRecordType));
         }
     };
 

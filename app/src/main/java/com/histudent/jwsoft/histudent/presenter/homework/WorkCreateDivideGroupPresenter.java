@@ -2,6 +2,7 @@ package com.histudent.jwsoft.histudent.presenter.homework;
 
 import com.histudent.jwsoft.histudent.adapter.homework.convert.HomeworkGroupDetailDataConvert;
 import com.histudent.jwsoft.histudent.base.RxPresenter;
+import com.histudent.jwsoft.histudent.bean.homework.AddGroupEntity;
 import com.histudent.jwsoft.histudent.bean.homework.CommonMemberBean;
 import com.histudent.jwsoft.histudent.bean.homework.GroupMemberDetailEntity;
 import com.histudent.jwsoft.histudent.constant.ParamKeys;
@@ -115,13 +116,15 @@ public class WorkCreateDivideGroupPresenter extends RxPresenter<WorkCreateDivide
                 .getParamsMap();
         Disposable disposable = APIFACTORY.getWorkApi().addGroupInformation(paramsMap)
                 .compose(RxSchedulers.io_main())
-                .subscribe(new Consumer<BaseHttpResponse>() {
+                .subscribe(new Consumer<HttpResponse<AddGroupEntity>>() {
                     @Override
-                    public void accept(BaseHttpResponse baseHttpResponse) throws Exception {
-                        if (baseHttpResponse.isSuccess()) {
-                            mView.addGroupInformationSuccess();
+                    public void accept(HttpResponse<AddGroupEntity> response) throws Exception {
+                        if (response.isSuccess()) {
+                            final AddGroupEntity data = response.getData();
+                            final String teamId = data.getTeamId();
+                            mView.addGroupInformationSuccess(teamId);
                         }
-                        mView.controlDialogStatus(null);
+                        mView.controlDialogStatus(response.getMsg());
                     }
                 }, new RxException<>(e -> {
                     e.printStackTrace();

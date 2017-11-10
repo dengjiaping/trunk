@@ -8,11 +8,10 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.body.find.bean.GroupDetailsBean;
 import com.histudent.jwsoft.histudent.body.message.model.ClassModel;
-import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.helper.ReminderHelper;
 import com.histudent.jwsoft.histudent.commen.listener.DialogButtonListener;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
@@ -100,12 +99,12 @@ public class EditGrouoOrClassViewUitils {
         if (!StringUtil.isEmpty(logUrl)) {
             final CircleImageView circleImageView = parentView.findViewById(R.id.iv_log);
             if (model instanceof GroupDetailsBean) {
-                CommonGlideImageLoader.getInstance().displayNetImageWithAnimation(HiStudentApplication.getInstance(), logUrl,
-                        circleImageView, ContextCompat.getDrawable(HiStudentApplication.getInstance(), R.mipmap.default_group));
+                CommonGlideImageLoader.getInstance().displayNetImageWithAnimation(HTApplication.getInstance(), logUrl,
+                        circleImageView, ContextCompat.getDrawable(HTApplication.getInstance(), R.mipmap.default_group));
             } else {
 
-                CommonGlideImageLoader.getInstance().displayNetImageWithAnimation(HiStudentApplication.getInstance(), logUrl,
-                        circleImageView, ContextCompat.getDrawable(HiStudentApplication.getInstance(), R.mipmap.default_class1));
+                CommonGlideImageLoader.getInstance().displayNetImageWithAnimation(HTApplication.getInstance(), logUrl,
+                        circleImageView, ContextCompat.getDrawable(HTApplication.getInstance(), R.mipmap.default_class1));
             }
         }
 

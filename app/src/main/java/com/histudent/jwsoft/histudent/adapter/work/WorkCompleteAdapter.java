@@ -33,6 +33,7 @@ public class WorkCompleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private final int TYPE_EMPTY = 0;
     private final int TYPE_ITEM = 1;
+    private boolean isOnline = false;
 
 
 
@@ -42,6 +43,11 @@ public class WorkCompleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     public WorkCompleteAdapter(Context context) {
         this.mContext = context;
+    }
+
+    public void setOnline(boolean online) {
+        isOnline = online;
+        notifyDataSetChanged();
     }
 
     public void setList(List<WorkCompleteBean.ItemsBean> list) {
@@ -81,6 +87,11 @@ public class WorkCompleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         if (viewHolder instanceof WorkCompleteAdapter.ViewHolder) {
             WorkCompleteAdapter.ViewHolder holder = ((ViewHolder) viewHolder);
             WorkCompleteBean.ItemsBean itemsBean = mList.get(position);
+            if (isOnline){
+                holder.mGoDetail.setVisibility(View.VISIBLE);
+            }else{
+                holder.mGoDetail.setVisibility(View.GONE);
+            }
             if (itemsBean != null) {
                 CommonGlideImageLoader.getInstance().displayNetImageWithCircle(mContext, itemsBean.getUserAvatar(), holder.mHead);
                 holder.mName.setText(itemsBean.getUserName());
@@ -95,6 +106,7 @@ public class WorkCompleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }else if (viewHolder instanceof WorkCompleteAdapter.EmptyViewHolder){
             WorkCompleteAdapter.EmptyViewHolder holder = ((EmptyViewHolder) viewHolder);
             holder.mTip.setText("还没有人完成");
+            holder.mEmptyImg.setImageDrawable(mContext.getResources().getDrawable(R.drawable.icon_no_complete));
         }
     }
 
@@ -122,10 +134,12 @@ public class WorkCompleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         ImageView mHead;
         @BindView(R.id.item_complete_name)
         TextView mName;
-        @BindView(R.id.item_complete_tip)
-        IconView mTip;
+        @BindView(R.id.item_comment_tip)
+        TextView mTip;
         @BindView(R.id.item_complete_time)
         TextView mTime;
+        @BindView(R.id.go_detail)
+        IconView mGoDetail;
 
         @OnClick(R.id.item_complete)
         public void onClick(View view) {
@@ -145,8 +159,10 @@ public class WorkCompleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     class EmptyViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.content)
+        @BindView(R.id.tv_empty_content)
         TextView mTip;
+        @BindView(R.id.iv_empty_resource)
+        ImageView mEmptyImg;
         public EmptyViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);

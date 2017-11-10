@@ -1,16 +1,15 @@
 package com.histudent.jwsoft.histudent.account.login.activity;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.account.login.model.CurrentUserInfoModel;
 import com.histudent.jwsoft.histudent.account.login.parser.CurrentUserinfoParser;
 import com.histudent.jwsoft.histudent.account.regist.activity.NewPersonActivity;
-import com.histudent.jwsoft.histudent.body.BodyActivity;
+import com.histudent.jwsoft.histudent.body.HTMainActivity;
 import com.histudent.jwsoft.histudent.body.message.uikit.DemoCache;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
@@ -20,7 +19,6 @@ import com.histudent.jwsoft.histudent.commen.listener.HttpRequestCallBack;
 import com.histudent.jwsoft.histudent.commen.url.HistudentUrl;
 import com.histudent.jwsoft.histudent.commen.utils.HiStudentHttpUtils;
 import com.histudent.jwsoft.histudent.commen.utils.LocationUtils;
-import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import com.histudent.jwsoft.histudent.comment2.utils.ActivityCollector;
 import com.histudent.jwsoft.histudent.constant.ParamKeys;
 import com.netease.nimlib.sdk.NIMClient;
@@ -32,6 +30,7 @@ import com.netease.nimlib.sdk.auth.LoginInfo;
 import java.util.Map;
 import java.util.TreeMap;
 
+import static com.histudent.jwsoft.histudent.body.myclass.fragment.ClassFragment.HOMEWORK_SIGN;
 import static com.histudent.jwsoft.histudent.body.myclass.fragment.ClassFragment.READ_CLOCK_NEW_SIGN;
 
 /**
@@ -133,11 +132,11 @@ public abstract class BaseLoginActivity extends BaseActivity {
                     HiCache.getInstance().exchangeLoginStatue(1);
                     HiCache.getInstance().saveLoginUserInfo(currentUserInfo);
                     String token = currentUserInfo.getToken();
-                    SharedPreferencedUtils.setString(HiStudentApplication.getInstance(), ParamKeys.TOKEN, token);
+                    SharedPreferencedUtils.setString(HTApplication.getInstance(), ParamKeys.TOKEN, token);
                     HiCache.getInstance().init(userName, passWord, currentUserInfo);
                     DemoCache.setAccount(currentUserInfo.getUserId().replace("-", ""));
                     if (flag == NOMARL) {
-                        BodyActivity.start(activity);
+                        HTMainActivity.start(activity);
                     } else if (flag == REGIST) {
                         NewPersonActivity.start(activity);
                     }
@@ -162,10 +161,14 @@ public abstract class BaseLoginActivity extends BaseActivity {
             final String mobile = loginUserInfo.getMobile();
             if (mobile != null && account != null) {
                 if (!mobile.equals(account)) {
-                    HiStudentApplication
+                    HTApplication
                             .getInstance()
                             .getSharedPreferences(READ_CLOCK_NEW_SIGN, Context.MODE_PRIVATE)
                             .edit().putBoolean(READ_CLOCK_NEW_SIGN, true).apply();
+                    HTApplication
+                            .getInstance()
+                            .getSharedPreferences(HOMEWORK_SIGN, Context.MODE_PRIVATE)
+                            .edit().putBoolean(HOMEWORK_SIGN, true).apply();
                 }
             }
         }

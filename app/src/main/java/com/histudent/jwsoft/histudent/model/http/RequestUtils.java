@@ -2,7 +2,7 @@ package com.histudent.jwsoft.histudent.model.http;
 
 import android.os.Build;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.commen.utils.IntenetUtil;
 import com.histudent.jwsoft.histudent.commen.utils.SHA1Utils;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
@@ -55,8 +55,8 @@ public class RequestUtils {
             addTextPart(parts,"width", String.valueOf(SystemUtil.getScreenWind()));
             params.put("height", SystemUtil.getScreenHeight());
             addTextPart(parts,"height", SystemUtil.getScreenHeight());
-            params.put("uniquetag", HiStudentApplication.getInstance().PushId);
-            addTextPart(parts,"uniquetag", HiStudentApplication.getInstance().PushId);
+            params.put("uniquetag", HTApplication.getInstance().PushId);
+            addTextPart(parts,"uniquetag", HTApplication.getInstance().PushId);
             params.put("phoneversion", android.os.Build.VERSION.RELEASE);
             addTextPart(parts,"phoneversion", android.os.Build.VERSION.RELEASE);
             params.put("timestamp", String.valueOf(System.currentTimeMillis()));

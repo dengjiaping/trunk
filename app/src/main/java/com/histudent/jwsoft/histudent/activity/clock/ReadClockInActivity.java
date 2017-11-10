@@ -21,7 +21,7 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.bean.UserReadBookInformation;
 import com.histudent.jwsoft.histudent.body.hiworld.adapter.UploadImageRecyclerViewAdapter;
@@ -291,7 +291,7 @@ public class ReadClockInActivity extends BaseActivity {
         final String readBookName = mReadBookName.getText().toString().trim();
         if (TextUtils.isEmpty(readBookName)) {
             if (!mIsPerformScan) {
-                ToastTool.showCommonToast(HiStudentApplication.getInstance(), getString(R.string.show_scan_book));
+                ToastTool.showCommonToast(HTApplication.getInstance(), getString(R.string.show_scan_book));
                 return false;
             }
         }
@@ -300,24 +300,24 @@ public class ReadClockInActivity extends BaseActivity {
         final String readBookTotalTime = mReadBookTotalTime.getText().toString().trim();
         final String recordReadBookFeel = mRecordReadBookFeel.getText().toString();
         if (TextUtils.isEmpty(readStartPageIndex)) {
-            ToastTool.showCommonToast(HiStudentApplication.getInstance(), getString(R.string.show_start_page_empty));
+            ToastTool.showCommonToast(HTApplication.getInstance(), getString(R.string.show_start_page_empty));
             return false;
         }
         if (TextUtils.isEmpty(readEndPageIndex)) {
-            ToastTool.showCommonToast(HiStudentApplication.getInstance(), getString(R.string.show_end_page_empty));
+            ToastTool.showCommonToast(HTApplication.getInstance(), getString(R.string.show_end_page_empty));
             return false;
         }
         if (TextUtils.isEmpty(readBookTotalTime)) {
-            ToastTool.showCommonToast(HiStudentApplication.getInstance(), getString(R.string.show_read_time_empty));
+            ToastTool.showCommonToast(HTApplication.getInstance(), getString(R.string.show_read_time_empty));
             return false;
         }
 //        if (TextUtils.isEmpty(recordReadBookFeel)) {
-//            ToastTool.showCommonToast(HiStudentApplication.getInstance(), getString(R.string.show_read_feel_empty));
+//            ToastTool.showCommonToast(HTApplication.getInstance(), getString(R.string.show_read_feel_empty));
 //            return false;
 //        }
 
         if (Integer.valueOf(readEndPageIndex) < Integer.valueOf(readStartPageIndex)) {
-            ToastTool.showCommonToast(HiStudentApplication.getInstance(), getString(R.string.show_judge_page_index));
+            ToastTool.showCommonToast(HTApplication.getInstance(), getString(R.string.show_judge_page_index));
             return false;
         }
 

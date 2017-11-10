@@ -5,13 +5,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/thetopview_new" />
+    <include layout="@layout/common_top_layout" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        android:descendantFocusability="blocksDescendants">
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refresh"
@@ -87,7 +88,9 @@
                     android:background="@color/white"
                     android:gravity="center"
                     android:paddingTop="8dp"
-                    android:text="@string/icon_doublearrow2" />
+                    android:text="@string/icon_doublearrow2"
+                    android:visibility="gone" />
+
 
                 <android.support.design.widget.TabLayout
                     android:id="@+id/tab_layout"
@@ -101,13 +104,20 @@
 
                 </android.support.design.widget.TabLayout>
 
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/viewpager"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/complete_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.RecyclerView>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/no_complete_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    >
+                    android:visibility="gone">
 
-                </android.support.v4.view.ViewPager>
+                </android.support.v7.widget.RecyclerView>
 
             </LinearLayout>
 

@@ -1,7 +1,6 @@
 package com.histudent.jwsoft.histudent.body.mine.activity;
 
 import android.content.Intent;
-import android.support.v4.util.ArrayMap;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -12,7 +11,7 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.body.message.activity.OfficialChatActivity;
+import com.histudent.jwsoft.histudent.body.message.activity.SystemInformationActivity;
 import com.histudent.jwsoft.histudent.body.message.model.CustomNotificationBean;
 import com.histudent.jwsoft.histudent.body.message.uikit.session.SessionHelper;
 import com.histudent.jwsoft.histudent.body.message.uikit.session.extension.CustomAttachmentType;
@@ -29,7 +28,6 @@ import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.listener.HttpRequestCallBack;
 import com.histudent.jwsoft.histudent.commen.url.HistudentUrl;
 import com.histudent.jwsoft.histudent.commen.utils.HiStudentHttpUtils;
-import com.histudent.jwsoft.histudent.commen.view.IconView;
 import com.histudent.jwsoft.histudent.comment2.utils.TimeUtils;
 import com.histudent.jwsoft.histudent.constant.Const;
 import com.histudent.jwsoft.histudent.entity.MessageClickEvent;
@@ -193,7 +191,7 @@ public class MessageManageActivity extends BaseActivity {
             case ChatType.SYSTEMINFO://系统消息
             case ChatType.SUBSCIBR://订阅号
                 HiCache.getInstance().exchangeSystemNotificationUnreadNum(recentContactsModel.getChatType());
-                OfficialChatActivity.start(MessageManageActivity.this, recentContactsModel.getChatType(), recentContactsModel.getAccountId());
+                SystemInformationActivity.start(MessageManageActivity.this, recentContactsModel.getChatType(), recentContactsModel.getAccountId());
                 break;
 
             case ChatType.P2P://P2P
@@ -226,7 +224,7 @@ public class MessageManageActivity extends BaseActivity {
                 break;
             case Const.NOTICE_TYPE_SYSTEM:
                 HiCache.getInstance().exchangeSystemNotificationUnreadNum(3);
-                OfficialChatActivity.start(MessageManageActivity.this, ChatType.SYSTEMINFO, "");
+                SystemInformationActivity.start(MessageManageActivity.this, ChatType.SYSTEMINFO, "");
                 break;
         }
     }

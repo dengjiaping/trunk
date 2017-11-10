@@ -81,7 +81,7 @@
 
     <!-- ============================================================================ -->
     <application
-        android:name=".HiStudentApplication"
+        android:name=".HTApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/hi_log"
@@ -189,7 +189,7 @@
             android:name=".commen.activity.WebLogActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".body.BodyActivity"
+            android:name=".body.HTMainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden"/>
@@ -211,7 +211,7 @@
 
         <!-- login -->
         <activity
-            android:name=".account.login.activity.WelcomeActivity"
+            android:name=".account.login.activity.HTLauncherActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme_WelcomeActivity">
             <intent-filter>
@@ -492,7 +492,7 @@
             android:name=".body.message.activity.SeeFriendActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".body.message.activity.OfficialChatActivity"
+            android:name=".body.message.activity.SystemInformationActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".body.message.activity.SubscriptionActivity"
@@ -832,14 +832,16 @@
             android:theme="@style/AppTheme.Transparent"/>
         <activity android:name=".activity.clock.TextInputActivity"/>
         <activity android:name=".activity.clock.ManualInputBookNameActivity"/>
-        <activity android:name=".activity.homework.WorkAlreadyCompleteActivity"/>
+        <activity android:name=".activity.homework.WorkAlreadyCompleteActivity"
+            android:launchMode="singleTask"/>
         <activity
             android:name=".activity.homework.WorkReceiverPersonDetailActivity"
             android:launchMode="singleTask"/>
         <activity android:name=".activity.homework.WorkAddMemberActivity"/>
         <activity android:name=".activity.homework.CreateWorkActivity"/>
         <activity android:name=".activity.homework.WorkDetailTeacherActivity"/>
-        <activity android:name=".activity.homework.WorkDetailStudentActivity"/>
+        <activity android:name=".activity.homework.WorkDetailStudentActivity"
+            />
         <activity android:name=".activity.homework.WorkSubjectManageActivity"/>
         <activity android:name=".activity.homework.CorrectWorkActivity"/>
         <activity android:name=".activity.homework.FinishHomeworkActivity"/>

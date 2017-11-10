@@ -3,12 +3,13 @@ package com.histudent.jwsoft.histudent.entity;
 import com.netease.nimlib.sdk.media.record.RecordType;
 
 import java.io.File;
+import java.io.Serializable;
 
 /**
  * Created by huyg on 2017/10/26.
  */
 
-public class AudioInfo {
+public class AudioInfo implements Serializable{
     private File file;
     private long time;
     private RecordType mRecordType;

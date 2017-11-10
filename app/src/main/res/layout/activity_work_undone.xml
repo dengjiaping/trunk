@@ -77,14 +77,7 @@
                 <include layout="@layout/include_voice_play" />
             </LinearLayout>
 
-            <com.histudent.jwsoft.histudent.commen.view.IconView
-                android:id="@+id/detail_expansion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:gravity="center"
-                android:paddingTop="8dp"
-                android:text="@string/icon_doublearrow2" />
+
 
         </LinearLayout>
     </ScrollView>

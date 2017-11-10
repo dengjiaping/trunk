@@ -18,7 +18,7 @@ import com.alibaba.sdk.android.vod.upload.VODUploadClient;
 import com.alibaba.sdk.android.vod.upload.VODUploadClientImpl;
 import com.alibaba.sdk.android.vod.upload.model.UploadFileInfo;
 import com.alibaba.sdk.android.vod.upload.model.VodInfo;
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.activity.clock.ReadClockInActivity;
@@ -343,7 +343,7 @@ public class PhotoManager {
      * @return
      */
     public final Drawable getDefaultPlaceholderResource() {
-        final Drawable drawable = ContextCompat.getDrawable(HiStudentApplication.getInstance(), R.drawable.default_placeholder_style_1);
+        final Drawable drawable = ContextCompat.getDrawable(HTApplication.getInstance(), R.drawable.default_placeholder_style_1);
         return drawable;
     }
 

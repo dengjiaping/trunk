@@ -162,8 +162,11 @@ public class MyCaptureVideoActivity extends UI implements SurfaceHolder.Callback
                         stopRecorder();
                         updateButton(true);
                     } else {
-                        takePhoto();
-                        updateButton(true);
+                        if (flag == 1||flag==3) {
+                            takePhoto();
+                            updateButton(true);
+                        }
+
                     }
                     break;
             }
@@ -309,7 +312,7 @@ public class MyCaptureVideoActivity extends UI implements SurfaceHolder.Callback
         });
 
         //监听长按操作用于判断，是拍照还是摄像
-        if (flag == 3||flag == 2) {
+        if (flag == 3 || flag == 2) {
             //录像
             recordBtn.setOnTouchListener((View view, MotionEvent motionEvent) -> {
                 switch (motionEvent.getAction()) {
@@ -791,13 +794,13 @@ public class MyCaptureVideoActivity extends UI implements SurfaceHolder.Callback
             parameters.setPictureFormat(PixelFormat.JPEG);
             parameters.set("orientation", "portrait");
             boolean front = (cameraId == 1);
-            if (!front){
+            if (!front) {
                 if ("Nexus 5X".equals(Build.MODEL)) {
                     parameters.setRotation(270);
                 } else {
                     parameters.setRotation(90);
                 }
-            }else{
+            } else {
                 parameters.setRotation(270);
             }
             camera.setParameters(parameters);

@@ -1,7 +1,7 @@
 package com.histudent.jwsoft.histudent.component;
 
-import android.app.Application;
-
+import com.histudent.jwsoft.histudent.HTApplication;
+import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.entity.AudioPlayEvent;
 import com.histudent.jwsoft.histudent.entity.AudioPlayStatusEvent;
 import com.netease.nimlib.sdk.media.player.AudioPlayer;
@@ -20,11 +20,12 @@ public class AudioManager {
     private int mode;
     private long position;
     private String lastSource = "";
+    private int count;
 
 
     @Inject
-    public AudioManager(Application mContext) {
-        mPlayer = new AudioPlayer(mContext);
+    public AudioManager() {
+        mPlayer = new AudioPlayer(HTApplication.getInstance());
         mPlayer.setOnPlayListener(mListener);
         mode = android.media.AudioManager.STREAM_MUSIC;
     }
@@ -69,6 +70,13 @@ public class AudioManager {
         }
     }
 
+    public void start(String source, int position) {
+        mPlayer.stop();
+        mPlayer.setDataSource(source);
+        lastSource = source;
+        mPlayer.start(mode);
+        mPlayer.seekTo(position);
+    }
 
     /**
      * 暂停
@@ -88,6 +96,7 @@ public class AudioManager {
             mPlayer.stop();
             position = 0;
             lastSource = "";
+            count = 0;
         }
     }
 
@@ -123,6 +132,7 @@ public class AudioManager {
         public void onCompletion() {
             EventBus.getDefault().post(new AudioPlayStatusEvent(0));
             position = 0;
+            count = 0;
         }
 
         // 播放被中断了
@@ -137,8 +147,14 @@ public class AudioManager {
 
         // 播放进度报告，每隔 500ms 会回调一次，告诉当前进度。 参数为当前进度，单位为毫秒，可用于更新 UI
         public void onPlaying(long position) {
-            AudioManager.this.position = position;
-            EventBus.getDefault().post(new AudioPlayEvent(position));
+            if (count % 2 == 1) {
+                AudioManager.this.position = position;
+                HiStudentLog.i("position" + position);
+                double p = position / 1000.0;
+                EventBus.getDefault().post(new AudioPlayEvent((int) Math.ceil(p) * 1000));
+            }
+            count++;
+
         }
     };
 

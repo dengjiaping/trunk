@@ -104,10 +104,6 @@ public class WorkSubjectManageActivity extends BaseActivity<WorkSubjectManagePre
     private void solveAddSubject() {
         final String inputContent = mInputDialog.getInputContent();
         if (!TextUtils.isEmpty(inputContent)) {
-            if (inputContent.length() > 10) {
-                ToastTool.showCommonToast("科目名称不能超过10个字符");
-                return;
-            }
             //判断用户添加的科目是否存在 存在的话提示重新输入
             for (CommonSubjectBean commonSubjectBean : mCommonSubjectBeanList) {
                 final String subjectName = commonSubjectBean.getSubjectName();

@@ -384,3 +384,14 @@
     -dontwarn android.webkit.WebView
     -dontwarn android.net.http.SslError
     -dontwarn android.webkit.WebViewClient
+
+
+    #BaseRecyclerViewAdapterHelper 使用此库 缩减代码量 70%
+    -keep class com.chad.library.adapter.** {
+    *;
+    }
+    -keep public class * extends com.chad.library.adapter.base.BaseQuickAdapter
+    -keep public class * extends com.chad.library.adapter.base.BaseViewHolder
+    -keepclassmembers  class **$** extends com.chad.library.adapter.base.BaseViewHolder {
+         <init>(...);
+    }

@@ -1,8 +1,6 @@
 package com.histudent.jwsoft.histudent.model.http.api;
 
-import android.icu.text.AlphabeticIndex;
-
-import com.histudent.jwsoft.histudent.bean.RecordBean;
+import com.histudent.jwsoft.histudent.bean.homework.AddGroupEntity;
 import com.histudent.jwsoft.histudent.bean.homework.AddHomeworkSubjectEntity;
 import com.histudent.jwsoft.histudent.bean.homework.AlreadyCompleteHomeworkEntity;
 import com.histudent.jwsoft.histudent.bean.homework.ClassMemberEntity;
@@ -10,30 +8,24 @@ import com.histudent.jwsoft.histudent.bean.homework.CommentBean;
 import com.histudent.jwsoft.histudent.bean.homework.CompleteDetailBean;
 import com.histudent.jwsoft.histudent.bean.homework.CreateWorkBean;
 import com.histudent.jwsoft.histudent.bean.homework.GroupMemberDetailEntity;
+import com.histudent.jwsoft.histudent.bean.homework.HomeworkDetailBean;
 import com.histudent.jwsoft.histudent.bean.homework.SelectReceiverPersonEntity;
 import com.histudent.jwsoft.histudent.bean.homework.SubjectEntity;
-import com.histudent.jwsoft.histudent.bean.homework.HomeworkDetailBean;
 import com.histudent.jwsoft.histudent.bean.homework.WorkCompleteBean;
 import com.histudent.jwsoft.histudent.model.http.BaseHttpResponse;
 import com.histudent.jwsoft.histudent.model.http.HttpResponse;
-import com.netease.nimlib.sdk.Observer;
 
 import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.Header;
-import retrofit2.http.HeaderMap;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
-import retrofit2.http.PartMap;
-import retrofit2.http.QueryMap;
 
 /**
  * Created by huyg on 2017/10/25.
@@ -135,7 +127,7 @@ public interface WorkApi {
      * @return
      */
     @FormUrlEncoded
-    @POST("/homework/teamMember/list")
+    @POST("homework/teamMember/list")
     Observable<HttpResponse<GroupMemberDetailEntity>> getMemberDetailList(@FieldMap Map<String, Object> map);
 
     /**
@@ -145,7 +137,7 @@ public interface WorkApi {
      * @return
      */
     @FormUrlEncoded
-    @POST("/homework/team/del")
+    @POST("homework/team/del")
     Observable<HttpResponse<String>> delMemberDetailList(@FieldMap Map<String, Object> map);
 
 
@@ -156,7 +148,7 @@ public interface WorkApi {
      * @return
      */
     @FormUrlEncoded
-    @POST("/class/classMembers")
+    @POST("class/classMembers")
     Observable<HttpResponse<ClassMemberEntity>> getClassMembersList(@FieldMap Map<String, Object> map);
 
     /**
@@ -165,7 +157,7 @@ public interface WorkApi {
      * @return
      */
     @FormUrlEncoded
-    @POST("/homework/subject/list")
+    @POST("homework/subject/list")
     Observable<HttpResponse<List<SubjectEntity>>> getAllSubjectsList(@FieldMap Map<String, Object> map);
 
     /**
@@ -175,7 +167,7 @@ public interface WorkApi {
      * @return
      */
     @FormUrlEncoded
-    @POST("/homework/subject/add")
+    @POST("homework/subject/add")
     Observable<HttpResponse<AddHomeworkSubjectEntity>> addSpecifiedSubject(@FieldMap Map<String, Object> map);
 
     /**
@@ -185,7 +177,7 @@ public interface WorkApi {
      * @return
      */
     @FormUrlEncoded
-    @POST("/homework/subject/del")
+    @POST("homework/subject/del")
     Observable<BaseHttpResponse> deleteSpecifiedSubject(@FieldMap Map<String, Object> map);
 
     /**
@@ -195,7 +187,7 @@ public interface WorkApi {
      * @return
      */
     @FormUrlEncoded
-    @POST("/homework/team/list")
+    @POST("homework/team/list")
     Observable<HttpResponse<SelectReceiverPersonEntity>> getSelectReceiverList(@FieldMap Map<String, Object> map);
 
 
@@ -206,7 +198,7 @@ public interface WorkApi {
      * @return
      */
     @FormUrlEncoded
-    @POST("/homework/team/edit")
+    @POST("homework/team/edit")
     Observable<BaseHttpResponse> modifyGroupInformation(@FieldMap Map<String, Object> map);
 
     /**
@@ -216,8 +208,8 @@ public interface WorkApi {
      * @return
      */
     @FormUrlEncoded
-    @POST("/homework/team/add")
-    Observable<BaseHttpResponse> addGroupInformation(@FieldMap Map<String, Object> map);
+    @POST("homework/team/add")
+    Observable<HttpResponse<AddGroupEntity>> addGroupInformation(@FieldMap Map<String, Object> map);
 
 
     /**
@@ -227,7 +219,7 @@ public interface WorkApi {
      * @return
      */
     @FormUrlEncoded
-    @POST("/homework/homeWorkListNew")
+    @POST("homework/homeWorkListNew")
     Observable<HttpResponse<AlreadyCompleteHomeworkEntity>> getAlreadyCompleteHomeworkList(@FieldMap Map<String, Object> map);
 
     /**
@@ -237,7 +229,7 @@ public interface WorkApi {
      * @return
      */
     @FormUrlEncoded
-    @POST("/homework/homeWorkAllListNew")
+    @POST("homework/homeWorkAllListNew")
     Observable<HttpResponse<AlreadyCompleteHomeworkEntity>> getAlreadyCompleteAllHomeworkList(@FieldMap Map<String, Object> map);
 
     /**
@@ -247,7 +239,7 @@ public interface WorkApi {
      * @return
      */
     @FormUrlEncoded
-    @POST("/homework/homeWorkDelete")
+    @POST("homework/homeWorkDelete")
     Observable<BaseHttpResponse> deleteCompleteSpecifiedHomework(@FieldMap Map<String, Object> map);
 
 }

@@ -41,6 +41,8 @@ public interface FinishWorkContract {
 
         void playAudio(String source);
 
+        void playAudio(String source, int position);
+
         void pauseAudio();
 
         void stopAudio();
@@ -68,14 +70,20 @@ public interface FinishWorkContract {
         /**
          * 创建作业任务
          *
-         * @param videoIds    视频id
-         * @param audioFiles  音频
+         * @param videoIds   视频id
+         * @param audioFiles 音频
          */
         void completeHomeWork(String homeworkId,
                               String content,
                               String videoIds,
                               AudioInfo audioInfo,
-                              List<File> imgFiles
-                            );
+                              List<File> imgFiles,
+                              boolean hasImage,
+                              boolean hasVoice,
+                              boolean hasVideo,
+                              String delImg,
+                              String delVideo,
+                              String delVoice
+        );
     }
 }

@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.di.componet.DaggerFragmentComponent;
 import com.histudent.jwsoft.histudent.di.componet.FragmentComponent;
 import com.histudent.jwsoft.histudent.di.module.FragmentModule;
@@ -24,7 +24,7 @@ import butterknife.Unbinder;
  * Created by codeest on 2016/8/2.
  * MVP Fragment基类
  */
-public abstract class BaseFragment<T extends BasePresenter> extends Fragment implements BaseView{
+public abstract class BaseFragment<T extends BasePresenter> extends Fragment implements BaseView {
 
     @Inject
     protected T mPresenter;
@@ -59,16 +59,11 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     }
 
 
-
-    protected FragmentComponent getFragmentComponent(){
+    protected FragmentComponent getFragmentComponent() {
         return DaggerFragmentComponent.builder()
-                .appComponent(HiStudentApplication.getAppComponent())
-                .fragmentModule(getFragmentModule())
+                .appComponent(HTApplication.getInstance().getAppComponent())
+                .fragmentModule(new FragmentModule(this))
                 .build();
-    }
-
-    protected FragmentModule getFragmentModule(){
-        return new FragmentModule(this);
     }
 
     @Override
@@ -85,6 +80,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
 
     protected abstract void initInject();
+
     protected abstract int getLayoutId();
+
     protected abstract void init();
 }

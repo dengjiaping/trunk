@@ -33,15 +33,20 @@
             android:textColor="@color/text_black_h3"
             android:textSize="@dimen/textSize" />
 
-        <com.histudent.jwsoft.histudent.commen.view.IconView
-            android:id="@+id/item_complete_tip"
+        <TextView
+            android:id="@+id/item_comment_tip"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:gravity="center_vertical"
-            android:text="@string/icon_notice3"
-            android:textColor="@color/notice"
-            android:textSize="24sp" />
+            android:background="@drawable/bg_tip_circle"
+            android:text="已评价"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:textColor="@color/_B0B0B0"
+            android:textSize="11sp" />
 
         <TextView
             android:id="@+id/item_complete_time"
@@ -56,6 +61,7 @@
 
 
         <com.histudent.jwsoft.histudent.commen.view.IconView
+            android:id="@+id/go_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

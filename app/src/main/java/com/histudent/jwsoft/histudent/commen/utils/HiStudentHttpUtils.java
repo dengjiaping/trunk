@@ -4,12 +4,12 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.account.login.activity.WelcomeActivity;
+import com.histudent.jwsoft.histudent.account.login.activity.HTLauncherActivity;
 import com.histudent.jwsoft.histudent.account.login.model.CheckUpdataBean;
-import com.histudent.jwsoft.histudent.body.BodyActivity;
+import com.histudent.jwsoft.histudent.body.HTMainActivity;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.bean.ExitBean;
 import com.histudent.jwsoft.histudent.commen.bean.HttpResponseModel;
@@ -60,7 +60,7 @@ public class HiStudentHttpUtils {
     public static void getDataByOKHttp(final boolean isAll, final BaseActivity activity, final Map<String, Object> map, int type, final String url,
                                        final HttpRequestCallBack callBack, List<String> urls, LoadingType loadingType) {
 
-        if (activity != null && !(activity instanceof WelcomeActivity) && loadingType != LoadingType.NONE)
+        if (activity != null && !(activity instanceof HTLauncherActivity) && loadingType != LoadingType.NONE)
 
 
             switch (loadingType) {
@@ -256,11 +256,11 @@ public class HiStudentHttpUtils {
 
 
         } else if (model.getRet() == -8) {
-            if (activity instanceof WelcomeActivity) {
+            if (activity instanceof HTLauncherActivity) {
                 callBack.onFailure(model.getMsg());
             } else {
                 String offLineMsg = activity.getString(R.string.force_exit);
-                BodyActivity.start(activity);
+                HTMainActivity.start(activity);
                 EventBus.getDefault().post(new ExitBean(offLineMsg));
             }
         } else if (model.getRet() == -100) {//有新版本
@@ -293,7 +293,7 @@ public class HiStudentHttpUtils {
 
         } else {
             callBack.onFailure(model.getMsg());
-            Toast.makeText(HiStudentApplication.getInstance(), model.getMsg(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(HTApplication.getInstance(), model.getMsg(), Toast.LENGTH_SHORT).show();
         }
     }
 

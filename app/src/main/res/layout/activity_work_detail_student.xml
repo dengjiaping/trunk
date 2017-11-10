@@ -4,5 +4,234 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include layout="@layout/thetopview_new" />
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/include_work_student_header" />
+
+
+                <View style="@style/split_line_style_1dp" />
+
+
+                <LinearLayout
+                    android:id="@+id/ll_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/work_detail_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="24dp"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="12dp" />
+
+                    <FrameLayout
+                        android:id="@+id/work_detail_imgs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/work_detail_photo"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:scaleType="fitXY" />
+
+                        <TextView
+                            android:id="@+id/work_detail_photo_num"
+                            android:layout_width="48dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="bottom|right"
+                            android:background="@color/_11ffffff"
+                            android:gravity="center"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+                    </FrameLayout>
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/work_detail_recycler_video"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:paddingLeft="@dimen/itemMargin"
+                        android:paddingRight="@dimen/itemMargin"
+                        android:visibility="gone">
+
+                    </android.support.v7.widget.RecyclerView>
+
+                    <include
+                        android:id="@+id/work_detail_audio"
+                        layout="@layout/include_voice_play" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/comment_content_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="12dp"
+                    android:text="作业评语"
+                    android:textColor="@color/text_black_h2"
+                    android:textSize="17sp" />
+
+                <View style="@style/split_line_style_1dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/comment_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="12dp"
+                        android:textColorHint="@color/text_gray_h1"
+                        android:textSize="15sp" />
+
+
+                    <include
+                        android:id="@+id/comment_audio"
+                        layout="@layout/include_voice_play"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:paddingLeft="12dp"
+                android:text="完成反馈"
+                android:textColor="@color/text_black_h2"
+                android:textSize="17sp" />
+
+            <View style="@style/split_line_style_1dp" />
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/work_student_detail_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/white" />
+
+
+                <FrameLayout
+                    android:id="@+id/work_student_detail_imgs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/work_student_detail_photo"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:scaleType="fitXY" />
+
+                    <TextView
+                        android:id="@+id/work_student_detail_photo_num"
+                        android:layout_width="48dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="bottom|right"
+                        android:background="@color/_11ffffff"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                </FrameLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/work_student_detail_recycler_video"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingLeft="@dimen/itemMargin"
+                    android:paddingRight="@dimen/itemMargin"
+                    android:visibility="gone">
+
+                </android.support.v7.widget.RecyclerView>
+
+                <include
+                    android:id="@+id/detail_student_audio"
+                    layout="@layout/include_voice_play"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/modify_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp">
+
+                <com.histudent.jwsoft.histudent.commen.view.IconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/icon_addnews" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="修改反馈"
+                    android:textColor="@color/_666666"
+                    android:textSize="15sp" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 
 </LinearLayout>

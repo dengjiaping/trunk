@@ -42,14 +42,14 @@ public class AddMemberDataConvert extends DataConvert {
         CommonMemberBean commonMemberBean;
         if (stuClassMembers.size() > 0)
             for (ClassMemberEntity.SubMember stuClassMember : stuClassMembers) {
-                final boolean isAdmin = stuClassMember.isAdmin();
-                if(!isAdmin){
+                final int userType = stuClassMember.getUserType();
+                if (userType == 1) {
                     //仅仅是学生的话才 加入成员列表
                     final String userAvatar = stuClassMember.getUserAvatar();
                     final String userId = stuClassMember.getUserId();
                     final String userRealName = stuClassMember.getUserRealName();
                     commonMemberBean = new CommonMemberBean();
-                    commonMemberBeanList.add( commonMemberBean.setUserId(userId)
+                    commonMemberBeanList.add(commonMemberBean.setUserId(userId)
                             .setName(userRealName)
                             .setHeadIconUrl(userAvatar));
                 }

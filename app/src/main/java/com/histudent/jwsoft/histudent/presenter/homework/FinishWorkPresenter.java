@@ -87,6 +87,11 @@ public class FinishWorkPresenter extends RxPresenter<FinishWorkContract.View> im
     }
 
     @Override
+    public void playAudio(String source, int position) {
+        mAudioManager.start(source, position);
+    }
+
+    @Override
     public void pauseAudio() {
         mAudioManager.pause();
     }
@@ -101,7 +106,13 @@ public class FinishWorkPresenter extends RxPresenter<FinishWorkContract.View> im
                                  String contents,
                                  String videoIds,
                                  AudioInfo audioInfo,
-                                 List<File> imgFiles) {
+                                 List<File> imgFiles,
+                                 boolean hasImage,
+                                 boolean hasVoice,
+                                 boolean hasVideo,
+                                 String delImg,
+                                 String delVideo,
+                                 String delVoice) {
         List<MultipartBody.Part> parts = new ArrayList<>();
         Map<String, String> params = new HashMap<>();
         RequestUtils.addTextPart(parts, "homeworkId", homeworkId);
@@ -111,17 +122,30 @@ public class FinishWorkPresenter extends RxPresenter<FinishWorkContract.View> im
         if (!TextUtils.isEmpty(videoIds)) {
             RequestUtils.addTextPart(parts, "videoIds", videoIds);
             params.put("videoIds", videoIds);
-            RequestUtils.addTextPart(parts, "hasVideo", String.valueOf(true));
-            params.put("hasVideo", String.valueOf(true));
+            RequestUtils.addTextPart(parts, "hasVideo", String.valueOf(hasVideo));
+            params.put("hasVideo", String.valueOf(hasVideo));
         } else {
-            RequestUtils.addTextPart(parts, "hasVideo", String.valueOf(false));
-            params.put("hasVideo", String.valueOf(false));
+            RequestUtils.addTextPart(parts, "hasVideo", String.valueOf(hasVideo));
+            params.put("hasVideo", String.valueOf(hasVideo));
+        }
+
+        if (!TextUtils.isEmpty(delImg)) {
+            RequestUtils.addTextPart(parts, "delImgs", delImg);
+            params.put("delImgs", delImg);
+        }
+        if (!TextUtils.isEmpty(delVoice)) {
+            RequestUtils.addTextPart(parts, "delVoice", delVoice);
+            params.put("delVoice", delVoice);
+        }
+        if (!TextUtils.isEmpty(delVideo)) {
+            RequestUtils.addTextPart(parts, "delVideo", delVideo);
+            params.put("delVideo", delVideo);
         }
 
         RequestUtils.initFixedParams(parts, params);
-        if (audioInfo.getFile() != null) {
-            RequestUtils.addTextPart(parts, "hasVoice", String.valueOf(true));
-            params.put("videoIds", String.valueOf(true));
+        if (audioInfo != null && audioInfo.getFile() != null) {
+            RequestUtils.addTextPart(parts, "hasVoice", String.valueOf(hasVoice));
+            params.put("hasVoice", String.valueOf(hasVoice));
             RequestUtils.addTextPart(parts, "voiceLength", String.valueOf(audioInfo.getTime()));
             params.put("voiceLength", String.valueOf(audioInfo.getTime()));
             RequestBody requestBody = RequestBody.create(Const.MEDIA_TYPE_MARKDOWN, audioInfo.getFile());
@@ -129,14 +153,14 @@ public class FinishWorkPresenter extends RxPresenter<FinishWorkContract.View> im
                     createFormData("voicefile", audioInfo.getFile().getName(), requestBody);
             parts.add(part);
         } else {
-            RequestUtils.addTextPart(parts, "hasVoice", String.valueOf(false));
-            params.put("hasVoice", String.valueOf(false));
+            RequestUtils.addTextPart(parts, "hasVoice", String.valueOf(hasVoice));
+            params.put("hasVoice", String.valueOf(hasVoice));
             RequestUtils.addTextPart(parts, "voiceLength", String.valueOf(0));
             params.put("voiceLength", String.valueOf(0));
         }
         if (imgFiles != null && imgFiles.size() > 0) {
-            RequestUtils.addTextPart(parts, "hasImage", String.valueOf(true));
-            params.put("hasImage", String.valueOf(true));
+            RequestUtils.addTextPart(parts, "hasImage", String.valueOf(hasImage));
+            params.put("hasImage", String.valueOf(hasImage));
             for (int i = 0; i < imgFiles.size(); i++) {
                 RequestBody requestBody = RequestBody.create(Const.MEDIA_TYPE_MARKDOWN, imgFiles.get(i));
                 MultipartBody.Part part = MultipartBody.Part.
@@ -144,8 +168,8 @@ public class FinishWorkPresenter extends RxPresenter<FinishWorkContract.View> im
                 parts.add(part);
             }
         } else {
-            RequestUtils.addTextPart(parts, "hasImage", String.valueOf(false));
-            params.put("hasImage", String.valueOf(false));
+            RequestUtils.addTextPart(parts, "hasImage", String.valueOf(hasImage));
+            params.put("hasImage", String.valueOf(hasImage));
         }
 
 
@@ -246,8 +270,15 @@ public class FinishWorkPresenter extends RxPresenter<FinishWorkContract.View> im
                 .map(new Function<List<String>, List<File>>() {
                     @Override
                     public List<File> apply(@NonNull List<String> list) throws Exception {
-                        return Luban.with(context).load(list).get();
-
+                        List<String> realList = new ArrayList<>();
+                        if (list != null && list.size() > 0) {
+                            for (int i = 0; i < list.size(); i++) {
+                                if (new File(list.get(i)).exists()) {
+                                    realList.add(list.get(i));
+                                }
+                            }
+                        }
+                        return Luban.with(context).load(realList).get();
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())

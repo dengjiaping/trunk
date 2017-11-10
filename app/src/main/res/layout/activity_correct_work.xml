@@ -214,7 +214,7 @@
 
 
                 <include
-                    android:id="@+id/comment_audio"
+                    android:id="@+id/comment_detail_audio"
                     layout="@layout/include_voice_play"
                     android:visibility="gone"
                     />

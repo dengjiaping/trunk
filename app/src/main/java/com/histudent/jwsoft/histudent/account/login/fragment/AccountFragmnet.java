@@ -16,7 +16,7 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.account.login.adapter.SpinnerAdapter;
 import com.histudent.jwsoft.histudent.account.login.model.LoginData;
@@ -65,7 +65,7 @@ public class AccountFragmnet extends BaseFragment implements View.OnClickListene
 
         showPassword.setOnClickListener(this);
 
-        if (HiStudentApplication.isOnLine) {
+        if (HTApplication.isOnLine) {
             showAccount.setVisibility(View.GONE);
         } else {
             showAccount.setOnClickListener(this);

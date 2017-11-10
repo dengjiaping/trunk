@@ -46,6 +46,7 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.http.Field;
 import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 //import top.zibin.luban.Luban;
 
 /**
@@ -91,6 +92,11 @@ public class CreateWorkPresenter extends RxPresenter<CreateWorkContract.View> im
     @Override
     public void playAudio(String source) {
         mAudioManager.start(source);
+    }
+
+    @Override
+    public void playAudio(String source, int position) {
+        mAudioManager.start(source, position);
     }
 
     @Override
@@ -145,7 +151,7 @@ public class CreateWorkPresenter extends RxPresenter<CreateWorkContract.View> im
                     @Override
                     public void accept(HttpResponse<CreateWorkBean> response) throws Exception {
                         if (response.isSuccess()) {
-                            CreateWorkBean createWorkBean=response.getData();
+                            CreateWorkBean createWorkBean = response.getData();
                             mView.createWorkSucceed(createWorkBean);
                         } else {
                             mView.showContent(response.getMsg());
@@ -196,6 +202,7 @@ public class CreateWorkPresenter extends RxPresenter<CreateWorkContract.View> im
             @Override
             public void onUploadFailed(UploadFileInfo info, String code, String message) {
                 HiStudentLog.e("onfailed ------------------ ");
+                mView.closeDialog();
             }
 
             @Override
@@ -237,7 +244,15 @@ public class CreateWorkPresenter extends RxPresenter<CreateWorkContract.View> im
                 .map(new Function<List<String>, List<File>>() {
                     @Override
                     public List<File> apply(@NonNull List<String> list) throws Exception {
-                        return Luban.with(context).load(list).get();
+                        List<String> realList = new ArrayList<>();
+                        if (list != null && list.size() > 0) {
+                            for (int i = 0; i < list.size(); i++) {
+                                if (new File(list.get(i)).exists()) {
+                                    realList.add(list.get(i));
+                                }
+                            }
+                        }
+                        return Luban.with(context).load(realList).get();
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
@@ -246,7 +261,10 @@ public class CreateWorkPresenter extends RxPresenter<CreateWorkContract.View> im
                     public void accept(@NonNull List<File> list) throws Exception {
                         mView.showImgList(list);
                     }
-                });
+                },new RxException<>(e -> {
+                    e.printStackTrace();
+                    mView.showContent("图片压缩失败");
+                }));
     }
 
     private UploadFileInfo getUploadFileInfo(String fileName) {

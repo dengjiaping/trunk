@@ -1,5 +1,7 @@
 package com.histudent.jwsoft.histudent.presenter.homework.contract;
 
+import android.content.Context;
+
 import com.histudent.jwsoft.histudent.base.BasePresenter;
 import com.histudent.jwsoft.histudent.base.BaseView;
 import com.histudent.jwsoft.histudent.bean.homework.HomeworkAlreadyBean;
@@ -25,9 +27,9 @@ public interface WorkAlreadyCompleteContract {
 
     interface Presenter extends BasePresenter<View> {
 
-        void getAlreadyCompleteHomeworkList(Map<String, Object> map);
+        void getAlreadyCompleteHomeworkList(Context context, Map<String, Object> map);
 
-        void getAlreadyCompleteAllHomeworkList(Map<String, Object> map);
+        void getAlreadyCompleteAllHomeworkList(Context context, Map<String, Object> map);
 
         void deleteCompleteSpecifiedHomework(String homeworkId);
     }

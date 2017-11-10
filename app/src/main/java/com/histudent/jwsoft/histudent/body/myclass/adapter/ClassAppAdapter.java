@@ -3,19 +3,20 @@ package com.histudent.jwsoft.histudent.body.myclass.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.body.message.model.ClassModel;
 import com.histudent.jwsoft.histudent.body.myclass.fragment.ClassFragment;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
 import com.histudent.jwsoft.histudent.comment2.utils.ClassAppKey;
-import com.histudent.jwsoft.histudent.entity.ReadClockMessageEvent;
+import com.histudent.jwsoft.histudent.entity.ClassApplicationMessageEvent;
 import com.netease.nim.uikit.common.util.string.StringUtil;
 
 import org.greenrobot.eventbus.EventBus;
@@ -33,6 +34,8 @@ public class ClassAppAdapter extends BaseAdapter {
     private List<Object> list;
     private boolean isShow;
     private ClassModel model;
+    private static final String TAG = "ClassAppAdapter";
+    private final ClassApplicationMessageEvent MESSAGE_EVENT = new ClassApplicationMessageEvent();
 
     public ClassAppAdapter(Activity context, List<Object> list, ClassModel model) {
         this.context = context;
@@ -68,9 +71,7 @@ public class ClassAppAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         String name = "", logo = "", title = "";
-        int imageId = 0;
         ClassModel.ClassAppsBean bean = null;
-
         Object o = list.get(position);
 
         //根据标记判读是传入的集合是listView的还是gridView的
@@ -118,65 +119,16 @@ public class ClassAppAdapter extends BaseAdapter {
             } else if (ClassAppKey.HOMEWORK.equals(appKey)) {
                 viewHolder.tv_notice_num.setVisibility(View.GONE);
                 viewHolder.tv_notice.setVisibility(View.GONE);
+                final boolean isFinish = addDot(viewHolder, position, appKey);
+                if (isFinish) {
+                    return convertView;
+                }
             } else if (ClassAppKey.READ_PUNCH_THE_CLOCK.equals(appKey)
                     || ClassAppKey.READ_PUNCH_THE_CLOCK_TEST.equals(appKey)) {
-                //根据是否是新的模块  添加新图标样式
-                final List<ClassModel.ClassAppsBean> classApps = model.getClassApps();
-                final ClassModel.ClassAppsBean classAppsBean = classApps.get(position);
-                final boolean isNewFunction = classAppsBean.isIsNew();
-                final String alertTypePriority = classAppsBean.getAlertTypePriority();
-                final int msgNum = classAppsBean.getMsgNum();
-                //存放优先级信息 1:新   2:红点  3:数字
-                final List<String> listPriority = new ArrayList<>();
-                if (alertTypePriority != null) {
-                    if (alertTypePriority.contains(",")) {
-                        final String[] split = alertTypePriority.split(",");
-                        for (int i = 0; i < split.length; i++) {
-                            listPriority.add(split[i]);
-                        }
-                    }
-                }
-
-                //显示新类型
-                if (listPriority.contains(String.valueOf(1))) {
-                    final SharedPreferences sharedPreferences = HiStudentApplication
-                            .getInstance()
-                            .getSharedPreferences(ClassFragment.READ_CLOCK_NEW_SIGN, Context.MODE_PRIVATE);
-                    final boolean isShow = sharedPreferences.getBoolean(ClassFragment.READ_CLOCK_NEW_SIGN, true);
-                    if (isNewFunction && isShow) {
-                        viewHolder.mIvFunctionNewIcon.setVisibility(View.VISIBLE);
-                    } else {
-                        viewHolder.mIvFunctionNewIcon.setVisibility(View.GONE);
-                    }
-                }
-
-                if (viewHolder.mIvFunctionNewIcon.getVisibility() == View.VISIBLE){
-                    //如果"新"图标显示 则不显示消息数量 直接结束
+                final boolean isFinish = addDot(viewHolder, position, appKey);
+                if (isFinish) {
                     return convertView;
                 }
-
-                viewHolder.mIvFunctionNewIcon.setVisibility(View.GONE);
-                //显示红点
-                if (listPriority.contains(String.valueOf(2))) {
-                    viewHolder.mDotCircle.setVisibility(View.VISIBLE);
-                    return convertView;
-                } else {
-                    viewHolder.mDotCircle.setVisibility(View.GONE);
-                }
-
-                //显示数据数量
-                if (listPriority.contains(String.valueOf(3))) {
-                    viewHolder.mDotCircle.setVisibility(View.GONE);
-                    if (msgNum == 0) {
-                        viewHolder.mDotNumber.setVisibility(View.GONE);
-                    } else {
-                        viewHolder.mDotNumber.setVisibility(View.VISIBLE);
-                        final String showNumber = msgNum > 99 ? "99+" : String.valueOf(msgNum);
-                        viewHolder.mDotNumber.setText(showNumber);
-                    }
-                    EventBus.getDefault().postSticky(new ReadClockMessageEvent(msgNum));
-                }
-
             }
         }
 
@@ -201,6 +153,93 @@ public class ClassAppAdapter extends BaseAdapter {
             mDotNumber = convertView.findViewById(R.id.tv_common_num);
         }
 
+    }
+
+
+    /**
+     * @param viewHolder
+     * @param position
+     * @return true 直接结束
+     */
+    private boolean addDot(ViewHolder viewHolder, int position, String appKey) {
+        //根据是否是新的模块  添加新图标样式
+        final List<ClassModel.ClassAppsBean> classApps = model.getClassApps();
+        final ClassModel.ClassAppsBean classAppsBean = classApps.get(position);
+        final boolean isNewFunction = classAppsBean.isIsNew();
+        final String alertTypePriority = classAppsBean.getAlertTypePriority();
+        final int msgNum = classAppsBean.getMsgNum();
+        //存放优先级信息 1:新   2:红点  3:数字
+        final List<String> listPriority = new ArrayList<>();
+        if (alertTypePriority != null) {
+            if (alertTypePriority.contains(",")) {
+                final String[] split = alertTypePriority.split(",");
+                for (int i = 0; i < split.length; i++) {
+                    listPriority.add(split[i]);
+                }
+            }
+        }
+
+        //显示新类型
+        if (listPriority.contains(String.valueOf(1))) {
+            SharedPreferences sharedPreferences;
+            switch (appKey) {
+                case ClassAppKey.HOMEWORK:
+                    sharedPreferences = HTApplication
+                            .getInstance()
+                            .getSharedPreferences(ClassFragment.HOMEWORK_SIGN, Context.MODE_PRIVATE);
+                    isShow = sharedPreferences.getBoolean(ClassFragment.HOMEWORK_SIGN, true);
+                    break;
+                case ClassAppKey.CLASS_CLOCK:
+                    sharedPreferences = HTApplication
+                            .getInstance()
+                            .getSharedPreferences(ClassFragment.READ_CLOCK_NEW_SIGN, Context.MODE_PRIVATE);
+                    isShow = sharedPreferences.getBoolean(ClassFragment.READ_CLOCK_NEW_SIGN, true);
+                    break;
+            }
+
+
+            if (isNewFunction && isShow) {
+                viewHolder.mIvFunctionNewIcon.setVisibility(View.VISIBLE);
+            } else {
+                viewHolder.mIvFunctionNewIcon.setVisibility(View.GONE);
+            }
+        }
+
+        if (viewHolder.mIvFunctionNewIcon.getVisibility() == View.VISIBLE) {
+            //如果"新"图标显示 则不显示消息数量 直接结束
+            return true;
+        }
+
+        viewHolder.mIvFunctionNewIcon.setVisibility(View.GONE);
+        //显示红点
+        if (listPriority.contains(String.valueOf(2))) {
+            viewHolder.mDotCircle.setVisibility(View.VISIBLE);
+            return true;
+        } else {
+            viewHolder.mDotCircle.setVisibility(View.GONE);
+        }
+
+        //显示数据数量
+        if (listPriority.contains(String.valueOf(3))) {
+            viewHolder.mDotCircle.setVisibility(View.GONE);
+            if (msgNum == 0) {
+                viewHolder.mDotNumber.setVisibility(View.GONE);
+            } else {
+                viewHolder.mDotNumber.setVisibility(View.VISIBLE);
+                final String showNumber = msgNum > 99 ? "99+" : String.valueOf(msgNum);
+                viewHolder.mDotNumber.setText(showNumber);
+            }
+            switch (appKey) {
+                case ClassAppKey.HOMEWORK:
+                    MESSAGE_EVENT.setHomeworkCount(msgNum);
+                    break;
+                case ClassAppKey.CLASS_CLOCK:
+                    MESSAGE_EVENT.setReadClockCount(msgNum);
+                    break;
+            }
+            EventBus.getDefault().post(MESSAGE_EVENT);
+        }
+        return false;
     }
 
 }

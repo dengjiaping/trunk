@@ -36,6 +36,7 @@ public interface CreateWorkContract {
 
         boolean getAudioState();
         void playAudio(String source);
+        void playAudio(String source,int position);
         void pauseAudio();
         void stopAudio();
 

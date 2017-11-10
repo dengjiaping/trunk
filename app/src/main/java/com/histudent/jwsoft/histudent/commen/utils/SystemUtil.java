@@ -5,7 +5,6 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Handler;
@@ -13,7 +12,6 @@ import android.os.Message;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Base64;
-import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,9 +23,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 
 import org.greenrobot.eventbus.EventBus;
@@ -89,7 +86,7 @@ public class SystemUtil {
      * @return
      */
     public static int getScreenWind() {
-        return HiStudentApplication.getInstance().getResources().getDisplayMetrics().widthPixels;
+        return HTApplication.getInstance().getResources().getDisplayMetrics().widthPixels;
     }
 
 
@@ -114,11 +111,11 @@ public class SystemUtil {
      * @return
      */
     public static String getScreenHeight() {
-        return HiStudentApplication.getInstance().getResources().getDisplayMetrics().heightPixels + "";
+        return HTApplication.getInstance().getResources().getDisplayMetrics().heightPixels + "";
     }
 
     public static int getScreenHeight_() {
-        return HiStudentApplication.getInstance().getResources().getDisplayMetrics().heightPixels;
+        return HTApplication.getInstance().getResources().getDisplayMetrics().heightPixels;
     }
 
     /**
@@ -128,8 +125,8 @@ public class SystemUtil {
      */
     public static String getVersion() {
         try {
-            PackageManager manager = HiStudentApplication.getInstance().getPackageManager();
-            PackageInfo info = manager.getPackageInfo(HiStudentApplication.getInstance().getPackageName(), 0);
+            PackageManager manager = HTApplication.getInstance().getPackageManager();
+            PackageInfo info = manager.getPackageInfo(HTApplication.getInstance().getPackageName(), 0);
             String version = info.versionName;
             return version;
         } catch (Exception e) {
@@ -383,7 +380,7 @@ public class SystemUtil {
 
     public static int dp2px(int dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
-                HiStudentApplication.getInstance().getResources().getDisplayMetrics());
+                HTApplication.getInstance().getResources().getDisplayMetrics());
     }
 
     public static boolean isOneselfIn(String userId) {

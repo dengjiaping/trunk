@@ -153,6 +153,14 @@ public class WorkReceiverPersonDetailActivity extends BaseActivity<WorkReceiverP
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        final Intent intent = new Intent(this, WorkSelectReceiverPersonActivity.class);
+        intent.putExtra(TransferKeys.GROUP_ID, mTeamId);
+        CommonAdvanceUtils.startActivity(this, intent);
+    }
+
+    @Override
     public void showContent(String message) {
 
     }

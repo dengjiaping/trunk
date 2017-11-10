@@ -445,6 +445,7 @@ public class NoticePublishActivity extends BaseActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(AudioPlayStatusEvent event) {
+        mVoiceProgress.setProgress(100);
         mVoiceProgress.setProgress(0);
         mVoiceTime.setText("00:00");
         mVoiceControl.setText(getResources().getString(R.string.icon_bofang));
@@ -689,7 +690,6 @@ public class NoticePublishActivity extends BaseActivity {
 
         mPopupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         setBackgroundAlpha(0.5f);//设置屏幕透明度
-        mPopupWindow.setFocusable(true);// 点击空白处时，隐藏掉pop窗口
         record.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

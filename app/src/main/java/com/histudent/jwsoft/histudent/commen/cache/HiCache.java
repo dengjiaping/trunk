@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.account.login.model.CurrentUserInfoModel;
 import com.histudent.jwsoft.histudent.body.find.bean.GroupBean;
@@ -105,7 +105,7 @@ public class HiCache {
      */
     public void setRecentContactsTopFlag(String accountId) {
         if (TextUtils.isEmpty(accountId)) return;
-        SharedPreferences sharedPreferences = HiStudentApplication.getInstance().getSharedPreferences(saveRecentContactsTopFlag, HiStudentApplication.getInstance().MODE_PRIVATE);
+        SharedPreferences sharedPreferences = HTApplication.getInstance().getSharedPreferences(saveRecentContactsTopFlag, HTApplication.getInstance().MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putLong(accountId, System.currentTimeMillis());
         editor.apply();
@@ -116,7 +116,7 @@ public class HiCache {
      */
     public void removeRecentContactsTopFlag(String accountId) {
         if (TextUtils.isEmpty(accountId)) return;
-        SharedPreferences sharedPreferences = HiStudentApplication.getInstance().getSharedPreferences(saveRecentContactsTopFlag, HiStudentApplication.getInstance().MODE_PRIVATE);
+        SharedPreferences sharedPreferences = HTApplication.getInstance().getSharedPreferences(saveRecentContactsTopFlag, HTApplication.getInstance().MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putLong(accountId, 0);
         editor.apply();
@@ -126,7 +126,7 @@ public class HiCache {
      * 获取置顶会话
      */
     public long getRecentContactsTopFlag(String accountId) {
-        SharedPreferences sharedPreferences = HiStudentApplication.getInstance().getSharedPreferences(saveRecentContactsTopFlag, HiStudentApplication.getInstance().MODE_PRIVATE);
+        SharedPreferences sharedPreferences = HTApplication.getInstance().getSharedPreferences(saveRecentContactsTopFlag, HTApplication.getInstance().MODE_PRIVATE);
         return sharedPreferences.getLong(accountId, 0);
     }
 
@@ -134,7 +134,7 @@ public class HiCache {
      * 登录状态标记（0：首次登录，1：登录成功 2：退出登录）
      */
     public void exchangeLoginStatue(int loginStatue) {
-        SharedPreferences sharedPreferences = HiStudentApplication.getInstance().getSharedPreferences(saveName_login, HiStudentApplication.getInstance().MODE_PRIVATE);
+        SharedPreferences sharedPreferences = HTApplication.getInstance().getSharedPreferences(saveName_login, HTApplication.getInstance().MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("loginStatue", loginStatue);
         editor.apply();
@@ -144,8 +144,8 @@ public class HiCache {
      * 是否是第一次启动
      */
     public int getLoginStatue() {
-        SharedPreferences sharedPreferences = HiStudentApplication.getInstance().getSharedPreferences(
-                saveName_login, HiStudentApplication.getInstance().MODE_PRIVATE);
+        SharedPreferences sharedPreferences = HTApplication.getInstance().getSharedPreferences(
+                saveName_login, HTApplication.getInstance().MODE_PRIVATE);
         return sharedPreferences.getInt("loginStatue", 0);
     }
 
@@ -153,8 +153,8 @@ public class HiCache {
      * 记录网址（测试）
      */
     public void saveUrl(String url) {
-        SharedPreferences sharedPreferences = HiStudentApplication.getInstance().getSharedPreferences(
-                saveUrl, HiStudentApplication.getInstance().MODE_PRIVATE);
+        SharedPreferences sharedPreferences = HTApplication.getInstance().getSharedPreferences(
+                saveUrl, HTApplication.getInstance().MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("url", url);
         editor.apply();
@@ -164,8 +164,8 @@ public class HiCache {
      * 读出网址（测试）
      */
     public String getUrl() {
-        SharedPreferences sharedPreferences = HiStudentApplication.getInstance().getSharedPreferences(
-                saveUrl, HiStudentApplication.getInstance().MODE_PRIVATE);
+        SharedPreferences sharedPreferences = HTApplication.getInstance().getSharedPreferences(
+                saveUrl, HTApplication.getInstance().MODE_PRIVATE);
         return sharedPreferences.getString("url", null);
     }
 
@@ -178,8 +178,8 @@ public class HiCache {
 
         if (TextUtils.isEmpty(userName))
             return;
-        SharedPreferences sharedPreferences = HiStudentApplication.getInstance().getSharedPreferences(
-                saveccount, HiStudentApplication.getInstance().MODE_PRIVATE);
+        SharedPreferences sharedPreferences = HTApplication.getInstance().getSharedPreferences(
+                saveccount, HTApplication.getInstance().MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("userName", userName);
         editor.apply();
@@ -191,8 +191,8 @@ public class HiCache {
      * @return
      */
     public String getAcount() {
-        SharedPreferences sharedPreferences = HiStudentApplication.getInstance().getSharedPreferences(
-                saveccount, HiStudentApplication.getInstance().MODE_PRIVATE);
+        SharedPreferences sharedPreferences = HTApplication.getInstance().getSharedPreferences(
+                saveccount, HTApplication.getInstance().MODE_PRIVATE);
         String userName = sharedPreferences.getString("userName", null);
         return userName;
     }
@@ -564,7 +564,7 @@ public class HiCache {
      * @return
      */
     public String getUserLoginToken() {
-        return SharedPreferencedUtils.getString(HiStudentApplication.getInstance(), ParamKeys.TOKEN);
+        return SharedPreferencedUtils.getString(HTApplication.getInstance(), ParamKeys.TOKEN);
     }
 
 }

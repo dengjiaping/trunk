@@ -6,9 +6,8 @@ import android.graphics.Bitmap.CompressFormat;
 import android.os.Environment;
 import android.text.TextUtils;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.HiStudentLog;
-import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -99,7 +98,7 @@ public class FileUtil {
     public static String getBasePath() {
         boolean sdCardExist = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
         if (sdCardExist) {
-            return Environment.getExternalStorageDirectory().getAbsolutePath() + "/data/" + HiStudentApplication.getInstance().getPackageName() + "/HiStudentCahe";
+            return Environment.getExternalStorageDirectory().getAbsolutePath() + "/data/" + HTApplication.getInstance().getPackageName() + "/HiStudentCahe";
         }
         return null;
     }

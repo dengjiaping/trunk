@@ -194,6 +194,8 @@ public class NoticeDetailActivity extends BaseActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(AudioPlayStatusEvent event) {
+
+        mVoiceProgress.setProgress(100);
         mVoiceProgress.setProgress(0);
         mVoiceTime.setText("00:00");
         mVoiceControl.setText(getResources().getString(R.string.icon_bofang));

@@ -61,7 +61,7 @@ public class HomeworkDetailBean implements Serializable{
     private String voiceId;
     private int voiceLength;
     private boolean isComplete;
-    private List<VideoListBean> videoList;
+    private List<VideoDetailBean> videoList;
     private List<WorkImgDetailBean> imgList;
 
 
@@ -241,11 +241,11 @@ public class HomeworkDetailBean implements Serializable{
         this.isComplete = isComplete;
     }
 
-    public List<VideoListBean> getVideoList() {
+    public List<VideoDetailBean> getVideoList() {
         return videoList;
     }
 
-    public void setVideoList(List<VideoListBean> videoList) {
+    public void setVideoList(List<VideoDetailBean> videoList) {
         this.videoList = videoList;
     }
 
@@ -258,49 +258,4 @@ public class HomeworkDetailBean implements Serializable{
     }
 
 
-    public static class VideoListBean implements Serializable{
-        /**
-         * aliVideoId : c876efff14244355bc876cab7f4c1cdb
-         * aliVideoCover : http://vod.hitongx.com/snapshot/c876efff14244355bc876cab7f4c1cdb00001.jpg
-         * aliVideoPlayAuth : eyJTZWN1cml0eVRva2VuIjoiQ0FJUzN3SjFxNkZ0NUIyeWZTaklySWJ4SWYzQnZyVnk1UHVwZEIvODFUWURWTUplMTZPZHBEejJJSHBLZVhkdUFlQVhzL28wbW1oWjcvWVlsck1xRk1RVkZSYVpNNUVndjg4S29Wbi9KcExGc3QySjZyOEpqc1ZPaHMxMG0xMnBzdlhKYXNEVkVma3VFNVhFTWlJNS8wMGU2TC8rY2lyWVhEN0JHSmFWaUpsaFE4MEtWdzJqRjFSdkQ4dFhJUTBRazYxOUszemRaOW1nTGlidWkzdnhDa1J2MkhCaWptOHR4cW1qL015UTV4MzFpMXYweStCM3dZSHRPY3FjYThCOU1ZMVdUc3Uxdm9oemFyR1Q2Q3BaK2psTStxQVU2cWxZNG1YcnM5cUhFa0ZOd0JpWFNaMjJsT2RpTndoa2ZLTTNOcmRacGZ6bjc1MUN0L2ZVaXA3OHhtUW1YNGdYY1Z5R0ZOLzducFNVUmJ2M2I0eGxMZXVrQVJtWGpJRFRiS3VTbWhnL2ZIY1dPRGxOZjljY01YSnFBWFF1TUdxQWRQTDVwZ2lhTTFyOUVQYmRnZmhtaTRBSjVsSHA3TWVNR1YrRGVMeVF5aDBFSWFVN2EwNDR4ckRoRzVnS3NNUWFnQUdHd0hvd3Vwclo0K2FudFY2N1VscHlUQUhiNEMrQXFUazg3ZExZTEFBb1IxYjhKODFWbTlWMitrU3hkSnNvd2NxRmxiWEs1OC9HdGxLUVozYUVJVUFVeWVwYjI1dEV3L0RaZ1ZMR2ZVQkRnbTNDdlp4WFJJdnVUcy9GVnV6d0lZOFQ4b3dGR1o3OW10NWV5NjBTbW04bUpZazQvL2ZxNmtMSWhHOGlCSDMxNGc9PSIsIkF1dGhJbmZvIjoie1wiQ2FsbGVyXCI6XCI1Mm51VkF3VFF3enlHdmtHbmJ4bzZtd3ErMkl4Wm10S0NING45c0h3dHZRPVxcclxcblwiLFwiRXhwaXJlVGltZVwiOlwiMjAxNy0xMS0wM1QxMjoxNzowNlpcIixcIk1lZGlhSWRcIjpcImM4NzZlZmZmMTQyNDQzNTViYzg3NmNhYjdmNGMxY2RiXCIsXCJTaWduYXR1cmVcIjpcIllPN3JpUUFBKzcrY2RuajhocFNKU1ZlaGhOST1cIn0iLCJWaWRlb01ldGEiOnsiU3RhdHVzIjoiTm9ybWFsIiwiVmlkZW9JZCI6ImM4NzZlZmZmMTQyNDQzNTViYzg3NmNhYjdmNGMxY2RiIiwiVGl0bGUiOiI5Y2RmMjgwMGE1NDY0OTJiOGFhYTY1NDlhNDRlMzJiMy5tcDQiLCJDb3ZlclVSTCI6Imh0dHA6Ly92b2QuaGl0b25neC5jb20vc25hcHNob3QvYzg3NmVmZmYxNDI0NDM1NWJjODc2Y2FiN2Y0YzFjZGIwMDAwMS5qcGciLCJEdXJhdGlvbiI6MS40MzN9LCJBY2Nlc3NLZXlJZCI6IlNUUy5NRURqR3VTalNTOUJ2OU0xNlZYTXI4ZjZGIiwiUGxheURvbWFpbiI6InZvZC5oaXRvbmd4LmNvbSIsIkFjY2Vzc0tleVNlY3JldCI6IjdlSkRMcFhCUm5GaFNoTWhrdUU3dzdkeW4yUmhFUldES2NETWhHTmlIQ0hQIiwiUmVnaW9uIjoiY24tc2hhbmdoYWkiLCJDdXN0b21lcklkIjoxNzM4ODI1NjI4OTM1ODI2fQ==
-         * aliVideoPlayDuration : 1
-         */
-
-        private String aliVideoId;
-        private String aliVideoCover;
-        private String aliVideoPlayAuth;
-        private int aliVideoPlayDuration;
-
-        public String getAliVideoId() {
-            return aliVideoId;
-        }
-
-        public void setAliVideoId(String aliVideoId) {
-            this.aliVideoId = aliVideoId;
-        }
-
-        public String getAliVideoCover() {
-            return aliVideoCover;
-        }
-
-        public void setAliVideoCover(String aliVideoCover) {
-            this.aliVideoCover = aliVideoCover;
-        }
-
-        public String getAliVideoPlayAuth() {
-            return aliVideoPlayAuth;
-        }
-
-        public void setAliVideoPlayAuth(String aliVideoPlayAuth) {
-            this.aliVideoPlayAuth = aliVideoPlayAuth;
-        }
-
-        public int getAliVideoPlayDuration() {
-            return aliVideoPlayDuration;
-        }
-
-        public void setAliVideoPlayDuration(int aliVideoPlayDuration) {
-            this.aliVideoPlayDuration = aliVideoPlayDuration;
-        }
-    }
 }

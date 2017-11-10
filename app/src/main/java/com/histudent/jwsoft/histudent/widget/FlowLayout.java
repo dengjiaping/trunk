@@ -34,6 +34,12 @@ public class FlowLayout extends RelativeLayout {
     public static final int STYLE_CHECKBOX = 3;
     private Context mContext;
 
+    public List<FlowInfo> getFlowInfos() {
+        return mFlowInfos;
+    }
+
+    private List<FlowInfo> mFlowInfos;
+
     public FlowLayout(Context context) {
         this(context, null);
     }
@@ -183,7 +189,8 @@ public class FlowLayout extends RelativeLayout {
         }
     }
 
-    public void setData(List<String> lists, int type) {
+    public void setData(List<FlowInfo> lists, int type) {
+        mFlowInfos = lists;
         if (lists != null) {
             for (int i = 0; i < lists.size(); i++) {
                 switch (type) {
@@ -192,7 +199,7 @@ public class FlowLayout extends RelativeLayout {
                     case STYLE_BUTTON:
                         break;
                     case STYLE_CHECKBOX:
-                        initCheckBox(lists.get(i), i);
+                        initCheckBox(mFlowInfos.get(i), i);
                         break;
 
                 }
@@ -200,14 +207,20 @@ public class FlowLayout extends RelativeLayout {
         }
     }
 
-    private void initCheckBox(String content, int position) {
+    private void initCheckBox(FlowInfo flowInfo, int position) {
         View mView = new CheckBox(mContext);
 
         ((CheckBox) mView).setButtonDrawable(null);
-        ((CheckBox) mView).setText(content);
+        ((CheckBox) mView).setText(flowInfo.getContent());
+        ((CheckBox) mView).setChecked(flowInfo.getIsCheck());
+        if (flowInfo.getIsCheck()){
+            ((CheckBox) mView).setTextColor(Color.parseColor("#28ca7e"));
+            ((CheckBox) mView).setBackground(AppCompatResources.getDrawable(mContext, R.drawable.shape_comment_checked_true));
+        }else{
+            ((CheckBox) mView).setTextColor(Color.parseColor("#b0b0b0"));
+            ((CheckBox) mView).setBackground(AppCompatResources.getDrawable(mContext, R.drawable.shape_comment_checked));
+        }
         ((CheckBox) mView).setTextSize(13);
-        ((CheckBox) mView).setTextColor(Color.parseColor("#b0b0b0"));
-        ((CheckBox) mView).setBackground(AppCompatResources.getDrawable(mContext, R.drawable.shape_comment_checked));
         ((CheckBox) mView).setPadding(DisplayUtils.dp2px(mContext, 8), DisplayUtils.dp2px(mContext, 6), DisplayUtils.dp2px(mContext, 8), DisplayUtils.dp2px(mContext, 6));
         ((CheckBox) mView).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -219,7 +232,7 @@ public class FlowLayout extends RelativeLayout {
                     ((CheckBox) mView).setTextColor(Color.parseColor("#b0b0b0"));
                     ((CheckBox) mView).setBackground(AppCompatResources.getDrawable(mContext, R.drawable.shape_comment_checked));
                 }
-                EventBus.getDefault().post(new FlowClickEvent(position,b));
+                flowInfo.setIsCheck(b);
             }
         });
 
@@ -246,4 +259,5 @@ public class FlowLayout extends RelativeLayout {
             v.requestLayout();
         }
     }
+
 }

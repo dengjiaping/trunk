@@ -1,0 +1,253 @@
+-- Merging decision tree log ---
+manifest
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:1:1-143:12
+INJECTED from E:\application\trunk\uikit\AndroidManifest.xml:1:1-143:12
+INJECTED from E:\application\trunk\uikit\AndroidManifest.xml:1:1-143:12
+	package
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:2:5-36
+		INJECTED from E:\application\trunk\uikit\AndroidManifest.xml
+		INJECTED from E:\application\trunk\uikit\AndroidManifest.xml
+	xmlns:android
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:1:11-69
+uses-sdk
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:4:5-6:41
+	android:targetSdkVersion
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:6:9-38
+	android:minSdkVersion
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:5:9-34
+application
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:8:5-142:19
+activity#com.netease.nim.uikit.session.activity.P2PMessageActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:12:9-17:70
+	android:screenOrientation
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:15:13-49
+	android:windowSoftInputMode
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:17:13-67
+	android:configChanges
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:14:13-63
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:16:13-56
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:13:13-85
+activity#com.netease.nim.uikit.session.activity.TeamMessageActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:18:9-23:70
+	android:screenOrientation
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:21:13-49
+	android:windowSoftInputMode
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:23:13-67
+	android:configChanges
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:20:13-63
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:22:13-56
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:19:13-86
+activity#com.netease.nim.uikit.team.activity.NormalTeamInfoActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:26:9-31:70
+	android:screenOrientation
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:29:13-49
+	android:windowSoftInputMode
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:31:13-67
+	android:configChanges
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:28:13-63
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:30:13-56
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:27:13-86
+activity#com.netease.nim.uikit.team.activity.AdvancedTeamInfoActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:32:9-37:70
+	android:screenOrientation
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:35:13-49
+	android:windowSoftInputMode
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:37:13-67
+	android:configChanges
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:34:13-63
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:36:13-56
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:33:13-88
+activity#com.netease.nim.uikit.team.activity.AdvancedTeamMemberActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:38:9-43:70
+	android:screenOrientation
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:41:13-49
+	android:windowSoftInputMode
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:43:13-67
+	android:configChanges
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:40:13-63
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:42:13-56
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:39:13-90
+activity#com.netease.nim.uikit.team.activity.AdvancedTeamAnnounceActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:44:9-49:70
+	android:screenOrientation
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:47:13-49
+	android:windowSoftInputMode
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:49:13-67
+	android:configChanges
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:46:13-63
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:48:13-56
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:45:13-92
+activity#com.netease.nim.uikit.team.activity.AdvancedTeamMemberInfoActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:50:9-55:70
+	android:screenOrientation
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:53:13-49
+	android:windowSoftInputMode
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:55:13-67
+	android:configChanges
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:52:13-63
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:54:13-56
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:51:13-94
+activity#com.netease.nim.uikit.team.activity.AdvancedTeamNicknameActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:56:9-61:70
+	android:screenOrientation
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:59:13-49
+	android:windowSoftInputMode
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:61:13-67
+	android:configChanges
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:58:13-63
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:60:13-56
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:57:13-92
+activity#com.netease.nim.uikit.team.activity.AdvancedTeamCreateAnnounceActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:62:9-67:70
+	android:screenOrientation
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:65:13-49
+	android:windowSoftInputMode
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:67:13-67
+	android:configChanges
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:64:13-63
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:66:13-56
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:63:13-98
+activity#com.netease.nim.uikit.team.activity.TeamPropertySettingActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:68:9-73:70
+	android:screenOrientation
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:71:13-49
+	android:windowSoftInputMode
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:73:13-67
+	android:configChanges
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:70:13-63
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:72:13-56
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:69:13-91
+activity#com.netease.nim.uikit.contact_selector.activity.ContactSelectActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:76:9-82:67
+	android:screenOrientation
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:80:13-49
+	android:label
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:79:13-53
+	android:windowSoftInputMode
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:82:13-64
+	android:configChanges
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:78:13-63
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:81:13-56
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:77:13-97
+activity#com.netease.nim.uikit.common.media.picker.activity.PickImageActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:85:9-88:59
+	android:screenOrientation
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:87:13-49
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:88:13-56
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:86:13-96
+activity#com.netease.nim.uikit.common.media.picker.activity.CropImageActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:89:9-92:59
+	android:screenOrientation
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:91:13-49
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:92:13-56
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:90:13-96
+activity#com.netease.nim.uikit.common.media.picker.activity.PickerAlbumActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:93:9-96:59
+	android:screenOrientation
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:95:13-49
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:96:13-56
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:94:13-98
+activity#com.netease.nim.uikit.common.media.picker.activity.PickerAlbumPreviewActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:97:9-100:59
+	android:screenOrientation
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:99:13-49
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:100:13-56
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:98:13-105
+activity#com.netease.nim.uikit.common.media.picker.activity.PreviewImageFromLocalActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:101:9-106:70
+	android:screenOrientation
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:104:13-49
+	android:windowSoftInputMode
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:106:13-67
+	android:configChanges
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:103:13-63
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:105:13-56
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:102:13-108
+activity#com.netease.nim.uikit.common.media.picker.activity.PreviewImageFromCameraActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:107:9-113:70
+	android:screenOrientation
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:111:13-49
+	android:label
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:110:13-53
+	android:windowSoftInputMode
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:113:13-67
+	android:configChanges
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:109:13-63
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:112:13-56
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:108:13-109
+activity#com.netease.nim.uikit.session.activity.CaptureVideoActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:116:9-121:70
+	android:screenOrientation
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:119:13-49
+	android:windowSoftInputMode
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:121:13-67
+	android:configChanges
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:118:13-63
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:120:13-56
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:117:13-87
+activity#com.netease.nim.uikit.session.activity.MyCaptureVideoActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:123:9-128:70
+	android:screenOrientation
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:126:13-49
+	android:windowSoftInputMode
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:128:13-67
+	android:configChanges
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:125:13-63
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:127:13-56
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:124:13-89
+activity#com.netease.nim.uikit.session.activity.WatchVideoActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:130:9-134:48
+	android:label
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:133:13-47
+	android:configChanges
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:132:13-74
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:134:13-45
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:131:13-85
+activity#com.netease.nim.uikit.session.activity.WatchMessagePictureActivity
+ADDED from E:\application\trunk\uikit\AndroidManifest.xml:137:9-140:59
+	android:configChanges
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:139:13-51
+	android:theme
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:140:13-56
+	android:name
+		ADDED from E:\application\trunk\uikit\AndroidManifest.xml:138:13-94

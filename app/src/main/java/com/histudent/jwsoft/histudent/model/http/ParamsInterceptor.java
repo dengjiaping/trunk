@@ -1,9 +1,8 @@
 package com.histudent.jwsoft.histudent.model.http;
 
 import android.os.Build;
-import android.util.ArrayMap;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.account.login.model.CurrentUserInfoModel;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.utils.IntenetUtil;
@@ -13,18 +12,14 @@ import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 
 import okhttp3.FormBody;
-import okhttp3.Headers;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
-import okhttp3.MultipartBody;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -164,7 +159,7 @@ public class ParamsInterceptor implements Interceptor {
             params.put("phonedevice", Build.MODEL);
             params.put("width", String.valueOf(SystemUtil.getScreenWind()));
             params.put("height", SystemUtil.getScreenHeight());
-            params.put("uniquetag", HiStudentApplication.getInstance().PushId);
+            params.put("uniquetag", HTApplication.getInstance().PushId);
             params.put("phoneversion", android.os.Build.VERSION.RELEASE);
             params.put("timestamp", String.valueOf(System.currentTimeMillis()));
             params.put("NetType", String.valueOf(IntenetUtil.getNetworkState()));

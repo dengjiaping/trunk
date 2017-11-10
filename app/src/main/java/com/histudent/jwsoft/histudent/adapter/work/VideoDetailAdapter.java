@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.bean.homework.HomeworkDetailBean;
+import com.histudent.jwsoft.histudent.bean.homework.VideoDetailBean;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
 import com.histudent.jwsoft.histudent.entity.VideoInfoEntity;
@@ -36,13 +37,13 @@ import butterknife.OnClick;
 
 public class VideoDetailAdapter extends RecyclerView.Adapter<VideoDetailAdapter.ViewHolder> {
     private Context mContext;
-    private List<HomeworkDetailBean.VideoListBean> mList = new ArrayList<>();
+    private List<VideoDetailBean> mList = new ArrayList<>();
 
     public VideoDetailAdapter(Context context) {
         this.mContext = context;
     }
 
-    public void setList(List<HomeworkDetailBean.VideoListBean> list) {
+    public void setList(List<VideoDetailBean> list) {
         this.mList = list;
         notifyDataSetChanged();
     }
@@ -55,7 +56,7 @@ public class VideoDetailAdapter extends RecyclerView.Adapter<VideoDetailAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        HomeworkDetailBean.VideoListBean videoInfo = mList.get(position);
+        VideoDetailBean videoInfo = mList.get(position);
         holder.mVideoDelete.setVisibility(View.GONE);
         if (videoInfo != null) {
             CommonGlideImageLoader.getInstance().displayNetImage(mContext, videoInfo.getAliVideoCover(), holder.mVideoCover);

@@ -15,7 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.account.login.fragment.AccountFragmnet;
 import com.histudent.jwsoft.histudent.account.login.fragment.PhoneFragmnet;
@@ -69,11 +69,7 @@ public class LoginActivity extends BaseLoginActivity {
 
     @Override
     public void initView() {
-
-//        setransparencyWindow();
-
         fragment = new AccountFragmnet();
-
         headImage = (HiStudentHeadImageView) findViewById(R.id.hendImage);
         fragment_layout = (RelativeLayout) findViewById(R.id.login_fragment);
         layout_ = (LinearLayout) findViewById(R.id.layout_);
@@ -105,7 +101,7 @@ public class LoginActivity extends BaseLoginActivity {
 
         link_layout.setVisibility(View.GONE);
 
-        if (!HiStudentApplication.isOnLine) {
+        if (!HTApplication.isOnLine) {
             //调试用
             final List<Long> times = new ArrayList<>();
             headImage.setOnClickListener(new View.OnClickListener() {

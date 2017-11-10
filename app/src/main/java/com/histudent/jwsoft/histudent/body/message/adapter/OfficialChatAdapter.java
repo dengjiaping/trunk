@@ -3,7 +3,6 @@
 package com.histudent.jwsoft.histudent.body.message.adapter;
 
 import android.app.Activity;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,11 +60,11 @@ public class OfficialChatAdapter extends BaseAdapter {
             //下拉项布局
             convertView = LayoutInflater.from(activity).inflate(R.layout.official_chat_item, null);
 
-            holder.image = (HiStudentHeadImageView) convertView.findViewById(R.id.image);
-            holder.picture = (ImageView) convertView.findViewById(R.id.picture);
-            holder.title = (TextView) convertView.findViewById(R.id.title);
-            holder.content = (TextView) convertView.findViewById(R.id.content);
-            holder.time = (TextView) convertView.findViewById(R.id.time);
+            holder.image = convertView.findViewById(R.id.image);
+            holder.picture = convertView.findViewById(R.id.picture);
+            holder.title = convertView.findViewById(R.id.title);
+            holder.content = convertView.findViewById(R.id.content);
+            holder.time = convertView.findViewById(R.id.time);
 
             convertView.setTag(holder);
         } else {
@@ -85,7 +84,7 @@ public class OfficialChatAdapter extends BaseAdapter {
                 break;
         }
 
-        CommonGlideImageLoader.getInstance().displayNetImageWithAnimation(activity, model.getImg(),
+        CommonGlideImageLoader.getInstance().displayNetImage(activity, model.getImg(),
                 holder.picture, PhotoManager.getInstance().getDefaultPlaceholderResource());
         holder.title.setText(model.getTitle());
         holder.content.setText(model.getContent());

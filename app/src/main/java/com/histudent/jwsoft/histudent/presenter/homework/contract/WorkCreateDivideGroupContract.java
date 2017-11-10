@@ -20,7 +20,7 @@ public interface WorkCreateDivideGroupContract {
 
         void updateListData(List<CommonMemberBean> list);
 
-        void addGroupInformationSuccess();
+        void addGroupInformationSuccess(String teamId);
 
         void modifyGroupInformationSuccess();
     }

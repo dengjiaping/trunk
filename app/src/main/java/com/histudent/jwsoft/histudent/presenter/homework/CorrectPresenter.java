@@ -46,9 +46,9 @@ public class CorrectPresenter extends RxPresenter<CorrectContract.View> implemen
     private RecordManager mRecordManager;
 
     @Inject
-    public CorrectPresenter(ApiFactory mApiFactory, AudioManager mAudioManager, RecordManager mRecordManager) {
+    public CorrectPresenter(ApiFactory mApiFactory, AudioManager audioManager, RecordManager mRecordManager) {
         this.mApiFactory = mApiFactory;
-        this.mAudioManager = mAudioManager;
+        this.mAudioManager = audioManager;
         this.mRecordManager = mRecordManager;
     }
 
@@ -92,8 +92,8 @@ public class CorrectPresenter extends RxPresenter<CorrectContract.View> implemen
     }
 
     @Override
-    public void playAudio(String source) {
-        mAudioManager.start(source);
+    public void playAudio(String source, int position) {
+        mAudioManager.start(source, position);
     }
 
     @Override
@@ -106,6 +106,10 @@ public class CorrectPresenter extends RxPresenter<CorrectContract.View> implemen
         mAudioManager.stop();
     }
 
+    @Override
+    public void playAudio(String source) {
+        mAudioManager.start(source);
+    }
 
     @Override
     public boolean getAudioState() {
@@ -113,7 +117,7 @@ public class CorrectPresenter extends RxPresenter<CorrectContract.View> implemen
     }
 
     @Override
-    public void downloadVoice(String voiceId) {
+    public void downloadVoice(String voiceId,int type) {
         Disposable disposable = mApiFactory.getCommonApi().downloadFile(voiceId)
                 .compose(RxSchedulers.io_main())
                 .subscribe(new Consumer<ResponseBody>() {
@@ -145,7 +149,7 @@ public class CorrectPresenter extends RxPresenter<CorrectContract.View> implemen
                                 if (fos != null) {
                                     fos.close();
                                 }
-                                mView.downloadVoiceSuccess(file);
+                                mView.downloadVoiceSuccess(file,type);
                             } catch (IOException e) {
                             }
                         }
@@ -178,15 +182,21 @@ public class CorrectPresenter extends RxPresenter<CorrectContract.View> implemen
     }
 
     @Override
-    public void commentHomework(String completeId, String commentContent, String proposalIds, AudioInfo audioInfo) {
+    public void commentHomework(String completeId, String commentContent, String proposalIds, AudioInfo audioInfo,String delVoice) {
         List<MultipartBody.Part> parts = new ArrayList<>();
         Map<String, String> params = new HashMap<>();
         RequestUtils.addTextPart(parts, "completeId", completeId);
         params.put("completeId", completeId);
         RequestUtils.addTextPart(parts, "commentContent", commentContent);
         params.put("commentContent", commentContent);
-        RequestUtils.addTextPart(parts, "proposalIds", proposalIds);
-        params.put("proposalIds", proposalIds);
+        if (!TextUtils.isEmpty(proposalIds)){
+            RequestUtils.addTextPart(parts, "proposalIds", proposalIds);
+            params.put("proposalIds", proposalIds);
+        }
+//        if (!TextUtils.isEmpty(delVoice)){
+//            RequestUtils.addTextPart(parts, "delVoice", delVoice);
+//            params.put("delVoice", delVoice);
+//        }
         RequestUtils.initFixedParams(parts, params);
         if (audioInfo.getFile() != null) {
             RequestBody requestBody = RequestBody.create(Const.MEDIA_TYPE_MARKDOWN, audioInfo.getFile());

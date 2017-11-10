@@ -89,7 +89,6 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
     @Override
-
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = null;
         RecyclerView.ViewHolder viewHolder = null;

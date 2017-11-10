@@ -1,5 +1,7 @@
 package com.histudent.jwsoft.histudent.presenter.homework;
 
+import android.content.Context;
+
 import com.histudent.jwsoft.histudent.adapter.homework.convert.HomeworkAlreadyConvert;
 import com.histudent.jwsoft.histudent.base.RxPresenter;
 import com.histudent.jwsoft.histudent.bean.homework.AlreadyCompleteHomeworkEntity;
@@ -41,7 +43,7 @@ public class WorkAlreadyCompletePresenter extends RxPresenter<WorkAlreadyComplet
      * 老师或者学生获取相应作业列表
      */
     @Override
-    public void getAlreadyCompleteHomeworkList(Map<String, Object> paramsMap) {
+    public void getAlreadyCompleteHomeworkList(Context context,Map<String, Object> paramsMap) {
 
         Disposable disposable = APIFACTORY.getWorkApi().getAlreadyCompleteHomeworkList(paramsMap)
                 .compose(RxSchedulers.io_main())
@@ -50,7 +52,7 @@ public class WorkAlreadyCompletePresenter extends RxPresenter<WorkAlreadyComplet
                     public void accept(HttpResponse<AlreadyCompleteHomeworkEntity> response) throws Exception {
                         if (response.isSuccess()) {
                             final AlreadyCompleteHomeworkEntity data = response.getData();
-                            final ArrayList<HomeworkAlreadyBean> convertEntity = HomeworkAlreadyConvert.create(data).convertEntity();
+                            final ArrayList<HomeworkAlreadyBean> convertEntity = HomeworkAlreadyConvert.create(context,data).convertEntity();
                             mView.updateListData(convertEntity);
                         }
                         mView.showContent(response.getMsg());
@@ -67,7 +69,7 @@ public class WorkAlreadyCompletePresenter extends RxPresenter<WorkAlreadyComplet
      * 老师--获取所有作业列表
      */
     @Override
-    public void getAlreadyCompleteAllHomeworkList(Map<String, Object> paramsMap) {
+    public void getAlreadyCompleteAllHomeworkList(Context context,Map<String, Object> paramsMap) {
 
         Disposable disposable = APIFACTORY.getWorkApi().getAlreadyCompleteAllHomeworkList(paramsMap)
                 .compose(RxSchedulers.io_main())
@@ -76,7 +78,7 @@ public class WorkAlreadyCompletePresenter extends RxPresenter<WorkAlreadyComplet
                     public void accept(HttpResponse<AlreadyCompleteHomeworkEntity> response) throws Exception {
                         if (response.isSuccess()) {
                             final AlreadyCompleteHomeworkEntity data = response.getData();
-                            final ArrayList<HomeworkAlreadyBean> convertEntity = HomeworkAlreadyConvert.create(data).convertEntity();
+                            final ArrayList<HomeworkAlreadyBean> convertEntity = HomeworkAlreadyConvert.create(context,data).convertEntity();
                             mView.updateListData(convertEntity);
                         }
                         mView.showContent(response.getMsg());

@@ -1,22 +1,28 @@
 package com.histudent.jwsoft.histudent.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
 import com.histudent.jwsoft.histudent.R;
+import com.histudent.jwsoft.histudent.activity.image.ShowImageActivity;
+import com.histudent.jwsoft.histudent.commen.keyword.utils.DisplayUtils;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.MyImageLoader;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
+import com.histudent.jwsoft.histudent.entity.ImageAttrEntity;
 import com.histudent.jwsoft.histudent.entity.ImgAddEvent;
+import com.histudent.jwsoft.histudent.entity.ShowImgEvent;
 import com.histudent.jwsoft.histudent.entity.WorkImgDeleteEvent;
 
 import org.greenrobot.eventbus.EventBus;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +39,7 @@ public class ImgAdapter extends RecyclerView.Adapter<ImgAdapter.ViewHolder> {
     private boolean isDelete = false;//是否可以删除
     private boolean isAdd = false;//是否可以添加
     private Context mContext;
+    private List<ImageAttrEntity> imageAttrEntities = new ArrayList<>();
 
     public ImgAdapter(Context context) {
         this.mContext = context;
@@ -40,6 +47,16 @@ public class ImgAdapter extends RecyclerView.Adapter<ImgAdapter.ViewHolder> {
 
     public void setList(List<String> list) {
         this.mList = list;
+        imageAttrEntities.clear();
+        if (list != null && list.size() > 0) {
+            for (int i = 0; i < list.size(); i++) {
+                ImageAttrEntity imageAttrEntity = new ImageAttrEntity();
+                imageAttrEntity.setThumbnailUrl(list.get(i));
+                imageAttrEntity.setBigSizeUrl(list.get(i));
+                imageAttrEntities.add(imageAttrEntity);
+            }
+
+        }
         notifyDataSetChanged();
     }
 
@@ -48,7 +65,11 @@ public class ImgAdapter extends RecyclerView.Adapter<ImgAdapter.ViewHolder> {
     }
 
     public void setAdd(boolean add) {
-        isAdd = add;
+        if (add != isAdd) {
+            isAdd = add;
+            notifyDataSetChanged();
+        }
+
     }
 
     @Override
@@ -69,21 +90,54 @@ public class ImgAdapter extends RecyclerView.Adapter<ImgAdapter.ViewHolder> {
                 holder.mDelete.setVisibility(View.GONE);
             }
             String imgUrl = mList.get(position);
-            MyImageLoader.getIntent().displayLocalImage(mContext, new File(imgUrl), holder.mImage, R.drawable.default_placeholder_style_1);
+            if (imgUrl.startsWith("http")) {
+                MyImageLoader.getIntent().displayNetImage(mContext, imgUrl, holder.mImage, R.drawable.default_placeholder_style_1);
+            } else {
+                MyImageLoader.getIntent().displayLocalImage(mContext, new File(imgUrl), holder.mImage, R.drawable.default_placeholder_style_1);
+            }
+            holder.mImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (position != mList.size()) {
+                        showImageDetail(view, position, imageAttrEntities);
+                    }
+
+                }
+            });
         }
+    }
+
+
+    private void showImageDetail(View view, int position, List<ImageAttrEntity> imageAttrs) {
+        Intent intent = new Intent(mContext, ShowImageActivity.class);
+        Bundle bundle = new Bundle();
+        int[] location = new int[2];
+        view.getLocationInWindow(location);
+        int x = location[0];
+        int y = location[1];
+        bundle.putInt("x", x);
+        bundle.putInt("y", y);
+        bundle.putInt("width", view.getWidth());
+        bundle.putInt("height", view.getHeight());
+        bundle.putBoolean("isOperate", true);
+        bundle.putSerializable("photos", (Serializable) imageAttrs);
+        bundle.putInt("position", position);
+        bundle.putInt("column_num", 3);
+        bundle.putInt("horizontal_space", DisplayUtils.dp2px(mContext, 4));
+        bundle.putInt("vertical_space", DisplayUtils.dp2px(mContext, 4));
+        bundle.putBoolean("isCb", false);
+        intent.putExtras(bundle);
+        mContext.startActivity(intent);
     }
 
     @Override
     public int getItemCount() {
-        if (mList != null && mList.size() > 0) {
-            if (isAdd) {
-                return mList.size() + 1;
-            } else {
-                return mList.size();
-            }
+        if (isAdd) {
+            return mList == null ? 1 : mList.size() + 1;
+        } else {
+            return mList == null ? 0 : mList.size();
         }
 
-        return 0;
     }
 
 
@@ -100,6 +154,7 @@ public class ImgAdapter extends RecyclerView.Adapter<ImgAdapter.ViewHolder> {
                     int position = getLayoutPosition();
                     EventBus.getDefault().post(new WorkImgDeleteEvent(position));
                     mList.remove(position);
+                    imageAttrEntities.remove(position);
                     if (getItemCount() != 0) {
                         notifyItemRemoved(position);
                         notifyItemRangeChanged(position, getItemCount() - position);
@@ -111,6 +166,8 @@ public class ImgAdapter extends RecyclerView.Adapter<ImgAdapter.ViewHolder> {
                 case R.id.item_work_img:
                     if (getLayoutPosition() == mList.size()) {
                         EventBus.getDefault().post(new ImgAddEvent());
+                    } else {
+                        EventBus.getDefault().post(new ShowImgEvent(getLayoutPosition()));
                     }
                     break;
             }

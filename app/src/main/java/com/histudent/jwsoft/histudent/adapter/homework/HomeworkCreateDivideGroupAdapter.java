@@ -2,6 +2,7 @@ package com.histudent.jwsoft.histudent.adapter.homework;
 
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -69,7 +70,10 @@ public class HomeworkCreateDivideGroupAdapter extends BaseQuickAdapter<CommonMem
         }
 
         final ImageView imageHeadView = helper.getView(R.id.iv_create_homework_divider_group_icon);
-        CommonGlideImageLoader.getInstance().displayNetImageWithCircle(mContext, item.getHeadIconUrl(), imageHeadView);
+        CommonGlideImageLoader.getInstance().displayNetImageWithCircle(mContext,
+                item.getHeadIconUrl(),
+                imageHeadView,
+                ContextCompat.getDrawable(mContext, R.drawable.avatar_def));
     }
 
     public void setType(int type) {

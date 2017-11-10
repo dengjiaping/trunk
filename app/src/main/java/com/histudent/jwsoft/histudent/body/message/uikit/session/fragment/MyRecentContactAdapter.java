@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.body.message.activity.OfficialChatActivity;
+import com.histudent.jwsoft.histudent.body.message.activity.SystemInformationActivity;
 import com.histudent.jwsoft.histudent.body.message.uikit.session.SessionHelper;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.listener.ParserCallBack;
@@ -180,7 +180,7 @@ public class MyRecentContactAdapter extends BaseAdapter {
                     case ChatType.SUBSCIBR://订阅号
                         HiCache.getInstance().exchangeSystemNotificationUnreadNum(model.getChatType());
                         scorllView(holderMember.scrollView, true);
-                        OfficialChatActivity.start(activity, model.getChatType(),model.getAccountId());
+                        SystemInformationActivity.start(activity, model.getChatType(),model.getAccountId());
                         break;
 
                     case ChatType.P2P://P2P

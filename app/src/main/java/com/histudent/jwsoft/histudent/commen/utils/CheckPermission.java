@@ -10,9 +10,8 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,7 +99,7 @@ public class CheckPermission {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                intent.setData(Uri.parse("package:" + HiStudentApplication.getInstance().getPackageName()));
+                intent.setData(Uri.parse("package:" + HTApplication.getInstance().getPackageName()));
                 activity.startActivity(intent);
             }
         });

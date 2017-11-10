@@ -2,7 +2,6 @@ package com.histudent.jwsoft.histudent.body.myclass.fragment;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -25,14 +24,13 @@ import com.gyf.barlibrary.ImmersionBar;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.histudent.jwsoft.histudent.CodeNum;
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.activity.homework.WorkAlreadyCompleteActivity;
 import com.histudent.jwsoft.histudent.body.find.adapter.SortGroupAdapter;
 import com.histudent.jwsoft.histudent.body.hiworld.bean.SimpleUserModel;
 import com.histudent.jwsoft.histudent.body.message.model.ClassModel;
-import com.histudent.jwsoft.histudent.body.message.uikit.rts.doodle.DoodleView;
 import com.histudent.jwsoft.histudent.body.message.uikit.session.SessionHelper;
 import com.histudent.jwsoft.histudent.body.mine.model.UserClassListModel;
 import com.histudent.jwsoft.histudent.body.mine.parser.DataParser;
@@ -70,7 +68,7 @@ import com.histudent.jwsoft.histudent.comment2.utils.SeletClassMateEnum;
 import com.histudent.jwsoft.histudent.constant.TransferKeys;
 import com.histudent.jwsoft.histudent.entity.IMMessageEvent;
 import com.histudent.jwsoft.histudent.entity.MessageUpdateEvent;
-import com.histudent.jwsoft.histudent.entity.ReadClockMessageEvent;
+import com.histudent.jwsoft.histudent.entity.ClassApplicationMessageEvent;
 import com.histudent.jwsoft.histudent.manage.UserManager;
 import com.histudent.jwsoft.histudent.tool.CommonAdvanceUtils;
 import com.netease.nim.uikit.common.util.string.StringUtil;
@@ -122,7 +120,7 @@ public class ClassFragment extends BaseFragment {
     private AutoScrollImageView mScrollImageView;
     private LinearLayout mClassGradeLayout;
     private int imNumber;
-    private int mReadClockMessageCount;
+    private int mClassHintMessageCount;
     /**
      * 主要用于点击底部app功能后
      * 再次返回此页面 是否需要执行刷新操作
@@ -138,6 +136,7 @@ public class ClassFragment extends BaseFragment {
      * 存储阅读打卡是否显示“新”字样状态
      */
     public static final String READ_CLOCK_NEW_SIGN = "sign";
+    public static final String HOMEWORK_SIGN = "homework_sign";
 
 
     @BindView(R.id.growth_value)
@@ -352,6 +351,10 @@ public class ClassFragment extends BaseFragment {
             //作业
             case ClassAppKey.HOMEWORK:
                 isRefresh = true;
+                HTApplication
+                        .getInstance()
+                        .getSharedPreferences(HOMEWORK_SIGN, Context.MODE_PRIVATE)
+                        .edit().putBoolean(HOMEWORK_SIGN, true).apply();
 //                MyWebActivity.start(getActivity(), bean.getAppUrl());
                 final Intent intent = new Intent(getContext(), WorkAlreadyCompleteActivity.class);
                 final int userType = HiCache.getInstance().getLoginUserInfo().getUserType();
@@ -373,7 +376,7 @@ public class ClassFragment extends BaseFragment {
             case ClassAppKey.READ_PUNCH_THE_CLOCK_TEST:
                 //阅读打卡
                 isRefresh = true;
-                HiStudentApplication
+                HTApplication
                         .getInstance()
                         .getSharedPreferences(READ_CLOCK_NEW_SIGN, Context.MODE_PRIVATE)
                         .edit().putBoolean(READ_CLOCK_NEW_SIGN, true).apply();
@@ -668,17 +671,17 @@ public class ClassFragment extends BaseFragment {
     }
 
 
-    @Subscribe(sticky = true)
-    public void onEvent(ReadClockMessageEvent readClockMessageEvent) {
-        //当有阅读打卡消息时  调用
-        mReadClockMessageCount = readClockMessageEvent.getCount();
+    @Subscribe
+    public void onEvent(ClassApplicationMessageEvent classApplicationMessageEvent) {
+        //当有班级应用消息时  调用
+        mClassHintMessageCount = classApplicationMessageEvent.getHomeworkCount() + classApplicationMessageEvent.getReadClockCount();
         //更新当前班级信息
         for (Object object : classList) {
             final UserClassListModel userClassListMode = (UserClassListModel) object;
             final String classId = userClassListMode.getClassId();
             final String currentClassId = currentClassModel.getClassId();
             if (classId.equals(currentClassId)) {
-                userClassListMode.setImNum(imNumber + mReadClockMessageCount);
+                userClassListMode.setImNum(imNumber + mClassHintMessageCount);
             }
         }
         classAdapter.notifyDataSetChanged();

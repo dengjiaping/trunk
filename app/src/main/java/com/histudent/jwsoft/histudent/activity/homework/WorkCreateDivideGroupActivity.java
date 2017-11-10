@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.google.gson.Gson;
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.adapter.decoration.Divider;
 import com.histudent.jwsoft.histudent.adapter.homework.HomeworkCreateDivideGroupAdapter;
@@ -174,9 +174,10 @@ public class WorkCreateDivideGroupActivity extends BaseActivity<WorkCreateDivide
     }
 
     @Override
-    public void addGroupInformationSuccess() {
+    public void addGroupInformationSuccess(String teamId) {
         final Intent intent = new Intent(WorkCreateDivideGroupActivity.this, WorkSelectReceiverPersonActivity.class);
         intent.putExtra(TransferKeys.CLASS_ID, mClassId);
+        intent.putExtra(TransferKeys.TEAM_ID, teamId);
         CommonAdvanceUtils.startActivity(WorkCreateDivideGroupActivity.this, intent);
         finish();
     }
@@ -240,10 +241,10 @@ public class WorkCreateDivideGroupActivity extends BaseActivity<WorkCreateDivide
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             if (!TextUtils.isEmpty(s)) {
-                mTvTitleRightText.setTextColor(ContextCompat.getColor(HiStudentApplication.getInstance(), R.color._28ca7e));
+                mTvTitleRightText.setTextColor(ContextCompat.getColor(HTApplication.getInstance(), R.color._28ca7e));
                 mTvTitleRightText.setEnabled(true);
             } else {
-                mTvTitleRightText.setTextColor(ContextCompat.getColor(HiStudentApplication.getInstance(), R.color._333333));
+                mTvTitleRightText.setTextColor(ContextCompat.getColor(HTApplication.getInstance(), R.color._333333));
                 mTvTitleRightText.setEnabled(false);
             }
         }

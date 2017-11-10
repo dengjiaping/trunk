@@ -37,6 +37,8 @@ public class TransferKeys {
     public static final String CLASS_ID = "class_id";
     public static final String SUBJECT_ID = "subjectId";
     public static final String TEAM_ID = "teamId";
+    public static final String HOMEWORK_ID = "homeworkId";
+    public static final String IS_BELONG_TO_CURRENT_TEACHER = "isBelongToCurrentTeacher";
 
     public static final class ConstantNum {
         public static final int NUM_1000 = 1000;

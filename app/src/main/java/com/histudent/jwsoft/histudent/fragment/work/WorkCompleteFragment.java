@@ -50,6 +50,9 @@ public class WorkCompleteFragment extends BaseFragment<WorkCompletePresenter> im
     private static final int PULL_UP = 1;
     private int loading = 0;
     private Intent intent = new Intent();
+    private boolean isOnline;
+    private static final int REQ_CORRECT = 2000;
+
 
     @Override
     protected void initInject() {
@@ -74,7 +77,7 @@ public class WorkCompleteFragment extends BaseFragment<WorkCompletePresenter> im
     protected void init() {
         initArguments();
         initView();
-//        initData();
+        initData();
     }
 
     private void initArguments() {
@@ -120,6 +123,10 @@ public class WorkCompleteFragment extends BaseFragment<WorkCompletePresenter> im
         mRecycler.setLayoutManager(mLayoutManager);
     }
 
+    public void setOnline(boolean online) {
+        isOnline = online;
+        mAdapter.setOnline(online);
+    }
 
     @Override
     public void showContent(String message) {
@@ -149,7 +156,14 @@ public class WorkCompleteFragment extends BaseFragment<WorkCompletePresenter> im
         if (itemsBean != null) {
             intent.setClass(getActivity(), CorrectWorkActivity.class);
             intent.putExtra("completeInfo", itemsBean);
-            startActivity(intent);
+            startActivityForResult(intent, REQ_CORRECT);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQ_CORRECT) {
+            initData();
         }
     }
 

@@ -20,7 +20,7 @@ import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.account.regist.fragment.NewPersonFragmentTheFirst;
 import com.histudent.jwsoft.histudent.account.regist.fragment.NewPersonFragmentTheSecond;
 import com.histudent.jwsoft.histudent.account.regist.fragment.NewPersonFragmentTheThird;
-import com.histudent.jwsoft.histudent.body.BodyActivity;
+import com.histudent.jwsoft.histudent.body.HTMainActivity;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.fragment.BaseFragment;
 import com.histudent.jwsoft.histudent.commen.helper.PictureTailorHelper;
@@ -109,7 +109,7 @@ public class NewPersonActivity extends BaseActivity {
                 switch (fragmentManager.getBackStackEntryCount()) {
                     case 1:
                         finish();
-                        BodyActivity.start(this);
+                        HTMainActivity.start(this);
                         break;
 
                     case 2:
@@ -361,7 +361,7 @@ public class NewPersonActivity extends BaseActivity {
 
         if (list_ids.size() == 0) {
             finish();
-            BodyActivity.start(NewPersonActivity.this);
+            HTMainActivity.start(NewPersonActivity.this);
             return;
         }
 
@@ -372,7 +372,7 @@ public class NewPersonActivity extends BaseActivity {
             @Override
             public void onSuccess(String result) {
                 finish();
-                BodyActivity.start(NewPersonActivity.this);
+                HTMainActivity.start(NewPersonActivity.this);
             }
 
             @Override

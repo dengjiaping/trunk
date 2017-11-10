@@ -2,7 +2,7 @@ package com.histudent.jwsoft.histudent.commen.url;
 
 import android.text.TextUtils;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 
 /**
@@ -12,7 +12,7 @@ public class HistudentUrl {
 
     public static final String getBaseUrl() {
         String baseUrl;
-        if (!HiStudentApplication.isOnLine) {
+        if (!HTApplication.isOnLine) {
             baseUrl = TextUtils.isEmpty(HiCache.getInstance().getUrl()) ? "http://192.168.0.252:8290" : HiCache.getInstance().getUrl();
         } else {
             baseUrl = "https://api2.hitongx.com/v2";
@@ -26,7 +26,7 @@ public class HistudentUrl {
 
     public static final String getH5BaseUrl() {
         String baseUrl;
-        if (!HiStudentApplication.isOnLine) {
+        if (!HTApplication.isOnLine) {
             baseUrl = "http://192.168.0.252:8020";
         } else {
             baseUrl = "https://h5.hitongx.com";
@@ -36,7 +36,7 @@ public class HistudentUrl {
 
     public static final String getDisclaimerH5BaseUrl() {
         String baseUrl;
-        if (!HiStudentApplication.isOnLine) {
+        if (!HTApplication.isOnLine) {
             baseUrl = "http://192.168.0.6:8080";
         } else {
             baseUrl = "https://h5.hitongx.com/app";
@@ -641,5 +641,10 @@ public class HistudentUrl {
      * 科目删除
      */
     public static final String HOMEWORK_SUBJECT_DEL = BASE_URL + "/homework/subject/del";
+
+    /**
+     * 获取作业完成情况
+     */
+    public static final String HOMEWORK_STATUS = BASE_URL + "/homework/homeworkStatus";
 
 }

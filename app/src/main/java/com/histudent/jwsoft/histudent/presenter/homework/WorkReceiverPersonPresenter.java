@@ -79,7 +79,7 @@ public class WorkReceiverPersonPresenter extends RxPresenter<WorkReceiverPersonC
                         } else {
                             HiStudentLog.i(TAG, "failure");
                         }
-                        mView.controlDialogStatus(baseHttpResponse.getMsg());
+                        mView.controlDialogStatus(null);
                     }
                 }, new RxException<>(e -> {
                     e.printStackTrace();

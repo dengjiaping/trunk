@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.commen.view.LoadingDialog;
 import com.histudent.jwsoft.histudent.di.componet.ActivityComponent;
 import com.histudent.jwsoft.histudent.di.componet.DaggerActivityComponent;
@@ -66,18 +66,12 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         mUnbinder.unbind();
     }
 
-
     protected ActivityComponent getActivityComponent() {
         return DaggerActivityComponent.builder()
-                .appComponent(HiStudentApplication.getAppComponent())
-                .activityModule(getActivityModule())
+                .activityModule(new ActivityModule(this))
+                .appComponent(HTApplication.getInstance().getAppComponent())
                 .build();
     }
-
-    protected ActivityModule getActivityModule() {
-        return new ActivityModule(this);
-    }
-
     protected abstract void initInject();
 
     protected abstract int getLayout();

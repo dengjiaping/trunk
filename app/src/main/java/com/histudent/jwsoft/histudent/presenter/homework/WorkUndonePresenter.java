@@ -41,6 +41,10 @@ public class WorkUndonePresenter extends RxPresenter<WorkUndoneContract.View> im
     public void playAudio(String source) {
         mAudioManager.start(source);
     }
+    @Override
+    public void playAudio(String source,int position) {
+        mAudioManager.start(source,position);
+    }
 
     @Override
     public void pauseAudio() {

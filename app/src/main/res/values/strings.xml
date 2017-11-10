@@ -727,4 +727,9 @@
     <string name="submit">提交</string>
     <string name="publish_homework_success">发布成功</string>
     <string name="hint_title">提示</string>
+    <string name="no_homework">暂无作业</string>
+    <string name="i_ask_publish">我要发布</string>
+    <string name="homework_already_cancel">作业已取消</string>
+    <string name="cancel_homework">取消作业</string>
+    <string name="homework_hint_message">开启在线提交后，学生需要提交语言、图片或文字等反馈.</string>
 </resources>

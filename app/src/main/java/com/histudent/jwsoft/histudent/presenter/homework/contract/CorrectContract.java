@@ -21,7 +21,7 @@ public interface CorrectContract {
 
         void getCompleteDetailFail();
 
-        void downloadVoiceSuccess(File file);
+        void downloadVoiceSuccess(File file, int type);
 
         void commentProposalSuccess(List<CommentBean> commentBeen);
 
@@ -41,14 +41,16 @@ public interface CorrectContract {
 
         void playAudio(String source);
 
+        void playAudio(String source, int position);
+
         void pauseAudio();
 
         void stopAudio();
 
-        void downloadVoice(String voiceId);
+        void downloadVoice(String voiceId, int type);
 
         void getCommentList(String completeId);
 
-        void commentHomework(String completeId, String commentContent, String proposalIds, AudioInfo audioInfo);
+        void commentHomework(String completeId, String commentContent, String proposalIds, AudioInfo audioInfo, String delVoice);
     }
 }

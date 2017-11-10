@@ -24,7 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.body.hiworld.bean.LogModel;
 import com.histudent.jwsoft.histudent.body.hiworld.bean.RelationPersonModel;
@@ -613,7 +613,7 @@ public class DataUtils {
     public static void setAtText(EditText et, int cursorPosition, String atContent) {
 
         if (ViewUtils.getMaxLength(et) > 0 && et.getText().length() + atContent.length() >= ViewUtils.getMaxLength(et)) {
-            Toast.makeText(HiStudentApplication.getInstance(), "文字长度超出范围，请先删除部分内容后再操作！", Toast.LENGTH_LONG).show();
+            Toast.makeText(HTApplication.getInstance(), "文字长度超出范围，请先删除部分内容后再操作！", Toast.LENGTH_LONG).show();
         } else {
             Log.e("cursorPosition===>", et.getSelectionStart() + "----" + cursorPosition);
             if (et != null && cursorPosition >= 0 && !StringUtil.isEmpty(atContent)) {
@@ -840,7 +840,7 @@ public class DataUtils {
 
         if (topicModel == null) return;
         if (ViewUtils.getMaxLength(et) > 0 && et.getText().length() + topicModel.getTagName().length() >= ViewUtils.getMaxLength(et)) {
-            Toast.makeText(HiStudentApplication.getInstance(), "文字长度超出范围，请先删除部分内容后再操作！", Toast.LENGTH_LONG).show();
+            Toast.makeText(HTApplication.getInstance(), "文字长度超出范围，请先删除部分内容后再操作！", Toast.LENGTH_LONG).show();
         } else {
 
             if (et != null && cursorPosition >= 0 && !StringUtil.isEmpty(topicModel.getTagName())) {

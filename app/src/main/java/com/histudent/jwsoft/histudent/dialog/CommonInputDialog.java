@@ -3,9 +3,9 @@ package com.histudent.jwsoft.histudent.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -32,33 +32,30 @@ public class CommonInputDialog extends Dialog {
     private String mTitleContent, mNegativeContent, mPositiveContent;
     private OnPositiveClickListener mPositiveClickListener;
     private OnNegativeClickListener mNegativeClickListener;
-    private final Context mContext;
 
     public CommonInputDialog(Context context) {
         super(context, R.style.common_dialog);
-        this.mContext = context;
+        final Window window = getWindow();
+        window.getDecorView().setPadding(0, 0, 0, 0);
+        final WindowManager.LayoutParams attributes = window.getAttributes();
+        attributes.width = WindowManager.LayoutParams.MATCH_PARENT;
+        attributes.height = WindowManager.LayoutParams.MATCH_PARENT;
+        attributes.gravity = Gravity.CENTER;
+        window.setAttributes(attributes);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.common_dialog_input_layout);
-        setCanceledOnTouchOutside(false);
-        getWindow().setGravity(Gravity.BOTTOM); //显示在底部
-
-        final WindowManager m = getWindow().getWindowManager();
-        final Display d = m.getDefaultDisplay();
-        final WindowManager.LayoutParams p = getWindow().getAttributes();
-        p.width = d.getWidth(); //设置dialog的宽度为当前手机屏幕的宽度
-        p.height = d.getHeight();
-        getWindow().setAttributes(p);
-        findViewById(R.id.rl_root_layout).getBackground().mutate().setAlpha(150);
         loadView();
         loadData();
         loadListener();
     }
 
     private void loadView() {
+        setContentView(R.layout.common_dialog_input_layout);
+        setCanceledOnTouchOutside(false);
+        findViewById(R.id.rl_root_layout).getBackground().mutate().setAlpha(150);
         mTitle = findViewById(R.id.tv_title);
         mEtInputContent = findViewById(R.id.et_input_content);
         mNegative = findViewById(R.id.bt_negative);
@@ -66,7 +63,6 @@ public class CommonInputDialog extends Dialog {
     }
 
     public void showDefaultSoftKeyboard() {
-//        获取焦点后 自动弹出键盘
         final Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             public void run() {

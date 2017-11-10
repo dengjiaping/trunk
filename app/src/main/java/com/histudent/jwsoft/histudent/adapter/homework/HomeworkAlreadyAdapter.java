@@ -74,7 +74,7 @@ public class HomeworkAlreadyAdapter extends BaseSectionQuickAdapter<HomeworkAlre
 
                         maxLength += subContent.length();
                         //根据字符总数 动态显示分组状态
-                        if (maxLength > 18) {
+                        if (mType == 3 ? maxLength > 18 : maxLength > 10) {
                             //分组的名称 已超过限定的长度  就不再给Layout继续添加子view 移除最后一个view 并添加一个带省略号的TextView
                             final int childCount = groupLayout.getChildCount();
                             groupLayout.removeViewAt(childCount - 1);

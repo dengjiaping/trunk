@@ -6,6 +6,7 @@ import android.graphics.drawable.Icon;
 import android.media.ThumbnailUtils;
 import android.provider.MediaStore;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,9 +63,13 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
             holder.mVideoDelete.setVisibility(View.GONE);
         }
         if (videoInfo != null) {
-            Bitmap bitmap = ThumbnailUtils.createVideoThumbnail(videoInfo.getFileName(), MediaStore.Images.Thumbnails.MINI_KIND);
-            holder.mVideoCover.setImageBitmap(bitmap);
-            holder.mVideoTime.setText(CommonTool.getTimeFromMillisecond(videoInfo.getDuration()));
+            if (TextUtils.isEmpty(videoInfo.getFileName())){
+                CommonGlideImageLoader.getInstance().displayNetImage(mContext, videoInfo.getCover(), holder.mVideoCover);
+            }else{
+                Bitmap bitmap = ThumbnailUtils.createVideoThumbnail(videoInfo.getFileName(), MediaStore.Images.Thumbnails.MINI_KIND);
+                holder.mVideoCover.setImageBitmap(bitmap);
+            }
+            holder.mVideoTime.setText(CommonTool.getTimeFromMillisecond(videoInfo.getDuration()*1000));
         }
     }
 
@@ -98,7 +103,6 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
                         notifyDataSetChanged();
                     }
                     break;
-                case R.id.publish_movie_play:
                 case R.id.item_video_cover:
                     final WorkVideoPlayEvent workVideoPlayEvent = new WorkVideoPlayEvent(mList.get(getLayoutPosition()));
                     workVideoPlayEvent.position = getLayoutPosition();

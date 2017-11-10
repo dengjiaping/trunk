@@ -22,7 +22,7 @@ import android.util.Log;
 import android.view.Surface;
 import android.view.WindowManager;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 
 public class OpenCameraInterface {
 
@@ -87,7 +87,7 @@ public class OpenCameraInterface {
 		android.hardware.Camera.CameraInfo info = new android.hardware.Camera.CameraInfo();
 		android.hardware.Camera.getCameraInfo(cameraId, info);
 
-		WindowManager manager = (WindowManager) HiStudentApplication.getInstance().getSystemService(Context.WINDOW_SERVICE);
+		WindowManager manager = (WindowManager) HTApplication.getInstance().getSystemService(Context.WINDOW_SERVICE);
 		int rotation = manager.getDefaultDisplay().getRotation();
 		int degrees = 0;
 		Log.i(TAG, "rotation"+rotation);

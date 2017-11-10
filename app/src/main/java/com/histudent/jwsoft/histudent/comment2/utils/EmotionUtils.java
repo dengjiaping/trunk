@@ -12,8 +12,7 @@ import android.text.style.ImageSpan;
 
 import android.widget.TextView;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
-import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.body.hiworld.emotion.util.FaceManager;
 import com.histudent.jwsoft.histudent.commen.view.CustomImageSpan;
 
@@ -50,7 +49,7 @@ public class EmotionUtils {
             if (m - k < 12) {
                 int face = fm.getFaceId(str3);
                 if (-1 != face) {
-                    Drawable drawable = HiStudentApplication.getInstance().getResources().getDrawable(face);
+                    Drawable drawable = HTApplication.getInstance().getResources().getDrawable(face);
                     CustomImageSpan imageSpan = new CustomImageSpan(drawable, ImageSpan.ALIGN_BASELINE);
                     drawable.setBounds(0, 0, 40, 40);//这里设置图片的大小
                     value.setSpan(imageSpan, k, m, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
@@ -84,7 +83,7 @@ public class EmotionUtils {
             if (m - k < 12) {
                 int face = fm.getFaceId(str3);
                 if (-1 != face) {
-                    Drawable drawable = HiStudentApplication.getInstance().getResources().getDrawable(face);
+                    Drawable drawable = HTApplication.getInstance().getResources().getDrawable(face);
                     CustomImageSpan imageSpan = new CustomImageSpan(drawable, ImageSpan.ALIGN_BASELINE);
                     drawable.setBounds(0, 0, 40, 40);//这里设置图片的大小
                     value.setSpan(imageSpan, k, m, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
@@ -109,7 +108,7 @@ public class EmotionUtils {
                 int face = fm.getFaceId(str2);
                 if (-1 != face) {//wrapping with weakReference
 
-                    Bitmap bitmap = BitmapFactory.decodeResource(HiStudentApplication.getInstance().getResources(), face);
+                    Bitmap bitmap = BitmapFactory.decodeResource(HTApplication.getInstance().getResources(), face);
                     bitmap = zoomImage(bitmap, 40, 40);
                     Drawable drawable = new BitmapDrawable(bitmap);
 

@@ -131,11 +131,11 @@ public class PictureTailorHelper {
         //开启相机
         activity.startActivityForResult(intentTakePhoto, PHOTO_REQUEST_TAKEPHOTO);
 
-        //扫描文件
-        Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-        Uri uri = Uri.fromFile(photo_path);
-        intent.setData(uri);
-        activity.sendBroadcast(intent);
+//        //扫描文件
+//        Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+//        Uri uri = Uri.fromFile(photo_path);
+//        intent.setData(uri);
+//        activity.sendBroadcast(intent);
     }
 
     /**

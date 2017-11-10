@@ -1,6 +1,5 @@
 package com.histudent.jwsoft.histudent.body;
 
-import android.app.Activity;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +10,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -232,55 +230,6 @@ public class BodyHelper {
         popupWindow.showAsDropDown(view);
 
     }
-
-
-    /**
-     * 显示发布内容弹窗
-     *
-     * @param layout
-     * @param layout_
-     */
-    protected void showBottomPopupWindow(Activity activity,FrameLayout layout, FrameLayout layout_, final int requestCode, final int resultCode) {
-
-//        final PromotedActionsLibrary promotedActionsLibrary = new PromotedActionsLibrary();
-//
-//        promotedActionsLibrary.setup(activity, layout, layout_);
-//
-//        //发表随记
-//        promotedActionsLibrary.addItem(R.string.icon_topic7, R.drawable.green_button_bg_circle, "发随记", new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                EssayActivity.start(activity, requestCode, resultCode);
-//                promotedActionsLibrary.CloseRotaion();
-//
-//            }
-//        });
-//
-//        //上传照片
-//        promotedActionsLibrary.addItem(R.string.icon_img2, R.drawable.yellow_button_bg_circle, "传照片", new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                UploadPhotoActivity.start(activity, ActionTypeEnum.CLASSANDOWNER,
-//                        HiCache.getIntence().getLoginUserInfo().getUserId(), true, requestCode);
-//                promotedActionsLibrary.CloseRotaion();
-//            }
-//        });
-//
-//        //发表日志
-//        promotedActionsLibrary.addItem(R.string.icon_content, R.drawable.red_button_bg_circle, "写日志", new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(activity, LogActivity.class);
-//                activity.startActivityForResult(intent, requestCode);
-//                promotedActionsLibrary.CloseRotaion();
-//            }
-//        });
-//
-//        promotedActionsLibrary.addMainItem(R.mipmap.public_blue);
-    }
-
 
     /**
      * 删除评论

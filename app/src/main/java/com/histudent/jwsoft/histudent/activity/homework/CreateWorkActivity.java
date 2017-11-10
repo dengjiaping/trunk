@@ -35,6 +35,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.histudent.jwsoft.histudent.R;
+import com.histudent.jwsoft.histudent.activity.image.ShowImageActivity;
 import com.histudent.jwsoft.histudent.adapter.ImgAdapter;
 import com.histudent.jwsoft.histudent.adapter.VideoAdapter;
 import com.histudent.jwsoft.histudent.adapter.decoration.UploadItemDecoration;
@@ -48,6 +49,7 @@ import com.histudent.jwsoft.histudent.body.hiworld.activity.WatchEssayVideoActiv
 import com.histudent.jwsoft.histudent.commen.helper.PictureTailorHelper;
 import com.histudent.jwsoft.histudent.commen.helper.ReminderHelper;
 import com.histudent.jwsoft.histudent.commen.keyword.fragment.EmotionMainFragment;
+import com.histudent.jwsoft.histudent.commen.keyword.utils.DisplayUtils;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
 import com.histudent.jwsoft.histudent.comment2.utils.TimeUtils;
@@ -57,9 +59,11 @@ import com.histudent.jwsoft.histudent.constant.TransferKeys;
 import com.histudent.jwsoft.histudent.entity.AudioInfo;
 import com.histudent.jwsoft.histudent.entity.AudioPlayEvent;
 import com.histudent.jwsoft.histudent.entity.AudioPlayStatusEvent;
+import com.histudent.jwsoft.histudent.entity.ImageAttrEntity;
 import com.histudent.jwsoft.histudent.entity.ImgAddEvent;
 import com.histudent.jwsoft.histudent.entity.RecordInfoEvent;
 import com.histudent.jwsoft.histudent.entity.RecordStatusEvent;
+import com.histudent.jwsoft.histudent.entity.ShowImgEvent;
 import com.histudent.jwsoft.histudent.entity.VideoInfoEntity;
 import com.histudent.jwsoft.histudent.entity.WorkImgDeleteEvent;
 import com.histudent.jwsoft.histudent.entity.WorkReceiverEvent;
@@ -75,6 +79,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -131,12 +136,16 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
     SeekBar mProgress;
     @BindView(R.id.delete_voice)
     IconView mVoiceDel;
+    @BindView(R.id.tv_need_student_online_submit)
+    TextView mTvNeedSubmitHintMsg;
+    @BindView(R.id.iv_hint_submit_icon)
+    IconView mIvHintSubmitIcon;
     private List<HomeworkSelectGroupL0Bean> mWorkGroupL0;
     private int mDeletePosition;
 
     @OnClick({R.id.title_left_image, R.id.title_right_text, R.id.control_photo, R.id.control_record,
             R.id.control_emotion, R.id.work_subject_layout, R.id.work_receiver_layout,
-            R.id.delete_voice, R.id.notices_voice_control})
+            R.id.delete_voice, R.id.notices_voice_control, R.id.work_online})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.title_left_image:
@@ -176,7 +185,7 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
                             if (videoIds.size() < 4) {
                                 PictureTailorHelper.getInstance(false).takePhotoAndAudio(CreateWorkActivity.this, REQ_CODE_VIDEO, 2);
                             } else {
-                                showContent("视频最多4个");
+                                showContent("上传视频不可以超过4个");
                             }
                         } else {
                             showPhotoWindow();
@@ -230,6 +239,17 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
                     }
 
                 }
+                break;
+            case R.id.work_online:
+                if (mOnline.isChecked()) {
+                    mTvNeedSubmitHintMsg.setVisibility(View.VISIBLE);
+                    mIvHintSubmitIcon.setVisibility(View.VISIBLE);
+                } else {
+                    mTvNeedSubmitHintMsg.setVisibility(View.INVISIBLE);
+                    mIvHintSubmitIcon.setVisibility(View.INVISIBLE);
+                }
+                break;
+            default:
                 break;
         }
     }
@@ -296,11 +316,13 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
                 break;
             case Const.WORK_VEDIO://视频
                 PictureTailorHelper.getInstance(false).takePhotoAndAudio(CreateWorkActivity.this, REQ_CODE_VIDEO, 2);
+
                 break;
             case Const.WORK_VOICE://音频
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        SystemUtil.hideSoftKeyboard(CreateWorkActivity.this);
                         showRecordWindow();
                     }
                 }, 1000);
@@ -325,6 +347,28 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
         initRecycler();
         initEmotionMainFragment();
         initInputSoftKeyboard();
+        initProgress();
+    }
+
+    private void initProgress() {
+        mProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                mVoiceControl.setText(getResources().getString(R.string.icon_zanting));
+                double position = seekBar.getProgress() / 100.0;
+                mPresenter.playAudio(mAudioInfo.getFile().getAbsolutePath(), (int) (mAudioInfo.getTime() * 1000 * position));
+            }
+        });
     }
 
     private void initInputSoftKeyboard() {
@@ -336,7 +380,7 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
                 inputManager.showSoftInput(mWorkContent, 0);
             }
 
-        }, 100);
+        }, 300);
     }
 
     private void initRecycler() {
@@ -365,8 +409,42 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
     }
 
     @Subscribe
+    public void onEvent(ShowImgEvent event) {
+        //showImageDetail(mDetailPhoto, 0, imageAttrs);
+    }
+
+
+    @Subscribe
     public void onEvent(ImgAddEvent event) {
-        mClipHelper.selectPictures(this, imgUrls, 9);
+        SystemUtil.hideSoftKeyboard(CreateWorkActivity.this);
+        switch (type) {
+            case Const.WORK_VOICE://音频
+            case Const.WORK_TEXT://文字
+                if (imgUrls != null && imgUrls.size() > 0) {
+                    mClipHelper.selectPictures(this, imgUrls, 9);
+                } else if (videoIds != null && videoIds.size() > 0) {
+                    if (videoIds.size() < 4) {
+                        PictureTailorHelper.getInstance(false).takePhotoAndAudio(CreateWorkActivity.this, REQ_CODE_VIDEO, 2);
+                    } else {
+                        showContent("上传视频不可以超过4个");
+                    }
+                } else {
+                    showPhotoWindow();
+                }
+                break;
+            case Const.WORK_VEDIO://视频
+
+                if (videoIds.size() < 4) {
+                    PictureTailorHelper.getInstance(false).takePhotoAndAudio(CreateWorkActivity.this, REQ_CODE_VIDEO, 2);
+                } else {
+                    showContent("视频最多4个");
+                }
+                break;
+
+            case Const.WORK_PHOTO://图片
+                mClipHelper.selectPictures(this, imgUrls, 9);
+                break;
+        }
     }
 
     @Subscribe
@@ -374,11 +452,13 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
         int state = event.status;
         switch (state) {
             case Const.START:
-                mHandler.sendEmptyMessageDelayed(MSG_RECORD,1000);
+                mHandler.sendEmptyMessageDelayed(MSG_RECORD, 1000);
                 break;
             case Const.SUCCESS:
             case Const.CANCEL:
             case Const.MAX:
+                mVoiceTime.setText("00:00");
+                mProgress.setProgress(0);
                 mHandler.removeCallbacksAndMessages(null);
                 mPopupWindow.dismiss();
                 voiceTime = time;
@@ -397,6 +477,11 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
         if (videoIds != null && videoIds.size() > position) {
             videoIds.remove(position);
         }
+        if (videoIds != null && videoIds.size() > 0) {
+            mImgAdapter.setAdd(false);
+        } else {
+            mImgAdapter.setAdd(true);
+        }
     }
 
     @Subscribe
@@ -411,7 +496,7 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
         if (event != null) {
             mAudioInfo.setFile(event.mFile);
             mAudioInfo.setRecordType(event.mRecordType);
-            mAudioInfo.setTime(event.time);
+            mAudioInfo.setTime(event.time / 1000);
             mVoiceTimeTotal.setText(TimeUtils.formatTime2(event.time / 1000));
         }
 
@@ -430,9 +515,16 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
         switch (status) {
             case 0:
             case -1:
-                mProgress.setProgress(0);
-                mVoiceTime.setText("00:00");
-                mVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                mProgress.setProgress(100);
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mProgress.setProgress(0);
+                        mVoiceTime.setText("00:00");
+                        mVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                    }
+                }, 500);
+
                 break;
         }
     }
@@ -440,6 +532,7 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
     @Subscribe
     public void onEvent(WorkImgDeleteEvent event) {
         int position = event.position;
+        imgFiles.remove(position);
     }
 
     private Handler mHandler = new Handler() {
@@ -464,18 +557,23 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
         StringBuilder stringBuilder = new StringBuilder();
         if (mWorkGroupL0 != null && mWorkGroupL0.size() > 0) {
             for (HomeworkSelectGroupL0Bean homeworkSelectGroupL0Bean : mWorkGroupL0) {
+                boolean isCheck = true;
                 if (homeworkSelectGroupL0Bean.isCheck()) {
                     stringBuilder.append(homeworkSelectGroupL0Bean.getGradeName());
                     receivers.add(homeworkSelectGroupL0Bean.getTeamId());
-                } else {
-                    stringBuilder.append(homeworkSelectGroupL0Bean.getGradeName());
                 }
-                List<HomeworkSelectGroupL1Bean> homeworkSelectGroupL1Beens = homeworkSelectGroupL0Bean.getSubItems();
-                if (homeworkSelectGroupL1Beens != null && homeworkSelectGroupL1Beens.size() > 0) {
-                    for (HomeworkSelectGroupL1Bean homeworkSelectGroupL1Bean : homeworkSelectGroupL1Beens) {
+                List<HomeworkSelectGroupL1Bean> homeworkSelectGroupL1Beans = homeworkSelectGroupL0Bean.getSubItems();
+                if (homeworkSelectGroupL1Beans != null && homeworkSelectGroupL1Beans.size() > 0) {
+                    for (HomeworkSelectGroupL1Bean homeworkSelectGroupL1Bean : homeworkSelectGroupL1Beans) {
+
                         if (homeworkSelectGroupL1Bean.isCheck()) {
+                            //根据子标题选中的话  班级名称必须要添加
+                            if (isCheck) {
+                                stringBuilder.append(homeworkSelectGroupL0Bean.getGradeName());
+                                isCheck = false;
+                            }
                             stringBuilder.append(homeworkSelectGroupL1Bean.getGroupDivideName() + ",");
-                            receivers.add(homeworkSelectGroupL0Bean.getTeamId());
+                            receivers.add(homeworkSelectGroupL1Bean.getGroupDivideId());
                         }
                     }
 
@@ -515,10 +613,8 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
         mTip = view.findViewById(R.id.tip);
         mRecordLayout = view.findViewById(R.id.record_layout);
         mRecord = view.findViewById(R.id.record_img);
-
-        mPopupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        setBackgroundAlpha(0.5f);//设置屏幕透明度
-        mPopupWindow.setFocusable(true);// 点击空白处时，隐藏掉pop窗口
+        LinearLayout empty = view.findViewById(R.id.empty);
+        mPopupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         mRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -526,10 +622,18 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
                 isRecord = !isRecord;
             }
         });
+        empty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!isRecord) {
+                    mPopupWindow.dismiss();
+                }
+            }
+        });
         mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
-                setBackgroundAlpha(1.0f);
+                view.setBackgroundColor(getResources().getColor(R.color._00ffffff));
                 if (mPresenter.getRecordState()) {
                     mPresenter.stopRecord();
                 }
@@ -557,7 +661,7 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
 
                 switch (v.getId()) {
                     case R.id.btn_01:
-                        PictureTailorHelper.getInstance(false).takePhotoAndAudio(CreateWorkActivity.this, REQ_CODE_VIDEO, 2);
+                        PictureTailorHelper.getInstance(false).takePhotoAndAudio(CreateWorkActivity.this, REQ_CODE_VIDEO, 3);
                         break;
                     case R.id.btn_02:
                         mClipHelper.selectPictures(CreateWorkActivity.this, imgUrls, 9);
@@ -576,6 +680,7 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
             mPresenter.stopRecord();
             mPopupWindow.dismiss();
         } else {
+            mPopupWindow.setFocusable(false);// 点击空白处时，隐藏掉pop窗口
             mRecordTime.setText("00:00/");
             mTip.setVisibility(View.GONE);
             mRecordLayout.setVisibility(View.VISIBLE);
@@ -596,7 +701,13 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
         if (resultCode == -10) {
             //从删除页面返回
             mVideos.remove(mDeletePosition);
+            videoIds.remove(videoIds.get(mDeletePosition));
             mVideoAdapter.notifyDataSetChanged();
+            if (mVideos != null && mVideos.size() > 0) {
+                mImgAdapter.setAdd(false);
+            } else {
+                mImgAdapter.setAdd(true);
+            }
             return;
         }
         switch (requestCode) {
@@ -609,13 +720,18 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
                         String cover = CommonTool.convertIconToString(bitmap);
                         VideoInfoEntity videoInfoEntity = new VideoInfoEntity();
                         videoInfoEntity.setFileName(fileName);
-                        videoInfoEntity.setDuration(duration);
+                        videoInfoEntity.setDuration(duration / 1000);
                         videoInfoEntity.setCover(cover);
                         mVideos.add(videoInfoEntity);
 
                         currentFileName = fileName;
                         mPresenter.getVodUploadAuth(new File(fileName).length());
                     }
+                } else if (resultCode == -2) {
+                    String fileName = data.getStringExtra("file");
+                    imgUrls.add(0, fileName);
+                    mImgAdapter.setList(imgUrls);
+                    mPresenter.compressImg(CreateWorkActivity.this, imgUrls);
                 }
                 break;
             case PictureTailorHelper.PHOTO_REQUEST_GALLERYS://图片选择
@@ -623,7 +739,6 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
                     imgUrls = (List<String>) data.getSerializableExtra("return");
                     mImgAdapter.setList(imgUrls);
                     mPresenter.compressImg(CreateWorkActivity.this, imgUrls);
-
 
                 }
 
@@ -674,23 +789,15 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
     }
 
 
-    /**
-     * 设置添加屏幕的背景透明度
-     *
-     * @param bgAlpha 屏幕透明度0.0-1.0 1表示完全不透明
-     */
-    public void setBackgroundAlpha(float bgAlpha) {
-        WindowManager.LayoutParams lp = getWindow()
-                .getAttributes();
-        lp.alpha = bgAlpha;
-        getWindow().setAttributes(lp);
-    }
-
     @Override
     public void showVideoList(String videoId) {
+
         videoIds.add(videoId);
         //上传视频耗时操作  时间过长会导致UI刷新阻塞 使用以下方法进行刷新
+
+        runOnUiThread(() -> mImgAdapter.setAdd(false));
         runOnUiThread(() -> mVideoAdapter.setList(mVideos));
+        closeDialog();
     }
 
     @Override
@@ -734,6 +841,6 @@ public class CreateWorkActivity extends BaseActivity<CreateWorkPresenter> implem
         if (mHandler != null) {
             mHandler.removeCallbacksAndMessages(null);
         }
-
+        mPresenter.stopAudio();
     }
 }

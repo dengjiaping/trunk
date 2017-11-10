@@ -43,6 +43,7 @@
             android:layout_marginTop="@dimen/dp40"
             android:background="@null"
             android:hint="请输入科目名称"
+            android:maxLength="10"
             android:textColorHint="@color/_bbbbbb"
             android:textCursorDrawable="@drawable/edit_text_cursor_drawable_shape"
             android:textSize="@dimen/sp16"/>

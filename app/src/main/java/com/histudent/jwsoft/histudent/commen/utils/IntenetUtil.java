@@ -9,8 +9,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
-import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
+import com.histudent.jwsoft.histudent.HTApplication;
 
 /**
  * 获取网络连接的工具类
@@ -34,7 +33,7 @@ public class IntenetUtil {
      */
     public static int getNetworkState() {
         //获取系统的网络服务
-        ConnectivityManager connManager = (ConnectivityManager) HiStudentApplication.getInstance().getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connManager = (ConnectivityManager) HTApplication.getInstance().getSystemService(Context.CONNECTIVITY_SERVICE);
         //如果当前没有网络
         if (null == connManager)
             return NETWORN_NONE;

@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.account.login.model.CurrentUserInfoModel;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
@@ -257,7 +257,7 @@ public class HiWorldCache {
      */
 
     public static void savePageDataToDB(String account, String data, String categoryId, int currentPageIndex) {
-        DbUtils dbUtils = DbUtils.create(HiStudentApplication.getInstance());
+        DbUtils dbUtils = DbUtils.create(HTApplication.getInstance());
         String data1 = null;
         MyDBData dbData = null;
 
@@ -310,7 +310,7 @@ public class HiWorldCache {
 
     public static String getPageDBData(String account, String categoryId, int currentPageIndex) {
 
-        DbUtils dbUtils = DbUtils.create(HiStudentApplication.getInstance());
+        DbUtils dbUtils = DbUtils.create(HTApplication.getInstance());
 
         if (!StringUtil.isEmpty(account)) {
 
@@ -356,7 +356,7 @@ public class HiWorldCache {
     //保存一般数据到数据库
 
     public static void saveDataToDB(String account, String data, String categoryId) {
-        DbUtils dbUtils = DbUtils.create(HiStudentApplication.getInstance());
+        DbUtils dbUtils = DbUtils.create(HTApplication.getInstance());
         String data1 = null;
         MyDBData dbData = null;
         String appCategoryId = HistudentUrl.update_apk_url.replace(HistudentUrl.getBaseUrl(), "");
@@ -413,7 +413,7 @@ public class HiWorldCache {
 
     public static String getDBData(String account, String categoryId) {
         String appCategoryId = HistudentUrl.update_apk_url.replace(HistudentUrl.getBaseUrl(), "");
-        DbUtils dbUtils = DbUtils.create(HiStudentApplication.getInstance());
+        DbUtils dbUtils = DbUtils.create(HTApplication.getInstance());
 
         if (appCategoryId.equals(categoryId) || !StringUtil.isEmpty(account)) {//获取版本信息时不用用户账号
 
@@ -465,7 +465,7 @@ public class HiWorldCache {
     //保存用户浏览的最后一页数据的页码进入数据库
     public static void saveLastPageIndexOfUserScanfToDB(String account, String categoryId, int lastPageIndex) {
 
-        DbUtils dbUtils = DbUtils.create(HiStudentApplication.getInstance());
+        DbUtils dbUtils = DbUtils.create(HTApplication.getInstance());
 
 
         if (!StringUtil.isEmpty(account)) {
@@ -554,7 +554,7 @@ public class HiWorldCache {
     public static AddressInforBean getUserLocationInfor() {
 
         AddressInforBean addressInforBean = new AddressInforBean();
-        DbUtils dbUtils = DbUtils.create(HiStudentApplication.getInstance());
+        DbUtils dbUtils = DbUtils.create(HTApplication.getInstance());
         int count = 0;
 
         try {
@@ -577,7 +577,7 @@ public class HiWorldCache {
                     Log.e("AddressInforBean", "数据库中查找用户位置成功！" + addressInforBean.toString());
                     return addressInforBean;
                 } else {
-                    //LocationUtils.getLocationUtils().getLocationInfor(HiStudentApplication.getInstance(), null);
+                    //LocationUtils.getLocationUtils().getLocationInfor(HTApplication.getInstance(), null);
                 }
             }
 

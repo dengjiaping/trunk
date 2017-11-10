@@ -4,8 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.widget.ImageView;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
-import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.commen.utils.FileUtil;
 import com.lidroid.xutils.BitmapUtils;
 
@@ -26,7 +25,7 @@ public class XutilsImageLoader implements ImageLoader {
         if (bitmapUtils == null) {
             maxMemory = (int) Runtime.getRuntime().maxMemory();
             cacheSize = maxMemory / 6;
-            bitmapUtils = new BitmapUtils(HiStudentApplication.getInstance(), FileUtil.getPathFactory(FileUtil.CacheType.XUTILS_IMG, true), cacheSize);
+            bitmapUtils = new BitmapUtils(HTApplication.getInstance(), FileUtil.getPathFactory(FileUtil.CacheType.XUTILS_IMG, true), cacheSize);
             bitmapUtils.configDefaultBitmapMaxSize(500, 500);
         }
         return bitmapUtils;

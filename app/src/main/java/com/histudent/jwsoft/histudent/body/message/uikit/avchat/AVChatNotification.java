@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.account.login.activity.WelcomeActivity;
+import com.histudent.jwsoft.histudent.account.login.activity.HTLauncherActivity;
 import com.histudent.jwsoft.histudent.body.message.uikit.avchat.activity.AVChatActivity;
 import com.histudent.jwsoft.histudent.body.message.uikit.model.Extras;
 import com.netease.nim.uikit.cache.NimUserInfoCache;
@@ -59,7 +59,7 @@ public class AVChatNotification {
 
     private void buildMissCallNotification() {
         if (missCallNotification == null) {
-            Intent notifyIntent = new Intent(context, WelcomeActivity.class);
+            Intent notifyIntent = new Intent(context, HTLauncherActivity.class);
             Intent data = new Intent(context, P2PMessageActivity.class);
             data.putExtra(Extras.EXTRA_ACCOUNT, account);
             data.putExtra(Extras.EXTRA_FROM, Extras.EXTRA_FROM_NOTIFICATION);

@@ -1,29 +1,15 @@
 package com.histudent.jwsoft.histudent.activity.blog;
 
 
-import android.graphics.drawable.Drawable;
 import android.os.Handler;
-import android.text.Editable;
-import android.text.Html;
-import android.text.Spanned;
 import android.text.TextUtils;
-import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
-import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.base.BaseActivity;
 import com.histudent.jwsoft.histudent.presenter.blog.BlogDetailPresenter;
 import com.histudent.jwsoft.histudent.presenter.blog.contract.BlogDetailContract;
-
-import org.xml.sax.XMLReader;
-
-import java.net.URL;
 
 import butterknife.BindView;
 

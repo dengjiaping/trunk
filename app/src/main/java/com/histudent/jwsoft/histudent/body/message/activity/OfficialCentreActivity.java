@@ -196,8 +196,8 @@ public class OfficialCentreActivity extends BaseActivity {
                 break;
         }
         map.put("officialId", officialId);
-        map.put("pageIndex", mPageIndex + "");
-        map.put("pageSize", 10 + "");
+        map.put("pageIndex", String.valueOf(mPageIndex));
+        map.put("pageSize", String.valueOf(10));
         HiStudentHttpUtils.postDataByOKHttp(OfficialCentreActivity.this, map, HistudentUrl.systemInfo_url, new HttpRequestCallBack() {
             @Override
             public void onSuccess(String result) {

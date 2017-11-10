@@ -1,12 +1,15 @@
 package com.histudent.jwsoft.histudent.bean.homework;
 
+import android.widget.ScrollView;
+
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by huyg on 2017/11/2.
  */
 
-public class CompleteDetailBean {
+public class CompleteDetailBean implements Serializable{
     /**
      * completeVoice : {"id":"6c24806e-98c6-4e79-abed-46c4b329d4f0","filePath":"http://files.hitongx.com/UploadFiles/HomeWorkFile/20171102/575a0b18-d30b-4f39-adec-dd0db6fc26fe.aac","mediaType":0,"fileLength":0,"createDate":"0001-01-01 00:00:00","batchNumber":"00000000-0000-0000-0000-000000000000"}
      * completeImages : [{"id":"abd4122e-e82a-4954-b214-721fb3a5071b","associateObjectId":"6cd60bc6-9cbf-4476-a07e-498319f64f4e","associateObjectType":2,"filePath":"http://img.hitongx.com/UploadFiles/HomeWorkFile/20171102/94f51085-d635-4e8a-9de9-d8d088d39d14.jpg","thumbnailFilePath":"http://img.hitongx.com/UploadFiles/HomeWorkFile/20171102/94f51085-d635-4e8a-9de9-d8d088d39d14.jpg@310w_240h_1e_1c_2o.jpg","friendlyFileName":"1509609736164931.jpg","mediaType":1,"contentType":"image/jpeg","fileLength":208560,"height":1500,"width":2000,"createDate":"2017-11-02 16:02:38","downloadNum":0,"ext":"","batchNumber":"00000000-0000-0000-0000-000000000000"},{"id":"ccd9da8d-0f40-4bef-bef8-c2b294bc31b9","associateObjectId":"6cd60bc6-9cbf-4476-a07e-498319f64f4e","associateObjectType":2,"filePath":"http://img.hitongx.com/UploadFiles/HomeWorkFile/20171102/3db36a2b-57ff-4087-8d0b-1f236d194e40.jpg","thumbnailFilePath":"http://img.hitongx.com/UploadFiles/HomeWorkFile/20171102/3db36a2b-57ff-4087-8d0b-1f236d194e40.jpg@310w_240h_1e_1c_2o.jpg","friendlyFileName":"1509609735944775.jpg","mediaType":1,"contentType":"image/jpeg","fileLength":101754,"height":1920,"width":1080,"createDate":"2017-11-02 16:02:38","downloadNum":0,"ext":"","batchNumber":"00000000-0000-0000-0000-000000000000"},{"id":"d8081541-28c6-4a63-b8ee-d0f2b8abfb01","associateObjectId":"6cd60bc6-9cbf-4476-a07e-498319f64f4e","associateObjectType":2,"filePath":"http://img.hitongx.com/UploadFiles/HomeWorkFile/20171102/82b91ce0-c6af-425e-aef9-8c84534d0684.jpg","thumbnailFilePath":"http://img.hitongx.com/UploadFiles/HomeWorkFile/20171102/82b91ce0-c6af-425e-aef9-8c84534d0684.jpg@310w_240h_1e_1c_2o.jpg","friendlyFileName":"1509609735791788.jpg","mediaType":1,"contentType":"image/jpeg","fileLength":66423,"height":1178,"width":884,"createDate":"2017-11-02 16:02:38","downloadNum":0,"ext":"","batchNumber":"00000000-0000-0000-0000-000000000000"}]
@@ -23,6 +26,12 @@ public class CompleteDetailBean {
      */
 
     private CompleteVoiceBean completeVoice;
+    private List<VideoDetailBean> completeVideos;
+    private List<CompleteImagesBean> completeImages;
+    private CompleteVoiceBean commentedVoice;
+
+
+
     private boolean isCommented;
     private String id;
     private boolean hasImage;
@@ -39,7 +48,13 @@ public class CompleteDetailBean {
     private boolean commentVoice;
     private String commentTime;
     private String commentUser;
+    public CompleteVoiceBean getCommentedVoice() {
+        return commentedVoice;
+    }
 
+    public void setCommentedVoice(CompleteVoiceBean commentedVoice) {
+        this.commentedVoice = commentedVoice;
+    }
     public boolean isCommented() {
         return isCommented;
     }
@@ -96,7 +111,7 @@ public class CompleteDetailBean {
         this.contents = contents;
     }
 
-    private List<CompleteImagesBean> completeImages;
+
 
     public CompleteVoiceBean getCompleteVoice() {
         return completeVoice;
@@ -104,6 +119,14 @@ public class CompleteDetailBean {
 
     public void setCompleteVoice(CompleteVoiceBean completeVoice) {
         this.completeVoice = completeVoice;
+    }
+
+    public List<VideoDetailBean> getCompleteVideos() {
+        return completeVideos;
+    }
+
+    public void setCompleteVideos(List<VideoDetailBean> completeVideos) {
+        this.completeVideos = completeVideos;
     }
 
     public boolean isIsCommented() {
@@ -194,7 +217,7 @@ public class CompleteDetailBean {
         this.completeImages = completeImages;
     }
 
-    public static class CompleteVoiceBean {
+    public static class CompleteVoiceBean implements Serializable{
         /**
          * id : 6c24806e-98c6-4e79-abed-46c4b329d4f0
          * filePath : http://files.hitongx.com/UploadFiles/HomeWorkFile/20171102/575a0b18-d30b-4f39-adec-dd0db6fc26fe.aac
@@ -260,7 +283,7 @@ public class CompleteDetailBean {
         }
     }
 
-    public static class CompleteImagesBean {
+    public static class CompleteImagesBean implements Serializable{
         /**
          * id : abd4122e-e82a-4954-b214-721fb3a5071b
          * associateObjectId : 6cd60bc6-9cbf-4476-a07e-498319f64f4e
@@ -415,4 +438,6 @@ public class CompleteDetailBean {
             this.batchNumber = batchNumber;
         }
     }
+
+
 }

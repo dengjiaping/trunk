@@ -5,9 +5,8 @@ import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.histudent.jwsoft.histudent.HiStudentApplication;
+import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.lidroid.xutils.BitmapUtils;
 import com.netease.nim.uikit.ImageLoaderKit;
 import com.netease.nim.uikit.NimUIKit;
@@ -72,7 +71,7 @@ public class HiStudentHeadImageView extends CircleImageView {
 
         int maxMemory = (int) Runtime.getRuntime().maxMemory();
         int cacheSize = maxMemory / 8;
-        BitmapUtils bitmapUtils = new BitmapUtils(HiStudentApplication.getInstance(), "/data/data/files/imgs", cacheSize);
+        BitmapUtils bitmapUtils = new BitmapUtils(HTApplication.getInstance(), "/data/data/files/imgs", cacheSize);
 
         bitmapUtils.configDefaultBitmapMaxSize(120, 120);
         bitmapUtils.configDefaultLoadingImage(defImageId);

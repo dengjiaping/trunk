@@ -25,6 +25,15 @@ public class ClassMemberEntity {
         private String userId;
         private String userRealName;
         private String classId;
+        private int userType;
+
+        public int getUserType() {
+            return userType;
+        }
+
+        public void setUserType(int userType) {
+            this.userType = userType;
+        }
 
         public boolean isAdmin() {
             return isAdmin;

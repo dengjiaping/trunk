@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.gyf.barlibrary.ImmersionBar;
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.body.BodyActivity;
+import com.histudent.jwsoft.histudent.body.HTMainActivity;
 import com.histudent.jwsoft.histudent.body.message.uikit.session.fragment.MyRecentContactsFragment;
 import com.histudent.jwsoft.histudent.body.mine.activity.AboutHiActivity;
 import com.histudent.jwsoft.histudent.body.mine.activity.InvitationActivity;
@@ -150,7 +150,7 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     private void loadListener() {
         mRefreshLayout.setOnRefreshListener((RefreshLayout layout) -> {
             PersionHelper.getInstance().getUserInfo((BaseActivity) getActivity(), HiCache.getInstance().getLoginUserInfo().getUserId(), handler, 1);
-            ((BodyActivity) getActivity()).getUnreadMessageCount();
+            ((HTMainActivity) getActivity()).getUnreadMessageCount();
         });
 
     }

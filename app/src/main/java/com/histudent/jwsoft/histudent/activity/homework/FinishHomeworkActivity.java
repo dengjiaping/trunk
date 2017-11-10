@@ -39,19 +39,23 @@ import com.histudent.jwsoft.histudent.adapter.VideoAdapter;
 import com.histudent.jwsoft.histudent.adapter.decoration.UploadItemDecoration;
 import com.histudent.jwsoft.histudent.base.BaseActivity;
 import com.histudent.jwsoft.histudent.bean.UploadAuthBean;
-import com.histudent.jwsoft.histudent.bean.homework.CommonSubjectBean;
+import com.histudent.jwsoft.histudent.bean.homework.CompleteDetailBean;
+import com.histudent.jwsoft.histudent.bean.homework.VideoDetailBean;
+import com.histudent.jwsoft.histudent.body.hiworld.activity.WatchActionVideoActivity;
 import com.histudent.jwsoft.histudent.body.hiworld.activity.WatchEssayVideoActivity;
 import com.histudent.jwsoft.histudent.commen.helper.PictureTailorHelper;
 import com.histudent.jwsoft.histudent.commen.helper.ReminderHelper;
 import com.histudent.jwsoft.histudent.commen.keyword.fragment.EmotionMainFragment;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
+import com.histudent.jwsoft.histudent.comment2.utils.EmotionUtils;
 import com.histudent.jwsoft.histudent.comment2.utils.TimeUtils;
 import com.histudent.jwsoft.histudent.constant.Const;
 import com.histudent.jwsoft.histudent.constant.TransferKeys;
 import com.histudent.jwsoft.histudent.entity.AudioInfo;
 import com.histudent.jwsoft.histudent.entity.AudioPlayEvent;
 import com.histudent.jwsoft.histudent.entity.AudioPlayStatusEvent;
+import com.histudent.jwsoft.histudent.entity.ImgAddEvent;
 import com.histudent.jwsoft.histudent.entity.RecordInfoEvent;
 import com.histudent.jwsoft.histudent.entity.RecordStatusEvent;
 import com.histudent.jwsoft.histudent.entity.VideoInfoEntity;
@@ -61,6 +65,7 @@ import com.histudent.jwsoft.histudent.entity.WorkVideoPlayEvent;
 import com.histudent.jwsoft.histudent.presenter.homework.FinishWorkPresenter;
 import com.histudent.jwsoft.histudent.presenter.homework.contract.FinishWorkContract;
 import com.histudent.jwsoft.histudent.tool.CommonTool;
+import com.histudent.jwsoft.histudent.tool.ToastTool;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -123,23 +128,47 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
                 finish();
                 break;
             case R.id.title_right_text:
-                String videoIdsStr = "";
-                if (videoIds != null && videoIds.size() > 0) {
-                    videoIdsStr = new Gson().toJson(videoIds);
+                if (!TextUtils.isEmpty(mWorkContent.getText()) || (videoIds != null && videoIds.size() > 0) || mAudioInfo.getFile() != null || (imgFiles != null && imgFiles.size() > 0)) {
+
+                    String videoIdsStr = "";
+                    String delImgStr = "";
+                    String delVideoStr = "";
+                    String delVoiceStr = "";
+                    boolean hasImage = false;
+                    boolean hasVoice = false;
+                    boolean hasVideo = false;
+                    if (videoIds != null && videoIds.size() > 0) {
+                        videoIdsStr = new Gson().toJson(videoIds);
+                    }
+                    if (delImg != null && delImg.size() > 0) {
+                        delImgStr = new Gson().toJson(delImg);
+                    }
+                    if (delVideo != null && delVideo.size() > 0) {
+                        delVideoStr = new Gson().toJson(delVideo);
+                    }
+                    if (delVoice != null && delVoice.size() > 0) {
+                        delVoiceStr = new Gson().toJson(videoIds);
+                    }
+                    if (imgUrls != null && imgUrls.size() > 0) {
+                        hasImage = true;
+                    }
+                    if (mVideos != null && mVideos.size() > 0) {
+                        hasVideo = true;
+                    }
+
+                    showLoadingDialog();
+                    mPresenter.completeHomeWork(homeworkId, mWorkContent.getText().toString(), videoIdsStr, mAudioInfo, imgFiles, hasImage, hasVoice, hasVideo, delImgStr, delVideoStr, delVoiceStr);
+                } else {
+                    ToastTool.showCommonToast(getString(R.string.please_input_homework_content));
                 }
-                if (TextUtils.isEmpty(mWorkContent.getText())) {
-                    showContent("请填写作业内容");
-                    return;
-                }
-                showDialog();
-                mPresenter.completeHomeWork(homeworkId, mWorkContent.getText().toString(), videoIdsStr, mAudioInfo, imgFiles);
+
 
                 break;
             case R.id.control_photo://图片或视频
                 SystemUtil.hideSoftKeyboard(FinishHomeworkActivity.this);
                 if (imgUrls != null && imgUrls.size() > 0) {
                     mClipHelper.selectPictures(this, imgUrls, 9);
-                } else if (videoIds != null && videoIds.size() > 0) {
+                } else if (mVideos != null && mVideos.size() > 0) {
                     PictureTailorHelper.getInstance(false).takePhotoAndAudio(FinishHomeworkActivity.this, REQ_CODE_VIDEO, 2);
                 } else {
                     showPhotoWindow();
@@ -155,6 +184,12 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
             case R.id.delete_voice://删除语音
                 mVoiceLayout.setVisibility(View.GONE);
                 mPresenter.stopAudio();
+                delVoice.clear();
+                if (mCompleteDetail != null && mCompleteDetail.getCompleteVoice() != null) {
+                    delVoice.add(mCompleteDetail.getCompleteVoice().getId());
+                    mAudioInfo.setFile(null);
+                }
+
                 break;
             case R.id.notices_voice_control://语音播放控制
                 if (mPresenter.getAudioState()) {
@@ -198,7 +233,16 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
     private AudioInfo mAudioInfo = new AudioInfo();
     private PowerManager powerManager = null;
     private PowerManager.WakeLock wakeLock = null;
-
+    private int mDeletePosition;
+    private CompleteDetailBean mCompleteDetail;
+    private List<String> delImg = new ArrayList<>();
+    private List<String> delVoice = new ArrayList<>();
+    private List<String> delVideo = new ArrayList<>();
+    private List<String> oldImg = new ArrayList<>();
+    private List<CompleteDetailBean.CompleteImagesBean> imagesDetailBeans;
+    private static final int RESULT_SUCCESS = 3000;
+    private static final int REQ_DETAIL = 2000;
+    private boolean isModify = false;
 
     @Override
     protected void initInject() {
@@ -212,8 +256,9 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
 
     @Override
     protected void init() {
-        initIntent();
+
         initView();
+        initIntent();
         initOther();
     }
 
@@ -221,7 +266,64 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
         Intent intent = getIntent();
         if (intent != null) {
             homeworkId = intent.getStringExtra("homeworkId");
+            mCompleteDetail = (CompleteDetailBean) intent.getSerializableExtra("detail");
+//            boolean hasVoice = mCompleteDetail.isHasVoice();
+//            if (!hasVoice) {
+//                //如果没有语音直接隐藏
+//                mVoiceLayout.setVisibility(View.GONE);
+//            } else {
+//                mVoiceLayout.setVisibility(View.VISIBLE);
+//            }
+            isModify = intent.getBooleanExtra("isModify", false);
+            AudioInfo audioInfo = (AudioInfo) intent.getSerializableExtra("audio");
+            if (audioInfo != null) {
+                mAudioInfo = audioInfo;
+            }
+            if (mAudioInfo.getFile() != null) {
+                initAudioInfo();
+            }
+            if (mCompleteDetail != null) {
+                initDetail(mCompleteDetail);
+            }
         }
+    }
+
+    private void initAudioInfo() {
+        mVoiceLayout.setVisibility(View.VISIBLE);
+        mVoiceTimeTotal.setText(TimeUtils.formatTime2(mAudioInfo.getTime()));
+    }
+
+    private void initDetail(CompleteDetailBean completeDetail) {
+        List<VideoDetailBean> videoDetailBeans = completeDetail.getCompleteVideos();
+        imagesDetailBeans = completeDetail.getCompleteImages();
+        videoIds.clear();
+        if (videoDetailBeans != null && videoDetailBeans.size() > 0) {
+            for (VideoDetailBean videoDetailBean : videoDetailBeans) {
+                VideoInfoEntity videoInfoEntity = new VideoInfoEntity();
+                videoInfoEntity.setVideoId(videoDetailBean.getAliVideoId());
+                videoInfoEntity.setDuration(videoDetailBean.getAliVideoPlayDuration());
+                videoInfoEntity.setCover(videoDetailBean.getAliVideoCover());
+                mVideos.add(videoInfoEntity);
+            }
+            if (mVideos != null && mVideos.size() > 0) {
+                mImgAdapter.setAdd(false);
+            } else {
+                mImgAdapter.setAdd(true);
+            }
+            mVideoAdapter.setList(mVideos);
+        }
+
+        if (imagesDetailBeans != null && imagesDetailBeans.size() > 0) {
+            for (CompleteDetailBean.CompleteImagesBean imagesDetailBean : imagesDetailBeans) {
+                imgUrls.add(imagesDetailBean.getFilePath());
+                oldImg.add(imagesDetailBean.getFilePath());
+            }
+            mImgAdapter.setList(imgUrls);
+        }
+        if (!TextUtils.isEmpty(completeDetail.getContents())) {
+            mWorkContent.setText(completeDetail.getContents());
+        }
+
     }
 
     private void initView() {
@@ -229,7 +331,9 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
         initRecycler();
         initEmotionMainFragment();
         initInputSoftKeyboard();
+        initProgress();
     }
+
 
     private void initTitle() {
         mTitle.setText("完成作业");
@@ -271,6 +375,27 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
         mVideoRecycler.setAdapter(mVideoAdapter);
     }
 
+    private void initProgress() {
+        mProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                mVoiceControl.setText(getResources().getString(R.string.icon_zanting));
+                double position = seekBar.getProgress() / 100.0;
+                mPresenter.playAudio(mAudioInfo.getFile().getAbsolutePath(), (int) (mAudioInfo.getTime() * 1000 * position));
+            }
+        });
+    }
+
     private void initLock() {
         powerManager = (PowerManager) this.getSystemService(this.POWER_SERVICE);
         wakeLock = this.powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, "My Lock");
@@ -278,19 +403,57 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
 
 
     @Subscribe
+    public void onEvent(ImgAddEvent event) {
+        SystemUtil.hideSoftKeyboard(FinishHomeworkActivity.this);
+        switch (type) {
+            case Const.WORK_VOICE://音频
+            case Const.WORK_TEXT://文字
+                if (imgUrls != null && imgUrls.size() > 0) {
+                    mClipHelper.selectPictures(this, imgUrls, 9);
+                } else if (videoIds != null && videoIds.size() > 0) {
+                    if (videoIds.size() < 4) {
+                        PictureTailorHelper.getInstance(false).takePhotoAndAudio(FinishHomeworkActivity.this, REQ_CODE_VIDEO, 2);
+                    } else {
+                        showContent("上传视频不可以超过4个");
+                    }
+                } else {
+                    showPhotoWindow();
+                }
+                break;
+
+            case Const.WORK_PHOTO://图片
+                mClipHelper.selectPictures(this, imgUrls, 9);
+                break;
+            case Const.WORK_VEDIO://视频
+
+                if (videoIds.size() < 4) {
+                    PictureTailorHelper.getInstance(false).takePhotoAndAudio(FinishHomeworkActivity.this, REQ_CODE_VIDEO, 2);
+                } else {
+                    showContent("视频最多4个");
+                }
+                break;
+        }
+    }
+
+    @Subscribe
     public void onEvent(RecordStatusEvent event) {
         int state = event.status;
         switch (state) {
             case Const.START:
-                mHandler.sendEmptyMessageDelayed(MSG_RECORD,1000);
+                mHandler.sendEmptyMessageDelayed(MSG_RECORD, 1000);
                 break;
             case Const.SUCCESS:
             case Const.CANCEL:
             case Const.MAX:
                 mHandler.removeCallbacksAndMessages(null);
                 mPopupWindow.dismiss();
+                mVoiceTime.setText("00:00");
+                mProgress.setProgress(0);
                 mVoiceTimeTotal.setText(TimeUtils.formatTime2(time));
+                mAudioInfo.setTime(time);
+                time = 0;
                 mVoiceLayout.setVisibility(View.VISIBLE);
+
                 break;
 
         }
@@ -301,15 +464,36 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
     @Subscribe
     public void onEvent(WorkVideoDeleteEvent event) {
         int position = event.position;
-        if (videoIds != null && videoIds.size() > position) {
-            videoIds.remove(position);
+        VideoInfoEntity videoInfoEntity = event.videoInfoEntity;
+        if (isModify) {
+            if (!TextUtils.isEmpty(videoInfoEntity.getVideoId())) {
+                delVideo.add(videoInfoEntity.getVideoId());
+            }else{
+                if (videoIds != null && videoIds.size() > position) {
+                    videoIds.remove(position);
+                }
+            }
+        } else {
+            if (videoIds != null && videoIds.size() > position) {
+                videoIds.remove(position);
+            }
+        }
+        if (mVideos != null && mVideos.size() > 0) {
+            mImgAdapter.setAdd(false);
+        } else {
+            mImgAdapter.setAdd(true);
         }
     }
 
     @Subscribe
     public void onEvent(WorkVideoPlayEvent event) {
         VideoInfoEntity videoInfo = event.videoInfoEntity;
-        WatchEssayVideoActivity.start(FinishHomeworkActivity.this, videoInfo.getFileName(), 10);
+        mDeletePosition = event.position;
+        if (TextUtils.isEmpty(videoInfo.getFileName())) {
+            WatchActionVideoActivity.start(this, videoInfo.getVideoId());
+        } else {
+            WatchEssayVideoActivity.start(FinishHomeworkActivity.this, videoInfo.getFileName(), 10);
+        }
     }
 
     @Subscribe
@@ -317,14 +501,14 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
         if (event != null) {
             mAudioInfo.setFile(event.mFile);
             mAudioInfo.setRecordType(event.mRecordType);
-            mAudioInfo.setTime(event.time);
+            mAudioInfo.setTime(event.time / 1000);
         }
 
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(AudioPlayEvent event) {
-        mProgress.setProgress((int) ((event.position / (time * 1000.0)) * 100));
+        mProgress.setProgress((int) ((event.position / (mAudioInfo.getTime() * 1000.0)) * 100));
         mVoiceTime.setText(TimeUtils.formatTime2(event.position / 1000));
     }
 
@@ -334,9 +518,16 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
         switch (status) {
             case 0:
             case -1:
-                mProgress.setProgress(0);
-                mVoiceTime.setText("00:00");
-                mVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                mProgress.setProgress(100);
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mProgress.setProgress(0);
+                        mVoiceTime.setText("00:00");
+                        mVoiceControl.setText(getResources().getString(R.string.icon_bofang));
+                    }
+                }, 500);
+
                 break;
         }
     }
@@ -344,6 +535,11 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
     @Subscribe
     public void onEvent(WorkImgDeleteEvent event) {
         int position = event.position;
+        if (imgUrls.get(position).startsWith("http")) {
+            delImg.add(imagesDetailBeans.get(position).getId());
+        } else {
+            imgFiles.remove(position);
+        }
     }
 
     private Handler mHandler = new Handler() {
@@ -384,10 +580,8 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
         mTip = view.findViewById(R.id.tip);
         mRecordLayout = view.findViewById(R.id.record_layout);
         mRecord = view.findViewById(R.id.record_img);
-
-        mPopupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        setBackgroundAlpha(0.5f);//设置屏幕透明度
-        mPopupWindow.setFocusable(true);// 点击空白处时，隐藏掉pop窗口
+        LinearLayout empty = view.findViewById(R.id.empty);
+        mPopupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         mRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -398,9 +592,17 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
         mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
-                setBackgroundAlpha(1.0f);
+                view.setBackgroundColor(getResources().getColor(R.color._00ffffff));
                 if (mPresenter.getRecordState()) {
                     mPresenter.stopRecord();
+                }
+            }
+        });
+        empty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!isRecord) {
+                    mPopupWindow.dismiss();
                 }
             }
         });
@@ -502,6 +704,7 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
     public void showVideoList(String videoId) {
         videoIds.add(videoId);
         //上传视频耗时操作  时间过长会导致UI刷新阻塞 使用以下方法进行刷新
+        runOnUiThread(() -> mImgAdapter.setAdd(false));
         runOnUiThread(() -> mVideoAdapter.setList(mVideos));
     }
 
@@ -518,29 +721,54 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
 
     @Override
     public void closeDialog() {
-       dismissLoadingDialog();
+        dismissLoadingDialog();
     }
 
     @Override
     public void createWorkSucceed() {
+        // TODO: 2017/11/9  
         closeDialog();
-        showContent("完成作业");
-        finish();
+        if (isModify) {
+            finish();
+        } else {
+            showContent("完成作业");
+            Intent intent = new Intent(this, WorkDetailStudentActivity.class);
+            intent.putExtra("homeworkId", homeworkId);
+            startActivityForResult(intent, REQ_DETAIL);
+        }
+
     }
 
     @Override
     public void showImgList(List<File> files) {
         imgFiles = files;
-        imgUrls.clear();
-        for (File file : files) {
-            imgUrls.add(file.getAbsolutePath());
-        }
-        mImgAdapter.setList(imgUrls);
     }
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode == -10) {
+            //从删除页面返回
+            int deletePosition = 0;
+            if (videoIds != null && videoIds.size() > 0) {
+                for (int i = 0; i < videoIds.size(); i++) {
+                    if (videoIds.get(i).equals(mVideos.get(mDeletePosition))) {
+                        deletePosition = i;
+                    }
+                }
+            }
+            videoIds.remove(deletePosition);
+            mVideos.remove(mDeletePosition);
+            mVideoAdapter.notifyDataSetChanged();
+            if (mVideos != null && mVideos.size() > 0) {
+                mImgAdapter.setAdd(false);
+            } else {
+                mImgAdapter.setAdd(true);
+            }
+            return;
+        }
+
         switch (requestCode) {
             case REQ_CODE_VIDEO:
                 if (resultCode == -1) {//摄像返回
@@ -551,22 +779,33 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
                         String cover = CommonTool.convertIconToString(bitmap);
                         VideoInfoEntity videoInfoEntity = new VideoInfoEntity();
                         videoInfoEntity.setFileName(fileName);
-                        videoInfoEntity.setDuration(duration);
+                        videoInfoEntity.setDuration(duration / 1000);
                         videoInfoEntity.setCover(cover);
                         mVideos.add(videoInfoEntity);
 
                         currentFileName = fileName;
                         mPresenter.getVodUploadAuth(new File(fileName).length());
                     }
+                } else if (resultCode == -2) {
+                    String fileName = data.getStringExtra("file");
+                    imgUrls.add(fileName);
+                    mImgAdapter.setList(imgUrls);
+
+                    mPresenter.compressImg(FinishHomeworkActivity.this, imgUrls);
                 }
                 break;
             case PictureTailorHelper.PHOTO_REQUEST_GALLERYS://图片选择
                 if (data != null) {
                     imgUrls = (List<String>) data.getSerializableExtra("return");
+                    mImgAdapter.setList(imgUrls);
                     mPresenter.compressImg(FinishHomeworkActivity.this, imgUrls);
 
                 }
 
+                break;
+            case REQ_DETAIL:
+                setResult(RESULT_SUCCESS, new Intent());
+                finish();
                 break;
         }
     }
@@ -580,6 +819,8 @@ public class FinishHomeworkActivity extends BaseActivity<FinishWorkPresenter> im
         if (mHandler != null) {
             mHandler.removeCallbacksAndMessages(null);
         }
-
+        mPresenter.stopAudio();
     }
+
+
 }

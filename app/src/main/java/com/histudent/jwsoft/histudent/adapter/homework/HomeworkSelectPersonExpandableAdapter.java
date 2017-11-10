@@ -51,15 +51,6 @@ public class HomeworkSelectPersonExpandableAdapter extends BaseMultiItemQuickAda
                 helper.addOnClickListener(R.id.ll_receive_select_class_check);
                 helper.addOnClickListener(R.id.ll_head_create_divide_group);
                 final List<HomeworkSelectGroupL1Bean> subItems = entityL0.getSubItems();
-                if (subItems == null || subItems.size() == 0) {
-                    //如果没有子列表
-                    helper.getView(R.id.ll_head_create_divide_group).setVisibility(View.VISIBLE);
-                    helper.getView(R.id.view_head_group_line).setVisibility(View.VISIBLE);
-                    return;
-                } else {
-                    helper.getView(R.id.ll_head_create_divide_group).setVisibility(View.GONE);
-                    helper.getView(R.id.view_head_group_line).setVisibility(View.GONE);
-                }
                 final IconView selectClassCheckBox = helper.getView(R.id.iv_receive_select_class_check);
                 //标题0 班级名称 选择状态
                 if (entityL0.isCheck()) {
@@ -69,6 +60,17 @@ public class HomeworkSelectPersonExpandableAdapter extends BaseMultiItemQuickAda
                     selectClassCheckBox.setText(R.string.icon_check2);
                     selectClassCheckBox.setTextColor(ContextCompat.getColor(mContext, R.color._cccccc));
                 }
+                if (subItems == null || subItems.size() == 0) {
+                    //如果没有子列表
+                    helper.getView(R.id.ll_head_create_divide_group).setVisibility(View.VISIBLE);
+                    helper.getView(R.id.view_head_group_line).setVisibility(View.VISIBLE);
+                    return;
+
+                } else {
+                    helper.getView(R.id.ll_head_create_divide_group).setVisibility(View.GONE);
+                    helper.getView(R.id.view_head_group_line).setVisibility(View.GONE);
+                }
+
                 final IconView iconView = helper.getView(R.id.iv_receive_class_show);
                 helper.getView(R.id.ll_receive_class_expand).setOnClickListener((View view) -> {
                     if (entityL0.isExpandable()) {
