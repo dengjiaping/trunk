@@ -1,14 +1,12 @@
 package com.histudent.jwsoft.histudent.body.homepage.helper;
 
 import android.content.Context;
-import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 
 import com.histudent.jwsoft.histudent.body.homepage.adapter.GridViewPictureAdapter;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
-import com.histudent.jwsoft.histudent.commen.utils.imageloader.ImageUtil;
-import com.histudent.jwsoft.histudent.entity.ImageAttrEntity;
+import com.histudent.jwsoft.histudent.model.entity.ImageAttrEntity;
 
 import java.util.List;
 

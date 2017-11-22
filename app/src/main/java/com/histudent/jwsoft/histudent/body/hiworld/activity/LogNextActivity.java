@@ -17,7 +17,7 @@ import com.histudent.jwsoft.histudent.body.mine.model.UserClassListModel;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.activity.ComShareAcitivity;
 import com.histudent.jwsoft.histudent.commen.activity.CommenPrivacySetting;
-import com.histudent.jwsoft.histudent.commen.activity.MyWebActivity;
+import com.histudent.jwsoft.histudent.commen.activity.HTWebActivity;
 import com.histudent.jwsoft.histudent.commen.bean.MyShareBean;
 import com.histudent.jwsoft.histudent.commen.bean.WebBlogBean;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
@@ -296,7 +296,7 @@ public class LogNextActivity extends BaseActivity {
 
                             MyShareBean bean = JSON.parseObject(result, MyShareBean.class);
                             if (bean != null) {
-                                MyWebActivity.start(LogNextActivity.this, bean.getShareUrl());
+                                HTWebActivity.start(LogNextActivity.this, bean.getShareUrl());
                             }
                             setResult(400);
                             finish();

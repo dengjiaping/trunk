@@ -1,7 +1,6 @@
 package com.histudent.jwsoft.histudent.body.find.adapter;
 
 import android.app.Activity;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -10,7 +9,7 @@ import android.widget.ImageView;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.body.find.bean.GroupBean;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
-import com.histudent.jwsoft.histudent.manage.PhotoManager;
+import com.histudent.jwsoft.histudent.model.manage.PhotoManager;
 
 import java.util.List;
 

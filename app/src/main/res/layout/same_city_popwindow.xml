@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/transparent"
@@ -8,13 +9,13 @@
     <View
         android:id="@id/line"
         style="@style/split_line_style"
-        android:visibility="gone"></View>
+        android:visibility="gone"/>
 
     <ListView
         android:id="@+id/list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@color/transparent"
-        android:dividerHeight="0dp" />
+        android:dividerHeight="0dp"/>
 
 </LinearLayout>

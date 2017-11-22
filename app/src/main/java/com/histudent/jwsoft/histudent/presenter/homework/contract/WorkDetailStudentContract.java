@@ -2,8 +2,8 @@ package com.histudent.jwsoft.histudent.presenter.homework.contract;
 
 import com.histudent.jwsoft.histudent.base.BasePresenter;
 import com.histudent.jwsoft.histudent.base.BaseView;
-import com.histudent.jwsoft.histudent.bean.homework.CompleteDetailBean;
-import com.histudent.jwsoft.histudent.bean.homework.HomeworkDetailBean;
+import com.histudent.jwsoft.histudent.model.bean.homework.CompleteDetailBean;
+import com.histudent.jwsoft.histudent.model.bean.homework.HomeworkDetailBean;
 
 import java.io.File;
 

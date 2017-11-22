@@ -14,6 +14,7 @@ import android.view.View;
 import com.histudent.jwsoft.histudent.commen.bean.AtUserModel;
 import com.histudent.jwsoft.histudent.commen.bean.TopicModel;
 import com.histudent.jwsoft.histudent.comment2.utils.EmotionUtils;
+import com.histudent.jwsoft.histudent.model.bean.main.HomePageEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,8 +49,6 @@ public class RichTextView extends android.support.v7.widget.AppCompatTextView {
     }
 
 
-
-
     private void init() {
         mTopics = new ArrayList<>();
         mUsers = new ArrayList<>();
@@ -65,10 +64,10 @@ public class RichTextView extends android.support.v7.widget.AppCompatTextView {
         mUsers.add(user);
     }
 
-    public void addTopic(TopicModel topicModel){
-        Topic topic=new Topic();
+    public void addTopic(TopicModel topicModel) {
+        Topic topic = new Topic();
         topic.rule = POUND;
-        topic.content = POUND+ topicModel.getTopicName()+POUND;
+        topic.content = POUND + topicModel.getTopicName() + POUND;
         topic.hash = topicModel.getTopicName();
         topic.id = topicModel.getTopicId();
         mTopics.add(topic);
@@ -87,10 +86,10 @@ public class RichTextView extends android.support.v7.widget.AppCompatTextView {
         for (int i = 0; i < mUsers.size(); i++) {
             final User user = mUsers.get(i);
             String content = user.content;
-            Pattern pattern=Pattern.compile(content);
-            Matcher matcher=pattern.matcher(text);
-            while (matcher.find()){
-                spannableString.setSpan(new ClickATSpan(user) , matcher.start(), matcher.start()
+            Pattern pattern = Pattern.compile(content);
+            Matcher matcher = pattern.matcher(text);
+            while (matcher.find()) {
+                spannableString.setSpan(new ClickATSpan(user), matcher.start(), matcher.start()
                                 + content.length(),
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
@@ -98,30 +97,49 @@ public class RichTextView extends android.support.v7.widget.AppCompatTextView {
         for (int i = 0; i < mTopics.size(); i++) {
             Topic topic = mTopics.get(i);
             String content = topic.content;
-            Pattern pattern=Pattern.compile(content);
-            Matcher matcher=pattern.matcher(text);
-            while (matcher.find()){
-                spannableString.setSpan(new ClickPOUNDSpan(topic) , matcher.start(), matcher.start()
+            Pattern pattern = Pattern.compile(content);
+            Matcher matcher = pattern.matcher(text);
+            while (matcher.find()) {
+                spannableString.setSpan(new ClickPOUNDSpan(topic), matcher.start(), matcher.start()
                                 + content.length(),
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
         }
 
-        SpannableString spannable= EmotionUtils.convertNormalStringToSpannableString(spannableString);
+        SpannableString spannable = EmotionUtils.convertNormalStringToSpannableString(spannableString);
 
         super.setText(spannable, type);
+    }
+
+    public void addUser(HomePageEntity.RecommendDynamicEntity.SubRecommendDynamicEntity.AtUserModel atUserModel) {
+        User user = new User();
+        user.rule = AT;
+        user.id = atUserModel.getUserId();
+        user.content = AT + atUserModel.getRealName();
+        user.name = atUserModel.getRealName();
+        mUsers.add(user);
+    }
+
+    public void addTopic(HomePageEntity.RecommendDynamicEntity.SubRecommendDynamicEntity.TopicModel topicModel) {
+        Topic topic = new Topic();
+        topic.rule = POUND;
+        topic.content = POUND + topicModel.getTopicName() + POUND;
+        topic.hash = topicModel.getTopicName();
+        topic.id = topicModel.getTopicId();
+        mTopics.add(topic);
     }
 
 
     private class ClickATSpan extends ClickableSpan {
         private User user;
 
-        public ClickATSpan(User user){
+        public ClickATSpan(User user) {
             this.user = user;
         }
+
         @Override
         public void onClick(View widget) {
-           mListener.clickUser(user);
+            mListener.clickUser(user);
         }
 
         @Override
@@ -131,11 +149,14 @@ public class RichTextView extends android.support.v7.widget.AppCompatTextView {
             ds.setUnderlineText(false);
         }
     }
+
     private class ClickPOUNDSpan extends ClickableSpan {
         private Topic topic;
-        public ClickPOUNDSpan(Topic topic){
+
+        public ClickPOUNDSpan(Topic topic) {
             this.topic = topic;
         }
+
         @Override
         public void onClick(View widget) {
             mListener.clickTopic(topic);

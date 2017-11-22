@@ -1,11 +1,7 @@
 package com.histudent.jwsoft.histudent.model.http.api;
 
-import com.histudent.jwsoft.histudent.bean.AlbumBean;
-import com.histudent.jwsoft.histudent.body.mine.model.AlbumInfoModel;
-import com.histudent.jwsoft.histudent.model.http.BaseHttpResponse;
+import com.histudent.jwsoft.histudent.model.bean.AlbumBean;
 import com.histudent.jwsoft.histudent.model.http.HttpResponse;
-
-import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;

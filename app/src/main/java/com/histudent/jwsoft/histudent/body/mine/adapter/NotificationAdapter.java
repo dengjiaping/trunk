@@ -14,7 +14,7 @@ import com.histudent.jwsoft.histudent.body.message.model.NoticeBean;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
 import com.histudent.jwsoft.histudent.comment2.utils.EmotionUtils;
 import com.histudent.jwsoft.histudent.comment2.utils.TimeUtils;
-import com.histudent.jwsoft.histudent.entity.NotificationClickEvent;
+import com.histudent.jwsoft.histudent.model.entity.NotificationClickEvent;
 
 import org.greenrobot.eventbus.EventBus;
 

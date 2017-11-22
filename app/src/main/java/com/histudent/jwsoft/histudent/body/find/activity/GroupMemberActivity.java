@@ -25,7 +25,7 @@ import com.histudent.jwsoft.histudent.commen.view.CharacterParser;
 import com.histudent.jwsoft.histudent.commen.view.EditText_clear;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
 import com.histudent.jwsoft.histudent.commen.view.MyListView2;
-import com.histudent.jwsoft.histudent.entity.SelectMemberEvent;
+import com.histudent.jwsoft.histudent.model.entity.SelectMemberEvent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

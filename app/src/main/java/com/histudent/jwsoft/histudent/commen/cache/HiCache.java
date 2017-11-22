@@ -16,7 +16,7 @@ import com.histudent.jwsoft.histudent.commen.keyword.utils.SharedPreferencedUtil
 import com.histudent.jwsoft.histudent.commen.model.FileInfo;
 import com.histudent.jwsoft.histudent.commen.model.SaveAccountModel;
 import com.histudent.jwsoft.histudent.commen.model.SavePostDataModel;
-import com.histudent.jwsoft.histudent.constant.ParamKeys;
+import com.histudent.jwsoft.histudent.model.constant.ParamKeys;
 import com.lidroid.xutils.DbUtils;
 import com.lidroid.xutils.db.sqlite.Selector;
 import com.lidroid.xutils.exception.DbException;

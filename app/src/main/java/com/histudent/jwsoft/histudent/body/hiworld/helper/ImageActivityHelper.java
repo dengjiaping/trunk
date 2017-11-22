@@ -9,7 +9,7 @@ import android.view.Gravity;
 import android.view.View;
 
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.call.IPermissionCallBackListener;
+import com.histudent.jwsoft.histudent.model.listener.IPermissionCallBackListener;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.bean.ActionListBean;
 import com.histudent.jwsoft.histudent.commen.enums.ShowImageType;

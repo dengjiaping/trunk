@@ -1,7 +1,6 @@
 package com.histudent.jwsoft.histudent.model.http.api;
 
-import com.histudent.jwsoft.histudent.bean.BlogDetailBean;
-import com.histudent.jwsoft.histudent.bean.ImageInfoBean;
+import com.histudent.jwsoft.histudent.model.bean.ImageInfoBean;
 import com.histudent.jwsoft.histudent.model.http.BaseHttpResponse;
 import com.histudent.jwsoft.histudent.model.http.HttpResponse;
 

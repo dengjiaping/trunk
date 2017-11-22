@@ -14,8 +14,7 @@ import com.histudent.jwsoft.histudent.body.myclass.activity.ClassCreateActivity;
 import com.histudent.jwsoft.histudent.body.myclass.activity.ClassJoinActivity;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.fragment.BaseFragment;
-import com.histudent.jwsoft.histudent.commen.view.IconView;
-import com.histudent.jwsoft.histudent.constant.TransferKeys;
+import com.histudent.jwsoft.histudent.model.constant.TransferKeys;
 
 /**
  * 没有班级时，加入班级或者创建班级的页面

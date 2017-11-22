@@ -15,7 +15,7 @@ import com.histudent.jwsoft.histudent.body.message.uikit.session.fragment.ChatTy
 import com.histudent.jwsoft.histudent.body.message.uikit.session.fragment.RecentContactsModel;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
 import com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView;
-import com.histudent.jwsoft.histudent.manage.PhotoManager;
+import com.histudent.jwsoft.histudent.model.manage.PhotoManager;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

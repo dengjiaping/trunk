@@ -1,17 +1,17 @@
 package com.histudent.jwsoft.histudent.model.http.api;
 
-import com.histudent.jwsoft.histudent.bean.homework.AddGroupEntity;
-import com.histudent.jwsoft.histudent.bean.homework.AddHomeworkSubjectEntity;
-import com.histudent.jwsoft.histudent.bean.homework.AlreadyCompleteHomeworkEntity;
-import com.histudent.jwsoft.histudent.bean.homework.ClassMemberEntity;
-import com.histudent.jwsoft.histudent.bean.homework.CommentBean;
-import com.histudent.jwsoft.histudent.bean.homework.CompleteDetailBean;
-import com.histudent.jwsoft.histudent.bean.homework.CreateWorkBean;
-import com.histudent.jwsoft.histudent.bean.homework.GroupMemberDetailEntity;
-import com.histudent.jwsoft.histudent.bean.homework.HomeworkDetailBean;
-import com.histudent.jwsoft.histudent.bean.homework.SelectReceiverPersonEntity;
-import com.histudent.jwsoft.histudent.bean.homework.SubjectEntity;
-import com.histudent.jwsoft.histudent.bean.homework.WorkCompleteBean;
+import com.histudent.jwsoft.histudent.model.bean.homework.AddGroupEntity;
+import com.histudent.jwsoft.histudent.model.bean.homework.AddHomeworkSubjectEntity;
+import com.histudent.jwsoft.histudent.model.bean.homework.AlreadyCompleteHomeworkEntity;
+import com.histudent.jwsoft.histudent.model.bean.homework.ClassMemberEntity;
+import com.histudent.jwsoft.histudent.model.bean.homework.CommentBean;
+import com.histudent.jwsoft.histudent.model.bean.homework.CompleteDetailBean;
+import com.histudent.jwsoft.histudent.model.bean.homework.CreateWorkBean;
+import com.histudent.jwsoft.histudent.model.bean.homework.GroupMemberDetailEntity;
+import com.histudent.jwsoft.histudent.model.bean.homework.HomeworkDetailBean;
+import com.histudent.jwsoft.histudent.model.bean.homework.SelectReceiverPersonEntity;
+import com.histudent.jwsoft.histudent.model.bean.homework.SubjectEntity;
+import com.histudent.jwsoft.histudent.model.bean.homework.WorkCompleteBean;
 import com.histudent.jwsoft.histudent.model.http.BaseHttpResponse;
 import com.histudent.jwsoft.histudent.model.http.HttpResponse;
 

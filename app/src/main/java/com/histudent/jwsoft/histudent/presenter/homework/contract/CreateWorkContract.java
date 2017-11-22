@@ -2,13 +2,11 @@ package com.histudent.jwsoft.histudent.presenter.homework.contract;
 
 import android.content.Context;
 
-import com.alibaba.sdk.android.vod.upload.model.UploadFileInfo;
 import com.histudent.jwsoft.histudent.base.BasePresenter;
 import com.histudent.jwsoft.histudent.base.BaseView;
-import com.histudent.jwsoft.histudent.bean.UploadAuthBean;
-import com.histudent.jwsoft.histudent.bean.homework.CreateWorkBean;
-import com.histudent.jwsoft.histudent.commen.bean.VideoAuthBean;
-import com.histudent.jwsoft.histudent.entity.AudioInfo;
+import com.histudent.jwsoft.histudent.model.bean.UploadAuthBean;
+import com.histudent.jwsoft.histudent.model.bean.homework.CreateWorkBean;
+import com.histudent.jwsoft.histudent.model.entity.AudioInfo;
 
 import java.io.File;
 import java.util.List;

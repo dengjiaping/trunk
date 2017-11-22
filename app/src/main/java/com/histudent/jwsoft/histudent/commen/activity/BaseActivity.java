@@ -21,8 +21,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.activity.BasePermissionActivity;
-import com.histudent.jwsoft.histudent.call.IGuideCommonClickListener;
+import com.histudent.jwsoft.histudent.view.activity.BasePermissionActivity;
+import com.histudent.jwsoft.histudent.model.listener.IGuideCommonClickListener;
 import com.histudent.jwsoft.histudent.commen.bean.ExitBean;
 import com.histudent.jwsoft.histudent.commen.cache.HiWorldCache;
 import com.histudent.jwsoft.histudent.commen.enums.LoadingType;

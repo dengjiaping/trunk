@@ -12,7 +12,7 @@ import com.histudent.jwsoft.histudent.body.myclass.helper.ClassHelper;
 import com.histudent.jwsoft.histudent.commen.bean.AlbumAuthorityModel;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import com.histudent.jwsoft.histudent.comment2.utils.ActionTypeEnum;
-import com.histudent.jwsoft.histudent.entity.AlbumClickEvent;
+import com.histudent.jwsoft.histudent.model.entity.AlbumClickEvent;
 import com.histudent.jwsoft.histudent.presenter.image.AlbumPresenter;
 import com.histudent.jwsoft.histudent.presenter.image.contract.AlbumContract;
 import com.netease.nim.uikit.common.util.string.StringUtil;

@@ -51,8 +51,8 @@ import com.histudent.jwsoft.histudent.comment2.activity.ReportActivity;
 import com.histudent.jwsoft.histudent.comment2.utils.ActionTypeEnum;
 import com.histudent.jwsoft.histudent.info.persioninfo.PersionHelper;
 import com.histudent.jwsoft.histudent.info.persioninfo.adapter.PersonGroupsAdapter;
-import com.histudent.jwsoft.histudent.manage.ParamsManager;
-import com.histudent.jwsoft.histudent.widget.refresh.DefinedWeChatHeader;
+import com.histudent.jwsoft.histudent.model.manage.ParamsManager;
+import com.histudent.jwsoft.histudent.view.widget.refresh.DefinedWeChatHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 

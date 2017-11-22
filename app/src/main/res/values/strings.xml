@@ -732,4 +732,5 @@
     <string name="homework_already_cancel">作业已取消</string>
     <string name="cancel_homework">取消作业</string>
     <string name="homework_hint_message">开启在线提交后，学生需要提交语言、图片或文字等反馈.</string>
+    <string name="home">首页</string>
 </resources>

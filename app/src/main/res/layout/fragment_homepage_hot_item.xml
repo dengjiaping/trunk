@@ -12,7 +12,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="15dp">
 
-        <com.histudent.jwsoft.histudent.widget.AutoImageView
+        <com.histudent.jwsoft.histudent.view.widget.AutoImageView
             android:id="@+id/hot_image"
             android:layout_width="150dp"
             android:layout_height="90dp"

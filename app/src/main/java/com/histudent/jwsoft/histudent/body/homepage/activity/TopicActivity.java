@@ -1,6 +1,5 @@
 package com.histudent.jwsoft.histudent.body.homepage.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -34,7 +33,7 @@ import com.histudent.jwsoft.histudent.commen.utils.ItemDataExchangeUtils;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
 import com.histudent.jwsoft.histudent.commen.view.popupwindow.SharePopupWindow;
-import com.histudent.jwsoft.histudent.widget.refresh.DefinedWeChatHeader;
+import com.histudent.jwsoft.histudent.view.widget.refresh.DefinedWeChatHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;

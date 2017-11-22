@@ -5,14 +5,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.body.hiworld.bean.SimpleUserModel;
-import com.histudent.jwsoft.histudent.call.IPermissionCallBackListener;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.listener.HttpRequestCallBack;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;

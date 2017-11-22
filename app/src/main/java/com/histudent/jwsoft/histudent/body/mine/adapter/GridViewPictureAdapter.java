@@ -13,7 +13,7 @@ import com.histudent.jwsoft.histudent.commen.bean.ActionListBean;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.enums.ShowImageType;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
-import com.histudent.jwsoft.histudent.manage.PhotoManager;
+import com.histudent.jwsoft.histudent.model.manage.PhotoManager;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,8 +2,6 @@ package com.histudent.jwsoft.histudent.body.message.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,7 +19,7 @@ import com.histudent.jwsoft.histudent.body.message.uikit.session.fragment.ChatTy
 import com.histudent.jwsoft.histudent.body.message.uikit.session.fragment.RecentContactsModel;
 import com.histudent.jwsoft.histudent.body.myclass.activity.HuoDongCenterActivity;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
-import com.histudent.jwsoft.histudent.commen.activity.MyWebActivity;
+import com.histudent.jwsoft.histudent.commen.activity.HTWebActivity;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.enums.ReportType;
 import com.histudent.jwsoft.histudent.commen.helper.WebViewHelper;
@@ -119,25 +117,25 @@ public class OfficialCentreActivity extends BaseActivity {
             SystemInfoBean.ItemsBean msgModel = mItemsBeanList.get(i - 2);
             switch (msgModel.getNeteaseImMsgType()) {
                 case CustomAttachmentType.HomeWork://家庭作业
-                    MyWebActivity.start(OfficialCentreActivity.this, msgModel.getUrl());
+                    HTWebActivity.start(OfficialCentreActivity.this, msgModel.getUrl());
                     break;
                 case CustomAttachmentType.HUODONG_G://班级活动
                     if (msgModel.getOpenMode() == 1) {
-                        MyWebActivity.start(OfficialCentreActivity.this, msgModel.getUrl());
+                        HTWebActivity.start(OfficialCentreActivity.this, msgModel.getUrl());
                     } else if (msgModel.getOpenMode() == 2) {
                         HuoDongCenterActivity.start(OfficialCentreActivity.this, msgModel.getOpenParam(), 1, 0);
                     }
                     break;
                 case CustomAttachmentType.HUODONG_C://社群活动
                     if (msgModel.getOpenMode() == 1) {
-                        MyWebActivity.start(OfficialCentreActivity.this, msgModel.getUrl());
+                        HTWebActivity.start(OfficialCentreActivity.this, msgModel.getUrl());
                     } else if (msgModel.getOpenMode() == 2) {
                         HuoDongCenterActivity.start(OfficialCentreActivity.this, msgModel.getOpenParam(), 2, 20);
                     }
                     break;
 
                 default:
-                    MyWebActivity.start(OfficialCentreActivity.this, WebViewHelper.checkUrl(msgModel.getUrl()));
+                    HTWebActivity.start(OfficialCentreActivity.this, WebViewHelper.checkUrl(msgModel.getUrl()));
                     break;
             }
         });

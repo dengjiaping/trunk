@@ -4,7 +4,6 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
 
 import com.alibaba.fastjson.JSON;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -18,8 +17,8 @@ import com.histudent.jwsoft.histudent.body.find.helper.GroupHelper;
 import com.histudent.jwsoft.histudent.commen.listener.HttpRequestCallBack;
 import com.histudent.jwsoft.histudent.comment2.utils.EmptyViewUtils;
 import com.histudent.jwsoft.histudent.comment2.utils.PullToRefreshUtils;
-import com.histudent.jwsoft.histudent.constant.TransferKeys;
-import com.histudent.jwsoft.histudent.fragment.CommunityBaseFragment;
+import com.histudent.jwsoft.histudent.model.constant.TransferKeys;
+import com.histudent.jwsoft.histudent.view.fragment.CommunityBaseFragment;
 import com.histudent.jwsoft.histudent.tool.ToastTool;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;

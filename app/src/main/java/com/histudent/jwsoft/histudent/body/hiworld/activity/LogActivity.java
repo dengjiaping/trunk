@@ -20,10 +20,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.gzsll.jsbridge.Logger;
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.activity.RichEditorSelectColorActivity;
+import com.histudent.jwsoft.histudent.view.activity.RichEditorSelectColorActivity;
 import com.histudent.jwsoft.histudent.body.hiworld.bean.SimpleUserModel;
 import com.histudent.jwsoft.histudent.body.mine.model.UserClassListModel;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
@@ -43,7 +42,7 @@ import com.histudent.jwsoft.histudent.comment2.bean.AddressInforBean;
 import com.histudent.jwsoft.histudent.comment2.utils.LogParameterModel;
 import com.histudent.jwsoft.histudent.comment2.utils.SeletClassMateEnum;
 import com.histudent.jwsoft.histudent.comment2.utils.ViewUtils;
-import com.histudent.jwsoft.histudent.constant.TransferKeys;
+import com.histudent.jwsoft.histudent.model.constant.TransferKeys;
 import com.netease.nim.uikit.common.util.string.StringUtil;
 
 import org.json.JSONArray;

@@ -8,7 +8,7 @@ import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.account.login.activity.HTLauncherActivity;
-import com.histudent.jwsoft.histudent.account.login.model.CheckUpdataBean;
+import com.histudent.jwsoft.histudent.account.login.model.CheckUpdateBean;
 import com.histudent.jwsoft.histudent.body.HTMainActivity;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.bean.ExitBean;
@@ -273,13 +273,13 @@ public class HiStudentHttpUtils {
             HiStudentHttpUtils.postDataByOKHttp(activity, map_sign, HistudentUrl.update_apk_url, new HttpRequestCallBack() {
                 @Override
                 public void onSuccess(String result) {
-                    CheckUpdataBean checkUpdataBean = JSON.parseObject(result, CheckUpdataBean.class);
+                    CheckUpdateBean checkUpdateBean = JSON.parseObject(result, CheckUpdateBean.class);
 
-                    if (checkUpdataBean == null) return;
+                    if (checkUpdateBean == null) return;
 
-                    if (!checkUpdataBean.getVersion().equals(SystemUtil.getVersion())) {//版本号相同
+                    if (!checkUpdateBean.getVersion().equals(SystemUtil.getVersion())) {//版本号相同
 
-                        ReminderHelper.showUpdateView_login(activity, checkUpdataBean, null);
+                        ReminderHelper.showUpdateView_login(activity, checkUpdateBean, null);
 
                     }
 

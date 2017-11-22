@@ -27,7 +27,7 @@ import com.histudent.jwsoft.histudent.commen.view.CircleImageView;
 import com.histudent.jwsoft.histudent.commen.view.popupwindow.TopMenuPopupWindow;
 import com.histudent.jwsoft.histudent.comment2.bean.ClassBean;
 import com.histudent.jwsoft.histudent.comment2.utils.FileUtils;
-import com.histudent.jwsoft.histudent.manage.PhotoManager;
+import com.histudent.jwsoft.histudent.model.manage.PhotoManager;
 import com.netease.nim.uikit.common.util.string.StringUtil;
 
 import java.util.ArrayList;

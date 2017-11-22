@@ -11,9 +11,10 @@ import android.view.ViewGroup;
 
 
 import com.histudent.jwsoft.histudent.HTApplication;
-import com.histudent.jwsoft.histudent.di.componet.DaggerFragmentComponent;
-import com.histudent.jwsoft.histudent.di.componet.FragmentComponent;
-import com.histudent.jwsoft.histudent.di.module.FragmentModule;
+import com.histudent.jwsoft.histudent.commen.view.LoadingDialog;
+import com.histudent.jwsoft.histudent.model.di.componet.DaggerFragmentComponent;
+import com.histudent.jwsoft.histudent.model.di.componet.FragmentComponent;
+import com.histudent.jwsoft.histudent.model.di.module.FragmentModule;
 
 import javax.inject.Inject;
 
@@ -70,6 +71,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     public void onDestroyView() {
         super.onDestroyView();
         mUnBinder.unbind();
+        dismissLoadingDialog();
     }
 
     @Override
@@ -84,4 +86,24 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     protected abstract int getLayoutId();
 
     protected abstract void init();
+
+    private LoadingDialog mLoadingDialog;
+
+    public void showLoadingDialog() {
+        if (mLoadingDialog == null) {
+            mLoadingDialog = new LoadingDialog(getContext());
+            mLoadingDialog.show();
+        } else {
+            if (!mLoadingDialog.isShowing()) {
+                mLoadingDialog.show();
+            }
+        }
+    }
+
+    public void dismissLoadingDialog() {
+        if (mLoadingDialog != null) {
+            if (mLoadingDialog.isShowing())
+                mLoadingDialog.dismiss();
+        }
+    }
 }

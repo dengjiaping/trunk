@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Message;
-import android.support.v4.content.ContextCompat;
 import android.text.Html;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -53,7 +52,7 @@ import com.histudent.jwsoft.histudent.comment2.utils.EmotionUtils;
 import com.histudent.jwsoft.histudent.comment2.utils.TimeUtils;
 import com.histudent.jwsoft.histudent.info.InfoHelper;
 import com.histudent.jwsoft.histudent.info.persioninfo.PersionHelper;
-import com.histudent.jwsoft.histudent.manage.PhotoManager;
+import com.histudent.jwsoft.histudent.model.manage.PhotoManager;
 
 import org.greenrobot.eventbus.EventBus;
 

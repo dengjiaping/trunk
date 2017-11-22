@@ -14,7 +14,7 @@ import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.body.message.model.ClassModel;
 import com.histudent.jwsoft.histudent.body.myclass.bean.ClassInfoBean;
 import com.histudent.jwsoft.histudent.body.myclass.helper.ClassHelper;
-import com.histudent.jwsoft.histudent.call.IPermissionCallBackListener;
+import com.histudent.jwsoft.histudent.model.listener.IPermissionCallBackListener;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.cache.HiWorldCache;

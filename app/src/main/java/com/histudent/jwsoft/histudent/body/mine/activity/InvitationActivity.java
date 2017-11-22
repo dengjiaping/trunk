@@ -16,7 +16,7 @@ import com.alibaba.fastjson.JSON;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.body.mine.model.InvitationResponseModel;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
-import com.histudent.jwsoft.histudent.commen.activity.MyWebActivity;
+import com.histudent.jwsoft.histudent.commen.activity.HTWebActivity;
 import com.histudent.jwsoft.histudent.commen.activity.ShareUtils;
 import com.histudent.jwsoft.histudent.commen.bean.MyShareBean;
 import com.histudent.jwsoft.histudent.commen.listener.HttpRequestCallBack;
@@ -75,14 +75,14 @@ public class InvitationActivity extends BaseActivity {
         gz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MyWebActivity.start(InvitationActivity.this, responseModel.getRuleUrl());
+                HTWebActivity.start(InvitationActivity.this, responseModel.getRuleUrl());
             }
         });
 
         yq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MyWebActivity.start(InvitationActivity.this, responseModel.getInvitedListUrl());
+                HTWebActivity.start(InvitationActivity.this, responseModel.getInvitedListUrl());
             }
         });
 

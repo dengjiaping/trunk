@@ -23,7 +23,6 @@ import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.account.login.activity.LoginActivity;
 import com.histudent.jwsoft.histudent.account.login.model.CurrentUserInfoModel;
 import com.histudent.jwsoft.histudent.body.find.fragment.FindFragment;
-import com.histudent.jwsoft.histudent.body.homepage.fragment.HomeFragment;
 import com.histudent.jwsoft.histudent.body.message.activity.MyFriendsActivity;
 import com.histudent.jwsoft.histudent.body.message.uikit.session.fragment.ChatType;
 import com.histudent.jwsoft.histudent.body.message.uikit.session.fragment.RecentContactsModel;
@@ -33,7 +32,7 @@ import com.histudent.jwsoft.histudent.body.mine.model.UserClassListModel;
 import com.histudent.jwsoft.histudent.body.mine.parser.DataParser;
 import com.histudent.jwsoft.histudent.body.myclass.fragment.ClassFragment;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
-import com.histudent.jwsoft.histudent.commen.activity.MyWebActivity;
+import com.histudent.jwsoft.histudent.commen.activity.HTWebActivity;
 import com.histudent.jwsoft.histudent.commen.bean.ExitBean;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.enums.LoadingType;
@@ -49,14 +48,15 @@ import com.histudent.jwsoft.histudent.commen.utils.HiStudentHttpUtils;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import com.histudent.jwsoft.histudent.commen.utils.UtilsStyle;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
-import com.histudent.jwsoft.histudent.constant.ParamKeys;
-import com.histudent.jwsoft.histudent.entity.IMMessageEvent;
-import com.histudent.jwsoft.histudent.entity.MessageCountEvent;
-import com.histudent.jwsoft.histudent.entity.MessageUpdateEvent;
-import com.histudent.jwsoft.histudent.entity.ClassApplicationMessageEvent;
+import com.histudent.jwsoft.histudent.model.constant.ParamKeys;
+import com.histudent.jwsoft.histudent.model.entity.IMMessageEvent;
+import com.histudent.jwsoft.histudent.model.entity.MessageCountEvent;
+import com.histudent.jwsoft.histudent.model.entity.MessageUpdateEvent;
+import com.histudent.jwsoft.histudent.model.entity.ClassApplicationMessageEvent;
 import com.histudent.jwsoft.histudent.info.persioninfo.activity.PersonCenterActivity;
-import com.histudent.jwsoft.histudent.manage.UserManager;
-import com.histudent.jwsoft.histudent.widget.popupwindow.PopupWindowPublishContent;
+import com.histudent.jwsoft.histudent.model.manage.UserManager;
+import com.histudent.jwsoft.histudent.view.fragment.main.HomeFragment;
+import com.histudent.jwsoft.histudent.view.widget.popupwindow.PopupWindowPublishContent;
 import com.netease.nim.uikit.LoginSyncDataStatusObserver;
 import com.netease.nim.uikit.common.ui.dialog.CustomAlertDialog;
 import com.netease.nim.uikit.common.ui.dialog.DialogMaker;
@@ -190,6 +190,7 @@ public class HTMainActivity extends BaseActivity {
         iamgeView_foot = new ArrayList<>();
         textView_foot = new ArrayList<>();
 
+//        fragment_homePage = new HomeFragment();
         fragment_homePage = new HomeFragment();
         fragment_class = new ClassFragment();
         fragment_find = new FindFragment();
@@ -316,12 +317,14 @@ public class HTMainActivity extends BaseActivity {
     public void onEvent(ClassApplicationMessageEvent classApplicationMessageEvent) {
         final int readClockCount = classApplicationMessageEvent.getReadClockCount();
         final int homeworkCount = classApplicationMessageEvent.getHomeworkCount();
-        mClassApplyHintMessageCount = readClockCount + homeworkCount;
+        final int readPunch = classApplicationMessageEvent.getReadPunch();
+        mClassApplyHintMessageCount = readClockCount + homeworkCount + readPunch;
         if (mImNum != null) {
             mImNum.setVisibility(imNumber + mClassApplyHintMessageCount > 0 ? View.VISIBLE : View.GONE);
             mImNum.setText(String.valueOf(imNumber + mClassApplyHintMessageCount));
         }
     }
+
 
     @Subscribe
     public void onEvent(ExitBean bean) {
@@ -387,7 +390,7 @@ public class HTMainActivity extends BaseActivity {
                             dialog.addItem("删除", new CustomAlertDialog.onSeparateItemClickListener() {
                                 @Override
                                 public void onClick() {
-                                    helper.deletCommentData(commentId, intent.getIntExtra("position01", -1), intent.getIntExtra("position02", -1));
+                                    helper.deleteCommentData(commentId, intent.getIntExtra("position01", -1), intent.getIntExtra("position02", -1));
                                 }
                             });
                         }
@@ -475,7 +478,7 @@ public class HTMainActivity extends BaseActivity {
             case R.id.title_right:
 
                 if (current_type == TYPE_MESSAGE) {
-                    MyWebActivity.startNoClose(this, HistudentUrl.search);
+                    HTWebActivity.startNoClose(this, HistudentUrl.search);
 
                 } else if (current_type == TYPE_HIWORLD) {
 

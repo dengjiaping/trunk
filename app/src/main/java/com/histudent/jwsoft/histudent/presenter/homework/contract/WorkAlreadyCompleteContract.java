@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.histudent.jwsoft.histudent.base.BasePresenter;
 import com.histudent.jwsoft.histudent.base.BaseView;
-import com.histudent.jwsoft.histudent.bean.homework.HomeworkAlreadyBean;
+import com.histudent.jwsoft.histudent.model.bean.homework.HomeworkAlreadyBean;
 
 import java.util.ArrayList;
 import java.util.Map;

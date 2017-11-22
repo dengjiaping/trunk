@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,8 +22,8 @@ import com.histudent.jwsoft.histudent.body.myclass.activity.CreateHuoDongFirstSt
 import com.histudent.jwsoft.histudent.body.myclass.activity.HuoDongCenterActivity;
 import com.histudent.jwsoft.histudent.body.myclass.activity.NoticeDetailActivity;
 import com.histudent.jwsoft.histudent.body.myclass.activity.NoticePublishActivity;
+import com.histudent.jwsoft.histudent.commen.activity.HTWebActivity;
 import com.histudent.jwsoft.histudent.commen.activity.ImageBrowserActivity;
-import com.histudent.jwsoft.histudent.commen.activity.MyWebActivity;
 import com.histudent.jwsoft.histudent.commen.bean.ActionListBean;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.enums.ShowImageType;
@@ -138,7 +137,7 @@ public class TeamMessageActivity extends BaseMessageActivity implements View.OnC
                 break;
 
             case 2://发作业
-                MyWebActivity.start(this, HistudentUrl.homework);
+                HTWebActivity.start(this, HistudentUrl.homework);
                 break;
 
             case 3://发起活动
@@ -152,18 +151,18 @@ public class TeamMessageActivity extends BaseMessageActivity implements View.OnC
         if (msgModel != null) {
             switch (msgModel.getType()) {
                 case CustomAttachmentType.HomeWork://家庭作业
-                    MyWebActivity.start(TeamMessageActivity.this, msgModel.getData().getUrl());
+                    HTWebActivity.start(TeamMessageActivity.this, msgModel.getData().getUrl());
                     break;
                 case CustomAttachmentType.HUODONG_G://班级活动
                     if (msgModel.getData().getOpenmode() == 1) {
-                        MyWebActivity.start(TeamMessageActivity.this, msgModel.getData().getUrl());
+                        HTWebActivity.start(TeamMessageActivity.this, msgModel.getData().getUrl());
                     } else if (msgModel.getData().getOpenmode() == 2) {
                         HuoDongCenterActivity.start(TeamMessageActivity.this, msgModel.getData().getOpenparam(), 1, 0);
                     }
                     break;
                 case CustomAttachmentType.HUODONG_C://社群活动
                     if (msgModel.getData().getOpenmode() == 1) {
-                        MyWebActivity.start(TeamMessageActivity.this, msgModel.getData().getUrl());
+                        HTWebActivity.start(TeamMessageActivity.this, msgModel.getData().getUrl());
                     } else if (msgModel.getData().getOpenmode() == 2) {
                         HuoDongCenterActivity.start(TeamMessageActivity.this, msgModel.getData().getOpenparam(), 2, 20);
                     }
@@ -441,7 +440,7 @@ public class TeamMessageActivity extends BaseMessageActivity implements View.OnC
 
                         break;
                     case TheReceiverAction.GOTIO_HOMEWORK:
-                        MyWebActivity.start(TeamMessageActivity.this, intent.getStringExtra("url"));
+                        HTWebActivity.start(TeamMessageActivity.this, intent.getStringExtra("url"));
                         break;
                     case TheReceiverAction.GOTIO_NOTICE:
                         NoticeDetailActivity.start(TeamMessageActivity.this, intent.getStringExtra("msg"));

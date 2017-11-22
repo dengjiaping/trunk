@@ -26,8 +26,8 @@ import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.enums.LoadingType;
 import com.histudent.jwsoft.histudent.commen.keyword.fragment.FragmentFactory;
 import com.histudent.jwsoft.histudent.commen.listener.HttpRequestCallBack;
-import com.histudent.jwsoft.histudent.constant.ConstantUtil;
-import com.histudent.jwsoft.histudent.constant.TransferKeys;
+import com.histudent.jwsoft.histudent.model.constant.ConstantUtil;
+import com.histudent.jwsoft.histudent.model.constant.TransferKeys;
 import com.histudent.jwsoft.histudent.tool.ToastTool;
 
 import java.util.ArrayList;

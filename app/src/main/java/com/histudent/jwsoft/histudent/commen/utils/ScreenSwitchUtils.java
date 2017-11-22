@@ -10,7 +10,7 @@ import android.hardware.SensorManager;
 import android.os.Handler;
 import android.os.Message;
 
-import com.histudent.jwsoft.histudent.entity.ScreenSwitchEvent;
+import com.histudent.jwsoft.histudent.model.entity.ScreenSwitchEvent;
 
 import org.greenrobot.eventbus.EventBus;
 

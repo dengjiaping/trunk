@@ -9,14 +9,14 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONObject;
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.activity.clock.ReadClockInActivity;
-import com.histudent.jwsoft.histudent.bean.ScanBookInformation;
+import com.histudent.jwsoft.histudent.view.activity.clock.ReadClockInActivity;
+import com.histudent.jwsoft.histudent.model.bean.ScanBookInformation;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
-import com.histudent.jwsoft.histudent.constant.ParamKeys;
-import com.histudent.jwsoft.histudent.constant.TransferKeys;
-import com.histudent.jwsoft.histudent.entity.ReadTaskEvent;
+import com.histudent.jwsoft.histudent.model.constant.ParamKeys;
+import com.histudent.jwsoft.histudent.model.constant.TransferKeys;
+import com.histudent.jwsoft.histudent.model.entity.ReadTaskEvent;
 import com.histudent.jwsoft.histudent.tool.CommonAdvanceUtils;
 
 import org.greenrobot.eventbus.EventBus;

@@ -17,7 +17,7 @@ import com.histudent.jwsoft.histudent.body.mine.model.AlbumInfoModel;
 import com.histudent.jwsoft.histudent.body.mine.model.PhotosModel;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
-import com.histudent.jwsoft.histudent.manage.PhotoManager;
+import com.histudent.jwsoft.histudent.model.manage.PhotoManager;
 
 import java.util.List;
 

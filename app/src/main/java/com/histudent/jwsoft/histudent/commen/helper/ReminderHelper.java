@@ -19,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.account.login.model.CheckUpdataBean;
+import com.histudent.jwsoft.histudent.account.login.model.CheckUpdateBean;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.enums.LoadingType;
 import com.histudent.jwsoft.histudent.commen.listener.DialogButtonListener;
@@ -429,11 +429,11 @@ public class ReminderHelper {
      * @param context
      * @return
      */
-    public static void showUpdateView_login(Context context, CheckUpdataBean checkUpdataBean, DialogButtonListener update_listener) {
+    public static void showUpdateView_login(Context context, CheckUpdateBean checkUpdateBean, DialogButtonListener update_listener) {
 
-        if (checkUpdataBean == null) return;
+        if (checkUpdateBean == null) return;
 
-        if (checkUpdataBean.getStatus() == 0) {//不更新
+        if (checkUpdateBean.getStatus() == 0) {//不更新
             if (update_listener != null)
                 update_listener.setOnDialogButtonListener();
             return;
@@ -449,14 +449,14 @@ public class ReminderHelper {
         TextView iv_cancel = (TextView) view.findViewById(R.id.iv_cancel);
         TextView line = (TextView) view.findViewById(R.id.line);
 
-        if (checkUpdataBean.getStatus() == 2) {//强制更新
+        if (checkUpdateBean.getStatus() == 2) {//强制更新
             iv_cancel.setVisibility(View.GONE);
             line.setVisibility(View.GONE);
         }
 
         TextView tv = ((TextView) view.findViewById(R.id.contnet));
-        if (!StringUtil.isEmpty(checkUpdataBean.getUpdatedesc())) {
-            tv.setText(checkUpdataBean.getUpdatedesc());
+        if (!StringUtil.isEmpty(checkUpdateBean.getUpdatedesc())) {
+            tv.setText(checkUpdateBean.getUpdatedesc());
         }
 
         upldate_btn.setOnClickListener(new View.OnClickListener() {
@@ -464,7 +464,7 @@ public class ReminderHelper {
             public void onClick(View v) {
                 dialog_select_login.dismiss();
                 MyUpdateManager myUpdateManager = new MyUpdateManager(context);
-                myUpdateManager.LoadingApk(checkUpdataBean.getStatus(), checkUpdataBean.getUpdateurl());
+                myUpdateManager.LoadingApk(checkUpdateBean.getStatus(), checkUpdateBean.getUpdateurl());
             }
         });
 

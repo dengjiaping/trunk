@@ -22,7 +22,7 @@ import com.histudent.jwsoft.histudent.body.find.bean.GroupCreateSuccedBean;
 import com.histudent.jwsoft.histudent.body.find.event.ActivityFinishEvent;
 import com.histudent.jwsoft.histudent.body.find.helper.GroupHelper;
 import com.histudent.jwsoft.histudent.body.myclass.activity.ClassAndGroupShareActivity;
-import com.histudent.jwsoft.histudent.call.IPermissionCallBackListener;
+import com.histudent.jwsoft.histudent.model.listener.IPermissionCallBackListener;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.activity.CommenPrivacySetting;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
@@ -32,7 +32,7 @@ import com.histudent.jwsoft.histudent.commen.view.popupwindow.TopMenuPopupWindow
 import com.histudent.jwsoft.histudent.comment2.utils.ActionTypeEnum;
 import com.histudent.jwsoft.histudent.comment2.utils.FileUtils;
 import com.histudent.jwsoft.histudent.comment2.utils.TakePicUtils;
-import com.histudent.jwsoft.histudent.constant.ConstantUtil;
+import com.histudent.jwsoft.histudent.model.constant.ConstantUtil;
 import com.histudent.jwsoft.histudent.info.persioninfo.PersionHelper;
 
 import org.greenrobot.eventbus.EventBus;

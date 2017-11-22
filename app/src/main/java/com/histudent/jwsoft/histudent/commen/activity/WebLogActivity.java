@@ -32,7 +32,7 @@ import com.histudent.jwsoft.histudent.body.hiworld.activity.DraftActivity;
 import com.histudent.jwsoft.histudent.body.hiworld.activity.LogNextActivity;
 import com.histudent.jwsoft.histudent.body.hiworld.bean.SimpleUserModel;
 import com.histudent.jwsoft.histudent.body.mine.model.UserClassListModel;
-import com.histudent.jwsoft.histudent.call.IPermissionCallBackListener;
+import com.histudent.jwsoft.histudent.model.listener.IPermissionCallBackListener;
 import com.histudent.jwsoft.histudent.commen.bean.MyShareBean;
 import com.histudent.jwsoft.histudent.commen.bean.WebBlogBean;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;

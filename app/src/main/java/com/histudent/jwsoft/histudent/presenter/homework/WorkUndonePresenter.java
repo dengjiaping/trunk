@@ -1,15 +1,15 @@
 package com.histudent.jwsoft.histudent.presenter.homework;
 
 import com.histudent.jwsoft.histudent.base.RxPresenter;
-import com.histudent.jwsoft.histudent.bean.homework.HomeworkDetailBean;
+import com.histudent.jwsoft.histudent.model.bean.homework.HomeworkDetailBean;
 import com.histudent.jwsoft.histudent.commen.utils.FileUtil;
-import com.histudent.jwsoft.histudent.component.AudioManager;
+import com.histudent.jwsoft.histudent.model.manage.AudioManager;
 import com.histudent.jwsoft.histudent.model.http.ApiFactory;
 import com.histudent.jwsoft.histudent.model.http.BaseHttpResponse;
 import com.histudent.jwsoft.histudent.model.http.HttpResponse;
 import com.histudent.jwsoft.histudent.presenter.homework.contract.WorkUndoneContract;
-import com.histudent.jwsoft.histudent.rx.RxException;
-import com.histudent.jwsoft.histudent.rx.RxSchedulers;
+import com.histudent.jwsoft.histudent.model.rx.RxException;
+import com.histudent.jwsoft.histudent.model.rx.RxSchedulers;
 
 import java.io.File;
 import java.io.FileOutputStream;

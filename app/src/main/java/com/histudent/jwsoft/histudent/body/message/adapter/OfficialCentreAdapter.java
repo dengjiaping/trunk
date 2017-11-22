@@ -1,7 +1,6 @@
 package com.histudent.jwsoft.histudent.body.message.adapter;
 
 import android.app.Activity;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,7 @@ import com.histudent.jwsoft.histudent.body.message.model.SystemInfoBean;
 import com.histudent.jwsoft.histudent.body.message.uikit.session.fragment.ChatType;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
 import com.histudent.jwsoft.histudent.commen.view.CircleImageView;
-import com.histudent.jwsoft.histudent.manage.PhotoManager;
+import com.histudent.jwsoft.histudent.model.manage.PhotoManager;
 
 import java.util.List;
 

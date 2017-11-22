@@ -10,15 +10,15 @@ import com.alibaba.fastjson.JSONObject;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.activity.homework.WorkDetailStudentActivity;
-import com.histudent.jwsoft.histudent.activity.homework.WorkUndoneActivity;
+import com.histudent.jwsoft.histudent.commen.activity.HTWebActivity;
+import com.histudent.jwsoft.histudent.view.activity.homework.WorkDetailStudentActivity;
+import com.histudent.jwsoft.histudent.view.activity.homework.WorkUndoneActivity;
 import com.histudent.jwsoft.histudent.body.message.adapter.OfficialChatAdapter;
 import com.histudent.jwsoft.histudent.body.message.uikit.session.extension.CustomAttachmentType;
 import com.histudent.jwsoft.histudent.body.message.uikit.session.fragment.ChatType;
 import com.histudent.jwsoft.histudent.body.message.uikit.session.fragment.RecentContactsModel;
 import com.histudent.jwsoft.histudent.body.myclass.activity.HuoDongCenterActivity;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
-import com.histudent.jwsoft.histudent.commen.activity.MyWebActivity;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.helper.WebViewHelper;
 import com.histudent.jwsoft.histudent.commen.listener.HttpRequestCallBack;
@@ -26,9 +26,9 @@ import com.histudent.jwsoft.histudent.commen.url.HistudentUrl;
 import com.histudent.jwsoft.histudent.commen.utils.HiStudentHttpUtils;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
 import com.histudent.jwsoft.histudent.comment2.utils.EmptyViewUtils;
-import com.histudent.jwsoft.histudent.constant.ParamKeys;
-import com.histudent.jwsoft.histudent.constant.TransferKeys;
-import com.histudent.jwsoft.histudent.manage.ParamsManager;
+import com.histudent.jwsoft.histudent.model.constant.ParamKeys;
+import com.histudent.jwsoft.histudent.model.constant.TransferKeys;
+import com.histudent.jwsoft.histudent.model.manage.ParamsManager;
 import com.histudent.jwsoft.histudent.tool.CommonAdvanceUtils;
 import com.histudent.jwsoft.histudent.tool.ToastTool;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -132,20 +132,20 @@ public class SystemInformationActivity extends BaseActivity {
                         break;
                     case CustomAttachmentType.HUODONG_G://班级活动
                         if (msgModel.getOpenmode() == 1) {
-                            MyWebActivity.start(SystemInformationActivity.this, msgModel.getUrl());
+                            HTWebActivity.start(SystemInformationActivity.this, msgModel.getUrl());
                         } else if (msgModel.getOpenmode() == 2) {
                             HuoDongCenterActivity.start(SystemInformationActivity.this, msgModel.getOpenParam(), 1, 0);
                         }
                         break;
                     case CustomAttachmentType.HUODONG_C://社群活动
                         if (msgModel.getOpenmode() == 1) {
-                            MyWebActivity.start(SystemInformationActivity.this, msgModel.getUrl());
+                            HTWebActivity.start(SystemInformationActivity.this, msgModel.getUrl());
                         } else if (msgModel.getOpenmode() == 2) {
                             HuoDongCenterActivity.start(SystemInformationActivity.this, msgModel.getOpenParam(), 2, 20);
                         }
                         break;
                     default:
-                        MyWebActivity.start(SystemInformationActivity.this, WebViewHelper.checkUrl(msgModel.getUrl()));
+                        HTWebActivity.start(SystemInformationActivity.this, WebViewHelper.checkUrl(msgModel.getUrl()));
                         break;
                 }
             }

@@ -105,12 +105,12 @@
                 android:background="@color/white"
                 android:orientation="vertical">
 
-                <com.histudent.jwsoft.histudent.widget.FlowLayout
+                <com.histudent.jwsoft.histudent.view.widget.FlowLayout
                     android:id="@+id/layout_flow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                </com.histudent.jwsoft.histudent.widget.FlowLayout>
+                </com.histudent.jwsoft.histudent.view.widget.FlowLayout>
 
 
                 <include

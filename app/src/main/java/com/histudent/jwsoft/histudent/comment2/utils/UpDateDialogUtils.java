@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.commen.activity.MyWebActivity;
+import com.histudent.jwsoft.histudent.commen.activity.HTWebActivity;
 import com.histudent.jwsoft.histudent.commen.bean.AdvertisementModel;
 import com.histudent.jwsoft.histudent.commen.listener.DialogButtonListener;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
@@ -214,7 +214,7 @@ public class UpDateDialogUtils {
             public void onClick(View v) {
                 dialog_select.dismiss();
 
-                MyWebActivity.start(context, model.getLink());
+                HTWebActivity.start(context, model.getLink());
             }
         });
 

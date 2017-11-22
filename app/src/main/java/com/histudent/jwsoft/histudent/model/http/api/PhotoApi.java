@@ -1,6 +1,6 @@
 package com.histudent.jwsoft.histudent.model.http.api;
 
-import com.histudent.jwsoft.histudent.bean.UploadImgBean;
+import com.histudent.jwsoft.histudent.model.bean.UploadImgBean;
 import com.histudent.jwsoft.histudent.model.http.HttpResponse;
 
 import io.reactivex.Observable;

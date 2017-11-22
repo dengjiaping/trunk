@@ -49,10 +49,10 @@ import com.histudent.jwsoft.histudent.commen.view.popupwindow.TopMenuPopupWindow
 import com.histudent.jwsoft.histudent.commen.view.swipemenulistview.AutoScrollImageView;
 import com.histudent.jwsoft.histudent.comment2.activity.ReportActivity;
 import com.histudent.jwsoft.histudent.info.persioninfo.activity.PersonCenterActivity;
-import com.histudent.jwsoft.histudent.manage.ParamsManager;
-import com.histudent.jwsoft.histudent.widget.AutoImageView;
-import com.histudent.jwsoft.histudent.widget.popupwindow.PopupWindowDynamicCategory;
-import com.histudent.jwsoft.histudent.widget.refresh.DefinedWeChatHeader;
+import com.histudent.jwsoft.histudent.model.manage.ParamsManager;
+import com.histudent.jwsoft.histudent.view.widget.AutoImageView;
+import com.histudent.jwsoft.histudent.view.widget.popupwindow.PopupWindowDynamicCategory;
+import com.histudent.jwsoft.histudent.view.widget.refresh.DefinedWeChatHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;

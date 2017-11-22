@@ -3,7 +3,6 @@ package com.histudent.jwsoft.histudent.body.message.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -11,15 +10,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.activity.image.ShowImageActivity;
+import com.histudent.jwsoft.histudent.view.activity.image.ShowImageActivity;
 import com.histudent.jwsoft.histudent.body.mine.model.PhotosModel;
 import com.histudent.jwsoft.histudent.commen.bean.ActionListBean;
 import com.histudent.jwsoft.histudent.commen.keyword.utils.DisplayUtils;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
 import com.histudent.jwsoft.histudent.comment2.utils.ActionTypeEnum;
-import com.histudent.jwsoft.histudent.entity.ImageAttrEntity;
-import com.histudent.jwsoft.histudent.manage.PhotoManager;
+import com.histudent.jwsoft.histudent.model.entity.ImageAttrEntity;
+import com.histudent.jwsoft.histudent.model.manage.PhotoManager;
 
 import java.io.Serializable;
 import java.util.ArrayList;

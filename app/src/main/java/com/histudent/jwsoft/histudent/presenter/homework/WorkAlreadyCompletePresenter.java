@@ -2,17 +2,17 @@ package com.histudent.jwsoft.histudent.presenter.homework;
 
 import android.content.Context;
 
-import com.histudent.jwsoft.histudent.adapter.homework.convert.HomeworkAlreadyConvert;
+import com.histudent.jwsoft.histudent.view.adapter.homework.convert.HomeworkAlreadyConvert;
 import com.histudent.jwsoft.histudent.base.RxPresenter;
-import com.histudent.jwsoft.histudent.bean.homework.AlreadyCompleteHomeworkEntity;
-import com.histudent.jwsoft.histudent.bean.homework.HomeworkAlreadyBean;
-import com.histudent.jwsoft.histudent.manage.ParamsManager;
+import com.histudent.jwsoft.histudent.model.bean.homework.AlreadyCompleteHomeworkEntity;
+import com.histudent.jwsoft.histudent.model.bean.homework.HomeworkAlreadyBean;
+import com.histudent.jwsoft.histudent.model.manage.ParamsManager;
 import com.histudent.jwsoft.histudent.model.http.ApiFactory;
 import com.histudent.jwsoft.histudent.model.http.BaseHttpResponse;
 import com.histudent.jwsoft.histudent.model.http.HttpResponse;
 import com.histudent.jwsoft.histudent.presenter.homework.contract.WorkAlreadyCompleteContract;
-import com.histudent.jwsoft.histudent.rx.RxException;
-import com.histudent.jwsoft.histudent.rx.RxSchedulers;
+import com.histudent.jwsoft.histudent.model.rx.RxException;
+import com.histudent.jwsoft.histudent.model.rx.RxSchedulers;
 
 import java.util.ArrayList;
 import java.util.Map;

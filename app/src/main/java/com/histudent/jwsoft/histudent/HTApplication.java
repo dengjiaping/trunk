@@ -18,7 +18,6 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
-import com.facebook.stetho.Stetho;
 import com.histudent.jwsoft.histudent.body.message.model.CustomNotificationBean;
 import com.histudent.jwsoft.histudent.body.message.uikit.DemoCache;
 import com.histudent.jwsoft.histudent.body.message.uikit.avchat.AVChatProfile;
@@ -32,17 +31,17 @@ import com.histudent.jwsoft.histudent.body.message.uikit.session.extension.HomeA
 import com.histudent.jwsoft.histudent.body.message.uikit.session.extension.NoticeAttachment;
 import com.histudent.jwsoft.histudent.body.message.uikit.session.fragment.RecentContactsModel;
 import com.histudent.jwsoft.histudent.body.mine.activity.MessageManageActivity;
-import com.histudent.jwsoft.histudent.commen.activity.MyWebActivity;
+import com.histudent.jwsoft.histudent.commen.activity.HTWebActivity;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.preference.Preferences;
 import com.histudent.jwsoft.histudent.commen.preference.UserPreferences;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import com.histudent.jwsoft.histudent.comment2.utils.TimeUtils;
-import com.histudent.jwsoft.histudent.di.componet.AppComponent;
-import com.histudent.jwsoft.histudent.di.componet.DaggerAppComponent;
-import com.histudent.jwsoft.histudent.di.module.AppModule;
-import com.histudent.jwsoft.histudent.widget.refresh.ClassicsFooter;
-import com.histudent.jwsoft.histudent.widget.refresh.ClassicsHeader;
+import com.histudent.jwsoft.histudent.model.di.componet.AppComponent;
+import com.histudent.jwsoft.histudent.model.di.componet.DaggerAppComponent;
+import com.histudent.jwsoft.histudent.model.di.module.AppModule;
+import com.histudent.jwsoft.histudent.view.widget.refresh.ClassicsFooter;
+import com.histudent.jwsoft.histudent.view.widget.refresh.ClassicsHeader;
 import com.netease.nim.uikit.ImageLoaderKit;
 import com.netease.nim.uikit.NimUIKit;
 import com.netease.nim.uikit.cache.FriendDataCache;
@@ -94,7 +93,7 @@ import java.util.Map;
 public class HTApplication extends MultiDexApplication {
 
     //false: 测试，true:生产
-    public static boolean isOnLine = true;
+    public static boolean isOnLine = false;
 
     private static HTApplication instance;
 
@@ -125,7 +124,6 @@ public class HTApplication extends MultiDexApplication {
 
     public void onCreate() {
         super.onCreate();
-        Stetho.initializeWithDefaults(this);
 //        LeakCanary.install(this);
         instance = this;
         initDaggerComponent();
@@ -247,7 +245,7 @@ public class HTApplication extends MultiDexApplication {
                     context.startActivity(intent);
                     return;
                 }
-                MyWebActivity.start(context, bean.getUrl());
+                HTWebActivity.start(context, bean.getUrl());
 
             }
         };

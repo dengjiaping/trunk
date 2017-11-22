@@ -27,7 +27,11 @@ import com.histudent.jwsoft.histudent.CodeNum;
 import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.activity.homework.WorkAlreadyCompleteActivity;
+import com.histudent.jwsoft.histudent.commen.activity.ImageBrowserActivity;
+import com.histudent.jwsoft.histudent.commen.bean.ActionListBean;
+import com.histudent.jwsoft.histudent.commen.enums.ShowImageType;
+import com.histudent.jwsoft.histudent.tool.ToastTool;
+import com.histudent.jwsoft.histudent.view.activity.homework.WorkAlreadyCompleteActivity;
 import com.histudent.jwsoft.histudent.body.find.adapter.SortGroupAdapter;
 import com.histudent.jwsoft.histudent.body.hiworld.bean.SimpleUserModel;
 import com.histudent.jwsoft.histudent.body.message.model.ClassModel;
@@ -45,7 +49,7 @@ import com.histudent.jwsoft.histudent.body.myclass.activity.NoticeListActivity;
 import com.histudent.jwsoft.histudent.body.myclass.adapter.ClassAppAdapter;
 import com.histudent.jwsoft.histudent.body.myclass.helper.ClassHelper;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
-import com.histudent.jwsoft.histudent.commen.activity.MyWebActivity;
+import com.histudent.jwsoft.histudent.commen.activity.HTWebActivity;
 import com.histudent.jwsoft.histudent.commen.activity.SelecteClassmatesActiviy;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.cache.HiWorldCache;
@@ -65,11 +69,11 @@ import com.histudent.jwsoft.histudent.commen.view.swipemenulistview.AutoScrollIm
 import com.histudent.jwsoft.histudent.comment2.utils.ActionTypeEnum;
 import com.histudent.jwsoft.histudent.comment2.utils.ClassAppKey;
 import com.histudent.jwsoft.histudent.comment2.utils.SeletClassMateEnum;
-import com.histudent.jwsoft.histudent.constant.TransferKeys;
-import com.histudent.jwsoft.histudent.entity.IMMessageEvent;
-import com.histudent.jwsoft.histudent.entity.MessageUpdateEvent;
-import com.histudent.jwsoft.histudent.entity.ClassApplicationMessageEvent;
-import com.histudent.jwsoft.histudent.manage.UserManager;
+import com.histudent.jwsoft.histudent.model.constant.TransferKeys;
+import com.histudent.jwsoft.histudent.model.entity.IMMessageEvent;
+import com.histudent.jwsoft.histudent.model.entity.MessageUpdateEvent;
+import com.histudent.jwsoft.histudent.model.entity.ClassApplicationMessageEvent;
+import com.histudent.jwsoft.histudent.model.manage.UserManager;
 import com.histudent.jwsoft.histudent.tool.CommonAdvanceUtils;
 import com.netease.nim.uikit.common.util.string.StringUtil;
 import com.netease.nimlib.sdk.NIMClient;
@@ -101,14 +105,14 @@ import butterknife.ButterKnife;
 public class ClassFragment extends BaseFragment {
 
     private View view;
-    private PopupWindow popupWindow;
+    private PopupWindow mPopupWindowClassList;
     private MyGridView mGridView;
     private ClassAppAdapter appAdapter;
-    private List<Object> appList;
+    private final List<Object> mAppList = new ArrayList<>();
+    private final List<Object> mClassList = new ArrayList<>();
     private setOnClickListener listener;
     private TextView mMiddleTitle;
     private SortGroupAdapter classAdapter;
-    private List<Object> classList;
     private String title;
     private String classId;
     private IconView leftImage, rightImage, middle_log;
@@ -148,6 +152,7 @@ public class ClassFragment extends BaseFragment {
 
     @BindView(R.id.view_status_bar)
     View mViewStatus;
+    private View mClassLogo;
 
 
     @Nullable
@@ -162,8 +167,6 @@ public class ClassFragment extends BaseFragment {
     @Override
     public void initView() {
         super.initView();
-        appList = new ArrayList<>();
-        classList = new ArrayList<>();
         recentContacts = new ArrayList<>();
         mGridView = view.findViewById(R.id.grid_view);
         ((IconView) view.findViewById(R.id.title_left_image)).setText("");
@@ -173,6 +176,8 @@ public class ClassFragment extends BaseFragment {
         mStarBar = view.findViewById(R.id.rating_bar);
         mRefreshLayout = view.findViewById(R.id.srl_refresh_layout);
 
+        mClassLogo = view.findViewById(R.id.class_log);
+
         //设置状态高度
         final int statusBarHeight = ImmersionBar.getStatusBarHeight(getActivity());
         final ViewGroup.LayoutParams layoutParams = mViewStatus.getLayoutParams();
@@ -180,7 +185,7 @@ public class ClassFragment extends BaseFragment {
         mViewStatus.setLayoutParams(layoutParams);
 
 
-        classAdapter = new SortGroupAdapter(classList, getActivity());
+        classAdapter = new SortGroupAdapter(mClassList, getActivity());
         mGridView.setFocusable(false);
         mListView.setMode(PullToRefreshBase.Mode.DISABLED);
         mRefreshLayout.setOnRefreshListener((RefreshLayout refreshlayout) -> getClasses(LoadingType.NONE));
@@ -214,7 +219,7 @@ public class ClassFragment extends BaseFragment {
         middle_log.setPadding(0, SystemUtil.dp2px(5), 0, 0);
         mMiddleTitle.setText(title);
 
-        if (classList.size() > 1) {
+        if (mClassList.size() > 1) {
             middle_log.setVisibility(View.VISIBLE);
             middle_log.setText(R.string.icon_arrowbottom);
         } else {
@@ -231,6 +236,16 @@ public class ClassFragment extends BaseFragment {
     }
 
     private void loadListener() {
+        mClassLogo.setOnClickListener((View view) -> {
+                    final ArrayList<ActionListBean.ImagesBean> urls2 = new ArrayList<>();
+                    final ActionListBean.ImagesBean imagesBean = new ActionListBean.ImagesBean();
+                    final String classLogo = classModel.getClassLogo();
+                    imagesBean.setBigSizeUrl(classLogo);
+                    imagesBean.setThumbnailUrl(classLogo);
+                    urls2.add(imagesBean);
+                    ImageBrowserActivity.start(getActivity(), 0, 100, urls2, ShowImageType.SHOW, 0, "");
+                }
+        );
         mClassGradeLayout.setOnClickListener((View view) -> ClassGradeActivity.start(getActivity(), classId, CodeNum.GROUP_TASK));//班级等级
         mStarBar.setOnClickListener((View view) -> ClassGradeActivity.start(getActivity(), classId, CodeNum.GROUP_TASK));//班级等级
         mTitleLeftLayout.setOnClickListener((View view) -> ClassSetActivity.start(getActivity(), CodeNum.CLASS_SET));
@@ -238,7 +253,7 @@ public class ClassFragment extends BaseFragment {
                     //班级页面 右上角添加 根据身份去判断
                     if (HiCache.getInstance().getLoginUserInfo().getUserType() == 3) {
                         //老师
-                        if (classList.size() > 0) {
+                        if (mClassList.size() > 0) {
                             ClassAddOrCreatActivity.start(getActivity(), 20, false);
                         } else {
                             ClassAddOrCreatActivity.start(getActivity(), 20, true);
@@ -250,7 +265,7 @@ public class ClassFragment extends BaseFragment {
                 }
         );
         mTitleMiddleLayout.setOnClickListener((View view) -> {
-            if (classList != null && classList.size() > 1) {
+            if (mClassList != null && mClassList.size() > 1) {
                 middle_log.setText(R.string.icon_arrowup);
                 initPopWindow();
             }
@@ -285,7 +300,7 @@ public class ClassFragment extends BaseFragment {
 
     private void loadGridViewItemData(AdapterView<?> parent, View view, int position, long id) {
         UserManager.getInstance().setCurrentClassId(classId);
-        ClassModel.ClassAppsBean bean = (ClassModel.ClassAppsBean) appList.get(position);
+        ClassModel.ClassAppsBean bean = (ClassModel.ClassAppsBean) mAppList.get(position);
         switch (bean.getAppKey()) {
 
             //家校通
@@ -355,7 +370,7 @@ public class ClassFragment extends BaseFragment {
                         .getInstance()
                         .getSharedPreferences(HOMEWORK_SIGN, Context.MODE_PRIVATE)
                         .edit().putBoolean(HOMEWORK_SIGN, true).apply();
-//                MyWebActivity.start(getActivity(), bean.getAppUrl());
+//                HTWebActivity.start(getActivity(), bean.getAppUrl());
                 final Intent intent = new Intent(getContext(), WorkAlreadyCompleteActivity.class);
                 final int userType = HiCache.getInstance().getLoginUserInfo().getUserType();
                 boolean isTeacher;
@@ -380,7 +395,7 @@ public class ClassFragment extends BaseFragment {
                         .getInstance()
                         .getSharedPreferences(READ_CLOCK_NEW_SIGN, Context.MODE_PRIVATE)
                         .edit().putBoolean(READ_CLOCK_NEW_SIGN, true).apply();
-                MyWebActivity.start(getActivity(), bean.getAppUrl());
+                HTWebActivity.start(getActivity(), bean.getAppUrl());
                 break;
             //打卡测试
 //            case ClassAppKey.CLASS_CLOCK:
@@ -404,19 +419,21 @@ public class ClassFragment extends BaseFragment {
             classAdapter.initSeletedItem(classModel.getClassId());
         }
         listView.setAdapter(classAdapter);
+        final int screenWidth = SystemUtil.getScreenWind();
+        final int screenHeight = Integer.parseInt(SystemUtil.getScreenHeight());
+        final int popupWindowHeight = screenHeight - SystemUtil.dip2px(getContext(), 45);
+        mPopupWindowClassList = new PopupWindow(layout, screenWidth, popupWindowHeight / 2);
+        mPopupWindowClassList.setFocusable(true);
+        mPopupWindowClassList.setOutsideTouchable(false);
+        mPopupWindowClassList.setBackgroundDrawable(new BitmapDrawable());
 
-        popupWindow = new PopupWindow(layout, SystemUtil.getScreenWind(), LinearLayout.LayoutParams.WRAP_CONTENT);
-        popupWindow.setFocusable(true);
-        popupWindow.setOutsideTouchable(false);
-        popupWindow.setBackgroundDrawable(new BitmapDrawable());
-
-        popupWindow.showAsDropDown(view.findViewById(R.id.title_middle_text), 0, 0);
-        popupWindow.setOnDismissListener(() -> {
+        mPopupWindowClassList.showAsDropDown(view.findViewById(R.id.title_middle_text), 0, 0);
+        mPopupWindowClassList.setOnDismissListener(() -> {
             middle_log.setText(R.string.icon_arrowbottom);
             view.findViewById(R.id.frame).setVisibility(View.GONE);
         });
         listView.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
-            currentClassModel = ((UserClassListModel) classList.get(position));
+            currentClassModel = ((UserClassListModel) mClassList.get(position));
             title = currentClassModel.getCName();
             mMiddleTitle.setText(title);
 
@@ -425,7 +442,7 @@ public class ClassFragment extends BaseFragment {
                 getClassInfor(LoadingType.NONE);
             }
 
-            popupWindow.dismiss();
+            mPopupWindowClassList.dismiss();
         });
     }
 
@@ -449,7 +466,7 @@ public class ClassFragment extends BaseFragment {
                 if (recentContact.getSessionType() == SessionTypeEnum.Team && recentContact.getContactId().equals(classModel.getChatGroupKey())) {
                     imNumber = imNumber + recentContact.getUnreadCount();
                 }
-                for (Object object : classList) {
+                for (Object object : mClassList) {
                     UserClassListModel userClassListModel = (UserClassListModel) object;
                     if (recentContact.getSessionType() == SessionTypeEnum.Team && recentContact.getContactId().equals(userClassListModel.getChatGroupKey())) {
                         userClassListModel.setImNum(recentContact.getUnreadCount());
@@ -465,16 +482,16 @@ public class ClassFragment extends BaseFragment {
 
     //数据获取成功后更新界面
     private void UpdateUI() {
-        appAdapter = new ClassAppAdapter(getActivity(), appList, classModel);
+        appAdapter = new ClassAppAdapter(getActivity(), mAppList, classModel);
         mGridView.setAdapter(appAdapter);
 
         ClassHelper.updateUi(getActivity(), view, classModel);
         if (classModel.getClassApps() != null) {
-            appList.clear();
-            appList.addAll(classModel.getClassApps());
+            mAppList.clear();
+            mAppList.addAll(classModel.getClassApps());
 //            appBean.setAppKey(ClassAppKey.CLASS_CLOCK);
 //            appBean.setAppName("打卡测试");
-//            appList.add(appBean);
+//            mAppList.add(appBean);
             appAdapter.notifyDataSetChanged();
         }
         leftImage.setVisibility(View.VISIBLE);
@@ -552,19 +569,19 @@ public class ClassFragment extends BaseFragment {
 
     private void updateUi(String result, LoadingType loadingType) {
         boolean tag = false;
-        classList.clear();
-        classList.addAll(DataParser.getUserClassList(result));
+        mClassList.clear();
+        mClassList.addAll(DataParser.getUserClassList(result));
 
-        if (classList != null && classList.size() > 0) {
+        if (mClassList != null && mClassList.size() > 0) {
             mListView.setVisibility(View.VISIBLE);
             mRefreshLayout.setVisibility(View.VISIBLE);
             view.findViewById(R.id.fragment).setVisibility(View.GONE);
             view.findViewById(R.id.thetopview).setVisibility(View.VISIBLE);
             if (currentClassModel == null) {//第一次进入班级主页
-                currentClassModel = ((UserClassListModel) classList.get(0));
+                currentClassModel = ((UserClassListModel) mClassList.get(0));
             } else {
-                for (int i = 0; i < classList.size(); i++) {
-                    UserClassListModel item = ((UserClassListModel) classList.get(i));
+                for (int i = 0; i < mClassList.size(); i++) {
+                    UserClassListModel item = ((UserClassListModel) mClassList.get(i));
                     if (item.getClassId().equals(currentClassModel.getClassId())) {
                         currentClassModel = item;
                         tag = true;
@@ -574,7 +591,7 @@ public class ClassFragment extends BaseFragment {
             }
 
             if (!tag) {//原来的班级不存在时，重新定位到第一个班级
-                currentClassModel = ((UserClassListModel) classList.get(0));
+                currentClassModel = ((UserClassListModel) mClassList.get(0));
             }
             title = currentClassModel.getCName();
             Log.e("getGradeName", title);
@@ -676,7 +693,7 @@ public class ClassFragment extends BaseFragment {
         //当有班级应用消息时  调用
         mClassHintMessageCount = classApplicationMessageEvent.getHomeworkCount() + classApplicationMessageEvent.getReadClockCount();
         //更新当前班级信息
-        for (Object object : classList) {
+        for (Object object : mClassList) {
             final UserClassListModel userClassListMode = (UserClassListModel) object;
             final String classId = userClassListMode.getClassId();
             final String currentClassId = currentClassModel.getClassId();
@@ -696,7 +713,7 @@ public class ClassFragment extends BaseFragment {
         if (message.getSessionType() == SessionTypeEnum.Team && message.getSessionId().equals(classModel.getChatGroupKey())) {
             imNumber++;
         }
-        for (Object object : classList) {
+        for (Object object : mClassList) {
             UserClassListModel userClassListModel = (UserClassListModel) object;
             if (message.getSessionType() == SessionTypeEnum.Team && message.getSessionId().equals(userClassListModel.getChatGroupKey())) {
                 userClassListModel.setImNum(userClassListModel.getImNum() + 1);

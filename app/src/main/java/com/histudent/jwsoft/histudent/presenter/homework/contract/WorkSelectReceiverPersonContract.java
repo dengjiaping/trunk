@@ -2,7 +2,7 @@ package com.histudent.jwsoft.histudent.presenter.homework.contract;
 
 import com.histudent.jwsoft.histudent.base.BasePresenter;
 import com.histudent.jwsoft.histudent.base.BaseView;
-import com.histudent.jwsoft.histudent.bean.homework.HomeworkSelectGroupL0Bean;
+import com.histudent.jwsoft.histudent.model.bean.homework.HomeworkSelectGroupL0Bean;
 
 import java.util.List;
 

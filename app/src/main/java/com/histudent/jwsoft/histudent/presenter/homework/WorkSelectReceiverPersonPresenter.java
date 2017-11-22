@@ -1,19 +1,19 @@
 package com.histudent.jwsoft.histudent.presenter.homework;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
-import com.histudent.jwsoft.histudent.adapter.homework.convert.HomeworkGroupMemberDataConvert;
+import com.histudent.jwsoft.histudent.view.adapter.homework.convert.HomeworkGroupMemberDataConvert;
 import com.histudent.jwsoft.histudent.base.RxPresenter;
-import com.histudent.jwsoft.histudent.bean.homework.HomeworkSelectGroupL0Bean;
-import com.histudent.jwsoft.histudent.bean.homework.HomeworkSelectGroupL1Bean;
-import com.histudent.jwsoft.histudent.bean.homework.SelectReceiverPersonEntity;
-import com.histudent.jwsoft.histudent.constant.ParamKeys;
-import com.histudent.jwsoft.histudent.entity.WorkReceiverEvent;
-import com.histudent.jwsoft.histudent.manage.ParamsManager;
+import com.histudent.jwsoft.histudent.model.bean.homework.HomeworkSelectGroupL0Bean;
+import com.histudent.jwsoft.histudent.model.bean.homework.HomeworkSelectGroupL1Bean;
+import com.histudent.jwsoft.histudent.model.bean.homework.SelectReceiverPersonEntity;
+import com.histudent.jwsoft.histudent.model.constant.ParamKeys;
+import com.histudent.jwsoft.histudent.model.entity.WorkReceiverEvent;
+import com.histudent.jwsoft.histudent.model.manage.ParamsManager;
 import com.histudent.jwsoft.histudent.model.http.ApiFactory;
 import com.histudent.jwsoft.histudent.model.http.HttpResponse;
 import com.histudent.jwsoft.histudent.presenter.homework.contract.WorkSelectReceiverPersonContract;
-import com.histudent.jwsoft.histudent.rx.RxException;
-import com.histudent.jwsoft.histudent.rx.RxSchedulers;
+import com.histudent.jwsoft.histudent.model.rx.RxException;
+import com.histudent.jwsoft.histudent.model.rx.RxSchedulers;
 
 import java.util.ArrayList;
 import java.util.List;

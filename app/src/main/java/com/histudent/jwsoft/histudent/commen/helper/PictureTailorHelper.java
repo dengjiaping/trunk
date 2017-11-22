@@ -23,7 +23,7 @@ import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.photo_selecter.imageloader.SelectPhotoActivity;
 import com.histudent.jwsoft.histudent.commen.utils.FileUtil;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.MyImageLoader;
-import com.histudent.jwsoft.histudent.constant.Const;
+import com.histudent.jwsoft.histudent.model.constant.Const;
 
 import java.io.File;
 import java.io.FileNotFoundException;

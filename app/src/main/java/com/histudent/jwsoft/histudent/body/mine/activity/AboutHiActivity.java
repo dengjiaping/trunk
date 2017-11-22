@@ -10,10 +10,10 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.account.login.model.CheckUpdataBean;
+import com.histudent.jwsoft.histudent.account.login.model.CheckUpdateBean;
 import com.histudent.jwsoft.histudent.body.myclass.helper.ClassHelper;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
-import com.histudent.jwsoft.histudent.commen.activity.MyWebActivity;
+import com.histudent.jwsoft.histudent.commen.activity.HTWebActivity;
 import com.histudent.jwsoft.histudent.commen.bean.HttpResponseModel;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.cache.HiWorldCache;
@@ -86,13 +86,13 @@ public class AboutHiActivity extends BaseActivity implements View.OnClickListene
                 finish();
                 break;
             case R.id.agreement:
-                MyWebActivity.start(AboutHiActivity.this, HistudentUrl.agreement_url, "用户协议");
+                HTWebActivity.start(AboutHiActivity.this, HistudentUrl.agreement_url, "用户协议");
                 break;
             case R.id.phone:
                 ClassHelper.callPhone(AboutHiActivity.this, getResources().getString(R.string.offical_phone));
                 break;
             case R.id.offical:
-                MyWebActivity.start(AboutHiActivity.this, getResources().getString(R.string.offical_url));
+                HTWebActivity.start(AboutHiActivity.this, getResources().getString(R.string.offical_url));
                 break;
         }
 
@@ -114,7 +114,7 @@ public class AboutHiActivity extends BaseActivity implements View.OnClickListene
                 HttpResponseModel model = HiStudentHttpUtils.dataIsCorrect(responseInfo.result);
                 if (model != null && !StringUtil.isEmpty(model.getData())) {
 
-                    final CheckUpdataBean checkUpdataBean = JSON.parseObject(model.getData(), CheckUpdataBean.class);
+                    final CheckUpdateBean checkUpdateBean = JSON.parseObject(model.getData(), CheckUpdateBean.class);
 
                     String category = HistudentUrl.update_apk_url.replace(HistudentUrl.getBaseUrl(), "");
                     String appInfor = HiWorldCache.getDBData(HiCache.getInstance().getAcount(), category);
@@ -123,8 +123,8 @@ public class AboutHiActivity extends BaseActivity implements View.OnClickListene
 //                        HiWorldCache.saveDataToDB("", model.getData(), category);
 //                    }
 
-                    if (checkUpdataBean != null) {
-                        if (checkUpdataBean.getStatus() == 0) {
+                    if (checkUpdateBean != null) {
+                        if (checkUpdateBean.getStatus() == 0) {
                             tv_update.setText("已是最新版本");
                             isLast = true;
                         } else {
@@ -136,9 +136,9 @@ public class AboutHiActivity extends BaseActivity implements View.OnClickListene
                                 public void setOnDialogButtonListener() {
                                     //版本更新的操作
                                     MyUpdateManager myUpdateManager = new MyUpdateManager(AboutHiActivity.this);
-                                    myUpdateManager.LoadingApk(checkUpdataBean.getStatus(), checkUpdataBean.getUpdateurl());
+                                    myUpdateManager.LoadingApk(checkUpdateBean.getStatus(), checkUpdateBean.getUpdateurl());
                                 }
-                            }, checkUpdataBean.getUpdatedesc(), AboutHiActivity.this);
+                            }, checkUpdateBean.getUpdatedesc(), AboutHiActivity.this);
                         }
                     }
 

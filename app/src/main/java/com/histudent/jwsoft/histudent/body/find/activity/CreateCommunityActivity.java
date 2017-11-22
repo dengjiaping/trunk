@@ -31,7 +31,7 @@ import com.histudent.jwsoft.histudent.commen.view.IconView;
 import com.histudent.jwsoft.histudent.comment2.activity.CommenSelectActivity;
 import com.histudent.jwsoft.histudent.comment2.bean.AddressInforBean;
 import com.histudent.jwsoft.histudent.comment2.utils.EditGroupOrClassTypeEnum;
-import com.histudent.jwsoft.histudent.constant.ConstantUtil;
+import com.histudent.jwsoft.histudent.model.constant.ConstantUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

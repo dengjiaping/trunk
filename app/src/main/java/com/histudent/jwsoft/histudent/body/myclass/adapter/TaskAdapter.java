@@ -21,10 +21,10 @@ import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
 import com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView;
 import com.histudent.jwsoft.histudent.commen.view.StarBar;
-import com.histudent.jwsoft.histudent.entity.BadgeClickEvent;
-import com.histudent.jwsoft.histudent.entity.TaskClickEvent;
-import com.histudent.jwsoft.histudent.entity.TaskEvent;
-import com.histudent.jwsoft.histudent.manage.PhotoManager;
+import com.histudent.jwsoft.histudent.model.entity.BadgeClickEvent;
+import com.histudent.jwsoft.histudent.model.entity.TaskClickEvent;
+import com.histudent.jwsoft.histudent.model.entity.TaskEvent;
+import com.histudent.jwsoft.histudent.model.manage.PhotoManager;
 
 import org.greenrobot.eventbus.EventBus;
 

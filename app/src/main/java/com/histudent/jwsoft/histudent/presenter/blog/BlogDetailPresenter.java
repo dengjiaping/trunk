@@ -1,13 +1,12 @@
 package com.histudent.jwsoft.histudent.presenter.blog;
 
 import com.histudent.jwsoft.histudent.base.RxPresenter;
-import com.histudent.jwsoft.histudent.bean.BlogDetailBean;
-import com.histudent.jwsoft.histudent.body.homepage.bean.HomePageAllBean;
+import com.histudent.jwsoft.histudent.model.bean.BlogDetailBean;
 import com.histudent.jwsoft.histudent.model.http.ApiFactory;
 import com.histudent.jwsoft.histudent.presenter.blog.contract.BlogDetailContract;
-import com.histudent.jwsoft.histudent.rx.RxException;
-import com.histudent.jwsoft.histudent.rx.RxResult;
-import com.histudent.jwsoft.histudent.rx.RxSchedulers;
+import com.histudent.jwsoft.histudent.model.rx.RxException;
+import com.histudent.jwsoft.histudent.model.rx.RxResult;
+import com.histudent.jwsoft.histudent.model.rx.RxSchedulers;
 
 import javax.inject.Inject;
 

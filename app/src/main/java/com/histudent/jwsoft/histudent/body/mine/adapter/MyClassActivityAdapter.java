@@ -15,8 +15,7 @@ import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.body.find.bean.UserGroupListModel;
 import com.histudent.jwsoft.histudent.body.hiworld.bean.TopicModel;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
-import com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView;
-import com.histudent.jwsoft.histudent.manage.PhotoManager;
+import com.histudent.jwsoft.histudent.model.manage.PhotoManager;
 import com.netease.nim.uikit.common.util.string.StringUtil;
 
 import java.util.List;

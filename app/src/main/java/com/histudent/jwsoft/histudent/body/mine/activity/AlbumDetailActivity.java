@@ -22,7 +22,6 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.bumptech.glide.Glide;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.histudent.jwsoft.histudent.HiStudentLog;
@@ -36,7 +35,7 @@ import com.histudent.jwsoft.histudent.body.mine.model.AlbumInfoModel;
 import com.histudent.jwsoft.histudent.body.mine.model.PictureInAlbumModel;
 import com.histudent.jwsoft.histudent.body.myclass.activity.LikePersionListActivity;
 import com.histudent.jwsoft.histudent.body.myclass.helper.ClassHelper;
-import com.histudent.jwsoft.histudent.call.IPermissionCallBackListener;
+import com.histudent.jwsoft.histudent.model.listener.IPermissionCallBackListener;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.activity.ParserActivity;
 import com.histudent.jwsoft.histudent.commen.bean.AlbumAuthorityModel;

@@ -617,7 +617,7 @@
         <item name="android:layout_weight">1</item>
         <item name="android:layout_marginLeft">@dimen/dp25</item>
         <item name="android:button">@null</item>
-        <item name="contentDescription">@null</item>
+        <!--<item name="contentDescription">@null</item>-->
     </style>
 
 

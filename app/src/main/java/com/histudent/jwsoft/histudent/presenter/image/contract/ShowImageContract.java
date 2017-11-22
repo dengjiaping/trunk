@@ -2,7 +2,7 @@ package com.histudent.jwsoft.histudent.presenter.image.contract;
 
 import com.histudent.jwsoft.histudent.base.BasePresenter;
 import com.histudent.jwsoft.histudent.base.BaseView;
-import com.histudent.jwsoft.histudent.bean.ImageInfoBean;
+import com.histudent.jwsoft.histudent.model.bean.ImageInfoBean;
 
 /**
  * Created by huyg on 2017/9/12.

@@ -2,7 +2,6 @@ package com.histudent.jwsoft.histudent.comment2.utils;
 
 import android.app.Activity;
 import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -23,7 +22,7 @@ import com.histudent.jwsoft.histudent.body.hiworld.bean.SimpleUserModel;
 import com.histudent.jwsoft.histudent.body.myclass.activity.CreateHuoDongFirstStep;
 import com.histudent.jwsoft.histudent.body.myclass.activity.HuoDongCenterActivity;
 import com.histudent.jwsoft.histudent.body.myclass.helper.ClassHelper;
-import com.histudent.jwsoft.histudent.commen.activity.MyWebActivity;
+import com.histudent.jwsoft.histudent.commen.activity.HTWebActivity;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.enums.ReportType;
 import com.histudent.jwsoft.histudent.commen.helper.ReminderHelper;
@@ -37,7 +36,7 @@ import com.histudent.jwsoft.histudent.commen.view.popupwindow.TopMenuPopupWindow
 import com.histudent.jwsoft.histudent.comment2.activity.ReportActivity;
 import com.histudent.jwsoft.histudent.comment2.bean.NetImageModel;
 import com.histudent.jwsoft.histudent.info.persioninfo.activity.PersonCenterActivity;
-import com.histudent.jwsoft.histudent.manage.PhotoManager;
+import com.histudent.jwsoft.histudent.model.manage.PhotoManager;
 import com.netease.nim.uikit.common.util.string.StringUtil;
 
 import java.util.ArrayList;
@@ -161,7 +160,7 @@ public class HuoDongCenterUtils {
                                 //阅读免责声明
 
                                 Log.e("免责声明url==>", HistudentUrl.huodongDisclaimer);
-                                MyWebActivity.start(activity, HistudentUrl.huodongDisclaimer);
+                                HTWebActivity.start(activity, HistudentUrl.huodongDisclaimer);
 
                             }
                         });
@@ -346,7 +345,7 @@ public class HuoDongCenterUtils {
                                 //阅读免责声明
 
                                 Log.e("免责声明url==>", HistudentUrl.huodongDisclaimer);
-                                MyWebActivity.start(activity, HistudentUrl.huodongDisclaimer);
+                                HTWebActivity.start(activity, HistudentUrl.huodongDisclaimer);
 
                             }
                         });

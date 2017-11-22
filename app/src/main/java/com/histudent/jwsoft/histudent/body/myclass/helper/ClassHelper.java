@@ -33,7 +33,7 @@ import com.histudent.jwsoft.histudent.body.message.model.ClassTemberModel;
 import com.histudent.jwsoft.histudent.body.mine.activity.AlbumDetailActivity;
 import com.histudent.jwsoft.histudent.body.mine.activity.AlbumsCenterActivity;
 import com.histudent.jwsoft.histudent.body.mine.model.AlbumInfoModel;
-import com.histudent.jwsoft.histudent.call.IPermissionCallBackListener;
+import com.histudent.jwsoft.histudent.model.listener.IPermissionCallBackListener;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.bean.AlbumAuthorityModel;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
@@ -53,7 +53,7 @@ import com.histudent.jwsoft.histudent.commen.view.popupwindow.TopMenuPopupWindow
 import com.histudent.jwsoft.histudent.commen.view.swipemenulistview.AutoScrollImageView;
 import com.histudent.jwsoft.histudent.comment2.utils.ActionTypeEnum;
 import com.histudent.jwsoft.histudent.info.persioninfo.activity.PersonCenterActivity;
-import com.histudent.jwsoft.histudent.manage.PhotoManager;
+import com.histudent.jwsoft.histudent.model.manage.PhotoManager;
 import com.netease.nim.uikit.common.util.string.StringUtil;
 
 import org.json.JSONArray;
@@ -773,9 +773,6 @@ public class ClassHelper {
             TextView redDot = view.findViewById(R.id.tv_heart);
             StarBar bar = view.findViewById(R.id.rating_bar);
 
-//            MyImageLoader.getIntent().displayNetImageWithAnimation(activity, classModel.getClassLogo(), classLog, R.mipmap.default_image);
-//            MyImageLoader.getIntent().displayNetImageWithAnimation(activity, classModel.getClassActiviteUserAvatar(), iv_heart, R.mipmap.default_image);
-
             CommonGlideImageLoader.getInstance().displayNetImage(activity, classModel.getClassLogo(),
                     classLog, ContextCompat.getDrawable(activity, R.mipmap.default_class_style));
 
@@ -783,16 +780,11 @@ public class ClassHelper {
                     iv_heart, PhotoManager.getInstance().getDefaultPlaceholderResource());
 
             className.setText(classModel.getSchoolName() + classModel.getGradeName() + classModel.getCName());
-            classId.setText(classModel.getClassNum() + "");
+            classId.setText(String.valueOf(classModel.getClassNum()));
             bar.setStarMark(classModel.getClassRank());
 
             classMaster.setText(classModel.getClassUserRealName());
-            classMaster.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    PersonCenterActivity.start(activity, classModel.getClassUserId());
-                }
-            });
+            classMaster.setOnClickListener((View v)-> PersonCenterActivity.start(activity, classModel.getClassUserId()));
             if (!StringUtil.isEmpty(classModel.getClassActiviteUserAvatar())) {
                 redDot.setVisibility(View.VISIBLE);
                 iv_heart.setVisibility(View.VISIBLE);

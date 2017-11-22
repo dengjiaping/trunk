@@ -3,7 +3,6 @@ package com.histudent.jwsoft.histudent.body.myclass.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -16,13 +15,16 @@ import com.histudent.jwsoft.histudent.body.message.model.ClassModel;
 import com.histudent.jwsoft.histudent.body.myclass.fragment.ClassFragment;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
 import com.histudent.jwsoft.histudent.comment2.utils.ClassAppKey;
-import com.histudent.jwsoft.histudent.entity.ClassApplicationMessageEvent;
+import com.histudent.jwsoft.histudent.model.entity.ClassApplicationMessageEvent;
 import com.netease.nim.uikit.common.util.string.StringUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.histudent.jwsoft.histudent.comment2.utils.ClassAppKey.READ_PUNCH_THE_CLOCK;
+import static com.histudent.jwsoft.histudent.comment2.utils.ClassAppKey.READ_PUNCH_THE_CLOCK_TEST;
 
 /**
  * Created by ZhangYT on 2017/4/24.
@@ -109,12 +111,11 @@ public class ClassAppAdapter extends BaseAdapter {
                     viewHolder.tv_notice.setVisibility(View.GONE);
                 }
             } else if (ClassAppKey.NOTICE.equals(appKey)) {
-                if (model.getNoticeNum() > 0) {
-                    viewHolder.tv_notice_num.setVisibility(View.GONE);
-                    viewHolder.tv_notice.setVisibility(View.VISIBLE);
-                } else {
-                    viewHolder.tv_notice_num.setVisibility(View.GONE);
-                    viewHolder.tv_notice.setVisibility(View.GONE);
+                viewHolder.tv_notice_num.setVisibility(View.GONE);
+                viewHolder.tv_notice.setVisibility(View.GONE);
+                final boolean isFinish = addDot(viewHolder, position, appKey);
+                if (isFinish) {
+                    return convertView;
                 }
             } else if (ClassAppKey.HOMEWORK.equals(appKey)) {
                 viewHolder.tv_notice_num.setVisibility(View.GONE);
@@ -123,8 +124,8 @@ public class ClassAppAdapter extends BaseAdapter {
                 if (isFinish) {
                     return convertView;
                 }
-            } else if (ClassAppKey.READ_PUNCH_THE_CLOCK.equals(appKey)
-                    || ClassAppKey.READ_PUNCH_THE_CLOCK_TEST.equals(appKey)) {
+            } else if (READ_PUNCH_THE_CLOCK.equals(appKey)
+                    || READ_PUNCH_THE_CLOCK_TEST.equals(appKey)) {
                 final boolean isFinish = addDot(viewHolder, position, appKey);
                 if (isFinish) {
                     return convertView;
@@ -235,6 +236,10 @@ public class ClassAppAdapter extends BaseAdapter {
                     break;
                 case ClassAppKey.CLASS_CLOCK:
                     MESSAGE_EVENT.setReadClockCount(msgNum);
+                    break;
+                case READ_PUNCH_THE_CLOCK:
+                case READ_PUNCH_THE_CLOCK_TEST:
+                    MESSAGE_EVENT.setReadPunch(msgNum);
                     break;
             }
             EventBus.getDefault().post(MESSAGE_EVENT);

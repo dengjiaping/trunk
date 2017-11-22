@@ -7,12 +7,12 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.account.login.model.CurrentUserInfoModel;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
+import com.histudent.jwsoft.histudent.model.http.LoggingInterceptor;
 import com.umeng.message.PushAgent;
 
 import org.json.JSONObject;
@@ -76,10 +76,10 @@ public class RequestManager {
         this.mContext = context;
         //初始化OkHttpClient
         mOkHttpClient = new OkHttpClient().newBuilder()
+                .addInterceptor(new LoggingInterceptor())
                 .connectTimeout(60, TimeUnit.SECONDS)//设置超时时间
                 .readTimeout(60, TimeUnit.SECONDS)//设置读取超时时间
                 .writeTimeout(60, TimeUnit.SECONDS)//设置写入超时时间
-                .addNetworkInterceptor(new StethoInterceptor())
                 .build();
         //初始化Handler
         okHttpHandler = new Handler(Looper.myLooper());
@@ -146,35 +146,23 @@ public class RequestManager {
         map_sign.put("timestamp", System.currentTimeMillis());
         map_sign.put("NetType", netState);
 
-        if (HiCache.getInstance().getLoginUserInfo() != null) {
-            HiStudentLog.e("-----------------------------------------------------------------------------");
-            HiStudentLog.e("--token-->" + HiCache.getInstance().getLoginUserInfo().getToken());
-        }
-
         for (String key : map_sign.keySet()) {
             String value = map_sign.get(key).toString();
-            if (!TextUtils.isEmpty(value))
-                HiStudentLog.e("--" + key + "-->" + value);
         }
-        HiStudentLog.e("----------------");
         if (paramsMap != null) {
 
             for (String key : paramsMap.keySet()) {
                 Object value = paramsMap.get(key);
                 if (value == null || "null".equals(value)) {
                     map_sign.put(key, "");
-                    HiStudentLog.e("--" + key + "-->");
                 } else if (COVER.equals(key) || LOG.equals(key) || key.contains(IMAGE)) {
                     coverMap.put(key, value);
                 } else {
                     map_sign.put(key, value);
-                    HiStudentLog.e("--" + key + "-->" + value);
                 }
             }
         }
         map_sign.put("sign", SHA1Utils.GetSHA1Date(map_sign));
-
-        HiStudentLog.e("--url-->" + actionUrl);
 
         Call call = null;
         switch (requestType) {

@@ -1,7 +1,6 @@
 package com.histudent.jwsoft.histudent.model.http;
 
-import com.facebook.stetho.okhttp3.StethoInterceptor;
-import com.histudent.jwsoft.histudent.constant.NetUrl;
+import com.histudent.jwsoft.histudent.model.constant.NetUrl;
 
 import java.util.concurrent.TimeUnit;
 
@@ -33,7 +32,6 @@ public class RetrofitClient {
 
     private void createRetrofit() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.addNetworkInterceptor(new StethoInterceptor());
         builder.addInterceptor(new ParamsInterceptor());
         builder.addInterceptor(new LoggingInterceptor());
         //设置超时

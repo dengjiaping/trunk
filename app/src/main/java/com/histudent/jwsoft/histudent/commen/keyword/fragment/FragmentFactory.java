@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import com.histudent.jwsoft.histudent.body.find.fragment.PageFragment;
-import com.histudent.jwsoft.histudent.constant.TransferKeys;
+import com.histudent.jwsoft.histudent.model.constant.TransferKeys;
 
 /**
  * Created by zejian

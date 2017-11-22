@@ -7,29 +7,29 @@
 
     <!-- 测试-->
 
-    <!--<string name="weiXin_appId">wx23687bf3d442de28</string>-->
-    <!--<string name="weiXin_appSecret">0f5ce838c5a4a365909b43b5eac35021</string>-->
-    <!--<string name="QQZone_appId">101354294</string>-->
-    <!--<string name="QQZone_appKey">49eac3d88569ed4091390329b0772006</string>-->
-    <!--<string name="gaodeMap_appKey">5babc0eeea1864052eb354a876f9ea16</string>-->
-    <!--<string name="yunXin_appKey">bda8b5973e7cb7e9c28b166721e3f8e5</string>-->
-    <!--<string name="umeng_appKey">5797122ce0f55a9479000b19</string>-->
-    <!--<string name="umeng_message_secret">9157d001654d225a5cdfe551aab54ff4</string>-->
-    <!--<string name="umeng_app_master_secret">2cdh4m1uedd0cuims2agsguqibukyafp</string>-->
-    <!--<string name="aliyun_AccessKeyId">LTAIcWI0LZfdBKfn</string>-->
-    <!--================================================================================================================-->
-
-    <!--&lt;!&ndash;生产&ndash;&gt;-->
     <string name="weiXin_appId">wx23687bf3d442de28</string>
     <string name="weiXin_appSecret">0f5ce838c5a4a365909b43b5eac35021</string>
     <string name="QQZone_appId">101354294</string>
     <string name="QQZone_appKey">49eac3d88569ed4091390329b0772006</string>
     <string name="gaodeMap_appKey">5babc0eeea1864052eb354a876f9ea16</string>
-    <string name="yunXin_appKey">6e26f4f5ecbf138f44dd6baa7346a988</string>
+    <string name="yunXin_appKey">bda8b5973e7cb7e9c28b166721e3f8e5</string>
     <string name="umeng_appKey">5797122ce0f55a9479000b19</string>
     <string name="umeng_message_secret">9157d001654d225a5cdfe551aab54ff4</string>
     <string name="umeng_app_master_secret">2cdh4m1uedd0cuims2agsguqibukyafp</string>
     <string name="aliyun_AccessKeyId">LTAIcWI0LZfdBKfn</string>
+    <!--================================================================================================================-->
+
+    <!--&lt;!&ndash;生产&ndash;&gt;-->
+    <!--<string name="weiXin_appId">wx23687bf3d442de28</string>-->
+    <!--<string name="weiXin_appSecret">0f5ce838c5a4a365909b43b5eac35021</string>-->
+    <!--<string name="QQZone_appId">101354294</string>-->
+    <!--<string name="QQZone_appKey">49eac3d88569ed4091390329b0772006</string>-->
+    <!--<string name="gaodeMap_appKey">5babc0eeea1864052eb354a876f9ea16</string>-->
+    <!--<string name="yunXin_appKey">6e26f4f5ecbf138f44dd6baa7346a988</string>-->
+    <!--<string name="umeng_appKey">5797122ce0f55a9479000b19</string>-->
+    <!--<string name="umeng_message_secret">9157d001654d225a5cdfe551aab54ff4</string>-->
+    <!--<string name="umeng_app_master_secret">2cdh4m1uedd0cuims2agsguqibukyafp</string>-->
+    <!--<string name="aliyun_AccessKeyId">LTAIcWI0LZfdBKfn</string>-->
 
     <!--加载页码数-->
     <string name="pageSize">8</string>

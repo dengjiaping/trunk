@@ -21,7 +21,7 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.adapter.PreviewPhotoAdapter;
+import com.histudent.jwsoft.histudent.view.adapter.PreviewPhotoAdapter;
 import com.histudent.jwsoft.histudent.body.find.bean.GroupBean;
 import com.histudent.jwsoft.histudent.body.hiworld.bean.RelationPersonModel;
 import com.histudent.jwsoft.histudent.body.hiworld.bean.SimpleUserModel;
@@ -49,7 +49,7 @@ import com.histudent.jwsoft.histudent.commen.view.swipemenulistview.ScalableImag
 import com.histudent.jwsoft.histudent.comment2.utils.GetDeleteUserCallBack;
 import com.histudent.jwsoft.histudent.comment2.utils.SeletClassMateEnum;
 import com.histudent.jwsoft.histudent.info.persioninfo.PersionHelper;
-import com.histudent.jwsoft.histudent.widget.scrollview.PhotoViewViewPager;
+import com.histudent.jwsoft.histudent.view.widget.scrollview.PhotoViewViewPager;
 import com.sunfusheng.glideimageview.progress.CircleProgressView;
 
 import org.json.JSONException;

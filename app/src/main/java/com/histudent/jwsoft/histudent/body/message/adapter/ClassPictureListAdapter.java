@@ -1,7 +1,6 @@
 package com.histudent.jwsoft.histudent.body.message.adapter;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +13,8 @@ import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.body.mine.model.AlbumInfoModel;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
-import com.histudent.jwsoft.histudent.entity.AlbumClickEvent;
-import com.histudent.jwsoft.histudent.manage.PhotoManager;
+import com.histudent.jwsoft.histudent.model.entity.AlbumClickEvent;
+import com.histudent.jwsoft.histudent.model.manage.PhotoManager;
 
 import org.greenrobot.eventbus.EventBus;
 

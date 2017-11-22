@@ -31,7 +31,7 @@ import com.histudent.jwsoft.histudent.body.hiworld.bean.RelationPersonModel;
 import com.histudent.jwsoft.histudent.body.hiworld.bean.SimpleUserModel;
 import com.histudent.jwsoft.histudent.body.hiworld.bean.TopicModel;
 import com.histudent.jwsoft.histudent.body.mine.model.UserClassListModel;
-import com.histudent.jwsoft.histudent.call.IPermissionCallBackListener;
+import com.histudent.jwsoft.histudent.model.listener.IPermissionCallBackListener;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.activity.CommentActivity;
 import com.histudent.jwsoft.histudent.commen.activity.ImageBrowserActivity;

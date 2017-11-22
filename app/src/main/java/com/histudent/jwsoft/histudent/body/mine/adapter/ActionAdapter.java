@@ -19,7 +19,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.account.login.activity.DealActivity;
-import com.histudent.jwsoft.histudent.activity.image.ShowImageActivity;
+import com.histudent.jwsoft.histudent.commen.activity.HTWebActivity;
+import com.histudent.jwsoft.histudent.view.activity.image.ShowImageActivity;
 import com.histudent.jwsoft.histudent.body.find.activity.GroupCenterActivity;
 import com.histudent.jwsoft.histudent.body.hiworld.activity.WatchActionVideoActivity;
 import com.histudent.jwsoft.histudent.body.homepage.activity.TopicActivity;
@@ -40,8 +41,6 @@ import com.histudent.jwsoft.histudent.body.myclass.activity.LikePersionListActiv
 import com.histudent.jwsoft.histudent.body.myclass.helper.ClassHelper;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.activity.CommentActivity;
-import com.histudent.jwsoft.histudent.commen.activity.ImageBrowserActivity;
-import com.histudent.jwsoft.histudent.commen.activity.MyWebActivity;
 import com.histudent.jwsoft.histudent.commen.bean.ActionListBean;
 import com.histudent.jwsoft.histudent.commen.bean.AtUserModel;
 import com.histudent.jwsoft.histudent.commen.bean.MyShareBean;
@@ -50,7 +49,6 @@ import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.enums.LoactionType;
 import com.histudent.jwsoft.histudent.commen.enums.LoadingType;
 import com.histudent.jwsoft.histudent.commen.enums.ReportType;
-import com.histudent.jwsoft.histudent.commen.enums.ShowImageType;
 import com.histudent.jwsoft.histudent.commen.keyword.utils.DisplayUtils;
 import com.histudent.jwsoft.histudent.commen.listener.HttpRequestCallBack;
 import com.histudent.jwsoft.histudent.commen.url.HistudentUrl;
@@ -64,10 +62,10 @@ import com.histudent.jwsoft.histudent.comment2.activity.MapActivity;
 import com.histudent.jwsoft.histudent.comment2.activity.ReportActivity;
 import com.histudent.jwsoft.histudent.comment2.bean.AddressInforBean;
 import com.histudent.jwsoft.histudent.comment2.utils.EmotionUtils;
-import com.histudent.jwsoft.histudent.entity.CommentUpdateEvent;
-import com.histudent.jwsoft.histudent.entity.ImageAttrEntity;
+import com.histudent.jwsoft.histudent.model.entity.CommentUpdateEvent;
+import com.histudent.jwsoft.histudent.model.entity.ImageAttrEntity;
 import com.histudent.jwsoft.histudent.info.persioninfo.activity.PersonCenterActivity;
-import com.histudent.jwsoft.histudent.manage.PhotoManager;
+import com.histudent.jwsoft.histudent.model.manage.PhotoManager;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -77,17 +75,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import static com.histudent.jwsoft.histudent.constant.ClassifyKeys.ADD_GROUP_MEMBER;
-import static com.histudent.jwsoft.histudent.constant.ClassifyKeys.CREATE_BLOG;
-import static com.histudent.jwsoft.histudent.constant.ClassifyKeys.CREATE_CLASS_ACTIVITY;
-import static com.histudent.jwsoft.histudent.constant.ClassifyKeys.CREATE_GROUP;
-import static com.histudent.jwsoft.histudent.constant.ClassifyKeys.CREATE_GROUP_ACTIVITY;
-import static com.histudent.jwsoft.histudent.constant.ClassifyKeys.CREATE_LEVEL_UP;
-import static com.histudent.jwsoft.histudent.constant.ClassifyKeys.CREATE_MICRO_BLOG;
-import static com.histudent.jwsoft.histudent.constant.ClassifyKeys.JOIN_CLASS_ACTIVITY;
-import static com.histudent.jwsoft.histudent.constant.ClassifyKeys.JOIN_GROUP_ACTIVITY;
-import static com.histudent.jwsoft.histudent.constant.ClassifyKeys.PICTURE;
-import static com.histudent.jwsoft.histudent.constant.ClassifyKeys.UPLOAD_PHOTO;
+import static com.histudent.jwsoft.histudent.model.constant.ClassifyKeys.ADD_GROUP_MEMBER;
+import static com.histudent.jwsoft.histudent.model.constant.ClassifyKeys.CREATE_BLOG;
+import static com.histudent.jwsoft.histudent.model.constant.ClassifyKeys.CREATE_CLASS_ACTIVITY;
+import static com.histudent.jwsoft.histudent.model.constant.ClassifyKeys.CREATE_GROUP;
+import static com.histudent.jwsoft.histudent.model.constant.ClassifyKeys.CREATE_GROUP_ACTIVITY;
+import static com.histudent.jwsoft.histudent.model.constant.ClassifyKeys.CREATE_LEVEL_UP;
+import static com.histudent.jwsoft.histudent.model.constant.ClassifyKeys.CREATE_MICRO_BLOG;
+import static com.histudent.jwsoft.histudent.model.constant.ClassifyKeys.JOIN_CLASS_ACTIVITY;
+import static com.histudent.jwsoft.histudent.model.constant.ClassifyKeys.JOIN_GROUP_ACTIVITY;
+import static com.histudent.jwsoft.histudent.model.constant.ClassifyKeys.PICTURE;
+import static com.histudent.jwsoft.histudent.model.constant.ClassifyKeys.UPLOAD_PHOTO;
 
 /**
  * Created by liuguiyu-pc on 2017/4/20.
@@ -491,10 +489,10 @@ public class ActionAdapter extends BaseAdapter {
                 public void onClick(View view) {
 
                     if (!TextUtils.isEmpty(bean.getVideoId())) {
-//                        MyWebActivity.startNoTitle(activity, HistudentUrl.playvideo + bean.getVideoId());
+//                        HTWebActivity.startNoTitle(activity, HistudentUrl.playvideo + bean.getVideoId());
                         WatchActionVideoActivity.start(activity, bean.getVideoId());
                     } else {
-                        MyWebActivity.start(activity, bean.getHtmlUrl());
+                        HTWebActivity.start(activity, bean.getHtmlUrl());
                     }
 
                 }

@@ -30,7 +30,7 @@ import com.gzsll.jsbridge.WVJBWebView;
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.body.hiworld.adapter.UploadImageRecyclerViewAdapter;
-import com.histudent.jwsoft.histudent.call.IGuideCommonClickListener;
+import com.histudent.jwsoft.histudent.model.listener.IGuideCommonClickListener;
 import com.histudent.jwsoft.histudent.commen.bean.ActionListBean;
 import com.histudent.jwsoft.histudent.commen.cache.HiWorldCache;
 import com.histudent.jwsoft.histudent.commen.enums.LoactionType;

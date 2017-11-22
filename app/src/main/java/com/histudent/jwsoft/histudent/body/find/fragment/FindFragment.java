@@ -26,7 +26,7 @@ import com.histudent.jwsoft.histudent.body.find.bean.FindHomeModel;
 import com.histudent.jwsoft.histudent.body.find.bean.HuodongBean;
 import com.histudent.jwsoft.histudent.body.find.helper.GroupHelper;
 import com.histudent.jwsoft.histudent.body.myclass.activity.ClassCircleActivity;
-import com.histudent.jwsoft.histudent.commen.activity.MyWebActivity;
+import com.histudent.jwsoft.histudent.commen.activity.HTWebActivity;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.fragment.BaseFragment;
 import com.histudent.jwsoft.histudent.commen.listener.HttpRequestCallBack;
@@ -184,7 +184,7 @@ public class FindFragment extends BaseFragment implements View.OnClickListener {
 
                 EditApplicationActivity.start(getActivity(), (ArrayList) allAppList);
             } else {
-                MyWebActivity.start(getActivity(), appListBean.getAppUrl());
+                HTWebActivity.start(getActivity(), appListBean.getAppUrl());
             }
         });
         //兴趣社群分类监听

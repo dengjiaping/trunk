@@ -1,9 +1,6 @@
 package com.histudent.jwsoft.histudent.body.homepage.adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,15 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
-import com.histudent.jwsoft.histudent.commen.utils.imageloader.ImageUtil;
-import com.histudent.jwsoft.histudent.entity.ImageAttrEntity;
+import com.histudent.jwsoft.histudent.model.entity.ImageAttrEntity;
 
 import java.util.List;
 

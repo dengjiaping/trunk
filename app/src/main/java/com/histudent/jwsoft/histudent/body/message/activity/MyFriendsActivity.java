@@ -23,7 +23,7 @@ import com.histudent.jwsoft.histudent.body.message.adapter.SortAdapter;
 import com.histudent.jwsoft.histudent.body.message.model.CategoriesModel;
 import com.histudent.jwsoft.histudent.body.message.model.FollowUsersModel;
 import com.histudent.jwsoft.histudent.body.message.parser.ParserInMessage;
-import com.histudent.jwsoft.histudent.call.IGuideCommonClickListener;
+import com.histudent.jwsoft.histudent.model.listener.IGuideCommonClickListener;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.enums.YdType;
 import com.histudent.jwsoft.histudent.commen.listener.HttpRequestCallBack;

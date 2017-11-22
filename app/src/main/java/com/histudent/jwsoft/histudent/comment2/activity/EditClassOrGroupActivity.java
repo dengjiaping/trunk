@@ -18,7 +18,7 @@ import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.body.find.activity.GroupAuthoritySelectActivity;
 import com.histudent.jwsoft.histudent.body.find.bean.GroupDetailsBean;
 import com.histudent.jwsoft.histudent.body.message.model.ClassModel;
-import com.histudent.jwsoft.histudent.call.IPermissionCallBackListener;
+import com.histudent.jwsoft.histudent.model.listener.IPermissionCallBackListener;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.cache.HiWorldCache;
 import com.histudent.jwsoft.histudent.commen.photo.utils.ImageUtils;

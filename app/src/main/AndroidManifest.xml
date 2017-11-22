@@ -1,83 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.histudent.jwsoft.histudent">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.histudent.jwsoft.histudent">
 
 
     <!-- ================================相关权限===================================== -->
 
     <uses-sdk
         android:minSdkVersion="18"
-        android:targetSdkVersion="23"/>
+        android:targetSdkVersion="23" />
     <!-- 网易云信权限声明 -->
     <!-- 访问网络状态 -->
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <!-- 控制呼吸灯，振动器等，用于新消息提醒 -->
-    <uses-permission android:name="android.permission.FLASHLIGHT"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <!-- 外置存储存取权限 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <!-- SD卡读写权限声明 -->
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <!-- 多媒体相关 -->
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- 如果需要实时音视频通话模块，下面的权限也是必须的。否则，可以不加 -->
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
-    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera" />
 
-    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
 
-    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera" />
 
     <!-- SDK 权限申明, 第三方 APP 接入时，请将 com.netease.nim.demo 替换为自己的包名 -->
     <!-- 和下面的 uses-permission 一起加入到你的 AndroidManifest 文件中。 -->
     <permission
         android:name="com.netease.nim.demo.permission.RECEIVE_MSG"
-        android:protectionLevel="signature"/>
+        android:protectionLevel="signature" />
     <!-- 接收 SDK 消息广播权限， 第三方 APP 接入时，请将 com.netease.nim.demo 替换为自己的包名 -->
-    <uses-permission android:name="com.netease.nim.demo.permission.RECEIVE_MSG"/>
+    <uses-permission android:name="com.netease.nim.demo.permission.RECEIVE_MSG" />
 
     <!-- 地图权限声明 -->
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
      
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <!-- 友盟权限声明 -->
-    <uses-permission android:name="android.permission.READ_LOGS"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.SET_DEBUG_APP"/>
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
-    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
-    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.SET_DEBUG_APP" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
 
     <!-- SD卡读写权限声明 -->
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
     <!-- 添加可以向外拨打电话的权限 -->
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <!-- ============================================================================ -->
     <application
@@ -95,10 +95,10 @@
         <!--===================屏幕适配框架设计稿纸750*1334================================-->
         <meta-data
             android:name="design_width"
-            android:value="750"/>
+            android:value="750" />
         <meta-data
             android:name="design_height"
-            android:value="1334"/>
+            android:value="1334" />
 
         <!-- ================================appkey配置=================================== -->
 
@@ -106,32 +106,32 @@
         <!-- 高德地图appkey -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="@string/gaodeMap_appKey"/>
+            android:value="@string/gaodeMap_appKey" />
 
         <!-- 云信appkey -->
         <meta-data
             android:name="com.netease.nim.appKey"
-            android:value="@string/yunXin_appKey"/>
+            android:value="@string/yunXin_appKey" />
 
         <!-- 阿里云 -->
         <meta-data
             android:name="aliyun_access_key_id"
-            android:value="@string/aliyun_AccessKeyId"/>
+            android:value="@string/aliyun_AccessKeyId" />
 
         <!-- 友盟appkey -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="@string/umeng_appKey"/>
+            android:value="@string/umeng_appKey" />
 
         <!-- 友盟 Message Secret -->
         <meta-data
             android:name="UMENG_MESSAGE_SECRET"
-            android:value="@string/umeng_message_secret"/>
+            android:value="@string/umeng_message_secret" />
 
         <!-- 友盟推送推广渠道 -->
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="android"/>
+            android:value="android" />
 
         <!-- ====================================activity注册======================================= -->
 
@@ -142,72 +142,71 @@
             android:launchMode="singleTask"
             android:noHistory="true">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
                 <!-- 100424468，如果你使用的公用账号，则不需要修改；否则修改成你在QQ开放平台申请的 APP ID -->
-                <data android:scheme="tencent101354294"/>
+                <data android:scheme="tencent101354294" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <!-- commen -->
         <activity
             android:name=".commen.activity.PermissionActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Dialog"/>
+            android:theme="@android:style/Theme.Dialog" />
         <activity
             android:name=".commen.activity.ReadBookActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".commen.activity.TrackActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".commen.activity.MyWebActivity"
-            android:screenOrientation="portrait"
-            />
+            android:name=".commen.activity.HTWebActivity"
+            android:screenOrientation="portrait" />
         <!--<activity-->
         <!--android:name=".commen.activity.WebViewActivity"-->
         <!--android:screenOrientation="portrait"-->
         <!--/>-->
-        <activity android:name=".activity.clock.AddClockActivity"/>
+        <activity android:name=".view.activity.clock.AddClockActivity" />
         android:screenOrientation="portrait" />
         <activity
             android:name=".commen.activity.WebEssayActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".commen.activity.WebLogActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.HTMainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden"/>
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".commen.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".commen.activity.InputActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".commen.photo.activity.ShowPhotoActivity"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize" />
         <activity
             android:name=".commen.activity.ParserActivity"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize" />
 
         <!-- login -->
         <activity
@@ -215,174 +214,170 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme_WelcomeActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".account.login.activity.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme_LoginActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"/>
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".account.login.activity.BindPhoneActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme_LoginActivity"/>
+            android:theme="@style/Theme_LoginActivity" />
         <activity
             android:name=".account.login.activity.BindAccountActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme_LoginActivity"/>
+            android:theme="@style/Theme_LoginActivity" />
         <activity
             android:name=".account.login.activity.DealActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.find.activity.CommunityCategoryActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".body.find.activity.GroupAssignmentActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.find.activity.AddClassmatesIntoGroupActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.find.activity.GroupIntroduceActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.find.activity.CreateCommunityActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".body.find.activity.CreateCommunitySecondActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".body.find.activity.CommunitySignActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".body.find.activity.SchoolHomeActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".body.find.activity.GroupFindActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".body.find.activity.HotInvitationActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".body.find.activity.GroupJoinActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".body.find.activity.GroupInfoActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".body.find.activity.GroupMemberActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".commen.photo_selecter.imageloader.SelectPhotoActivity"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize" />
 
         <!-- persioninfo -->
         <activity
             android:name=".info.persioninfo.activity.PersonCenterActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.BlackBackground"
-            />
+            android:theme="@style/AppTheme.BlackBackground" />
         <activity
             android:name=".info.persioninfo.activity.PersonEssayActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".info.persioninfo.activity.PersonLogActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".info.persioninfo.activity.PersonDataInfoActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <!-- myclass -->
         <activity
             android:name=".body.homepage.activity.TopicActivity"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.ClassAndGroupShareActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.ClassAddOrCreatActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.ClassCreateActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.ActiveStarsActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.NoticeListActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.ClassShieldActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.NoticeDetailActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.NoticePublishActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.LikePersionListActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.ClassJoinActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.ClassCircleActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.BlackBackground"/>
+            android:theme="@style/AppTheme.BlackBackground" />
         <activity
             android:name=".body.myclass.activity.ClassGetGroupNumActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.ClassGradeActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".body.myclass.activity.OtherClassGradeActivity"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.ClassEditActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.ClassAddMemberActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.ClassMemberActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.ClassSetActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.ClassDissolveActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.ClassInfoActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.ClassAssignmentActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".body.myclass.activity.PointRecordActivity"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <!-- info -->
         <!-- <activity -->
         <!-- android:name=".info.persioninfo.activity.AnswerQuestionActivity" -->
@@ -396,60 +391,60 @@
         <activity
             android:name=".account.regist.activity.SeletRegistRankActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme_LoginActivity"/>
+            android:theme="@style/Theme_LoginActivity" />
         <activity
             android:name=".account.regist.activity.PhoneRegistActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme_LoginActivity"/>
+            android:theme="@style/Theme_LoginActivity" />
         <activity
             android:name=".account.regist.activity.RegistActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme_LoginActivity"/>
+            android:theme="@style/Theme_LoginActivity" />
         <activity
             android:name=".account.regist.activity.NewPersonActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".account.password.activity.FindPassWordActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme_LoginActivity"/>
+            android:theme="@style/Theme_LoginActivity" />
 
         <!-- mine -->
         <activity
             android:name=".body.mine.activity.MyAccountBind"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.mine.activity.InvitationActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.find.activity.RankListActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.mine.activity.PersonalDataActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.mine.activity.AccountSafeActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.mine.activity.GrowInfoActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.mine.activity.LevelRuleActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.mine.activity.SetingActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.mine.activity.LevelActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.mine.activity.AccountSafeItemActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.find.activity.PersonalGroupActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.mine.activity.AddInClassActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <!-- <activity -->
         <!-- android:name=".mine.activity.PersonalHomepageActivity" -->
         <!-- android:screenOrientation="portrait" /> -->
@@ -464,72 +459,72 @@
         <!-- android:screenOrientation="portrait" /> -->
         <activity
             android:name=".body.mine.activity.BlacklistActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.mine.activity.AddWardActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.mine.activity.CommonSetActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <!-- message -->
 
-        <activity android:name=".body.mine.activity.MessageManageActivity"/>
-        <activity android:name=".body.mine.activity.NotificationActivity"/>
+        <activity android:name=".body.mine.activity.MessageManageActivity" />
+        <activity android:name=".body.mine.activity.NotificationActivity" />
         <activity
             android:name=".body.message.activity.MyMessageActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.activity.ClassNoticeActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.mine.activity.AboutHiActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.activity.OfficialCentreActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.activity.SeeFriendActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.activity.SystemInformationActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.activity.SubscriptionActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.activity.MyFriendsActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.activity.CreateGroupActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.activity.SelectContactsActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.uikit.session.activity.P2PMessageActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.uikit.session.search.SearchMessageActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.uikit.session.search.DisplayMessageActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.uikit.session.activity.TeamMessageActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.uikit.location.activity.LocationAmapActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.uikit.location.activity.NavigationAmapActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.activity.AddFriendActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.uikit.session.activity.MessageHistoryActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <!-- <activity -->
         <!-- android:name=".message.activity.ClassCenterActivity" -->
         <!-- android:screenOrientation="portrait" /> -->
@@ -541,32 +536,32 @@
         <!-- android:screenOrientation="portrait" /> -->
         <activity
             android:name=".body.message.activity.ChatTeamInfoActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.activity.ChatPersionInfoActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.activity.MoveGroupActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.uikit.avchat.activity.AVChatActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.uikit.rts.activity.RTSActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.uikit.file.browser.FileBrowserActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.message.uikit.session.activity.WatchSnapChatPictureActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
 
         <!-- 友盟分享 -->
         <activity
             android:name="com.umeng.socialize.editorpage.ShareActivity"
             android:excludeFromRecents="true"
-            android:theme="@style/Theme.UMDefault"/>
+            android:theme="@style/Theme.UMDefault" />
 
         <!-- ================================网易云信相关设置================================= -->
         <!--
@@ -576,10 +571,10 @@
         <!-- 声明云信后台服务，如需保持后台推送，使用独立进程效果会更好。 -->
         <service
             android:name="com.netease.nimlib.service.NimService"
-            android:process=":core"/>
+            android:process=":core" />
         <service
             android:name="com.netease.nimlib.service.NimService$Aux"
-            android:process=":core"/>
+            android:process=":core" />
 
         <!--
              云信SDK的监视系统启动和网络变化的广播接收器，用户开机自启动以及网络变化时候重新登录，
@@ -590,266 +585,266 @@
             android:exported="false"
             android:process=":core">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
 
         <!-- 云信进程间通信 Receiver -->
-        <receiver android:name="com.netease.nimlib.service.ResponseReceiver"/>
+        <receiver android:name="com.netease.nimlib.service.ResponseReceiver" />
 
         <!-- 安卓保活配置 -->
         <service
             android:name="com.netease.cosine.core.CosineService"
-            android:process=":cosine"/>
+            android:process=":cosine" />
 
         <receiver
             android:name="com.netease.cosine.target.CosineReceiver"
             android:exported="true"
-            android:process=":cosine"/>
+            android:process=":cosine" />
 
         <meta-data
             android:name="com.netease.cosine.target"
-            android:value=""/>
+            android:value="" />
         <meta-data
             android:name="com.netease.cosine.target.receiver"
-            android:value="com.netease.nimlib.service.NimReceiver"/>
+            android:value="com.netease.nimlib.service.NimReceiver" />
 
         <!-- =========================高德地图定位服务=========================== -->
-        <service android:name="com.amap.api.location.APSService"/>
+        <service android:name="com.amap.api.location.APSService" />
 
         <!-- =========================hiworld and find===================================================== -->
 
         <activity
             android:name=".comment2.activity.MapActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name=".comment2.activity.ChangeImage"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <!-- ================================hiworld============================= -->
 
         <activity
             android:name=".body.hiworld.activity.MyCaptureVideoActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.hiworld.activity.WatchEssayVideoActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.hiworld.activity.WatchActionVideoActivity"
-            android:configChanges="orientation|keyboard|locale|screenSize|layoutDirection"/>
+            android:configChanges="orientation|keyboard|locale|screenSize|layoutDirection" />
         <activity
             android:name=".body.hiworld.activity.PhotoQualitySelect"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <!--<activity-->
         <!--android:name=".body.hiworld.activity.SelectStudentActivity"-->
         <!--android:screenOrientation="portrait"/>-->
         <activity
             android:name=".body.hiworld.activity.EssayActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.hiworld.activity.LogActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.hiworld.activity.SelecteClassActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.hiworld.activity.UploadPhotoActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.hiworld.activity.SelectUploadAlbumActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.hiworld.activity.CreateAlbumActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".commen.activity.CommentActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
 
         <!-- =================================find================================= -->
 
         <activity
             android:name=".body.myclass.activity.CreateHuoDongFirstStep"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.find.activity.PersonalHuoDongActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.find.activity.CreateHuoDongSeond"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
+            android:windowSoftInputMode="adjustResize|stateHidden" />
 
         <activity
             android:name=".body.find.activity.FindGroupAvtivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.find.activity.ActivityMembers_Activity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.find.activity.GroupSecondCategroyActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.find.activity.GroupAuthoritySelectActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <!-- =================================common================ -->
 
         <activity
             android:name=".body.find.activity.CreateGroupHuoDongFristStep"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".comment2.activity.ReportActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.find.activity.ReportReasonSelectActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.mine.activity.PrivacyrightsActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.mine.activity.PrivacySettingActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.mine.activity.PrivacySettingDefinedActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.mine.activity.QualitySelectActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <!--<activity-->
         <!--android:name=".body.hiworld.activity.SeletctStudentSecondActivity"-->
         <!--android:screenOrientation="portrait"/>-->
         <activity
             android:name=".body.mine.activity.DisableUserAcitvity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".commen.zxing.CaptureActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".commen.activity.QRCodeActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".comment2.activity.EditClassOrGroupActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".comment2.activity.CommenActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <!--<activity-->
         <!--android:name=".comment2.activity.EditMemberActivity"-->
         <!--android:screenOrientation="portrait"/>-->
         <activity
             android:name=".comment2.activity.SelectAddressActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".comment2.activity.CommenSelectActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".commen.activity.SuggestionsActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".comment2.activity.AddFriendsToClass"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.find.activity.GroupCenterActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.find.activity.EditApplicationActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".commen.activity.ImageBrowserActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".commen.activity.CameraActivity"/>
+            android:screenOrientation="portrait" />
+        <activity android:name=".commen.activity.CameraActivity" />
         <activity
             android:name=".commen.activity.SelecteClassmatesActiviy"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.hiworld.activity.SetingDefaultSyncClassActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.hiworld.activity.TopicSearchActiviy"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".commen.activity.CommenPrivacySetting"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.hiworld.activity.DraftActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.hiworld.activity.LogNextActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.ClassOrGroupHuoDongActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.HuoDongCenterActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.HuoDongTrack"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.mine.activity.AlbumsCenterActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.BlackBackground"/>
+            android:theme="@style/AppTheme.BlackBackground" />
         <activity
             android:name=".body.mine.activity.ShoppingActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.mine.activity.AlbumDetailActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.ContactActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.myclass.activity.ClassBadgeAcitvity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".commen.activity.ComShareAcitivity"/>
-        <activity android:name=".body.find.activity.GroupFristCategoryActivity"></activity>
+            android:screenOrientation="portrait" />
+        <activity android:name=".commen.activity.ComShareAcitivity" />
+        <activity android:name=".body.find.activity.GroupFristCategoryActivity"/>
         <activity
             android:name=".body.find.activity.CreateTopicActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".body.find.activity.AllClassesInSchoolActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".body.find.activity.PersonGroupNewsActivity"></activity>
-        <activity android:name=".activity.clock.ManualInputBarCodeActivity"/>
+        <activity android:name=".body.find.activity.PersonGroupNewsActivity"/>
+        <activity android:name=".view.activity.clock.ManualInputBarCodeActivity" />
 
-        <activity android:name="com.histudent.jwsoft.histudent.zxing.CaptureActivity"/>
-        <activity android:name=".body.myclass.activity.JoinSpecClassActivity"/>
-        <activity android:name=".activity.RichEditorSelectColorActivity"/>
+        <activity android:name="com.histudent.jwsoft.histudent.zxing.CaptureActivity" />
+        <activity android:name=".body.myclass.activity.JoinSpecClassActivity" />
+        <activity android:name=".view.activity.RichEditorSelectColorActivity" />
 
         <activity
-            android:name=".activity.clock.ReadClockInActivity"
-            android:launchMode="singleTask"/>
-        <activity android:name=".zxing.CaptureConfirmActivity"/>
+            android:name=".view.activity.clock.ReadClockInActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".zxing.CaptureConfirmActivity" />
 
-        <activity android:name=".activity.blog.BlogDetailActivity"/>
+        <activity android:name=".view.activity.blog.BlogDetailActivity" />
         <activity
-            android:name=".activity.image.ShowImageActivity"
+            android:name=".view.activity.image.ShowImageActivity"
             android:launchMode="singleTop"
-            android:theme="@style/AppTheme.Transparent"/>
-        <activity android:name=".activity.clock.TextInputActivity"/>
-        <activity android:name=".activity.clock.ManualInputBookNameActivity"/>
-        <activity android:name=".activity.homework.WorkAlreadyCompleteActivity"
-            android:launchMode="singleTask"/>
+            android:theme="@style/AppTheme.Transparent" />
+        <activity android:name=".view.activity.clock.TextInputActivity" />
+        <activity android:name=".view.activity.clock.ManualInputBookNameActivity" />
         <activity
-            android:name=".activity.homework.WorkReceiverPersonDetailActivity"
-            android:launchMode="singleTask"/>
-        <activity android:name=".activity.homework.WorkAddMemberActivity"/>
-        <activity android:name=".activity.homework.CreateWorkActivity"/>
-        <activity android:name=".activity.homework.WorkDetailTeacherActivity"/>
-        <activity android:name=".activity.homework.WorkDetailStudentActivity"
-            />
-        <activity android:name=".activity.homework.WorkSubjectManageActivity"/>
-        <activity android:name=".activity.homework.CorrectWorkActivity"/>
-        <activity android:name=".activity.homework.FinishHomeworkActivity"/>
-        <activity android:name=".activity.homework.WorkCreateDivideGroupActivity"/>
-        <activity android:name=".activity.homework.WorkUndoneActivity"/>
+            android:name=".view.activity.homework.WorkAlreadyCompleteActivity"
+            android:launchMode="singleTask" />
         <activity
-            android:name=".activity.homework.WorkSelectReceiverPersonActivity"
-            android:launchMode="singleTask"/>
+            android:name=".view.activity.homework.WorkReceiverPersonDetailActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".view.activity.homework.WorkAddMemberActivity" />
+        <activity android:name=".view.activity.homework.CreateWorkActivity" />
+        <activity android:name=".view.activity.homework.WorkDetailTeacherActivity" />
+        <activity android:name=".view.activity.homework.WorkDetailStudentActivity" />
+        <activity android:name=".view.activity.homework.WorkSubjectManageActivity" />
+        <activity android:name=".view.activity.homework.CorrectWorkActivity" />
+        <activity android:name=".view.activity.homework.FinishHomeworkActivity" />
+        <activity android:name=".view.activity.homework.WorkCreateDivideGroupActivity" />
+        <activity android:name=".view.activity.homework.WorkUndoneActivity" />
+        <activity
+            android:name=".view.activity.homework.WorkSelectReceiverPersonActivity"
+            android:launchMode="singleTask" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -858,7 +853,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
+                android:resource="@xml/file_paths" />
         </provider>
     </application>
 

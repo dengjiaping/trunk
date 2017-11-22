@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.histudent.jwsoft.histudent.widget.scrollview.PhotoViewViewPager
+        <com.histudent.jwsoft.histudent.view.widget.scrollview.PhotoViewViewPager
             android:id="@+id/view_pager_pic"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -17,10 +17,10 @@ import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.MyImageLoader;
 import com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
-import com.histudent.jwsoft.histudent.constant.Const;
-import com.histudent.jwsoft.histudent.entity.MessageClickEvent;
-import com.histudent.jwsoft.histudent.entity.MessageEvent;
-import com.histudent.jwsoft.histudent.entity.RecentContactDelete;
+import com.histudent.jwsoft.histudent.model.constant.Const;
+import com.histudent.jwsoft.histudent.model.entity.MessageClickEvent;
+import com.histudent.jwsoft.histudent.model.entity.MessageEvent;
+import com.histudent.jwsoft.histudent.model.entity.RecentContactDelete;
 import com.netease.nim.uikit.cache.NimUserInfoCache;
 import com.netease.nim.uikit.common.util.sys.TimeUtil;
 import com.netease.nimlib.sdk.NIMClient;
@@ -124,16 +124,19 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 headerViewHolder.mMinePoint.setVisibility(View.GONE);
             } else {
                 headerViewHolder.mMinePoint.setVisibility(View.VISIBLE);
+                headerViewHolder.mMinePoint.setText(String.valueOf(unReadModel.getAtUserCount()));
             }
             if (unReadModel.getCommentCount() == 0) {
                 headerViewHolder.mCommentPoint.setVisibility(View.GONE);
             } else {
                 headerViewHolder.mCommentPoint.setVisibility(View.VISIBLE);
+                headerViewHolder.mCommentPoint.setText(String.valueOf(unReadModel.getCommentCount()));
             }
             if (unReadModel.getPraiseCount() == 0) {
                 headerViewHolder.mPraisePoint.setVisibility(View.GONE);
             } else {
                 headerViewHolder.mPraisePoint.setVisibility(View.VISIBLE);
+                headerViewHolder.mPraisePoint.setText(String.valueOf(unReadModel.getPraiseCount()));
             }
             if (recentContactsModels != null && recentContactsModels.size() > 0) {
                 for (RecentContactsModel recentContactsModel : recentContactsModels) {
@@ -294,8 +297,6 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         TextView mContent;
         @BindView(R.id.middle)
         LinearLayout mLayout;
-        //        @BindView(R.id.red_point)
-//        TextView mPoint;
         @BindView(R.id.red_point_num)
         TextView mRedPointNum;
         @BindView(R.id.time)
@@ -333,11 +334,11 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         @BindView(R.id.message_system)
         LinearLayout mSystem;
         @BindView(R.id.mine_red_point)
-        View mMinePoint;
+        TextView mMinePoint;
         @BindView(R.id.praise_red_point)
-        View mPraisePoint;
+        TextView mPraisePoint;
         @BindView(R.id.comment_red_point)
-        View mCommentPoint;
+        TextView mCommentPoint;
         @BindView(R.id.system_red_point)
         View mSystemPoint;
         @BindView(R.id.mine_goto)

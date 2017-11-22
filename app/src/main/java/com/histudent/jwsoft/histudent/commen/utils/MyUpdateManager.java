@@ -18,10 +18,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.account.login.model.CheckUpdataBean;
+import com.histudent.jwsoft.histudent.account.login.model.CheckUpdateBean;
 import com.histudent.jwsoft.histudent.commen.listener.DialogButtonListener;
 import com.histudent.jwsoft.histudent.comment2.utils.UpDateDialogUtils;
-import com.histudent.jwsoft.histudent.constant.Const;
+import com.histudent.jwsoft.histudent.model.constant.Const;
 import com.netease.nim.uikit.common.util.string.StringUtil;
 
 import java.io.File;
@@ -95,12 +95,12 @@ public class MyUpdateManager {
     }
 
     //外部接口让主Activity调用
-    public void checkUpdateInfo(CheckUpdataBean checkUpdataBean, getDataSetIsOk callBack) {
+    public void checkUpdateInfo(CheckUpdateBean checkUpdateBean, getDataSetIsOk callBack) {
 
-        apkUrl = checkUpdataBean.getUpdateurl();
-        updateMsg = checkUpdataBean.getUpdatedesc();
+        apkUrl = checkUpdateBean.getUpdateurl();
+        updateMsg = checkUpdateBean.getUpdatedesc();
         this.callBack = callBack;
-        switch (checkUpdataBean.getStatus()) {
+        switch (checkUpdateBean.getStatus()) {
 
             //0-不升级，1-提示升级，2-强制升级 ,
             case 0:

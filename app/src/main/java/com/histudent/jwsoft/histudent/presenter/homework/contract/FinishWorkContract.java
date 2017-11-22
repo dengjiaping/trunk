@@ -4,8 +4,8 @@ import android.content.Context;
 
 import com.histudent.jwsoft.histudent.base.BasePresenter;
 import com.histudent.jwsoft.histudent.base.BaseView;
-import com.histudent.jwsoft.histudent.bean.UploadAuthBean;
-import com.histudent.jwsoft.histudent.entity.AudioInfo;
+import com.histudent.jwsoft.histudent.model.bean.UploadAuthBean;
+import com.histudent.jwsoft.histudent.model.entity.AudioInfo;
 
 import java.io.File;
 import java.util.List;

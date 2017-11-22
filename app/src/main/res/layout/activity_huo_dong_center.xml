@@ -13,7 +13,7 @@
         android:layout_marginBottom="44dp"
         >
 
-        <com.histudent.jwsoft.histudent.widget.scrollview.DefineScrollView
+        <com.histudent.jwsoft.histudent.view.widget.scrollview.DefineScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -34,7 +34,7 @@
 
             </LinearLayout>
 
-        </com.histudent.jwsoft.histudent.widget.scrollview.DefineScrollView>
+        </com.histudent.jwsoft.histudent.view.widget.scrollview.DefineScrollView>
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 

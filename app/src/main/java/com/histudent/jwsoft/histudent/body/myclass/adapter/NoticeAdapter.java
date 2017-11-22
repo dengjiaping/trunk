@@ -8,13 +8,11 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.body.myclass.bean.LikeBean;
 import com.histudent.jwsoft.histudent.body.myclass.bean.NoticeDetailBean;
-import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.MyImageLoader;
 import com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView;
 import com.histudent.jwsoft.histudent.comment2.utils.TimeUtils;
-import com.histudent.jwsoft.histudent.entity.UnReadUserEvent;
+import com.histudent.jwsoft.histudent.model.entity.UnReadUserEvent;
 
 import org.greenrobot.eventbus.EventBus;
 

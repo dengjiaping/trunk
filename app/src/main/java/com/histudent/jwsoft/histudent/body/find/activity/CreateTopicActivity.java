@@ -27,7 +27,7 @@ import com.histudent.jwsoft.histudent.body.find.helper.GroupHelper;
 import com.histudent.jwsoft.histudent.body.hiworld.activity.TopicSearchActiviy;
 import com.histudent.jwsoft.histudent.body.hiworld.adapter.UploadImageRecyclerViewAdapter;
 import com.histudent.jwsoft.histudent.body.hiworld.bean.TopicModel;
-import com.histudent.jwsoft.histudent.call.IPermissionCallBackListener;
+import com.histudent.jwsoft.histudent.model.listener.IPermissionCallBackListener;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.activity.CommentActivity;
 import com.histudent.jwsoft.histudent.commen.activity.ImageBrowserActivity;

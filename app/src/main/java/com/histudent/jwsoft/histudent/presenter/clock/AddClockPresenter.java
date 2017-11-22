@@ -1,22 +1,16 @@
 package com.histudent.jwsoft.histudent.presenter.clock;
 
 import com.histudent.jwsoft.histudent.base.RxPresenter;
-import com.histudent.jwsoft.histudent.body.homepage.bean.HomePageAllBean;
 import com.histudent.jwsoft.histudent.model.http.ApiFactory;
 import com.histudent.jwsoft.histudent.model.http.BaseHttpResponse;
 import com.histudent.jwsoft.histudent.presenter.clock.contract.AddClockContract;
-import com.histudent.jwsoft.histudent.rx.RxException;
-import com.histudent.jwsoft.histudent.rx.RxResult;
-import com.histudent.jwsoft.histudent.rx.RxSchedulers;
+import com.histudent.jwsoft.histudent.model.rx.RxException;
+import com.histudent.jwsoft.histudent.model.rx.RxSchedulers;
 
 import javax.inject.Inject;
 
-import io.reactivex.Observer;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
-import retrofit2.http.Field;
 
 /**
  * Created by huyg on 2017/8/18.

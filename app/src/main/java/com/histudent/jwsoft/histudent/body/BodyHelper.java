@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.account.login.activity.LoginActivity;
 import com.histudent.jwsoft.histudent.body.message.activity.SeeFriendActivity;
-import com.histudent.jwsoft.histudent.call.IPermissionCallBackListener;
+import com.histudent.jwsoft.histudent.model.listener.IPermissionCallBackListener;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.listener.HttpRequestCallBack;
@@ -81,25 +81,25 @@ public class BodyHelper {
         switch (type) {
             case TYPE_MESSAGE:
                 isInHiworld = false;
-                updataFoot(type, flag, array_blue[0], iamgeView_foot, textView_foot);
+                updateFoot(type, flag, array_blue[0], iamgeView_foot, textView_foot);
 
                 break;
 
             case TYPE_HIWORLD:
                 isInHiworld = true;
-                updataFoot(type, flag, array_blue[1], iamgeView_foot, textView_foot);
+                updateFoot(type, flag, array_blue[1], iamgeView_foot, textView_foot);
 
                 break;
 
             case TYPE_FIND:
                 isInHiworld = false;
-                updataFoot(type, flag, array_blue[2], iamgeView_foot, textView_foot);
+                updateFoot(type, flag, array_blue[2], iamgeView_foot, textView_foot);
 
                 break;
 
             case TYPE_MY:
                 isInHiworld = false;
-                updataFoot(type, flag, array_blue[3], iamgeView_foot, textView_foot);
+                updateFoot(type, flag, array_blue[3], iamgeView_foot, textView_foot);
 
                 break;
         }
@@ -108,7 +108,7 @@ public class BodyHelper {
     /**
      * 更新底部图标和文字颜色
      */
-    private void updataFoot(int type, int flag, int image_blue, List<IconView> iamgeView_foot, List<TextView> textView_foot) {
+    private void updateFoot(int type, int flag, int image_blue, List<IconView> iamgeView_foot, List<TextView> textView_foot) {
         iamgeView_foot.get(type).setText(image_blue);
         iamgeView_foot.get(type).setTextColor(activity.getResources().getColor(R.color.green_color));
         textView_foot.get(type).setTextColor(activity.getResources().getColor(R.color.green_color));
@@ -236,7 +236,7 @@ public class BodyHelper {
      *
      * @param commentId
      */
-    protected void deletCommentData(String commentId, final int position01, final int position02) {
+    protected void deleteCommentData(String commentId, final int position01, final int position02) {
 
         Map<String, Object> map = new TreeMap<>();
         map.put("commentId", commentId);

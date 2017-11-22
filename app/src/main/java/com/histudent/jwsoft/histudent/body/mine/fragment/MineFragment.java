@@ -22,8 +22,8 @@ import com.histudent.jwsoft.histudent.body.mine.activity.MessageManageActivity;
 import com.histudent.jwsoft.histudent.body.mine.activity.SetingActivity;
 import com.histudent.jwsoft.histudent.body.mine.model.CurrentUserDetailInfoModel;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
+import com.histudent.jwsoft.histudent.commen.activity.HTWebActivity;
 import com.histudent.jwsoft.histudent.commen.activity.ImageBrowserActivity;
-import com.histudent.jwsoft.histudent.commen.activity.MyWebActivity;
 import com.histudent.jwsoft.histudent.commen.bean.ActionListBean;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.enums.ShowImageType;
@@ -33,7 +33,7 @@ import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
 import com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
-import com.histudent.jwsoft.histudent.entity.MessageCountEvent;
+import com.histudent.jwsoft.histudent.model.entity.MessageCountEvent;
 import com.histudent.jwsoft.histudent.info.persioninfo.PersionHelper;
 import com.histudent.jwsoft.histudent.info.persioninfo.activity.PersonCenterActivity;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -174,7 +174,7 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
                 break;
 
             case R.id.grow_info://成长记录
-                MyWebActivity.start(getActivity(), HistudentUrl.growthrecord, "成长记录");
+                HTWebActivity.start(getActivity(), HistudentUrl.growthrecord, "成长记录");
                 break;
 
             case R.id.meg_info://我的消息
@@ -191,7 +191,7 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
 
             case R.id.shopping://积分商城
 //                ShoppingActivity.start(getActivity());
-                MyWebActivity.start(getActivity(), HistudentUrl.jifenShop, "积分商城");
+                HTWebActivity.start(getActivity(), HistudentUrl.jifenShop, "积分商城");
                 break;
 
             case R.id.user_record://邀请有礼
@@ -206,7 +206,7 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
 
             case R.id.user_problem://常见问题
 
-                MyWebActivity.start(getActivity(), HistudentUrl.commonproblem);
+                HTWebActivity.start(getActivity(), HistudentUrl.commonproblem);
                 break;
 
             case R.id.user_about://关于

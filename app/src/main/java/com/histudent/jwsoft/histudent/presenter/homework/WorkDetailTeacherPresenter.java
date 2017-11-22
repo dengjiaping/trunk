@@ -1,22 +1,17 @@
 package com.histudent.jwsoft.histudent.presenter.homework;
 
-import android.util.Log;
-
-import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.base.RxPresenter;
-import com.histudent.jwsoft.histudent.bean.homework.HomeworkDetailBean;
-import com.histudent.jwsoft.histudent.bean.homework.WorkCompleteBean;
+import com.histudent.jwsoft.histudent.model.bean.homework.HomeworkDetailBean;
+import com.histudent.jwsoft.histudent.model.bean.homework.WorkCompleteBean;
 import com.histudent.jwsoft.histudent.commen.utils.FileUtil;
-import com.histudent.jwsoft.histudent.component.AudioManager;
-import com.histudent.jwsoft.histudent.manage.ParamsManager;
+import com.histudent.jwsoft.histudent.model.manage.AudioManager;
+import com.histudent.jwsoft.histudent.model.manage.ParamsManager;
 import com.histudent.jwsoft.histudent.model.http.ApiFactory;
 import com.histudent.jwsoft.histudent.model.http.BaseHttpResponse;
 import com.histudent.jwsoft.histudent.model.http.HttpResponse;
 import com.histudent.jwsoft.histudent.presenter.homework.contract.WorkDetailTeacherContract;
-import com.histudent.jwsoft.histudent.rx.RxException;
-import com.histudent.jwsoft.histudent.rx.RxSchedulers;
-
-import org.json.JSONObject;
+import com.histudent.jwsoft.histudent.model.rx.RxException;
+import com.histudent.jwsoft.histudent.model.rx.RxSchedulers;
 
 import java.io.File;
 import java.io.FileOutputStream;

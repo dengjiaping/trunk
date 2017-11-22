@@ -52,7 +52,7 @@
         android:layout_height="@dimen/dp36"
         android:gravity="center_vertical">
 
-        <com.histudent.jwsoft.histudent.widget.DefineTabLayout
+        <com.histudent.jwsoft.histudent.view.widget.DefineTabLayout
             android:id="@+id/tl_rich_editor_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -6,7 +6,7 @@ import android.content.Intent;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.body.myclass.fragment.ClassAddOrCreateFragment;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
-import com.histudent.jwsoft.histudent.constant.TransferKeys;
+import com.histudent.jwsoft.histudent.model.constant.TransferKeys;
 
 /**
  * Created by liuguiyu-pc on 2017/4/27.

@@ -28,7 +28,7 @@ import com.histudent.jwsoft.histudent.commen.utils.HiStudentHttpUtils;
 import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.MyImageLoader;
 import com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView;
-import com.histudent.jwsoft.histudent.entity.SelectMemberEvent;
+import com.histudent.jwsoft.histudent.model.entity.SelectMemberEvent;
 import com.histudent.jwsoft.histudent.info.persioninfo.activity.PersonCenterActivity;
 
 import org.greenrobot.eventbus.EventBus;

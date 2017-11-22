@@ -5,14 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.body.myclass.bean.NoticesBean;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
 import com.histudent.jwsoft.histudent.comment2.utils.EmotionUtils;
-import com.histudent.jwsoft.histudent.widget.ImageViewPager;
 
 import java.util.List;
 

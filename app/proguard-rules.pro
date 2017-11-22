@@ -372,7 +372,7 @@
     -keep class sun.misc.Unsafe { *; }
     # Application classes that will be serialized/deserialized over Gson
     -keep class com.google.gson.examples.android.model.** { *; }
-    -keep class com.histudent.jwsoft.histudent.bean.** { *; }
+    -keep class com.histudent.jwsoft.histudent.model.bean.** { *; }
     -keep class com.histudent.jwsoft.histudent.model.http.**{ *; }
     -keep class com.histudent.jwsoft.histudent.body.mine.model.**{ *; }
     -keep class com.histudent.jwsoft.histudent.commen.bean.**{ *; }

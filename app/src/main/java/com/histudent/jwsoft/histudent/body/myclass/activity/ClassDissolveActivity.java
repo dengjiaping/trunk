@@ -19,7 +19,7 @@ import com.histudent.jwsoft.histudent.commen.helper.ReminderHelper;
 import com.histudent.jwsoft.histudent.commen.listener.HttpRequestCallBack;
 import com.histudent.jwsoft.histudent.commen.url.HistudentUrl;
 import com.histudent.jwsoft.histudent.commen.utils.HiStudentHttpUtils;
-import com.histudent.jwsoft.histudent.manage.ParamsManager;
+import com.histudent.jwsoft.histudent.model.manage.ParamsManager;
 
 import java.util.ArrayList;
 import java.util.List;

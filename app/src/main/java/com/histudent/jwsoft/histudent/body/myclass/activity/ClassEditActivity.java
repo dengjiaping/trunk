@@ -19,8 +19,8 @@ import com.histudent.jwsoft.histudent.commen.utils.HiStudentHttpUtils;
 import com.histudent.jwsoft.histudent.comment2.adapter.CommentSelectAdapter;
 import com.histudent.jwsoft.histudent.comment2.bean.GradeBean;
 import com.histudent.jwsoft.histudent.comment2.bean.SystemProid;
-import com.histudent.jwsoft.histudent.constant.ParamKeys;
-import com.histudent.jwsoft.histudent.constant.TransferKeys;
+import com.histudent.jwsoft.histudent.model.constant.ParamKeys;
+import com.histudent.jwsoft.histudent.model.constant.TransferKeys;
 
 import org.json.JSONException;
 

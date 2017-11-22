@@ -8,14 +8,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.activity.clock.ManualInputBarCodeActivity;
-import com.histudent.jwsoft.histudent.activity.clock.ManualInputBookNameActivity;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.helper.PictureTailorHelper;
 import com.histudent.jwsoft.histudent.commen.helper.ReminderHelper;
 import com.histudent.jwsoft.histudent.commen.view.HiStudentHeadImageView;
-import com.histudent.jwsoft.histudent.constant.TransferKeys;
-import com.histudent.jwsoft.histudent.tool.CommonAdvanceUtils;
 
 /**
  * Created by liuguiyu-pc on 2016/5/26.

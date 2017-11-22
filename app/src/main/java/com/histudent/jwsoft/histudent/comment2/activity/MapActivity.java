@@ -48,7 +48,7 @@ import com.amap.api.services.poisearch.PoiResult;
 import com.amap.api.services.poisearch.PoiSearch;
 import com.amap.api.services.poisearch.PoiSearch.OnPoiSearchListener;
 import com.histudent.jwsoft.histudent.R;
-import com.histudent.jwsoft.histudent.call.IPermissionCallBackListener;
+import com.histudent.jwsoft.histudent.model.listener.IPermissionCallBackListener;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.enums.LoactionType;
 import com.histudent.jwsoft.histudent.commen.helper.ReminderHelper;
@@ -290,7 +290,6 @@ public class MapActivity extends BaseActivity implements
 
         client = new AMapLocationClient(this);
         aMap.getUiSettings().setMyLocationButtonEnabled(true);
-
 
         aMap.setLocationSource(new LocationSource() {
             @Override

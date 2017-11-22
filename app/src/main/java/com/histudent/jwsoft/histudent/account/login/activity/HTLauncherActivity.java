@@ -18,7 +18,7 @@ import com.alibaba.fastjson.JSON;
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.account.login.adapter.ViewPagerAdapter;
-import com.histudent.jwsoft.histudent.account.login.model.CheckUpdataBean;
+import com.histudent.jwsoft.histudent.account.login.model.CheckUpdateBean;
 import com.histudent.jwsoft.histudent.account.login.model.CurrentUserInfoModel;
 import com.histudent.jwsoft.histudent.body.HTMainActivity;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
@@ -279,12 +279,12 @@ public class HTLauncherActivity extends BaseActivity {
             ToastTool.showCommonToast(this, "数据异常,请稍候再试！");
             return;
         }
-        CheckUpdataBean checkUpdataBean = JSON.parseObject(result, CheckUpdataBean.class);
-        if (checkUpdataBean == null)
+        CheckUpdateBean checkUpdateBean = JSON.parseObject(result, CheckUpdateBean.class);
+        if (checkUpdateBean == null)
             return;
-        if (checkUpdataBean.getLaunchpage() != null && checkUpdataBean.getPageTime() > 0) {
-            String path = checkUpdataBean.getLaunchpage().get(0).getImgUrl();
-            num = checkUpdataBean.getPageTime();
+        if (checkUpdateBean.getLaunchpage() != null && checkUpdateBean.getPageTime() > 0) {
+            String path = checkUpdateBean.getLaunchpage().get(0).getImgUrl();
+            num = checkUpdateBean.getPageTime();
             gg_layout.setVisibility(View.VISIBLE);
             MyImageLoader.getIntent().displayNetImage(this, path, gg_image);
             mHandler.sendEmptyMessage(1);
@@ -388,8 +388,7 @@ public class HTLauncherActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mHandler.removeMessages(0);
-        mHandler.removeMessages(1);
+        mHandler.removeCallbacksAndMessages(null);
         mCountDownTimer.cancel();
     }
 

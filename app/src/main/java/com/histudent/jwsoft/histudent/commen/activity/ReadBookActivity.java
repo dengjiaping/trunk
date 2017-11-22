@@ -22,7 +22,7 @@ import com.gzsll.jsbridge.WVJBWebView;
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.body.mine.model.UserClassListModel;
 import com.histudent.jwsoft.histudent.body.mine.parser.DataParser;
-import com.histudent.jwsoft.histudent.call.IPermissionCallBackListener;
+import com.histudent.jwsoft.histudent.model.listener.IPermissionCallBackListener;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.cache.HiWorldCache;
 import com.histudent.jwsoft.histudent.commen.enums.LoadingType;

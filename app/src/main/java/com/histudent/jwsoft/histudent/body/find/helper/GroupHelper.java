@@ -6,7 +6,6 @@ import android.text.TextUtils;
 
 import com.histudent.jwsoft.histudent.body.find.bean.CreateHuoDongBean;
 import com.histudent.jwsoft.histudent.body.find.bean.GroupMemberBean;
-import com.histudent.jwsoft.histudent.body.find.fragment.PageFragment;
 import com.histudent.jwsoft.histudent.body.hiworld.bean.SimpleUserModel;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.bean.GroupNewsModel;
@@ -16,13 +15,12 @@ import com.histudent.jwsoft.histudent.commen.enums.LoadingType;
 import com.histudent.jwsoft.histudent.commen.helper.ReminderHelper;
 import com.histudent.jwsoft.histudent.commen.listener.DialogButtonListener;
 import com.histudent.jwsoft.histudent.commen.listener.HttpRequestCallBack;
-import com.histudent.jwsoft.histudent.commen.model.ParserModel;
 import com.histudent.jwsoft.histudent.commen.url.HistudentUrl;
 import com.histudent.jwsoft.histudent.commen.utils.HiStudentHttpUtils;
 import com.histudent.jwsoft.histudent.commen.utils.RequestManager;
 import com.histudent.jwsoft.histudent.comment2.bean.AddressInforBean;
 import com.histudent.jwsoft.histudent.comment2.bean.CreateTopicModel;
-import com.histudent.jwsoft.histudent.constant.ParamKeys;
+import com.histudent.jwsoft.histudent.model.constant.ParamKeys;
 import com.netease.nim.uikit.common.util.string.StringUtil;
 
 import java.io.File;

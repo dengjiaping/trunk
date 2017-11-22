@@ -33,7 +33,7 @@ import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.body.hiworld.widget.RoundProgressBar;
 import com.histudent.jwsoft.histudent.commen.utils.ScreenSwitchUtils;
 import com.histudent.jwsoft.histudent.commen.view.IconView;
-import com.histudent.jwsoft.histudent.entity.ScreenSwitchEvent;
+import com.histudent.jwsoft.histudent.model.entity.ScreenSwitchEvent;
 import com.netease.nim.uikit.common.activity.UI;
 import com.netease.nim.uikit.common.ui.dialog.EasyAlertDialogHelper;
 import com.netease.nim.uikit.common.util.file.AttachmentStore;

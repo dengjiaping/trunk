@@ -1,16 +1,12 @@
 package com.histudent.jwsoft.histudent.presenter.image;
 
 import com.histudent.jwsoft.histudent.base.RxPresenter;
-import com.histudent.jwsoft.histudent.bean.UploadImgBean;
-import com.histudent.jwsoft.histudent.body.mine.model.PhotosModel;
+import com.histudent.jwsoft.histudent.model.bean.UploadImgBean;
 import com.histudent.jwsoft.histudent.model.http.ApiFactory;
-import com.histudent.jwsoft.histudent.model.http.BaseHttpResponse;
 import com.histudent.jwsoft.histudent.model.http.HttpResponse;
 import com.histudent.jwsoft.histudent.presenter.image.contract.UploadContract;
-import com.histudent.jwsoft.histudent.rx.RxException;
-import com.histudent.jwsoft.histudent.rx.RxSchedulers;
-
-import java.util.List;
+import com.histudent.jwsoft.histudent.model.rx.RxException;
+import com.histudent.jwsoft.histudent.model.rx.RxSchedulers;
 
 import javax.inject.Inject;
 

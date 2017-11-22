@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.body.find.bean.CreateHuoDongBean;
-import com.histudent.jwsoft.histudent.call.IPermissionCallBackListener;
+import com.histudent.jwsoft.histudent.model.listener.IPermissionCallBackListener;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
 import com.histudent.jwsoft.histudent.commen.helper.PictureTailorHelper;
 import com.histudent.jwsoft.histudent.commen.helper.ReminderHelper;

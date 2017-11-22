@@ -14,7 +14,7 @@ import com.histudent.jwsoft.histudent.body.homepage.helper.HomePageHelper;
 import com.histudent.jwsoft.histudent.body.homepage.holder.AlbumViewHolder;
 import com.histudent.jwsoft.histudent.body.homepage.holder.EssayViewHolder;
 import com.histudent.jwsoft.histudent.body.homepage.holder.LogViewHolder;
-import com.histudent.jwsoft.histudent.commen.activity.MyWebActivity;
+import com.histudent.jwsoft.histudent.commen.activity.HTWebActivity;
 import com.histudent.jwsoft.histudent.commen.bean.ActionListBean;
 import com.histudent.jwsoft.histudent.commen.bean.AtUserModel;
 import com.histudent.jwsoft.histudent.commen.bean.TopicModel;
@@ -23,7 +23,7 @@ import com.histudent.jwsoft.histudent.commen.utils.SystemUtil;
 import com.histudent.jwsoft.histudent.commen.utils.imageloader.CommonGlideImageLoader;
 import com.histudent.jwsoft.histudent.commen.view.RichTextView;
 import com.histudent.jwsoft.histudent.comment2.utils.TimeUtils;
-import com.histudent.jwsoft.histudent.entity.ImageAttrEntity;
+import com.histudent.jwsoft.histudent.model.entity.ImageAttrEntity;
 import com.histudent.jwsoft.histudent.info.persioninfo.activity.PersonCenterActivity;
 
 import java.util.ArrayList;
@@ -86,7 +86,7 @@ public class HomePageAdapter extends BaseAdapter {
     private View getAlbumView(AlbumViewHolder albumViewHolder, ViewGroup viewGroup, ActionListBean bean) {
         View view = null;
         if (albumViewHolder == null) {
-            view = LayoutInflater.from(mContext).inflate(R.layout.fragment_homepage_action_album_item, viewGroup, false);
+            view = LayoutInflater.from(mContext).inflate(R.layout.item_fragment_homepage_action_album, viewGroup, false);
             albumViewHolder = new AlbumViewHolder(view);
             view.setTag(albumViewHolder);
         } else {
@@ -128,7 +128,7 @@ public class HomePageAdapter extends BaseAdapter {
     private View getEssayView(EssayViewHolder essayViewHolder, ViewGroup viewGroup, final ActionListBean bean) {
         View view = null;
         if (essayViewHolder == null) {
-            view = LayoutInflater.from(mContext).inflate(R.layout.fragment_homepage_action_essay_item, viewGroup, false);
+            view = LayoutInflater.from(mContext).inflate(R.layout.item_fragment_homepage_action_essay, viewGroup, false);
             essayViewHolder = new EssayViewHolder(view);
             view.setTag(essayViewHolder);
         } else {
@@ -170,9 +170,9 @@ public class HomePageAdapter extends BaseAdapter {
                     @Override
                     public void onClick(View view) {
                         if (!TextUtils.isEmpty(bean.getVideoId())) {
-                            MyWebActivity.startNoTitle(mContext, HistudentUrl.playvideo + bean.getVideoId());
+                            HTWebActivity.startNoTitle(mContext, HistudentUrl.playvideo + bean.getVideoId());
                         } else {
-                            MyWebActivity.start(mContext, bean.getHtmlUrl());
+                            HTWebActivity.start(mContext, bean.getHtmlUrl());
                         }
                     }
                 });
@@ -227,7 +227,7 @@ public class HomePageAdapter extends BaseAdapter {
     private View getLogView(LogViewHolder logViewHolder, ViewGroup viewGroup, ActionListBean bean) {
         View view = null;
         if (logViewHolder == null) {
-            view = LayoutInflater.from(mContext).inflate(R.layout.fragment_homepage_action_log_item, viewGroup, false);
+            view = LayoutInflater.from(mContext).inflate(R.layout.item_fragment_homepage_action_log, viewGroup, false);
             logViewHolder = new LogViewHolder(view);
             view.setTag(logViewHolder);
         } else {

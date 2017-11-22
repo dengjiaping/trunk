@@ -1,18 +1,18 @@
 package com.histudent.jwsoft.histudent.presenter.homework;
 
 import com.histudent.jwsoft.histudent.HiStudentLog;
-import com.histudent.jwsoft.histudent.adapter.homework.convert.HomeworkGroupDetailDataConvert;
+import com.histudent.jwsoft.histudent.view.adapter.homework.convert.HomeworkGroupDetailDataConvert;
 import com.histudent.jwsoft.histudent.base.RxPresenter;
-import com.histudent.jwsoft.histudent.bean.homework.CommonMemberBean;
-import com.histudent.jwsoft.histudent.bean.homework.GroupMemberDetailEntity;
-import com.histudent.jwsoft.histudent.constant.ParamKeys;
-import com.histudent.jwsoft.histudent.manage.ParamsManager;
+import com.histudent.jwsoft.histudent.model.bean.homework.CommonMemberBean;
+import com.histudent.jwsoft.histudent.model.bean.homework.GroupMemberDetailEntity;
+import com.histudent.jwsoft.histudent.model.constant.ParamKeys;
+import com.histudent.jwsoft.histudent.model.manage.ParamsManager;
 import com.histudent.jwsoft.histudent.model.http.ApiFactory;
 import com.histudent.jwsoft.histudent.model.http.BaseHttpResponse;
 import com.histudent.jwsoft.histudent.model.http.HttpResponse;
 import com.histudent.jwsoft.histudent.presenter.homework.contract.WorkReceiverPersonContract;
-import com.histudent.jwsoft.histudent.rx.RxException;
-import com.histudent.jwsoft.histudent.rx.RxSchedulers;
+import com.histudent.jwsoft.histudent.model.rx.RxException;
+import com.histudent.jwsoft.histudent.model.rx.RxSchedulers;
 
 import java.util.List;
 import java.util.Map;

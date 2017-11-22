@@ -25,7 +25,7 @@ import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.body.message.model.ClassModel;
 import com.histudent.jwsoft.histudent.commen.activity.AndroidBug5497Workaround;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
-import com.histudent.jwsoft.histudent.commen.activity.MyWebActivity;
+import com.histudent.jwsoft.histudent.commen.activity.HTWebActivity;
 import com.histudent.jwsoft.histudent.commen.bean.ActionListBean;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.enums.ItemType;
@@ -66,7 +66,7 @@ public class DealActivity extends BaseActivity {
 //        intent.putExtra("url", url);
 //        intent.putExtra("title", title);
 //        activity.startActivity(intent);
-        MyWebActivity.start(activity, url);
+        HTWebActivity.start(activity, url);
     }
 
     public static void start(Activity activity, String url, ActionListBean bean, ItemType type) {

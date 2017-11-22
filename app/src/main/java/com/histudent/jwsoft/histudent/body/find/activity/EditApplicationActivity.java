@@ -19,7 +19,7 @@ import com.histudent.jwsoft.histudent.R;
 import com.histudent.jwsoft.histudent.body.find.adapter.ApplicationAdapter;
 import com.histudent.jwsoft.histudent.body.find.bean.HuodongBean;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
-import com.histudent.jwsoft.histudent.commen.activity.MyWebActivity;
+import com.histudent.jwsoft.histudent.commen.activity.HTWebActivity;
 import com.histudent.jwsoft.histudent.commen.cache.HiWorldCache;
 import com.histudent.jwsoft.histudent.commen.enums.LoadingType;
 import com.histudent.jwsoft.histudent.commen.helper.ReminderHelper;
@@ -34,7 +34,7 @@ import com.histudent.jwsoft.histudent.comment2.utils.EmptyViewUtils;
 import com.histudent.jwsoft.histudent.comment2.utils.GroupOrClassActionUtils;
 import com.histudent.jwsoft.histudent.comment2.utils.RecycleCallBack;
 import com.histudent.jwsoft.histudent.comment2.utils.ViewUtils;
-import com.histudent.jwsoft.histudent.constant.ParamKeys;
+import com.histudent.jwsoft.histudent.model.constant.ParamKeys;
 import com.netease.nim.uikit.common.util.string.StringUtil;
 
 import java.io.Serializable;
@@ -167,7 +167,7 @@ public class EditApplicationActivity extends BaseActivity implements View.OnClic
 
                     HuodongBean bean = ((HuodongBean) list_02.get(position));
                     if (!bean.isEmpty() && !StringUtil.isEmpty(bean.getAppUrl())) {
-                        MyWebActivity.start(EditApplicationActivity.this, bean.getAppUrl());
+                        HTWebActivity.start(EditApplicationActivity.this, bean.getAppUrl());
                     }
                     //显示编辑标记位时，点击每个条目为添加应用
                 } else {
@@ -323,7 +323,7 @@ public class EditApplicationActivity extends BaseActivity implements View.OnClic
             if (!dragAdapter.isShow()) {
                 HuodongBean bean = ((HuodongBean) list_01.get(position));
                 if (!bean.isEmpty() && !StringUtil.isEmpty(bean.getAppUrl())) {
-                    MyWebActivity.start(EditApplicationActivity.this, bean.getAppUrl());
+                    HTWebActivity.start(EditApplicationActivity.this, bean.getAppUrl());
                 }
             }
         }

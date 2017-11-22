@@ -9,9 +9,9 @@ import android.view.View;
 
 import com.histudent.jwsoft.histudent.HTApplication;
 import com.histudent.jwsoft.histudent.commen.view.LoadingDialog;
-import com.histudent.jwsoft.histudent.di.componet.ActivityComponent;
-import com.histudent.jwsoft.histudent.di.componet.DaggerActivityComponent;
-import com.histudent.jwsoft.histudent.di.module.ActivityModule;
+import com.histudent.jwsoft.histudent.model.di.componet.ActivityComponent;
+import com.histudent.jwsoft.histudent.model.di.componet.DaggerActivityComponent;
+import com.histudent.jwsoft.histudent.model.di.module.ActivityModule;
 
 import javax.inject.Inject;
 
@@ -64,6 +64,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
             mPresenter.detachView();
         }
         mUnbinder.unbind();
+        dismissLoadingDialog();
     }
 
     protected ActivityComponent getActivityComponent() {

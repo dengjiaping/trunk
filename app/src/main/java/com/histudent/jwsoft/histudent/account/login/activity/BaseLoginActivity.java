@@ -20,7 +20,7 @@ import com.histudent.jwsoft.histudent.commen.url.HistudentUrl;
 import com.histudent.jwsoft.histudent.commen.utils.HiStudentHttpUtils;
 import com.histudent.jwsoft.histudent.commen.utils.LocationUtils;
 import com.histudent.jwsoft.histudent.comment2.utils.ActivityCollector;
-import com.histudent.jwsoft.histudent.constant.ParamKeys;
+import com.histudent.jwsoft.histudent.model.constant.ParamKeys;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.RequestCallbackWrapper;
 import com.netease.nimlib.sdk.ResponseCode;

@@ -5,16 +5,11 @@ import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.histudent.jwsoft.histudent.CodeNum;
 import com.histudent.jwsoft.histudent.HiStudentLog;
 import com.histudent.jwsoft.histudent.R;
@@ -24,27 +19,23 @@ import com.histudent.jwsoft.histudent.body.hiworld.activity.LogActivity;
 import com.histudent.jwsoft.histudent.body.hiworld.activity.UploadPhotoActivity;
 import com.histudent.jwsoft.histudent.body.message.model.ClassModel;
 import com.histudent.jwsoft.histudent.body.message.uikit.session.SessionHelper;
-import com.histudent.jwsoft.histudent.body.myclass.adapter.BadgeAdapter;
 import com.histudent.jwsoft.histudent.body.myclass.adapter.TaskAdapter;
 import com.histudent.jwsoft.histudent.body.myclass.bean.GrouthTaskModel;
 import com.histudent.jwsoft.histudent.body.myclass.helper.ClassHelper;
 import com.histudent.jwsoft.histudent.commen.activity.BaseActivity;
-import com.histudent.jwsoft.histudent.commen.activity.MyWebActivity;
+import com.histudent.jwsoft.histudent.commen.activity.HTWebActivity;
 import com.histudent.jwsoft.histudent.commen.cache.HiCache;
 import com.histudent.jwsoft.histudent.commen.enums.LoadingType;
 import com.histudent.jwsoft.histudent.commen.helper.ReminderHelper;
 import com.histudent.jwsoft.histudent.commen.listener.HttpRequestCallBack;
 import com.histudent.jwsoft.histudent.commen.url.HistudentUrl;
-import com.histudent.jwsoft.histudent.commen.view.StarBar;
 import com.histudent.jwsoft.histudent.comment2.utils.ActionTypeEnum;
-import com.histudent.jwsoft.histudent.constant.Const;
-import com.histudent.jwsoft.histudent.entity.BadgeClickEvent;
-import com.histudent.jwsoft.histudent.entity.TaskClickEvent;
-import com.histudent.jwsoft.histudent.entity.TaskEvent;
-import com.histudent.jwsoft.histudent.widget.MostRecyclerView;
+import com.histudent.jwsoft.histudent.model.constant.Const;
+import com.histudent.jwsoft.histudent.model.entity.BadgeClickEvent;
+import com.histudent.jwsoft.histudent.model.entity.TaskClickEvent;
+import com.histudent.jwsoft.histudent.model.entity.TaskEvent;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.RequestCallback;
-import com.netease.nimlib.sdk.msg.MsgService;
 import com.netease.nimlib.sdk.team.TeamService;
 import com.netease.nimlib.sdk.team.model.Team;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -263,7 +254,7 @@ public class ClassGradeActivity extends BaseActivity {
         if (mTask != null) {
             if (mTask.isCanTodo()) {
                 if (mTask.isH5()) {
-                    MyWebActivity.start(ClassGradeActivity.this, mTask.getUrl());
+                    HTWebActivity.start(ClassGradeActivity.this, mTask.getUrl());
                 } else {
                     gotoActivity(mTask.getTaskId());
                 }
@@ -311,7 +302,7 @@ public class ClassGradeActivity extends BaseActivity {
                 break;
             //[新手任务]发布班级作业
             case Const.HOMEWORK_ASSIGN_FRIST:
-                MyWebActivity.start(ClassGradeActivity.this, HistudentUrl.homework);
+                HTWebActivity.start(ClassGradeActivity.this, HistudentUrl.homework);
                 break;
             //[新手任务]建立家校互通
             case Const.IM_BUILD_FIRST:
@@ -374,7 +365,7 @@ public class ClassGradeActivity extends BaseActivity {
                 break;
             //[日常任务] 布置作业
             case Const.HOMEWORK_ASSIGN:
-                MyWebActivity.start(ClassGradeActivity.this, HistudentUrl.homework);
+                HTWebActivity.start(ClassGradeActivity.this, HistudentUrl.homework);
                 break;
             //推荐成员动态
             case Const.CLASS_ACTIVITY_RECOMMEND:
